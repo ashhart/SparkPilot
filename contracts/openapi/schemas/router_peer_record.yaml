@@ -1,0 +1,21 @@
+type: object
+additionalProperties: false
+required:
+- recipient
+- principal_id
+- approved_at
+- uses_current_key
+- recipient_retirement
+properties:
+  recipient:
+    $ref: ../../openapi.yaml#/components/schemas/RouterPeerTrust
+  principal_id:
+    type: string
+    format: uuid
+  approved_at:
+    type: integer
+    format: int64
+  uses_current_key:
+    type: boolean
+  recipient_retirement:
+    $ref: ../../openapi.yaml#/components/schemas/RouterRecipientRetirement

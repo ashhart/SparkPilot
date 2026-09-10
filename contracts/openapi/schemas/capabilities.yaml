@@ -1,0 +1,15 @@
+type: object
+required:
+- api_version
+- features
+properties:
+  api_version:
+    type: integer
+    const: 1
+  features:
+    type: object
+    additionalProperties:
+      type: boolean
+  limits:
+    type: object
+    additionalProperties: true

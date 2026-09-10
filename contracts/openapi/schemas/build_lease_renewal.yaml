@@ -1,0 +1,19 @@
+type: object
+additionalProperties: false
+required:
+- build_id
+- worker_id
+- expires_at
+- cancel_requested
+properties:
+  build_id:
+    type: string
+    format: uuid
+  worker_id:
+    type: string
+    format: uuid
+  expires_at:
+    type: string
+    format: date-time
+  cancel_requested:
+    type: boolean

@@ -1,0 +1,9 @@
+type: object
+additionalProperties: false
+required:
+- mode_id
+properties:
+  mode_id:
+    type: integer
+    minimum: 0
+    maximum: 255

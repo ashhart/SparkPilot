@@ -1,0 +1,10 @@
+type: object
+additionalProperties: false
+required:
+- pools
+properties:
+  pools:
+    type: array
+    maxItems: 16
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/InferencePoolPolicy

@@ -1,0 +1,21 @@
+post:
+  tags:
+  - Pairing
+  operationId: redeemPairingJoinCode
+  security: []
+  summary: Exchange a six-digit join code for a signed pairing package
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/RedeemPairingJoinCode
+  responses:
+    '200':
+      description: Signed pairing trust package
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/PairingJoinPackage
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

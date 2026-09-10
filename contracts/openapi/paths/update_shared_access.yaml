@@ -1,0 +1,46 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/DeviceId
+patch:
+  tags:
+  - Shared Access
+  operationId: updateSharedAccess
+  summary: Confirm, pause or re-limit one guest
+  description: Owner only, with a fresh presence proof. Confirming a pending guest is how the owner
+    completes a join.
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/UpdateSharedAccess
+  responses:
+    '200':
+      description: Updated guest
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/SharedAccessGuest
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+delete:
+  tags:
+  - Shared Access
+  operationId: revokeSharedAccess
+  summary: Withdraw one guest's access at once
+  description: Owner only, with a fresh presence proof. The grant and the device grant are both retired,
+    and the change is audited.
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  responses:
+    '200':
+      description: Access withdrawn
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/SharedAccessRevocation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

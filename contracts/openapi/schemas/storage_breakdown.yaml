@@ -1,0 +1,36 @@
+type: object
+additionalProperties: false
+required:
+- observed_at
+- total_bytes
+- free_bytes
+- models_bytes
+- downloads_bytes
+- blobs_bytes
+- containers_bytes
+- reclaimable_bytes
+properties:
+  observed_at:
+    type: string
+    format: date-time
+  total_bytes:
+    type: integer
+    minimum: 0
+  free_bytes:
+    type: integer
+    minimum: 0
+  models_bytes:
+    type: integer
+    minimum: 0
+  downloads_bytes:
+    type: integer
+    minimum: 0
+  blobs_bytes:
+    type: integer
+    minimum: 0
+  containers_bytes:
+    type: integer
+    minimum: 0
+  reclaimable_bytes:
+    type: integer
+    minimum: 0

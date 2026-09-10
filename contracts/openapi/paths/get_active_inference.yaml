@@ -1,0 +1,13 @@
+get:
+  tags:
+  - Inference
+  operationId: getActiveInference
+  responses:
+    '200':
+      description: Active engine or unloaded state
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/InferenceState
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

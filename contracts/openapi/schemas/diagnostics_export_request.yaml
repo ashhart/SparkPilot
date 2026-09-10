@@ -1,0 +1,10 @@
+type: object
+additionalProperties: false
+properties:
+  include_optional:
+    type: array
+    maxItems: 16
+    items:
+      type: string
+    description: Ids of optional categories the owner ticked for this export. An id the runtime does not
+      offer is refused rather than ignored.

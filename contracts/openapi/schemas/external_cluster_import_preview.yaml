@@ -1,0 +1,61 @@
+type: object
+additionalProperties: false
+required:
+- name
+- configuration_owner
+- members
+- authenticated_links
+- evidence_complete
+- registration_available
+- automatic_topology_available
+- takeover_available
+- blockers
+- preservation_guarantees
+properties:
+  name:
+    type: string
+    minLength: 1
+    maxLength: 120
+  configuration_owner:
+    type: string
+    enum:
+    - externally_configured
+  members:
+    type: array
+    minItems: 2
+    maxItems: 64
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ExternalClusterImportMember
+  authenticated_links:
+    type: array
+    maxItems: 128
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/AuthenticatedFabricLink
+  evidence_complete:
+    type: boolean
+  registration_available:
+    type: boolean
+  automatic_topology_available:
+    type: boolean
+  takeover_available:
+    type: boolean
+  blockers:
+    type: array
+    maxItems: 128
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ExternalClusterImportBlocker
+  preservation_guarantees:
+    type: array
+    minItems: 7
+    maxItems: 7
+    uniqueItems: true
+    items:
+      type: string
+      enum:
+      - netplan
+      - ssh
+      - ray
+      - vllm
+      - models
+      - containers
+      - services

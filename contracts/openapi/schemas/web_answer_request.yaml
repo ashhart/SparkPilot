@@ -1,0 +1,23 @@
+type: object
+additionalProperties: false
+required:
+- model
+- messages
+properties:
+  model:
+    type: string
+    minLength: 1
+    maxLength: 240
+  messages:
+    type: array
+    minItems: 1
+    maxItems: 64
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/WebAnswerMessage
+  system_instruction:
+    type:
+    - string
+    - 'null'
+    maxLength: 4000
+    description: Prepended ahead of the web-tool contract, so another surface can add its own framing without
+      replacing the untrusted-content rule.

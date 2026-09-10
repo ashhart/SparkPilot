@@ -1,0 +1,35 @@
+get:
+  tags:
+  - System
+  operationId: getSoftwareUpdateStatus
+  responses:
+    '200':
+      description: Available operating-system, firmware, and runtime updates
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/SoftwareUpdateStatus
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+post:
+  tags:
+  - System
+  operationId: installSoftwareUpdates
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/InstallSoftwareUpdatesRequest
+  responses:
+    '202':
+      description: Software-update operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

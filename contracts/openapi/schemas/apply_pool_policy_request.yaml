@@ -1,0 +1,8 @@
+type: object
+additionalProperties: false
+required:
+- preview_id
+properties:
+  preview_id:
+    type: string
+    format: uuid

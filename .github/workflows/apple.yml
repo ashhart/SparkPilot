@@ -1,0 +1,98 @@
+name: Apple
+
+on:
+  push:
+    paths:
+      - "apple/**"
+      - "contracts/**"
+      - "tools/build-apple.sh"
+      - "tools/release/check_watch_bundle.py"
+      - "tools/archive-testflight.sh"
+      - "tools/test-apple-terminal-interop.sh"
+      - "runtime/**"
+      - "rust-toolchain.toml"
+      - "tools/check-swift-dependencies.sh"
+      - "tools/check-development-sources.py"
+      - "tests/test_development_sources.py"
+      - "tools/requirements-contracts.txt"
+      - "runtime/crates/sparkd/src/project_api/harness-locks/**"
+      - "runtime/crates/sparkd/src/project_api/development-launch.cjs"
+      - "tools/test-swift-dependencies.sh"
+      - "docs/build/source-lock.json"
+      - "tools/check-swift-format.sh"
+      - "tools/test-app-intents-metadata.sh"
+      - "tests/matrix_coverage.py"
+      - "tests/test_matrix_coverage.py"
+      - "tests/accessibility/**"
+      - "tests/ui/**"
+      - "tests/localisation/**"
+      - ".swift-format"
+      - "Justfile"
+      - ".github/workflows/apple.yml"
+  pull_request:
+
+jobs:
+  swift-packages:
+    runs-on: macos-26
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.6.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+      - name: Install release verification dependencies
+        run: python3 -m pip install --disable-pip-version-check --require-hashes -r tools/requirements-contracts.txt
+      - name: Verify Apple toolchain
+        run: |
+          test "$(xcodebuild -version | head -n 1)" = "Xcode 26.6"
+          test "$(swift format --version)" = "6.3.0"
+      - name: Swift format lint
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          EVENT_NAME: ${{ github.event_name }}
+          PULL_REQUEST_BASE: ${{ github.event.pull_request.base.sha }}
+          PULL_REQUEST_HEAD: ${{ github.event.pull_request.head.sha }}
+          PUSH_BASE: ${{ github.event.before }}
+          PUSH_HEAD: ${{ github.sha }}
+        run: |
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            base="$PULL_REQUEST_BASE"
+            head="$PULL_REQUEST_HEAD"
+          elif [[ "$PUSH_BASE" =~ ^0+$ ]]; then
+            base="origin/$DEFAULT_BRANCH"
+            head="$PUSH_HEAD"
+          else
+            base="$PUSH_BASE"
+            head="$PUSH_HEAD"
+          fi
+          ./tools/check-swift-format.sh --diff "$base" "$head"
+      - name: Swift dependency lock
+        run: |
+          ./tools/check-swift-dependencies.sh
+          ./tools/test-swift-dependencies.sh
+          python3 tools/check-development-sources.py
+          python3 -m unittest discover -s tests -p test_development_sources.py
+      - name: Build shared packages
+        run: ./tools/build-apple.sh
+      - uses: dtolnay/rust-toolchain@6c977a6ca4077a0ceb28ffbe03f59d46e9ac8772 # v1
+        with:
+          toolchain: "1.94.0"
+      - name: Signed Apple terminal interoperability
+        env:
+          CARGO_TARGET_DIR: ${{ runner.temp }}/spark-terminal-rust
+          SPARK_TERMINAL_SWIFT_SCRATCH: ${{ runner.temp }}/spark-terminal-swift
+        run: ./tools/test-apple-terminal-interop.sh
+      - name: App Intents metadata and shortcut phrases
+        run: ./tools/test-app-intents-metadata.sh
+      - name: Accessibility, UI and localisation matrices
+        run: |
+          python3 tests/localisation/generate.py
+          git diff --exit-code -- apple/SparkApp/Resources/Localizable.xcstrings
+          python3 -m unittest discover -s tests -p test_matrix_coverage.py
+          for suite in accessibility ui localisation; do
+            echo "== tests/$suite"
+            python3 -m unittest discover -s "tests/$suite" -p 'test_*_matrix.py'
+          done

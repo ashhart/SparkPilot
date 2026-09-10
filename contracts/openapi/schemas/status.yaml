@@ -1,0 +1,39 @@
+type: object
+required:
+- api_version
+- node
+- system
+- inference
+- operations
+properties:
+  api_version:
+    type: integer
+    const: 1
+  node:
+    $ref: ../../openapi.yaml#/components/schemas/Identity
+  cluster:
+    oneOf:
+    - $ref: ../../openapi.yaml#/components/schemas/Cluster
+    - type: 'null'
+  connection:
+    $ref: ../../openapi.yaml#/components/schemas/ConnectionStatus
+  system:
+    $ref: ../../openapi.yaml#/components/schemas/SystemStatus
+  inference:
+    $ref: ../../openapi.yaml#/components/schemas/InferenceState
+  operations:
+    type: object
+    required:
+    - active
+    - waiting_for_approval
+    - failed_last_24h
+    properties:
+      active:
+        type: integer
+        minimum: 0
+      waiting_for_approval:
+        type: integer
+        minimum: 0
+      failed_last_24h:
+        type: integer
+        minimum: 0

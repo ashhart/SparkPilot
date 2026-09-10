@@ -1,0 +1,78 @@
+type: object
+additionalProperties: false
+required:
+- name
+- type
+- state
+- connection_name
+- mac_address
+- mtu
+- link_speed_mbps
+- addresses
+- gateway
+- dns_servers
+- wifi_ssid
+- wifi_signal_percent
+- internet
+properties:
+  name:
+    type: string
+    minLength: 1
+    maxLength: 64
+  type:
+    type: string
+    enum:
+    - ethernet
+    - wifi
+    - bridge
+    - loopback
+    - other
+  state:
+    type: string
+    enum:
+    - connected
+    - disconnected
+    - unavailable
+    - unknown
+  connection_name:
+    type:
+    - string
+    - 'null'
+  mac_address:
+    type:
+    - string
+    - 'null'
+  mtu:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  link_speed_mbps:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  addresses:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/NetworkAddress
+  gateway:
+    type:
+    - string
+    - 'null'
+  dns_servers:
+    type: array
+    items:
+      type: string
+  wifi_ssid:
+    type:
+    - string
+    - 'null'
+  wifi_signal_percent:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+    maximum: 100
+  internet:
+    $ref: ../../openapi.yaml#/components/schemas/InternetReachability

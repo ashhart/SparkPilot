@@ -1,0 +1,28 @@
+type: object
+additionalProperties: false
+required:
+- text
+- model_id
+- sources
+- tool_calls
+- truncated
+properties:
+  text:
+    type: string
+    maxLength: 20000
+  model_id:
+    type: string
+    maxLength: 240
+  sources:
+    type: array
+    maxItems: 32
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/WebSource
+  tool_calls:
+    type: array
+    maxItems: 64
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/AutomationToolCall
+  truncated:
+    type: boolean
+    description: True when the answer stopped at the token ceiling rather than finishing.

@@ -1,0 +1,49 @@
+type: object
+required:
+- model
+- input
+properties:
+  model:
+    type: string
+  input: {}
+  instructions:
+    type: string
+  tools:
+    type: array
+    items:
+      type: object
+      additionalProperties: true
+  tool_choice: {}
+  parallel_tool_calls:
+    type: boolean
+  reasoning:
+    type: object
+    additionalProperties: true
+  text:
+    type: object
+    additionalProperties: true
+  include:
+    type: array
+    items:
+      type: string
+  metadata:
+    type: object
+    additionalProperties: true
+  max_output_tokens:
+    type: integer
+    minimum: 1
+  previous_response_id:
+    type:
+    - string
+    - 'null'
+  prompt_cache_key:
+    type: string
+  safety_identifier:
+    type: string
+  store:
+    type: boolean
+  stream:
+    type: boolean
+    default: false
+  truncation:
+    type: string

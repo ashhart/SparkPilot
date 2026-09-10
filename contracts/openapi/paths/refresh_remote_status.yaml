@@ -1,0 +1,18 @@
+post:
+  tags:
+  - Remote
+  operationId: refreshRemoteStatus
+  description: Force an on-demand health recheck of the current remote route and return the reconciled
+    status. A health reconciliation, not a mode change, so it needs no review or user presence. The idempotency
+    key is accepted but not deduplicated — a refresh must always return live state.
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  responses:
+    '200':
+      description: Reconciled remote access status
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/RemoteStatus
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,21 @@
+post:
+  tags:
+  - Models
+  operationId: importUnverifiedModel
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/ImportUnverifiedModelRequest
+  responses:
+    '201':
+      description: Unverified model record
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ImportedModel
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

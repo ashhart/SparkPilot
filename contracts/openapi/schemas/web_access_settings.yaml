@@ -1,0 +1,76 @@
+type: object
+additionalProperties: false
+required:
+- policy
+- harness_access
+- search_backend
+- allow_domains
+- deny_domains
+- searxng_url
+- brave_credential_id
+- local_search_state
+- limits
+- updated_at
+properties:
+  policy:
+    type: string
+    description: What the owner has allowed the model to reach. `off` until an owner changes it; the per-automation
+      and per-chat opt-ins sit on top and never override it.
+    enum:
+    - 'off'
+    - automations
+    - automations_and_chats
+  harness_access:
+    type: boolean
+    description: Whether third-party clients on the OpenAI-compatible gateway may also use the web tools. Off
+      unless the owner turned it on, and only meaningful when the policy allows chats.
+  allow_domains:
+    type: array
+    maxItems: 64
+    description: When non-empty, only these domains and their subdomains may be read.
+    items:
+      type: string
+      maxLength: 253
+  deny_domains:
+    type: array
+    maxItems: 64
+    description: Always refused, even inside an allowed domain.
+    items:
+      type: string
+      maxLength: 253
+  search_backend:
+    type: string
+    description: Which search service the Spark asks. `searxng` is the default and points at the Spark's own
+      instance, so a query carries no account identity. `disabled` leaves page reading available and refuses
+      every search.
+    enum:
+    - duckduckgo
+    - searxng
+    - brave
+    - disabled
+  searxng_url:
+    type:
+    - string
+    - 'null'
+    maxLength: 300
+    description: Base URL of the owner's own SearXNG, used only when the backend is `searxng`.
+  brave_credential_id:
+    type:
+    - string
+    - 'null'
+    format: uuid
+    description: Reference to a stored `brave-search` provider credential. The key itself never leaves the Spark.
+  local_search_state:
+    type: string
+    description: Whether the Spark's own search service is installed and answering. Choosing the `searxng`
+      backend at the Spark's own address installs it as part of the same operation.
+    enum:
+    - not_installed
+    - running
+    - unhealthy
+    - unknown
+  limits:
+    $ref: ../../openapi.yaml#/components/schemas/WebAccessLimits
+  updated_at:
+    type: integer
+    format: int64

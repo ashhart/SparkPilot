@@ -1,0 +1,21 @@
+post:
+  tags:
+  - Pairing
+  operationId: claimPairingInvitation
+  security: []
+  summary: Register a device public key using a valid invitation
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/PairingClaim
+  responses:
+    '201':
+      description: Device grant created
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/PairingGrant
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

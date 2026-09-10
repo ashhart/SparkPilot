@@ -1,0 +1,17 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/OperationId
+post:
+  tags:
+  - Operations
+  operationId: cancelOperation
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  responses:
+    '202':
+      description: Cancellation requested
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

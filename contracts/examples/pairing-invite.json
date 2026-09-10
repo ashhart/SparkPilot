@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "node_id": "7a836150-16e1-46b5-8ac0-32b2a5f2f820",
+  "cluster_id": null,
+  "local_endpoint": "https://ashs-spark.local:7443",
+  "remote_endpoint": null,
+  "authority_fingerprint": "t9lNEpIu94qMhG3XG2ThMg",
+  "invitation_id": "ac9fbff8-33f1-4d45-935d-8c02686188ac",
+  "nonce": "uIYhWXRoc8mzDE2noId5jQ",
+  "role": "developer",
+  "expires_at": "2026-08-25T21:45:00Z",
+  "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+}

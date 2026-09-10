@@ -1,0 +1,39 @@
+type: object
+additionalProperties: false
+required:
+- worker_id
+- display_name
+- state
+- platform
+- xcode_version
+- capabilities
+properties:
+  worker_id:
+    type: string
+    format: uuid
+  display_name:
+    type: string
+  state:
+    type: string
+    enum:
+    - online
+    - busy
+    - offline
+    - revoked
+  platform:
+    type: string
+  xcode_version:
+    type: string
+  capabilities:
+    type: object
+    additionalProperties: true
+  last_seen_at:
+    type:
+    - string
+    - 'null'
+    format: date-time
+  heartbeat_expires_at:
+    type:
+    - string
+    - 'null'
+    format: date-time

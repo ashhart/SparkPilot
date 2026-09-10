@@ -1,0 +1,44 @@
+type: object
+additionalProperties: false
+required:
+- available
+- current_mode_id
+- current_name
+- modes
+- reboot_required
+- temperature_celsius
+- power_draw_watts
+- power_limit_watts
+properties:
+  available:
+    type: boolean
+  current_mode_id:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+    maximum: 255
+  current_name:
+    type:
+    - string
+    - 'null'
+  modes:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/PowerProfileMode
+  reboot_required:
+    type: boolean
+  temperature_celsius:
+    type:
+    - number
+    - 'null'
+  power_draw_watts:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+  power_limit_watts:
+    type:
+    - number
+    - 'null'
+    minimum: 0

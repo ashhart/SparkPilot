@@ -1,0 +1,28 @@
+post:
+  tags:
+  - Pairing
+  operationId: createPresenceChallenge
+  summary: Issue a single-use user-presence challenge (§58.2 elevated class). The device signs the challenge
+    with its device key and presents the result in `X-Spark-User-Presence` on the elevated request.
+  responses:
+    '201':
+      description: Challenge issued
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - challenge_id
+            - challenge
+            - expires_at
+            properties:
+              challenge_id:
+                type: string
+                format: uuid
+              challenge:
+                type: string
+              expires_at:
+                type: string
+                format: date-time
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

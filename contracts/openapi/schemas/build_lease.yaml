@@ -1,0 +1,23 @@
+type: object
+additionalProperties: false
+required:
+- claim_token
+- artifact_token
+- expires_at
+- heartbeat_seconds
+properties:
+  claim_token:
+    type: string
+    minLength: 43
+    maxLength: 43
+  artifact_token:
+    type: string
+    minLength: 43
+    maxLength: 43
+  expires_at:
+    type: string
+    format: date-time
+  heartbeat_seconds:
+    type: integer
+    minimum: 5
+    maximum: 60

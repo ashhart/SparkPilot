@@ -1,0 +1,35 @@
+type: object
+additionalProperties: false
+required:
+- invitation
+- node_name
+- authority_public_key
+description: A signed shared-access invitation and the trust material the friend's app pins.
+properties:
+  invitation:
+    $ref: ../../openapi.yaml#/components/schemas/PairingInvitation
+  node_name:
+    type: string
+  tls_fingerprint:
+    type:
+    - string
+    - 'null'
+    pattern: ^[a-f0-9]{64}$
+  authority_public_key:
+    type: string
+  local_endpoint:
+    type:
+    - string
+    - 'null'
+  remote_endpoint:
+    type:
+    - string
+    - 'null'
+  remote_hostname:
+    type:
+    - string
+    - 'null'
+    description: The Spark's MagicDNS name, present only when remote access is enabled.
+  expires_at:
+    type: string
+    format: date-time

@@ -1,0 +1,46 @@
+type: object
+additionalProperties: false
+required:
+- display_name
+- allowed_models
+- allowed_hours
+- time_zone
+- max_concurrent_requests
+- daily_token_budget
+description: What the owner decided one guest may do. An empty allowed_models list permits nothing.
+properties:
+  display_name:
+    type: string
+    minLength: 1
+    maxLength: 60
+  allowed_models:
+    type: array
+    maxItems: 32
+    items:
+      type: string
+      minLength: 1
+      maxLength: 200
+  allowed_hours:
+    type: array
+    minItems: 7
+    maxItems: 7
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/GuestDaySchedule
+  time_zone:
+    type: string
+    minLength: 1
+    maxLength: 64
+    description: An IANA zone name the Spark can resolve, such as Europe/London.
+  max_concurrent_requests:
+    type: integer
+    minimum: 1
+    maximum: 8
+  daily_token_budget:
+    type: integer
+    minimum: 1
+    maximum: 100000000
+  expires_at:
+    type:
+    - integer
+    - 'null'
+    description: Unix seconds after which the guest's access stops working.

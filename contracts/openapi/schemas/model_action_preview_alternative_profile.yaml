@@ -1,0 +1,24 @@
+type: object
+additionalProperties: false
+required:
+- profile_id
+- display_name
+- max_model_length
+- expected_peak_bytes
+description: A profile of the same signed recipe that the current memory budget would admit, so a
+  refusal can name a concrete smaller context instead of asking the owner to go and find one.
+properties:
+  profile_id:
+    type: string
+    minLength: 1
+    maxLength: 128
+  display_name:
+    type: string
+    minLength: 1
+    maxLength: 128
+  max_model_length:
+    type: integer
+    minimum: 1
+  expected_peak_bytes:
+    type: integer
+    minimum: 1

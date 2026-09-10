@@ -1,0 +1,45 @@
+type: object
+additionalProperties: false
+required:
+- member_a_node_id
+- member_a_port_id
+- member_b_node_id
+- member_b_port_id
+- proof_source
+- path_topology
+- direct_connection_proven
+- verified_at
+- expires_at
+properties:
+  member_a_node_id:
+    type: string
+    format: uuid
+  member_a_port_id:
+    type: string
+    minLength: 1
+    maxLength: 128
+  member_b_node_id:
+    type: string
+    format: uuid
+  member_b_port_id:
+    type: string
+    minLength: 1
+    maxLength: 128
+  proof_source:
+    type: string
+    enum:
+    - mutual_tls_challenge
+  path_topology:
+    type: string
+    enum:
+    - unknown
+    - direct
+    - switched
+  direct_connection_proven:
+    type: boolean
+  verified_at:
+    type: string
+    format: date-time
+  expires_at:
+    type: string
+    format: date-time

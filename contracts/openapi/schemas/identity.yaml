@@ -1,0 +1,46 @@
+type: object
+description: '`authority_fingerprint` identifies the Ed25519 authority that signs pairing material. `tls_fingerprint`
+  is SHA-256 of the exact leaf certificate DER served by the local API. The values are independent and
+  must never be substituted for one another.'
+required:
+- node_id
+- name
+- authority_fingerprint
+- tls_fingerprint
+- runtime_version
+properties:
+  node_id:
+    type: string
+    format: uuid
+  cluster_id:
+    type:
+    - string
+    - 'null'
+    format: uuid
+  name:
+    type: string
+  role:
+    type: string
+    enum:
+    - standalone
+    - leader
+    - worker
+  authority_fingerprint:
+    type: string
+  tls_fingerprint:
+    type:
+    - string
+    - 'null'
+    pattern: ^[a-f0-9]{64}$
+    description: Null only in explicit development-only plain HTTP mode.
+  runtime_version:
+    type: string
+  dgx_os_version:
+    type: string
+  auth_protocols:
+    type: array
+    description: Request-signing protocols this runtime accepts.
+    items:
+      type: string
+      enum:
+      - SPARK2

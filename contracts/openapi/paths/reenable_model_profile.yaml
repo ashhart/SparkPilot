@@ -1,0 +1,25 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/ModelId
+- $ref: ../../openapi.yaml#/components/parameters/ProfileId
+post:
+  tags:
+  - Models
+  operationId: reenableModelProfile
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/ReenableModelProfileRequest
+  responses:
+    '202':
+      description: Durable profile re-enable operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,432 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spark.example/schemas/model-recipe.schema.json",
+  "title": "Spark Model Recipe",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "source",
+    "engine",
+    "capabilities",
+    "memory",
+    "profiles",
+    "security",
+    "signature"
+  ],
+  "properties": {
+    "apiVersion": {
+      "const": "spark.runtime/v1"
+    },
+    "kind": {
+      "const": "ModelRecipe"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "revision",
+        "displayName",
+        "publisher"
+      ],
+      "properties": {
+        "id": {
+          "description": "An owner/name pair as sparkd's model_paths::validate_model_id accepts it: exactly two non-empty segments, neither `.` nor `..`, at most 200 bytes.",
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 200,
+          "pattern": "^[a-z0-9][a-z0-9._-]*/(?!\\.\\.?$)[a-z0-9._-]+$"
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "publisher": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "publisherURL": {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 512
+        },
+        "recipeSource": {
+          "description": "Who wrote the recipe, as distinct from who published the model: a community repository, a vendor serving guide. Shown beside the publisher so the owner sees both.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "url"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "maxLength": 512
+            },
+            "revision": {
+              "type": "string",
+              "maxLength": 128
+            },
+            "retrievedAt": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "repository",
+        "revision",
+        "gated",
+        "trustRemoteCode"
+      ],
+      "properties": {
+        "provider": {
+          "enum": [
+            "huggingface",
+            "local",
+            "nvidia_nim"
+          ]
+        },
+        "repository": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 7,
+          "maxLength": 128
+        },
+        "gated": {
+          "type": "boolean"
+        },
+        "trustRemoteCode": {
+          "description": "Always false: the runtime refuses any recipe that asks for remote code.",
+          "type": "boolean",
+          "const": false
+        },
+        "licenceURL": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        }
+      }
+    },
+    "engine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recipe",
+        "image",
+        "servedName",
+        "task"
+      ],
+      "properties": {
+        "recipe": {
+          "type": "string"
+        },
+        "image": {
+          "description": "A digest-pinned reference; an all-zero digest is a placeholder the runtime refuses, never a real image.",
+          "type": "string",
+          "maxLength": 584,
+          "pattern": "^[^@\\s]+@sha256:(?!0{64}$)[a-f0-9]{64}$"
+        },
+        "servedName": {
+          "type": "string"
+        },
+        "task": {
+          "enum": [
+            "generate",
+            "embed",
+            "classify",
+            "rerank"
+          ]
+        },
+        "tokenizerMode": {
+          "type": "string"
+        },
+        "options": {
+          "description": "Engine options the privileged launcher may pass through. Every value is an enumeration: a recipe still never carries a command line.",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "mambaCacheMode": {
+              "enum": [
+                "none",
+                "align",
+                "all"
+              ]
+            },
+            "kvCacheDtype": {
+              "enum": [
+                "auto",
+                "fp8"
+              ]
+            },
+            "toolCallParser": {
+              "type": "string",
+              "enum": [
+                "qwen3_coder"
+              ]
+            },
+            "reasoningParser": {
+              "type": "string",
+              "enum": [
+                "nemotron_v3",
+                "deepseek_r1",
+                "qwen3",
+                "granite",
+                "glm45",
+                "openai_gptoss"
+              ]
+            },
+            "preparation": {
+              "type": "string",
+              "enum": [
+                "qwen38_78b0675"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chat",
+        "reasoning",
+        "toolCalling",
+        "guidedGeneration",
+        "vision",
+        "embeddings",
+        "audioInput"
+      ],
+      "properties": {
+        "chat": {
+          "type": "boolean"
+        },
+        "reasoning": {
+          "type": "boolean"
+        },
+        "toolCalling": {
+          "type": "boolean"
+        },
+        "parallelToolCalling": {
+          "type": "boolean",
+          "default": false
+        },
+        "guidedGeneration": {
+          "type": "boolean"
+        },
+        "vision": {
+          "type": "boolean"
+        },
+        "embeddings": {
+          "type": "boolean"
+        },
+        "audioInput": {
+          "type": "boolean"
+        }
+      }
+    },
+    "memory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimumSystemReserveBytes",
+        "expectedWeightBytes",
+        "expectedEngineOverheadBytes",
+        "measurementConfidence"
+      ],
+      "dependentRequired": {
+        "kvCacheBytesPerToken": [
+          "stateBytesPerSequence"
+        ],
+        "stateBytesPerSequence": [
+          "kvCacheBytesPerToken"
+        ]
+      },
+      "properties": {
+        "minimumSystemReserveBytes": {
+          "type": "integer",
+          "minimum": 8589934592
+        },
+        "expectedWeightBytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "expectedEngineOverheadBytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "kvCacheBytesPerToken": {
+          "description": "Attention cache cost per token across every layer. With stateBytesPerSequence it makes every profile's expectedPeakBytes arithmetic the runtime checks: weights + kvCacheBytesPerToken x maxModelLength x maxSequences + stateBytesPerSequence x maxSequences + engine overhead.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "stateBytesPerSequence": {
+          "description": "Recurrent (Mamba) state per scheduled request. Declared together with kvCacheBytesPerToken or not at all.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "measurementConfidence": {
+          "enum": [
+            "measured",
+            "curated",
+            "estimated",
+            "unknown"
+          ]
+        }
+      }
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "displayName",
+          "maxModelLength",
+          "maxSequences",
+          "maxBatchedTokens",
+          "gpuMemoryUtilisation",
+          "expectedPeakBytes",
+          "idlePolicy"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9._-]{1,79}$"
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "maxModelLength": {
+            "type": "integer",
+            "minimum": 256,
+            "maximum": 1048576
+          },
+          "maxSequences": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 64
+          },
+          "maxBatchedTokens": {
+            "type": "integer",
+            "minimum": 256,
+            "maximum": 1048576
+          },
+          "gpuMemoryUtilisation": {
+            "type": "number",
+            "minimum": 0.4,
+            "maximum": 0.9
+          },
+          "expectedPeakBytes": {
+            "description": "Whole-engine reservation for this profile. When memory declares kvCacheBytesPerToken, the runtime refuses any value other than the one its arithmetic derives.",
+            "type": "integer",
+            "minimum": 1
+          },
+          "idlePolicy": {
+            "enum": [
+              "keep_ready",
+              "unload_after_15m",
+              "unload_after_30m",
+              "unload_after_60m",
+              "manual_only"
+            ]
+          }
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowNetworkDuringInference",
+        "allowedMediaRoots",
+        "allowCustomLogitsProcessors",
+        "allowPlugins"
+      ],
+      "properties": {
+        "allowNetworkDuringInference": {
+          "type": "boolean"
+        },
+        "allowedMediaRoots": {
+          "description": "Absolute paths under the asset root with no `.` or `..` component, as spark-models' ModelRecipe::validate checks them.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "maxLength": 4096,
+            "pattern": "^/var/lib/spark-runtime/assets/(?:(?!\\.\\.?/)[^/]+/)*(?!\\.\\.?$)[^/]*$"
+          }
+        },
+        "allowCustomLogitsProcessors": {
+          "type": "boolean"
+        },
+        "allowPlugins": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "keyID",
+        "algorithm",
+        "value"
+      ],
+      "properties": {
+        "keyID": {
+          "type": "string",
+          "minLength": 1
+        },
+        "algorithm": {
+          "const": "ed25519"
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{43,}$"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+post:
+  tags:
+  - Inference
+  operationId: loadInferenceModel
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/LoadModelRequest
+  responses:
+    '202':
+      description: Load operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

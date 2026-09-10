@@ -1,0 +1,10 @@
+type: object
+additionalProperties: false
+required:
+- services
+properties:
+  services:
+    type: array
+    maxItems: 1
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/OptionalServiceStatus

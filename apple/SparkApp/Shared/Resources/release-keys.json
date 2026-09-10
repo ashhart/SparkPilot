@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "keys": [
+    {
+      "key_id": "spark-release-dev-2026a",
+      "algorithm": "ed25519",
+      "public_key": "ee284e330450b55f7efcc5394ae49eacb75bd890af84c352ad7e20945778d340",
+      "channels": [
+        "dev",
+        "lab"
+      ],
+      "purposes": [
+        "release-manifest",
+        "release-package"
+      ],
+      "not_before": "2026-01-01T00:00:00Z",
+      "not_after": "2028-01-01T00:00:00Z",
+      "comment": "Development and lab release key. Schema 1 trusts online keys directly and is not a production trust root; see PLAN 45.3."
+    },
+    {
+      "key_id": "spark-release-dev-2026b",
+      "algorithm": "ed25519",
+      "public_key": "618bd83c07a1798e4b1c708574c95ca79cddc502b88249cf961812a74f5290b8",
+      "channels": [
+        "dev",
+        "lab"
+      ],
+      "purposes": [
+        "release-manifest",
+        "release-package"
+      ],
+      "not_before": "2026-08-28T00:00:00Z",
+      "not_after": "2028-08-28T00:00:00Z",
+      "comment": "Development and lab release key rotated 2026-08-28."
+    }
+  ]
+}

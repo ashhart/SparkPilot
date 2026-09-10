@@ -1,0 +1,210 @@
+#!/bin/sh
+# An idempotent upgrade restores data and stops services on failure; dpkg retains ownership of package-file rollback.
+set -e
+
+RUNTIME_USER=sparkd
+# Identify the root helper by its executable because the service-uid scan cannot see it.
+PRIVD_PATH=/usr/lib/spark-runtime/spark-privd
+RUNTIME_GROUP=sparkd
+LIB_DIR=/usr/lib/spark-runtime
+CONF_DIR=/etc/spark-runtime
+STATE_DIR=/var/lib/spark-runtime
+CACHE_DIR=/var/cache/spark-runtime
+CONFIG="$CONF_DIR/config.toml"
+EXAMPLE="$CONF_DIR/config.toml.example"
+BACKUP_ROOT=/var/backups/spark-runtime
+MARKER="$BACKUP_ROOT/.pending-upgrade"
+
+invoke() {
+  if command -v deb-systemd-invoke >/dev/null 2>&1; then
+    deb-systemd-invoke "$@"
+  else
+    systemctl "$@"
+  fi
+}
+
+@QUIESCENCE@
+
+restore_from_backup() {
+  backup="$1"
+  [ -n "$backup" ] && [ -d "$backup" ] || return 0
+
+  echo "spark-runtime: restoring database and configuration from $backup" >&2
+  spark_require_quiescent "configure Spark Runtime"
+
+  # The installer replaces service-owned destinations using O_EXCL|O_NOFOLLOW and descriptor ownership to reject planted links.
+  if ! "$LIB_DIR/spark-installer" restore-state \
+      --backup "$backup" \
+      --data-dir "$STATE_DIR" \
+      --conf-dir "$CONF_DIR" \
+      --user "$RUNTIME_USER" --group "$RUNTIME_GROUP" >/dev/null; then
+    return 1
+  fi
+  return 0
+}
+
+abort_upgrade() {
+  reason="$1"
+  backup="$2"
+  echo "spark-runtime: $reason" >&2
+
+  # Report restore failure explicitly because the original data may remain unrecovered.
+  if restore_from_backup "$backup"; then
+    if [ -n "$backup" ]; then
+      echo "spark-runtime: the node's data has been put back and its services are stopped." >&2
+    else
+      echo "spark-runtime: services are stopped. There was no backup to restore." >&2
+    fi
+  else
+    echo "spark-runtime: THE RESTORE ALSO FAILED. The node's data is not back where" >&2
+    echo "  it was. Do not start the services. The snapshot is at:" >&2
+    echo "      ${backup:-<none taken>}" >&2
+  fi
+
+  echo "spark-runtime: this package's files are still installed; dpkg owns those." >&2
+  echo "  Complete the rollback with the previous package:" >&2
+  echo "      sudo /usr/lib/spark-runtime/spark-installer restore-legacy-identity" >&2
+  echo "      sudo dpkg -i spark-runtime_<previous-version>_arm64.deb" >&2
+  exit 1
+}
+
+# Seed configuration once while preserving operator edits; a link at either name is refused rather than followed.
+seed_configuration() {
+  if [ -L "$CONFIG" ] || [ -L "$EXAMPLE" ]; then
+    echo "spark-runtime: refusing to seed configuration through a symbolic link" >&2
+    return 1
+  fi
+  [ ! -e "$CONFIG" ] && [ -f "$EXAMPLE" ] || return 0
+  # noclobber makes the redirection O_EXCL, so a name that appears meanwhile fails instead of being written through.
+  (umask 027 && set -C && cat "$EXAMPLE" > "$CONFIG") || return 1
+  chown root:"$RUNTIME_GROUP" "$CONFIG" && chmod 0640 "$CONFIG"
+}
+
+# Upgrade-only cleanup of the retired SparkPilot public connector; never touch independently managed network clients.
+retire_public_remote() {
+  for directory in "$CONF_DIR" "$CONF_DIR/cloudflared" "$STATE_DIR" "$STATE_DIR/remote" /run/spark-runtime /run/spark-runtime/cloudflared; do
+    if [ -L "$directory" ]; then
+      echo "spark-runtime: refusing redirected remote state at $directory" >&2
+      return 1
+    fi
+  done
+  if [ -d /run/systemd/system ]; then
+    if ! old_state="$(systemctl show --property=LoadState --value spark-cloudflared.service)"; then
+      echo "spark-runtime: cannot inspect the retired remote service" >&2
+      return 1
+    fi
+    if [ "$old_state" != "not-found" ]; then
+      systemctl stop spark-cloudflared.service || return 1
+      systemctl disable spark-cloudflared.service || return 1
+    fi
+  fi
+  rm -f /etc/systemd/system/spark-cloudflared.service /usr/lib/systemd/system/spark-cloudflared.service \
+    "$CONF_DIR/cloudflared/config.yaml" \
+    /run/spark-runtime/cloudflared/tunnel-credentials.json \
+    "$STATE_DIR/remote/cloudflared-config.yaml" "$STATE_DIR/remote/cloudflared-tunnel.json" \
+    "$STATE_DIR/remote/encryption-key.json" || return 1
+  # Empty directories are no longer needed; unrelated administrator files are retained.
+  rmdir "$CONF_DIR/cloudflared" /run/spark-runtime/cloudflared 2>/dev/null || :
+}
+
+case "$1" in
+  configure)
+    backup_or_empty=""
+    if [ -f "$MARKER" ]; then
+      backup_or_empty="$(cat "$MARKER")"
+    fi
+
+    # Create the system account without a login shell.
+    if ! getent group "$RUNTIME_GROUP" >/dev/null; then
+      addgroup --system "$RUNTIME_GROUP"
+    fi
+    if ! getent passwd "$RUNTIME_USER" >/dev/null; then
+      adduser --system \
+        --ingroup "$RUNTIME_GROUP" \
+        --home "$STATE_DIR" \
+        --no-create-home \
+        --gecos "Spark Runtime" \
+        --shell /usr/sbin/nologin \
+        "$RUNTIME_USER"
+    fi
+
+    # With the service uid quiescent, open directory components O_NOFOLLOW and set ownership by descriptor to reject planted links (§22).
+    spark_require_quiescent "configure Spark Runtime"
+    if ! "$LIB_DIR/spark-installer" prepare-state \
+        --user "$RUNTIME_USER" --group "$RUNTIME_GROUP" >/dev/null; then
+      abort_upgrade "could not prepare the node's directories safely." "$backup_or_empty"
+    fi
+
+    if ! retire_public_remote; then
+      abort_upgrade "could not retire the old public remote route" "$backup_or_empty"
+    fi
+
+    # Seed the immutable signed catalogue through no-follow descriptors and atomic no-replace publication.
+    if ! "$LIB_DIR/spark-installer" seed-catalogue \
+        --user "$RUNTIME_USER" --group "$RUNTIME_GROUP" >/dev/null; then
+      abort_upgrade "could not seed the signed model catalogue safely." "$backup_or_empty"
+    fi
+
+    if ! seed_configuration; then
+      abort_upgrade "could not seed the configuration safely." "$backup_or_empty"
+    fi
+
+    backup="$backup_or_empty"
+
+    # Prepare identity and migrations only while sparkd is stopped; existing identity is retained.
+    if [ -e "$CONF_DIR/identity" ] || [ -L "$CONF_DIR/identity" ]; then
+      if ! "$LIB_DIR/spark-installer" prepare --data-dir "$STATE_DIR" >/dev/null; then
+        abort_upgrade "protected node preparation failed." "$backup"
+      fi
+    elif ! runuser -u "$RUNTIME_USER" -- \
+        "$LIB_DIR/spark-installer" prepare --data-dir "$STATE_DIR" >/dev/null; then
+      abort_upgrade "node preparation failed." "$backup"
+    fi
+    if ! "$LIB_DIR/spark-installer" prepare-identity >/dev/null; then
+      abort_upgrade "node authority custody migration failed." "$backup"
+    fi
+
+    # Start and health checks belong to the rollback transaction so failed activation restores the prior data.
+    if [ -d /run/systemd/system ]; then
+      systemctl daemon-reload || true
+      if ! systemctl enable spark-privd.service sparkd.service >/dev/null 2>&1; then
+        abort_upgrade "could not enable Spark Runtime to start at boot." "$backup"
+      fi
+
+      if ! invoke restart spark-privd.service; then
+        abort_upgrade "spark-privd.service failed to start." "$backup"
+      fi
+      if ! invoke restart sparkd.service; then
+        systemctl status --no-pager --lines=20 sparkd.service >&2 || true
+        abort_upgrade "sparkd.service failed to start." "$backup"
+      fi
+      if ! systemctl start spark-updater.service; then
+        systemctl status --no-pager --lines=20 spark-updater.service >&2 || true
+        abort_upgrade "the post-install health gate failed." "$backup"
+      fi
+    fi
+
+    if ! "$LIB_DIR/spark-installer" complete-identity-migration >/dev/null; then
+      abort_upgrade "could not remove obsolete service-owned private keys." "$backup"
+    fi
+
+    # Clear the in-flight marker on commit while retaining the operator rollback snapshot.
+    rm -f "$MARKER"
+    ;;
+
+  abort-upgrade)
+    if [ -e "$CONF_DIR/identity" ] || [ -L "$CONF_DIR/identity" ]; then
+      "$LIB_DIR/spark-installer" complete-identity-migration >/dev/null
+    fi
+    ;;
+
+  abort-remove|abort-deconfigure)
+    ;;
+
+  *)
+    echo "postinst called with unknown argument \`$1'" >&2
+    exit 1
+    ;;
+esac
+
+exit 0

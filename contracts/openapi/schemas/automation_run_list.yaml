@@ -1,0 +1,14 @@
+type: object
+additionalProperties: false
+required:
+- items
+- observed_at
+properties:
+  items:
+    type: array
+    maxItems: 64
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/AutomationRun
+  observed_at:
+    type: integer
+    format: int64

@@ -1,0 +1,18 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/ProjectId
+- $ref: ../../openapi.yaml#/components/parameters/TerminalId
+get:
+  tags:
+  - Projects
+  operationId: attachTerminal
+  summary: WebSocket upgrade for a PTY session (§42.9)
+  description: |
+    Frames are JSON text messages, typed by a `type` member, documented in
+    docs/protocol/terminal-websocket.md. The client sends `input` (`data`, at most 4096 bytes),
+    `resize` (`cols` 1-500, `rows` 1-250, both clamped) and `close`; the server sends `output`
+    (`data`). Any other frame is ignored rather than closing the session.
+  responses:
+    '101':
+      description: Upgraded; ignored by schema generation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

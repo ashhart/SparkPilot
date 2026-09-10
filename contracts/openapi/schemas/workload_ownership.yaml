@@ -1,0 +1,10 @@
+type: string
+description: Ownership state from the master specification section 29.6. spark_managed means Spark Runtime
+  owns the durable lifecycle; external_observed means the workload was recognised but is never sent a
+  lifecycle command; adoption_available means a signed recipe matches closely enough to build a preview;
+  unknown_external means the workload consumes resources but could not be identified safely.
+enum:
+- spark_managed
+- external_observed
+- adoption_available
+- unknown_external

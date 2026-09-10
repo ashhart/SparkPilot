@@ -1,0 +1,20 @@
+type: object
+additionalProperties: false
+required:
+- system_packages
+- firmware
+properties:
+  system_packages:
+    type: boolean
+  firmware:
+    type: boolean
+  runtime_release_id:
+    type:
+    - string
+    - 'null'
+    minLength: 2
+    maxLength: 128
+  runtime_release_bundle:
+    oneOf:
+    - $ref: ../../openapi.yaml#/components/schemas/RuntimeReleaseBundle
+    - type: 'null'

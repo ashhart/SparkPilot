@@ -1,0 +1,13 @@
+get:
+  tags:
+  - Models
+  operationId: getCatalogueStatus
+  responses:
+    '200':
+      description: Device-local signed catalogue status
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/CatalogueStatus
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,30 @@
+type: object
+additionalProperties: false
+required:
+- accepted_recipe_revision
+properties:
+  admin_email:
+    type: string
+    format: email
+    maxLength: 254
+  admin_name:
+    type: string
+    minLength: 1
+    maxLength: 120
+  admin_password:
+    type: string
+    minLength: 16
+    maxLength: 128
+    writeOnly: true
+  accepted_recipe_revision:
+    type: string
+    minLength: 1
+    maxLength: 128
+  port:
+    type: integer
+    minimum: 1024
+    maximum: 65535
+    description: Local service port; omission retains the managed default 18080
+  adopt_existing:
+    type: boolean
+    description: Connect the existing Open WebUI container at this port without changing its accounts, configuration or data

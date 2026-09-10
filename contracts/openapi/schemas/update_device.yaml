@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+description: Capabilities are derived from the role by the runtime's capability matrix (§61) and are not
+  settable per device; a capability list here would be accepted and ignored, which reads as success.
+properties:
+  display_name:
+    type: string
+    minLength: 1
+    maxLength: 120
+  role:
+    $ref: ../../openapi.yaml#/components/schemas/Role

@@ -1,0 +1,23 @@
+{
+  "source": "https://github.com/MiaAI-Lab/Qwen3.8-Flash-Next-Single-DGX-Spark",
+  "revision": "78b0675e4469a19befaa9c84a41662b671d4185e",
+  "sha256": {
+    "Dockerfile": "a261c5d180f816f52ffe7e730132ceb110de7db11a2bf2e48f273dcce803e50f",
+    "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "apply_patches.py": "ea5123d3c49c160313919b8cad738b5e8b8831c4174122d7cbcb7626b72f0160",
+    "files/build_ple_packed_table.py": "35da4312f5c9c442eea85445d6f6712c9bb3a3b7c6caccec412da57000b02475",
+    "files/patch_modelopt_mxfp8.py": "df1ea579a43b855147cd5df93998469da7c768bc9d38be28b3b77b8c30447368",
+    "files/patch_mtp_draft_vocab.py": "2c7d19b8021f2c439920ae7f7df6f7b008eb635256a8423ef03e168d3984911f",
+    "files/patch_ple_layer.py": "e3c4dbd823fb21681c74a14bacbe86d87d3c11df215f143d7556ea8533ebe7ea",
+    "files/patch_ple_offload.py": "6427df02ff68840e356d716bf25baf38837dd58b3ceeee60625cecb98570409b",
+    "files/patch_qsa_fp8_kv.py": "4e64e34b2e2938be8b7def8fd09f9efa0af044afcc2f69ded9a9b7b770e416bb",
+    "expected-patches.json": "b8614e718f1f9b9a82c881714021c1c4a70fe3e5d79c161c4ca4b74a3e0a5974",
+    "dependencies.py": "f8817753cbc6efcd6699f07a1d2a8910affd6b635ffc06fcc96688174d7c6f39",
+    "security-dependencies.json": "c8eb6b9525cfc28a1bc14ca511706b7d5508abfef44adb91044d6368c811c049",
+    "bounded_ple_cache.py": "f69136d50ce3b64fb8eda21aca5aab5f64852a1bd4707c6e9eb41da36fe082d4",
+    "memory_policy.py": "f26aa6d6d59c067372667dafc2d5b4ef1d5801e501e83d96fb3c3a84b15ec3bc",
+    "managed.py": "64336bda7f38e50181f67c7a242a78f2a3d8c35bc03c7bdddce3e9375f99f3c8",
+    "weight_page_cache.py": "805d43167043faf8b1cf724a660cc0ea4b07f3c4c36a5bfc7e7bc32631ed60fc"
+  },
+  "local_hardening": "Pinned offline security packages; pip removed; bounded PLE page residency; clean weight-file pages released before GPU profiling and context-cache allocation."
+}

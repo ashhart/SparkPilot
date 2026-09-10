@@ -1,0 +1,97 @@
+{
+  "note": "String literals built only from interpolations and punctuation, ruled non-copy in the exact file they appear in.\n\nA literal with no letters carries nothing for the candidate rule to see, so a sentence assembled from two already-translated halves and a separator -- \"\\(what) . \\(state)\" -- is invisible to every other gate here. Anything of that shape is therefore an error unless someone recorded why it is a format rather than a sentence: an identifier, a path, a keychain key, an address and port. Scoped to file and literal; there is no global exemption, and a declaration for a literal the file no longer contains fails.",
+  "files": {
+    "apple/Packages/SparkAPI/Sources/SparkAPI/FixedBuildProcessRunner.swift": {
+      "\\(…)=\\(…)": "A process environment entry assembled from a fixed key and value. Process data, never shown."
+    },
+    "apple/Packages/SparkAPI/Sources/SparkAPI/XcodeWorkerCapabilityProbe.swift": {
+      "\\(…) (\\(…))": "A simulator name with its runtime, advertised to the Spark in the build-worker registration. Wire data, never copy.",
+      "\\(…) \\(…)": "A runtime identifier such as iOS-26-5 re-joined as iOS 26.5 for the same registration field. Wire data."
+    },
+    "apple/Packages/SparkBootstrap/Sources/SparkBootstrap/BootstrapCommand.swift": {
+      "\\(…)/\\(…)": "A path under the bootstrap work directory. Filesystem, not prose."
+    },
+    "apple/Packages/SparkBootstrap/Sources/SparkBootstrap/HostPreflight.swift": {
+      "\\(…):\\(…)": "A conflict's identity, for SwiftUI diffing. Never rendered."
+    },
+    "apple/Packages/SparkBootstrap/Sources/SparkBootstrap/PairingLinkScheme.swift": {
+      "\\(…)://\\(…)": "A URL scheme and route joined into a pairing link prefix. A wire format iOS matches on, never shown."
+    },
+    "apple/Packages/SparkBootstrap/Sources/SparkBootstrap/RuntimeBootstrapInstaller.swift": {
+      "\\(…)-\\(…)": "A release identity, channel and version. Matches the signed manifest."
+    },
+    "apple/Packages/SparkCore/Sources/SparkCore/OperationalSnapshot.swift": {
+      "\\(…)@\\(…)": "A model identity and its recipe revision, in the form the runtime uses."
+    },
+    "apple/Packages/SparkIntents/Sources/SparkIntents/SpotlightIndexing.swift": {
+      "\\(…)/\\(…)/\\(…)": "A Spotlight item's unique identifier. Indexed, never shown."
+    },
+    "apple/Packages/SparkProjects/Sources/SparkProjects/ProjectChangeViews.swift": {
+      "\\(…).\\(…).\\(…)": "Target, project and change identifiers used as the SwiftUI task identity for fetching one exact review, never rendered."
+    },
+    "apple/Packages/SparkProjects/Sources/SparkProjects/ProjectPresentation.swift": {
+      "\\(…) \\(…)": "A unified-diff marker and source line, preserved as code rather than prose."
+    },
+    "apple/Packages/SparkProjects/Sources/SparkProjects/ProjectsModel.swift": {
+      "\\(…)::\\(…)": "A target and project identity used only as an in-memory cache key."
+    },
+    "apple/Packages/SparkSecurity/Sources/SparkSecurity/KeychainStore.swift": {
+      "\\(…)/\\(…)": "A keychain service and account, as one lookup key. A translated key finds nothing."
+    },
+    "apple/SparkApp/Shared/ExternalClusterPreviewPresentation.swift": {
+      "\\(…):\\(…)": "A library entry and node identity, as one row identity.",
+      "\\(…):\\(…):\\(…)": "A fabric link's identity: two node identities and a port."
+    },
+    "apple/SparkApp/Shared/ExternalClusterPreviewTypes.swift": {
+      "\\(…):\\(…)": "A library entry and node identity, as one row identity."
+    },
+    "apple/SparkApp/Shared/FleetDetailsPresentationBuilder.swift": {
+      "\\(…):\\(…)": "A host and port, as the route states them. The same in every language."
+    },
+    "apple/SparkApp/Shared/InviteDeviceView.swift": {
+      "\\(…) \\(…)": "A six-digit pairing code split into two groups of three, for reading aloud. Digits, not words."
+    },
+    "apple/SparkApp/Shared/SparkActionableNotifications.swift": {
+      "\\(…).\\(…)": "Target and service/project identifiers used as durable notification state keys, never rendered.",
+      "\\(…).\\(…).\\(…)": "Target, project and change identifiers used as exact review navigation identity, never rendered."
+    },
+    "apple/SparkApp/Shared/SparkAutomations.swift": {
+      "\\(…) \\(…) * * *": "A five-field schedule expression the runtime parses. Protocol, not prose; translating a field would change when the automation fires.",
+      "\\(…) \\(…) * * 1-5": "A five-field schedule expression the runtime parses. Protocol, not prose; translating a field would change when the automation fires.",
+      "\\(…) */\\(…) * * *": "A five-field schedule expression the runtime parses. Protocol, not prose; translating a field would change when the automation fires.",
+      "\\(…) \\(…) * * \\(…)": "A five-field schedule expression the runtime parses. Protocol, not prose; translating a field would change when the automation fires."
+    },
+    "apple/SparkApp/Shared/SparkChatPersonalContext.swift": {
+      "\\(…)\n\n\\(…)": "The system note SparkPilot sends, followed by the personal-context block when the owner included one. A model prompt, not copy."
+    },
+    "apple/SparkApp/Shared/SparkChatPersonalSummary.swift": {
+      "- \\(…) \\(…) [\\(…)]": "One personal-context line the model reads: a time, a sanitised title and its list name.",
+      "\\(…) \\(…)": "A day and a clock time inside the personal-context block.",
+      "\\(…) \\(…)-\\(…)": "A day and a start-to-end clock range inside the personal-context block."
+    },
+    "apple/SparkApp/Shared/SparkNotificationPlanner.swift": {
+      "\\(…).\\(…)": "A notification identifier, so delivery can coalesce repeats."
+    },
+    "apple/SparkApp/Shared/SparkNotifications.swift": {
+      "\\(…):\\(…)": "A target and operation identity, as one key."
+    },
+    "apple/SparkApp/Shared/SparkTelemetryHistory.swift": {
+      "\\(…)@\\(…)": "A chart point's identity: resolution and instant. Never rendered."
+    },
+    "apple/SparkApp/Shared/SparkWorkloadPresentation.swift": {
+      "\\(…):\\(…) → \\(…)/\\(…)": "A published port: address, host port, container port and protocol."
+    },
+    "apple/SparkApp/Shared/SparkBugReport.swift": {
+      "\\(…)\n\\(…)": "An email report section containing a translated field label and the exact user-written response, separated by a newline."
+    },
+    "apple/SparkApp/Shared/SparkHouseholdModel.swift": {
+      "\\(…)\n\n\\(…)": "A plain-text attachment containing the exact user-authored note title and body, without changing their words."
+    },
+    "apple/SparkApp/Shared/SparkRequestSigner.swift": {
+      "\\(…)\n\\(…)": "Node and device identities form the event-cursor storage scope; these bytes are hashed and never displayed."
+    },
+    "apple/Packages/SparkAPI/Sources/SparkAPI/ProjectTerminalSocket.swift": {
+      "\\(…)/\\(…)": "A URL assembled from an authenticated base route and a percent-encoded terminal path."
+    }
+  }
+}

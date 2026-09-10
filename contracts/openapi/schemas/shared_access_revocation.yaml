@@ -1,0 +1,14 @@
+type: object
+additionalProperties: false
+required:
+- device_id
+- state
+properties:
+  device_id:
+    type: string
+    format: uuid
+  state:
+    $ref: ../../openapi.yaml#/components/schemas/SharedAccessState
+  revoked_at:
+    type: string
+    format: date-time

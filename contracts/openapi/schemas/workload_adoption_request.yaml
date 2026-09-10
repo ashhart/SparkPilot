@@ -1,0 +1,18 @@
+type: object
+additionalProperties: false
+required:
+- model_id
+- profile_id
+- accepted_preview_digest
+properties:
+  model_id:
+    type: string
+    minLength: 1
+    maxLength: 240
+  profile_id:
+    type: string
+    minLength: 1
+    maxLength: 128
+  accepted_preview_digest:
+    type: string
+    pattern: ^[0-9a-f]{64}$

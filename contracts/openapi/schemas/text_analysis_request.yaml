@@ -1,0 +1,42 @@
+type: object
+additionalProperties: false
+required:
+- instruction
+- text
+properties:
+  instruction:
+    type: string
+    minLength: 1
+    maxLength: 2000
+    description: What the model should do with the text.
+  text:
+    type: string
+    minLength: 1
+    maxLength: 200000
+    description: The extracted document text. The caller extracts it; this endpoint never opens a file
+      and never receives a path.
+  source_name:
+    type: string
+    maxLength: 200
+    description: Display label for the analysed document. Not a path, and never used to open anything.
+  max_output_tokens:
+    type: integer
+    minimum: 1
+    maximum: 2048
+    default: 512
+  target:
+    type: object
+    additionalProperties: false
+    description: The identity the caller believes it is addressing. A mismatch is refused with TARGET_IDENTITY_MISMATCH
+      rather than answered.
+    properties:
+      node_id:
+        type:
+        - string
+        - 'null'
+        format: uuid
+      cluster_id:
+        type:
+        - string
+        - 'null'
+        format: uuid

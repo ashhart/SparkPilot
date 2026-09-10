@@ -1,0 +1,14 @@
+type: object
+additionalProperties: false
+required:
+- repository
+- revision
+properties:
+  repository:
+    type: string
+    minLength: 1
+    maxLength: 200
+  revision:
+    type: string
+    minLength: 1
+    maxLength: 64

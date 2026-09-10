@@ -1,0 +1,46 @@
+type: object
+additionalProperties: false
+required:
+- build_id
+- project_id
+- commit
+- source_sha256
+- status
+- created_at
+- updated_at
+properties:
+  build_id:
+    type: string
+    format: uuid
+  project_id:
+    type: string
+    format: uuid
+  worker_id:
+    type:
+    - string
+    - 'null'
+    format: uuid
+  commit:
+    type: string
+  source_sha256:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  status:
+    type: string
+    enum:
+    - queued
+    - claimed
+    - running
+    - completed
+    - failed
+    - cancelled
+  result:
+    oneOf:
+    - $ref: ../../openapi.yaml#/components/schemas/SignedBuildResult
+    - type: 'null'
+  created_at:
+    type: string
+    format: date-time
+  updated_at:
+    type: string
+    format: date-time

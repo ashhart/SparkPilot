@@ -1,0 +1,50 @@
+post:
+  tags:
+  - Pairing
+  operationId: exchangePairingJoinCode
+  security: []
+  summary: Authenticate the latest six-digit invitation using SPAKE2
+  description: >-
+    The client sends a randomized 32-byte BoringSSL-compatible SPAKE2 Alice share,
+    never the code. Both sides use SHA-256 of spark-pairing-join-code-v1: followed
+    by the six ASCII digits as the password, with identities SparkPilot pairing
+    v2 client and SparkPilot pairing v2 server. The response seals a PairingJoinPackage
+    using AES-256-GCM, a key derived as SHA-256 of spark-pairing-seal-v2 followed
+    by the 64-byte SPAKE2 key, and spark-pairing-seal-v2 as additional authenticated
+    data. The combined value contains a 12-byte nonce, ciphertext and 16-byte tag.
+    Before claiming, the client must match the sealed certificate fingerprint to
+    the TLS peer. Each exchange consumes the node-wide 60-attempt/15-minute budget.
+    Only the newest pending invitation is selected; issuing a new one changes the
+    active code. Claims still enforce expiry, revocation and one-time consumption.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          additionalProperties: false
+          required: [message]
+          properties:
+            message:
+              type: string
+              minLength: 44
+              maxLength: 44
+              description: Standard base64 of the 32-byte client share
+  responses:
+    '200':
+      description: Server share and authenticated encrypted pairing trust package
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [message, sealed_package]
+            properties:
+              message:
+                type: string
+                minLength: 44
+                maxLength: 44
+              sealed_package:
+                type: string
+                maxLength: 65536
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

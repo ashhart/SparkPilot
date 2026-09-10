@@ -1,0 +1,40 @@
+type: object
+additionalProperties: false
+properties:
+  challenge_id:
+    type: string
+    format: uuid
+  nonce:
+    type: string
+  issued_at:
+    type: integer
+    format: int64
+  expires_at:
+    type: integer
+    format: int64
+  recipient_node_id:
+    type: string
+    format: uuid
+  recipient_authority_public_key:
+    type: string
+  recipient_authority_fingerprint:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  recipient_tls_certificate_sha256:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  router_identity:
+    $ref: ../../openapi.yaml#/components/schemas/RouterIdentityDocument
+  recipient_authority_signature:
+    type: string
+required:
+- challenge_id
+- nonce
+- issued_at
+- expires_at
+- recipient_node_id
+- recipient_authority_public_key
+- recipient_authority_fingerprint
+- recipient_tls_certificate_sha256
+- router_identity
+- recipient_authority_signature

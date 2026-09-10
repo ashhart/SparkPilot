@@ -1,0 +1,26 @@
+post:
+  tags:
+  - Inference
+  operationId: startTextAnalysis
+  summary: Start a durable local text analysis (PLAN 40.3 durable handoff)
+  description: Runs one bounded analysis of caller-supplied text against the model already loaded on this
+    node and stores the answer on the returned operation. The generation does not occupy this request,
+    so an App Intent or Shortcut can hand off work that outlives its own process. Requires the same InferenceRun
+    capability as the chat proxy.
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/TextAnalysisRequest
+  responses:
+    '202':
+      description: Analysis operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,21 @@
+post:
+  tags:
+  - Inference
+  operationId: previewUnloadInferenceModel
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/StopModelPreviewRequest
+  responses:
+    '200':
+      description: Digest-bound stop preview
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ModelActionPreview
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

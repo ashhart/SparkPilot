@@ -1,0 +1,18 @@
+type: object
+additionalProperties: false
+required:
+- cluster_id
+- state
+- members
+properties:
+  cluster_id:
+    type:
+    - string
+    - 'null'
+    format: uuid
+  state:
+    type: string
+  members:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ModelActionPreviewClusterMember

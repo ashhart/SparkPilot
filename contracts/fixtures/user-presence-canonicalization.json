@@ -1,0 +1,18 @@
+{
+  "$comment": "Cross-language canonical bytes for a fresh user-presence proof. Clients sign the exact canonical UTF-8 string with the separately registered P-256 presence key. The runtime rebuilds the same string from the already authenticated SPARK2 request before device revocation.",
+  "cases": [
+    {
+      "input": {
+        "method": "delete",
+        "path_and_query": "/api/v1/devices/8c55ac55-38c1-43cf-b123-8e546f80a66e?reason=lost%20phone",
+        "timestamp": "2026-08-28T14:20:30Z",
+        "nonce": "A8r2KqYs-Vu4Z5cN",
+        "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "device_id": "e3778301-3007-47f1-86cd-92dc0eaf4dc5",
+        "expires_at": "2026-08-28T14:21:00Z",
+        "node_id": "00000000-0000-0000-0000-000000000002"
+      },
+      "canonical": "SPARK-PRESENCE2\nDELETE\n/api/v1/devices/8c55ac55-38c1-43cf-b123-8e546f80a66e?reason=lost%20phone\n2026-08-28T14:20:30Z\nA8r2KqYs-Vu4Z5cN\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\ne3778301-3007-47f1-86cd-92dc0eaf4dc5\n2026-08-28T14:21:00Z\n00000000-0000-0000-0000-000000000002"
+    }
+  ]
+}

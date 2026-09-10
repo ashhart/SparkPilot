@@ -1,0 +1,27 @@
+type: object
+additionalProperties: false
+required:
+- model_id
+- profile_id
+properties:
+  model_id:
+    type: string
+  profile_id:
+    type: string
+  replace_active:
+    type: boolean
+    default: false
+  target:
+    type: object
+    additionalProperties: false
+    properties:
+      node_id:
+        type:
+        - string
+        - 'null'
+        format: uuid
+      cluster_id:
+        type:
+        - string
+        - 'null'
+        format: uuid

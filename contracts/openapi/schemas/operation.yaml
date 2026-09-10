@@ -1,0 +1,70 @@
+type: object
+required:
+- id
+- kind
+- state
+- created_at
+- updated_at
+- cancellable
+properties:
+  id:
+    type: string
+    format: uuid
+  kind:
+    type: string
+  state:
+    type: string
+    enum:
+    - requested
+    - validating
+    - queued
+    - running
+    - waiting_for_approval
+    - cancelling
+    - cancelled
+    - succeeded
+    - failed
+  actor_device_id:
+    type: string
+    format: uuid
+  resource_id:
+    type:
+    - string
+    - 'null'
+  progress:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+    maximum: 1
+  stage:
+    type:
+    - string
+    - 'null'
+  created_at:
+    type: string
+    format: date-time
+  updated_at:
+    type: string
+    format: date-time
+  started_at:
+    type:
+    - string
+    - 'null'
+    format: date-time
+  completed_at:
+    type:
+    - string
+    - 'null'
+    format: date-time
+  error_code:
+    type:
+    - string
+    - 'null'
+  result:
+    type:
+    - object
+    - 'null'
+    additionalProperties: true
+  cancellable:
+    type: boolean

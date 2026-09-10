@@ -1,0 +1,70 @@
+{
+  "matrix": "PLAN \u00a749.6 OOM/fault injection",
+  "note": "Memory-pressure ladders are driven through the guard's injected sample source, which is how a synthetic consumer is modelled deterministically. Cases that need a real kernel or a real Docker daemon are declared blockers.",
+  "cases": {
+    "Synthetic memory consumer increasing gradually.": {
+      "tests": [
+        "synthetic_decline_walks_the_ladder_and_drives_engine_actions_in_order",
+        "psi_escalates_without_available_pressure"
+      ]
+    },
+    "Abrupt allocation spike.": {
+      "tests": [
+        "emergency_is_immediate",
+        "guard_emergency_stops_the_loaded_engine_and_blocks_readmission"
+      ]
+    },
+    "vLLM process hang.": {
+      "tests": [
+        "a_hung_engine_fails_the_load_inside_the_configured_window"
+      ]
+    },
+    "Container exit 137.": {
+      "tests": [
+        "emergency_marks_the_active_profile_unsafe_and_blocks_readmission"
+      ]
+    },
+    "Docker daemon unavailable.": {
+      "tests": [
+        "a_project_without_a_container_gets_no_terminal",
+        "docker_backend_reports_runtime_unavailable_without_privd",
+        "docker_backend_reports_runtime_unavailable_when_privd_refuses"
+      ]
+    },
+    "Disk fills during model download.": {
+      "tests": [
+        "disk_preflight_blocks_oversized_downloads"
+      ]
+    },
+    "SQLite busy/corruption simulation.": {
+      "tests": [
+        "a_broken_replay_store_fails_closed"
+      ]
+    },
+    "`sparkd` restart during operation.": {
+      "tests": [
+        "expired_running_operation_is_not_left_running_after_restart",
+        "file_database_restart_waits_for_expiry_then_recovers_the_abandoned_worker",
+        "content_addressed_install_resumes_once_after_database_restart"
+      ]
+    },
+    "`spark-privd` restart.": {
+      "tests": [
+        "the_privileged_client_reconnects_after_the_helper_socket_is_replaced",
+        "closing_a_terminal_releases_the_session"
+      ]
+    },
+    "Kernel OOM event detection.": {
+      "blocked": {
+        "reason": "Needs a real kernel OOM kill. The guard's reaction to every pressure state, including emergency, is driven deterministically here through an injected sample source; what a kernel adds is that the PSI and available-memory signals move as modelled under a genuine OOM.",
+        "evidence_command": "On a DGX Spark with a model loaded: sudo dmesg -w | grep -i 'killed process' in one shell, and a memory bomb (stress-ng --vm 8 --vm-bytes 90% --timeout 120s) in another, while curl -sS https://127.0.0.1:7443/api/v1/events streams",
+        "expected_evidence": "dmesg records the OOM kill; the runtime emits memory.pressure.changed to emergency and inference.engine.stopped before the kill, and status reports memory_pressure=emergency then recovering."
+      }
+    },
+    "Memory fails to recover after engine stop.": {
+      "tests": [
+        "unload_waits_for_memory_to_recover_within_the_configured_window"
+      ]
+    }
+  }
+}

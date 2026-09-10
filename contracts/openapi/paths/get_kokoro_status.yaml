@@ -1,0 +1,14 @@
+get:
+  tags:
+  - Optional Services
+  operationId: getKokoroStatus
+  summary: Check Spark-hosted Kokoro and the release approved by this runtime package
+  responses:
+    '200':
+      description: Installation, health and update availability
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/KokoroServiceStatus
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

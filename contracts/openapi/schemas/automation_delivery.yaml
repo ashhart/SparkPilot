@@ -1,0 +1,8 @@
+type: object
+additionalProperties: false
+required:
+- notify
+properties:
+  notify:
+    type: boolean
+    description: Send a notification to every paired device when a run finishes. Run history is always kept.

@@ -1,0 +1,9 @@
+type: object
+additionalProperties: false
+required:
+- presence_public_key_spki
+properties:
+  presence_public_key_spki:
+    type: string
+    contentEncoding: base64
+    maxLength: 512

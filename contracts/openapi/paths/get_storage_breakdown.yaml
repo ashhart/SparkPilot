@@ -1,0 +1,13 @@
+get:
+  tags:
+  - Storage
+  operationId: getStorageBreakdown
+  responses:
+    '200':
+      description: Storage usage grouped by Spark-managed data
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/StorageBreakdown
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

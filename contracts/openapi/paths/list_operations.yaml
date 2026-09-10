@@ -1,0 +1,27 @@
+get:
+  tags:
+  - Operations
+  operationId: listOperations
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/Limit
+  - $ref: ../../openapi.yaml#/components/parameters/Cursor
+  responses:
+    '200':
+      description: Visible operations
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - items
+            properties:
+              items:
+                type: array
+                items:
+                  $ref: ../../openapi.yaml#/components/schemas/Operation
+              next_cursor:
+                type:
+                - string
+                - 'null'
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

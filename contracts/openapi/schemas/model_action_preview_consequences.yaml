@@ -1,0 +1,40 @@
+type: object
+additionalProperties: false
+required:
+- model_to_stop
+- profile_to_stop
+- route_withdrawal
+- service_interruption
+- files_removed
+- reinstall_required
+properties:
+  model_to_stop:
+    type:
+    - string
+    - 'null'
+  profile_to_stop:
+    type:
+    - string
+    - 'null'
+  route_withdrawal:
+    type: boolean
+  service_interruption:
+    type: string
+    enum:
+    - none
+    - until_model_ready
+    - until_reloaded
+  files_removed:
+    type: array
+    items:
+      type: string
+  reinstall_required:
+    type: boolean
+  alternative_profiles:
+    type: array
+    maxItems: 16
+    description: Present when a memory blocker refused the requested profile. Lists profiles of the
+      same recipe that the current budget admits, smallest peak first, so the client can offer a named
+      alternative. Empty means nothing on this recipe fits the current budget.
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ModelActionPreviewAlternativeProfile

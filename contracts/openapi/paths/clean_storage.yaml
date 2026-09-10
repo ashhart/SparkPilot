@@ -1,0 +1,22 @@
+post:
+  tags:
+  - Storage
+  operationId: cleanStorage
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/StorageCleanupRequest
+  responses:
+    '202':
+      description: Storage cleanup operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,22 @@
+post:
+  tags:
+  - Optional Services
+  operationId: installOpenWebUI
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/InstallOpenWebUIRequest
+  responses:
+    '202':
+      description: Durable Open WebUI installation operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

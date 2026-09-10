@@ -1,0 +1,21 @@
+get:
+  tags:
+  - Inference
+  operationId: getInferenceReservation
+  summary: Query an authorized durable attempt receipt
+  responses:
+    '200':
+      description: Query an authorized durable attempt receipt
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/AdmissionReservation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+parameters:
+- name: reservation_id
+  in: path
+  required: true
+  schema:
+    type: string
+    format: uuid

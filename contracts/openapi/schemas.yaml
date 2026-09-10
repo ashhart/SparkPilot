@@ -1,0 +1,498 @@
+RouterAction:
+  $ref: schemas/router_action.yaml
+ReservationState:
+  $ref: schemas/reservation_state.yaml
+InferencePoolPolicy:
+  $ref: schemas/inference_pool_policy.yaml
+PoolPolicyPreviewRequest:
+  $ref: schemas/pool_policy_preview_request.yaml
+PoolPolicyPreview:
+  $ref: schemas/pool_policy_preview.yaml
+ApplyPoolPolicyRequest:
+  $ref: schemas/apply_pool_policy_request.yaml
+CreateRouterGrantRequest:
+  $ref: schemas/create_router_grant_request.yaml
+RouterGrant:
+  $ref: schemas/router_grant.yaml
+DeploymentIdentity:
+  $ref: schemas/deployment_identity.yaml
+NodeCapabilitySnapshot:
+  $ref: schemas/node_capability_snapshot.yaml
+ReserveInferenceRequest:
+  $ref: schemas/reserve_inference_request.yaml
+AdmissionReservation:
+  $ref: schemas/admission_reservation.yaml
+InferencePoolList:
+  $ref: schemas/inference_pool_list.yaml
+RevokeRouterGrantResult:
+  $ref: schemas/revoke_router_grant_result.yaml
+InferenceRequestOutcome:
+  $ref: schemas/inference_request_outcome.yaml
+InferenceRequestProvenance:
+  $ref: schemas/inference_request_provenance.yaml
+InferenceRequestRecord:
+  $ref: schemas/inference_request_record.yaml
+InferenceRequestHistory:
+  $ref: schemas/inference_request_history.yaml
+ClearInferenceRequestsResult:
+  $ref: schemas/clear_inference_requests_result.yaml
+CancelInferenceRequestResult:
+  $ref: schemas/cancel_inference_request_result.yaml
+KokoroServiceStatus:
+  $ref: schemas/kokoro_service_status.yaml
+DevelopmentPreparation:
+  $ref: schemas/development_preparation.yaml
+SpeechRequest:
+  $ref: schemas/speech_request.yaml
+Health:
+  $ref: schemas/health.yaml
+Capabilities:
+  $ref: schemas/capabilities.yaml
+DiagnosticsSection:
+  $ref: schemas/diagnostics_section.yaml
+DiagnosticsExclusion:
+  $ref: schemas/diagnostics_exclusion.yaml
+DiagnosticsCatalogue:
+  $ref: schemas/diagnostics_catalogue.yaml
+DiagnosticsExportRequest:
+  $ref: schemas/diagnostics_export_request.yaml
+DiagnosticsManifestEntry:
+  $ref: schemas/diagnostics_manifest_entry.yaml
+DiagnosticsManifest:
+  $ref: schemas/diagnostics_manifest.yaml
+DiagnosticsFile:
+  $ref: schemas/diagnostics_file.yaml
+DiagnosticsBundle:
+  $ref: schemas/diagnostics_bundle.yaml
+Identity:
+  $ref: schemas/identity.yaml
+Status:
+  $ref: schemas/status.yaml
+ConnectionStatus:
+  $ref: schemas/connection_status.yaml
+SystemStatus:
+  $ref: schemas/system_status.yaml
+TelemetryHistory:
+  $ref: schemas/telemetry_history.yaml
+TelemetryHistoryRow:
+  $ref: schemas/telemetry_history_row.yaml
+TelemetrySnapshot:
+  $ref: schemas/telemetry_snapshot.yaml
+InferenceEngineTelemetry:
+  $ref: schemas/inference_engine_telemetry.yaml
+NetworkInterfacesSnapshot:
+  $ref: schemas/network_interfaces_snapshot.yaml
+NetworkInterfaceStatus:
+  $ref: schemas/network_interface_status.yaml
+NetworkAddress:
+  $ref: schemas/network_address.yaml
+InternetReachability:
+  $ref: schemas/internet_reachability.yaml
+WifiNetworksSnapshot:
+  $ref: schemas/wifi_networks_snapshot.yaml
+WifiNetwork:
+  $ref: schemas/wifi_network.yaml
+ConnectWifiRequest:
+  $ref: schemas/connect_wifi_request.yaml
+ForgetWifiRequest:
+  $ref: schemas/forget_wifi_request.yaml
+ConfigureLanIpv4Request:
+  $ref: schemas/configure_lan_ipv_4_request.yaml
+SparkSettingsSnapshot:
+  $ref: schemas/spark_settings_snapshot.yaml
+TravelAccessPointStatus:
+  $ref: schemas/travel_access_point_status.yaml
+BluetoothStatus:
+  $ref: schemas/bluetooth_status.yaml
+BluetoothDevice:
+  $ref: schemas/bluetooth_device.yaml
+ConfigureBluetoothRequest:
+  $ref: schemas/configure_bluetooth_request.yaml
+PowerProfileStatus:
+  $ref: schemas/power_profile_status.yaml
+PowerProfileMode:
+  $ref: schemas/power_profile_mode.yaml
+SetPowerProfileRequest:
+  $ref: schemas/set_power_profile_request.yaml
+SoftwareUpdateStatus:
+  $ref: schemas/software_update_status.yaml
+InstallSoftwareUpdatesRequest:
+  $ref: schemas/install_software_updates_request.yaml
+OptionalServiceGatewayStatus:
+  $ref: schemas/optional_service_gateway_status.yaml
+OptionalServiceStatus:
+  $ref: schemas/optional_service_status.yaml
+OptionalServiceList:
+  $ref: schemas/optional_service_list.yaml
+InstallOpenWebUIRequest:
+  $ref: schemas/install_open_web_ui_request.yaml
+RemoveOpenWebUIRequest:
+  $ref: schemas/remove_open_web_ui_request.yaml
+OptionalServiceAccess:
+  $ref: schemas/optional_service_access.yaml
+RuntimeReleaseBundle:
+  $ref: schemas/runtime_release_bundle.yaml
+MemoryGuardSettings:
+  $ref: schemas/memory_guard_settings.yaml
+ModelIdlePolicySettings:
+  $ref: schemas/model_idle_policy_settings.yaml
+SystemTimeStatus:
+  $ref: schemas/system_time_status.yaml
+ConfigureSystemTimeRequest:
+  $ref: schemas/configure_system_time_request.yaml
+TelemetryConsentSettings:
+  $ref: schemas/telemetry_consent_settings.yaml
+StorageBreakdown:
+  $ref: schemas/storage_breakdown.yaml
+StorageCleanupRequest:
+  $ref: schemas/storage_cleanup_request.yaml
+TelemetrySystem:
+  $ref: schemas/telemetry_system.yaml
+AcceleratorTelemetry:
+  $ref: schemas/accelerator_telemetry.yaml
+StorageTelemetry:
+  $ref: schemas/storage_telemetry.yaml
+UsageTelemetry:
+  $ref: schemas/usage_telemetry.yaml
+PairingChallengeRequest:
+  $ref: schemas/pairing_challenge_request.yaml
+PairingChallenge:
+  $ref: schemas/pairing_challenge.yaml
+PairingClaim:
+  $ref: schemas/pairing_claim.yaml
+PairingGrant:
+  $ref: schemas/pairing_grant.yaml
+PresenceKeyEnrollment:
+  $ref: schemas/presence_key_enrollment.yaml
+PresenceKeyEnrollmentResult:
+  $ref: schemas/presence_key_enrollment_result.yaml
+CreatePairingInvitation:
+  $ref: schemas/create_pairing_invitation.yaml
+PairingInvitation:
+  $ref: schemas/pairing_invitation.yaml
+GuestHourWindow:
+  $ref: schemas/guest_hour_window.yaml
+GuestDaySchedule:
+  $ref: schemas/guest_day_schedule.yaml
+GuestSchedule:
+  $ref: schemas/guest_schedule.yaml
+GuestUsage:
+  $ref: schemas/guest_usage.yaml
+SharedAccessState:
+  $ref: schemas/shared_access_state.yaml
+SharedAccessLimits:
+  $ref: schemas/shared_access_limits.yaml
+SharedAccessSummary:
+  $ref: schemas/shared_access_summary.yaml
+SharedAccessGuest:
+  $ref: schemas/shared_access_guest.yaml
+SharedAccessOverview:
+  $ref: schemas/shared_access_overview.yaml
+SharedAccessSelf:
+  $ref: schemas/shared_access_self.yaml
+UpdateSharedAccess:
+  $ref: schemas/update_shared_access.yaml
+CreateSharedAccessInvitation:
+  $ref: schemas/create_shared_access_invitation.yaml
+SharedAccessInvitation:
+  $ref: schemas/shared_access_invitation.yaml
+SharedAccessRevocation:
+  $ref: schemas/shared_access_revocation.yaml
+RedeemPairingJoinCode:
+  $ref: schemas/redeem_pairing_join_code.yaml
+PairingJoinPackage:
+  $ref: schemas/pairing_join_package.yaml
+Role:
+  $ref: schemas/role.yaml
+Device:
+  $ref: schemas/device.yaml
+UpdateDevice:
+  $ref: schemas/update_device.yaml
+Operation:
+  $ref: schemas/operation.yaml
+Model:
+  $ref: schemas/model.yaml
+ModelProfile:
+  $ref: schemas/model_profile.yaml
+InstallModelRequest:
+  $ref: schemas/install_model_request.yaml
+CatalogueStatus:
+  $ref: schemas/catalogue_status.yaml
+CatalogueRefreshPreviewRequest:
+  $ref: schemas/catalogue_refresh_preview_request.yaml
+CatalogueRefreshRequest:
+  $ref: schemas/catalogue_refresh_request.yaml
+InstallModelPreviewRequest:
+  $ref: schemas/install_model_preview_request.yaml
+SetHostnameRequest:
+  $ref: schemas/set_hostname_request.yaml
+ImportUnverifiedModelRequest:
+  $ref: schemas/import_unverified_model_request.yaml
+ImportedModel:
+  $ref: schemas/imported_model.yaml
+AddProviderCredentialRequest:
+  $ref: schemas/add_provider_credential_request.yaml
+ProviderCredential:
+  $ref: schemas/provider_credential.yaml
+ProviderCredentialList:
+  $ref: schemas/provider_credential_list.yaml
+LoadModelRequest:
+  $ref: schemas/load_model_request.yaml
+LoadModelPreviewRequest:
+  $ref: schemas/load_model_preview_request.yaml
+StopModelRequest:
+  $ref: schemas/stop_model_request.yaml
+TextAnalysisRequest:
+  $ref: schemas/text_analysis_request.yaml
+StopModelPreviewRequest:
+  $ref: schemas/stop_model_preview_request.yaml
+RemoveModelRequest:
+  $ref: schemas/remove_model_request.yaml
+ReenableModelProfileRequest:
+  $ref: schemas/reenable_model_profile_request.yaml
+RouterRecipientRetirement:
+  $ref: schemas/router_recipient_retirement.yaml
+RouterPeerRecord:
+  $ref: schemas/router_peer_record.yaml
+RouterPeerInventory:
+  $ref: schemas/router_peer_inventory.yaml
+RouterIdentityDocument:
+  $ref: schemas/router_identity_document.yaml
+PrepareRouterIdentityRequest:
+  $ref: schemas/prepare_router_identity_request.yaml
+RouterPeerTrust:
+  $ref: schemas/router_peer_trust.yaml
+CreateRouterEnrollmentRequest:
+  $ref: schemas/create_router_enrollment_request.yaml
+RouterEnrollmentChallenge:
+  $ref: schemas/router_enrollment_challenge.yaml
+ProveRouterEnrollmentRequest:
+  $ref: schemas/prove_router_enrollment_request.yaml
+RouterEnrollmentProof:
+  $ref: schemas/router_enrollment_proof.yaml
+EnrolledRouterPrincipal:
+  $ref: schemas/enrolled_router_principal.yaml
+RevokeRouterPrincipalResult:
+  $ref: schemas/revoke_router_principal_result.yaml
+WarmupRequest:
+  $ref: schemas/warmup_request.yaml
+WarmupSchedule:
+  $ref: schemas/warmup_schedule.yaml
+WarmupScheduleList:
+  $ref: schemas/warmup_schedule_list.yaml
+WarmupPreview:
+  $ref: schemas/warmup_preview.yaml
+ModelActionPreview:
+  $ref: schemas/model_action_preview.yaml
+ModelActionPreviewTarget:
+  $ref: schemas/model_action_preview_target.yaml
+ModelActionPreviewRecipe:
+  $ref: schemas/model_action_preview_recipe.yaml
+ModelActionPreviewEvidence:
+  $ref: schemas/model_action_preview_evidence.yaml
+ModelActionPreviewActiveEngine:
+  $ref: schemas/model_action_preview_active_engine.yaml
+ModelActionPreviewCluster:
+  $ref: schemas/model_action_preview_cluster.yaml
+ModelActionPreviewClusterMember:
+  $ref: schemas/model_action_preview_cluster_member.yaml
+ModelActionPreviewTimestamps:
+  $ref: schemas/model_action_preview_timestamps.yaml
+ModelActionPreviewAlternativeProfile:
+  $ref: schemas/model_action_preview_alternative_profile.yaml
+ModelActionPreviewConsequences:
+  $ref: schemas/model_action_preview_consequences.yaml
+ModelActionPreviewMessage:
+  $ref: schemas/model_action_preview_message.yaml
+InferenceState:
+  $ref: schemas/inference_state.yaml
+UnloadEvidence:
+  $ref: schemas/unload_evidence.yaml
+ChatCompletionRequest:
+  $ref: schemas/chat_completion_request.yaml
+ChatCompletion:
+  $ref: schemas/chat_completion.yaml
+OpenAIResponseRequest:
+  $ref: schemas/open_ai_response_request.yaml
+OpenAIResponse:
+  $ref: schemas/open_ai_response.yaml
+RemoteActionPreviewEvidence:
+  $ref: schemas/remote_action_preview_evidence.yaml
+RemoteStatus:
+  $ref: schemas/remote_status.yaml
+RemoteOverlaySetup:
+  $ref: schemas/remote_overlay_setup.yaml
+RemoteOverlayPreferences:
+  $ref: schemas/remote_overlay_preferences.yaml
+ConfigureRemoteOverlayRequest:
+  $ref: schemas/configure_remote_overlay_request.yaml
+WorkloadInventory:
+  $ref: schemas/workload_inventory.yaml
+ObservedWorkload:
+  $ref: schemas/observed_workload.yaml
+WorkloadOwnership:
+  $ref: schemas/workload_ownership.yaml
+WorkloadKind:
+  $ref: schemas/workload_kind.yaml
+WorkloadEngine:
+  $ref: schemas/workload_engine.yaml
+WorkloadManagementOrigin:
+  $ref: schemas/workload_management_origin.yaml
+WorkloadState:
+  $ref: schemas/workload_state.yaml
+ObservedWorkloadPort:
+  $ref: schemas/observed_workload_port.yaml
+WorkloadAdoptionPreviewRequest:
+  $ref: schemas/workload_adoption_preview_request.yaml
+WorkloadAdoptionRequest:
+  $ref: schemas/workload_adoption_request.yaml
+WorkloadRelinquishRequest:
+  $ref: schemas/workload_relinquish_request.yaml
+Cluster:
+  $ref: schemas/cluster.yaml
+ClusterMemberDescriptor:
+  $ref: schemas/cluster_member_descriptor.yaml
+ClusterProposal:
+  $ref: schemas/cluster_proposal.yaml
+StartClusterLaunchRequest:
+  $ref: schemas/start_cluster_launch_request.yaml
+ClusterLaunchStatus:
+  $ref: schemas/cluster_launch_status.yaml
+ClusterDeviceGrant:
+  $ref: schemas/cluster_device_grant.yaml
+ClusterCommitReceipt:
+  $ref: schemas/cluster_commit_receipt.yaml
+ClusterLinkProof:
+  $ref: schemas/cluster_link_proof.yaml
+ClusterFabricAuthenticationProof:
+  $ref: schemas/cluster_fabric_authentication_proof.yaml
+ClusterCollectiveProof:
+  $ref: schemas/cluster_collective_proof.yaml
+CommitClusterTransaction:
+  $ref: schemas/commit_cluster_transaction.yaml
+FinalizeClusterTransaction:
+  $ref: schemas/finalize_cluster_transaction.yaml
+FabricStatus:
+  $ref: schemas/fabric_status.yaml
+FabricPortStatus:
+  $ref: schemas/fabric_port_status.yaml
+ExternalClusterImportPreviewRequest:
+  $ref: schemas/external_cluster_import_preview_request.yaml
+ExternalClusterImportPreview:
+  $ref: schemas/external_cluster_import_preview.yaml
+ExternalClusterImportMember:
+  $ref: schemas/external_cluster_import_member.yaml
+AuthenticatedFabricLink:
+  $ref: schemas/authenticated_fabric_link.yaml
+ExternalClusterImportBlocker:
+  $ref: schemas/external_cluster_import_blocker.yaml
+ProjectFileEntry:
+  $ref: schemas/project_file_entry.yaml
+ProjectFileContents:
+  $ref: schemas/project_file_contents.yaml
+ProjectFileSave:
+  $ref: schemas/project_file_save.yaml
+ProjectFileConflict:
+  $ref: schemas/project_file_conflict.yaml
+ProjectTerminal:
+  $ref: schemas/project_terminal.yaml
+BuildWorkerRegistration:
+  $ref: schemas/build_worker_registration.yaml
+BuildWorker:
+  $ref: schemas/build_worker.yaml
+BuildWorkerHeartbeat:
+  $ref: schemas/build_worker_heartbeat.yaml
+BuildRequirements:
+  $ref: schemas/build_requirements.yaml
+BuildJobRequest:
+  $ref: schemas/build_job_request.yaml
+BuildSourceTicket:
+  $ref: schemas/build_source_ticket.yaml
+BuildArtifactTicket:
+  $ref: schemas/build_artifact_ticket.yaml
+BuildRecipePayload:
+  $ref: schemas/build_recipe_payload.yaml
+SignedBuildRecipe:
+  $ref: schemas/signed_build_recipe.yaml
+BuildLease:
+  $ref: schemas/build_lease.yaml
+BuildClaim:
+  $ref: schemas/build_claim.yaml
+BuildLeaseRenewal:
+  $ref: schemas/build_lease_renewal.yaml
+BuildTestFailure:
+  $ref: schemas/build_test_failure.yaml
+BuildDiagnostic:
+  $ref: schemas/build_diagnostic.yaml
+BuildArtifactEvidence:
+  $ref: schemas/build_artifact_evidence.yaml
+BuildResultEvidence:
+  $ref: schemas/build_result_evidence.yaml
+SignedBuildResult:
+  $ref: schemas/signed_build_result.yaml
+BuildJob:
+  $ref: schemas/build_job.yaml
+ProjectChange:
+  $ref: schemas/project_change.yaml
+ProjectChangedFile:
+  $ref: schemas/project_changed_file.yaml
+ProjectDiffHunk:
+  $ref: schemas/project_diff_hunk.yaml
+ProjectDiffLine:
+  $ref: schemas/project_diff_line.yaml
+ProjectTestEvidence:
+  $ref: schemas/project_test_evidence.yaml
+ProjectToolEvidence:
+  $ref: schemas/project_tool_evidence.yaml
+ProjectChangeDecision:
+  $ref: schemas/project_change_decision.yaml
+Project:
+  $ref: schemas/project.yaml
+CreateProject:
+  $ref: schemas/create_project.yaml
+ErrorEnvelope:
+  $ref: schemas/error_envelope.yaml
+Automation:
+  $ref: schemas/automation.yaml
+AutomationSchedule:
+  $ref: schemas/automation_schedule.yaml
+AutomationDelivery:
+  $ref: schemas/automation_delivery.yaml
+AutomationToolCall:
+  $ref: schemas/automation_tool_call.yaml
+AutomationRun:
+  $ref: schemas/automation_run.yaml
+AutomationList:
+  $ref: schemas/automation_list.yaml
+AutomationRunList:
+  $ref: schemas/automation_run_list.yaml
+AutomationRequest:
+  $ref: schemas/automation_request.yaml
+AutomationUpdateRequest:
+  $ref: schemas/automation_update_request.yaml
+WebAccessLimits:
+  $ref: schemas/web_access_limits.yaml
+WebAccessSettings:
+  $ref: schemas/web_access_settings.yaml
+WebAccessSettingsRequest:
+  $ref: schemas/web_access_settings_request.yaml
+WebSource:
+  $ref: schemas/web_source.yaml
+WebAnswerMessage:
+  $ref: schemas/web_answer_message.yaml
+WebAnswerRequest:
+  $ref: schemas/web_answer_request.yaml
+WebAnswer:
+  $ref: schemas/web_answer.yaml
+HouseholdNote:
+  $ref: schemas/household_note.yaml
+HouseholdMember:
+  $ref: schemas/household_member.yaml
+HouseholdSnapshot:
+  $ref: schemas/household_snapshot.yaml
+HouseholdNoteRequest:
+  $ref: schemas/household_note_request.yaml
+HouseholdMemberRequest:
+  $ref: schemas/household_member_request.yaml
+HouseholdChange:
+  $ref: schemas/household_change.yaml

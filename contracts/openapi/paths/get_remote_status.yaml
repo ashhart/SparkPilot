@@ -1,0 +1,13 @@
+get:
+  tags:
+  - Remote
+  operationId: getRemoteStatus
+  responses:
+    '200':
+      description: Remote access status
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/RemoteStatus
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

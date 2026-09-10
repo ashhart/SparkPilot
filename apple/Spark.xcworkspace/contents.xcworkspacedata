@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:SparkApp">
+   </FileRef>
+   <FileRef
+      location = "group:SparkApp/SparkApp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/SparkAPI">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/SparkBootstrap">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/SparkCore">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/SparkDesignSystem">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/SparkDiscovery">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/SparkIntelligence">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/SparkLibrary">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/SparkIntents">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/SparkLanguageModel">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/SparkProjects">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/SparkSecurity">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/SparkTransport">
+   </FileRef>
+</Workspace>

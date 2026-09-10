@@ -1,0 +1,14 @@
+type: object
+description: Content no control can include, and why. Clients must not present an exclusion as a category
+  the owner could enable.
+required:
+- id
+- title
+- reason
+properties:
+  id:
+    type: string
+  title:
+    type: string
+  reason:
+    type: string

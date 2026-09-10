@@ -1,0 +1,17 @@
+get:
+  tags:
+  - Cluster
+  operationId: listClusterDeviceGrants
+  summary: Return the complete signed grants retained for independent cluster audit
+  responses:
+    '200':
+      description: Retained grants, including their transaction and expiry bounds
+      content:
+        application/json:
+          schema:
+            type: array
+            maxItems: 8
+            items:
+              $ref: ../../openapi.yaml#/components/schemas/ClusterDeviceGrant
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

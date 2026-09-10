@@ -1,0 +1,13 @@
+type: object
+additionalProperties: false
+required:
+- family
+- address
+properties:
+  family:
+    type: string
+    enum:
+    - ipv4
+    - ipv6
+  address:
+    type: string

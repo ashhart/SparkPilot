@@ -1,0 +1,38 @@
+type: object
+additionalProperties: false
+required:
+- recipe_digest
+- recipe_revision
+- source_revision
+- engine_recipe
+- engine_image
+- context_length
+- max_sequences
+- runtime_version
+- verification
+properties:
+  recipe_digest:
+    type: string
+  recipe_revision:
+    type: string
+  source_revision:
+    type: string
+  engine_recipe:
+    type: string
+  engine_image:
+    type: string
+  context_length:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  max_sequences:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  runtime_version:
+    type: string
+  verification:
+    type: string
+    const: admitted_recipe_only

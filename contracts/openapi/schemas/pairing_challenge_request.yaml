@@ -1,0 +1,13 @@
+type: object
+additionalProperties: false
+required:
+- invitation_id
+- device_public_key_spki
+properties:
+  invitation_id:
+    type: string
+    format: uuid
+  device_public_key_spki:
+    type: string
+    contentEncoding: base64
+    maxLength: 512

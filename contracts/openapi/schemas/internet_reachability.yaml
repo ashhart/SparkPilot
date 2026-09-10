@@ -1,0 +1,21 @@
+type: object
+additionalProperties: false
+required:
+- reachable
+- gateway_reachable
+- dns_reachable
+- checked_at
+properties:
+  reachable:
+    type: boolean
+  gateway_reachable:
+    type:
+    - boolean
+    - 'null'
+  dns_reachable:
+    type:
+    - boolean
+    - 'null'
+  checked_at:
+    type: string
+    format: date-time

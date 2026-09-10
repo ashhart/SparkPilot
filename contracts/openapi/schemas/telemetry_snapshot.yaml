@@ -1,0 +1,43 @@
+type: object
+additionalProperties: false
+required:
+- api_version
+- observed_at
+- node_id
+- node_name
+- system
+- accelerator
+- storage
+- usage
+- inference
+- engines
+properties:
+  api_version:
+    type: integer
+    const: 1
+  observed_at:
+    type: string
+    format: date-time
+  node_id:
+    type: string
+    format: uuid
+  node_name:
+    type: string
+  system:
+    $ref: ../../openapi.yaml#/components/schemas/TelemetrySystem
+  accelerator:
+    $ref: ../../openapi.yaml#/components/schemas/AcceleratorTelemetry
+  storage:
+    $ref: ../../openapi.yaml#/components/schemas/StorageTelemetry
+  usage:
+    $ref: ../../openapi.yaml#/components/schemas/UsageTelemetry
+  inference:
+    $ref: ../../openapi.yaml#/components/schemas/InferenceState
+  engines:
+    type: array
+    maxItems: 8
+    description: Loopback-only Prometheus observations for SparkPilot-managed and recognised external
+      engines. Counters remain on this Spark and unavailable readings are null rather than fabricated
+      as zero.
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/InferenceEngineTelemetry

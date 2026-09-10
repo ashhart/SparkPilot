@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "body",
+    "revision",
+    "author_name",
+    "updated_by_name",
+    "created_at",
+    "updated_at",
+    "can_edit"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 240
+    },
+    "body": {
+      "type": "string",
+      "maxLength": 16384
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "author_name": {
+      "type": "string"
+    },
+    "updated_by_name": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "can_edit": {
+      "type": "boolean"
+    }
+  }
+}

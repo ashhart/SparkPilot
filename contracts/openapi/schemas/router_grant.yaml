@@ -1,0 +1,27 @@
+type: object
+additionalProperties: false
+required:
+- grant_id
+- audience_node_id
+- issued_by_device_id
+- issued_at
+- expires_at
+- scope
+properties:
+  grant_id:
+    type: string
+    format: uuid
+  audience_node_id:
+    type: string
+    format: uuid
+  issued_by_device_id:
+    type: string
+    format: uuid
+  issued_at:
+    type: integer
+    format: int64
+  expires_at:
+    type: integer
+    format: int64
+  scope:
+    $ref: ../../openapi.yaml#/components/schemas/CreateRouterGrantRequest

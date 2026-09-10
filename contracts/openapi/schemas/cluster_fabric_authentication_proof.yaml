@@ -1,0 +1,88 @@
+type: object
+additionalProperties: false
+required:
+- version
+- transaction_id
+- cluster_id
+- proposal_digest
+- member_node_id
+- initiator_node_id
+- responder_node_id
+- initiator_address
+- responder_address
+- initiator_authority_public_key
+- responder_authority_public_key
+- initiator_nonce
+- responder_nonce
+- initiated_at
+- responded_at
+- initiator_signature
+- responder_signature
+- acknowledgement_signature
+- completion_signature
+- observed_at
+- authority_signature
+properties:
+  version:
+    type: integer
+    const: 1
+  transaction_id:
+    type: string
+    format: uuid
+  cluster_id:
+    type: string
+    format: uuid
+  proposal_digest:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  member_node_id:
+    type: string
+    format: uuid
+  initiator_node_id:
+    type: string
+    format: uuid
+  responder_node_id:
+    type: string
+    format: uuid
+  initiator_address:
+    type: string
+    format: ipv4
+  responder_address:
+    type: string
+    format: ipv4
+  initiator_authority_public_key:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  responder_authority_public_key:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  initiator_nonce:
+    type: string
+    pattern: ^[A-Za-z0-9_-]{43}$
+  responder_nonce:
+    type: string
+    pattern: ^[A-Za-z0-9_-]{43}$
+  initiated_at:
+    type: string
+    format: date-time
+  responded_at:
+    type: string
+    format: date-time
+  initiator_signature:
+    type: string
+    pattern: ^[A-Za-z0-9_-]{86}$
+  responder_signature:
+    type: string
+    pattern: ^[A-Za-z0-9_-]{86}$
+  acknowledgement_signature:
+    type: string
+    pattern: ^[A-Za-z0-9_-]{86}$
+  completion_signature:
+    type: string
+    pattern: ^[A-Za-z0-9_-]{86}$
+  observed_at:
+    type: string
+    format: date-time
+  authority_signature:
+    type: string
+    pattern: ^[A-Za-z0-9_-]{86}$

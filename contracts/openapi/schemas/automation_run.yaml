@@ -1,0 +1,68 @@
+type: object
+additionalProperties: false
+required:
+- id
+- automation_id
+- operation_id
+- state
+- trigger
+- scheduled_for
+- started_at
+- finished_at
+- result_text
+- error_code
+- tool_calls
+properties:
+  id:
+    type: string
+    format: uuid
+  automation_id:
+    type: string
+    format: uuid
+  operation_id:
+    type:
+    - string
+    - 'null'
+    format: uuid
+  state:
+    type: string
+    enum:
+    - running
+    - succeeded
+    - failed
+    - skipped
+    - interrupted
+  trigger:
+    type: string
+    enum:
+    - schedule
+    - manual
+  scheduled_for:
+    type:
+    - integer
+    - 'null'
+    format: int64
+    description: The slot this run belongs to, absent for Run now.
+  started_at:
+    type: integer
+    format: int64
+  finished_at:
+    type:
+    - integer
+    - 'null'
+    format: int64
+  result_text:
+    type:
+    - string
+    - 'null'
+    maxLength: 20000
+  error_code:
+    type:
+    - string
+    - 'null'
+    maxLength: 64
+  tool_calls:
+    type: array
+    maxItems: 64
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/AutomationToolCall

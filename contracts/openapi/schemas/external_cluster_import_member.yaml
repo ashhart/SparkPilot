@@ -1,0 +1,21 @@
+type: object
+additionalProperties: false
+required:
+- node_id
+- identity_authenticated
+properties:
+  node_id:
+    type: string
+    format: uuid
+  name:
+    type:
+    - string
+    - 'null'
+    maxLength: 120
+  identity_authenticated:
+    type: boolean
+  identity_source:
+    type:
+    - string
+    - 'null'
+    maxLength: 64

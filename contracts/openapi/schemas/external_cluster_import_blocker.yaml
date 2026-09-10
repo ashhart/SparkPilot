@@ -1,0 +1,16 @@
+type: object
+additionalProperties: false
+required:
+- code
+properties:
+  code:
+    type: string
+    enum:
+    - MEMBER_IDENTITY_UNVERIFIED
+    - MEMBER_AUTHORITY_MISMATCH
+    - FABRIC_PEER_NOT_RECIPROCAL
+  member_node_id:
+    type:
+    - string
+    - 'null'
+    format: uuid

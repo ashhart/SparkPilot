@@ -1,0 +1,25 @@
+type: object
+additionalProperties: false
+required:
+- release_id
+- manifest_base64
+- package_base64
+- signature_base64
+properties:
+  release_id:
+    type: string
+    minLength: 2
+    maxLength: 128
+    pattern: ^[a-z][a-z0-9._-]+$
+  manifest_base64:
+    type: string
+    minLength: 4
+    maxLength: 1398104
+  package_base64:
+    type: string
+    minLength: 4
+    maxLength: 13981016
+  signature_base64:
+    type: string
+    minLength: 4
+    maxLength: 1398104

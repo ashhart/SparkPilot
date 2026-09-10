@@ -1,0 +1,18 @@
+{
+  "$comment": "Cross-language canonical bytes signed by a proposed presence key during authenticated self-enrolment. The proof travels in a header so both it and SPARK2 can bind the exact body digest without a signature-inside-body cycle.",
+  "cases": [
+    {
+      "input": {
+        "method": "post",
+        "path_and_query": "/api/v1/devices/self/presence-key",
+        "timestamp": "2026-08-28T16:45:00Z",
+        "nonce": "NDU2Nzg5MDEyMzQ1Njc4OTA",
+        "content_sha256": "fcb5f40df9be6d3081f1f50d7de6fb0f5f277f37675360c3054c55ed9796c292",
+        "device_id": "e3778301-3007-47f1-86cd-92dc0eaf4dc5",
+        "presence_key_fingerprint": "4e46f39ed679967574f9a3f0476c5337f422bd8e8dbb7ef08ab865513f55c85b",
+        "node_id": "00000000-0000-0000-0000-000000000002"
+      },
+      "canonical": "SPARK-PRESENCE-ENROLL2\nPOST\n/api/v1/devices/self/presence-key\n2026-08-28T16:45:00Z\nNDU2Nzg5MDEyMzQ1Njc4OTA\nfcb5f40df9be6d3081f1f50d7de6fb0f5f277f37675360c3054c55ed9796c292\ne3778301-3007-47f1-86cd-92dc0eaf4dc5\n4e46f39ed679967574f9a3f0476c5337f422bd8e8dbb7ef08ab865513f55c85b\n00000000-0000-0000-0000-000000000002"
+    }
+  ]
+}

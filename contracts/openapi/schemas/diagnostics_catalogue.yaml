@@ -1,0 +1,22 @@
+type: object
+required:
+- observed_at
+- sections
+- optional_categories
+- never_exported
+properties:
+  observed_at:
+    type: string
+    format: date-time
+  sections:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/DiagnosticsSection
+  optional_categories:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/DiagnosticsSection
+  never_exported:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/DiagnosticsExclusion

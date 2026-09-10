@@ -1,0 +1,30 @@
+type: object
+additionalProperties: false
+required:
+- severity
+- message
+properties:
+  severity:
+    type: string
+    enum:
+    - note
+    - warning
+    - error
+  message:
+    type: string
+    maxLength: 16000
+  file:
+    type:
+    - string
+    - 'null'
+    maxLength: 4096
+  line:
+    type:
+    - integer
+    - 'null'
+    minimum: 1
+  column:
+    type:
+    - integer
+    - 'null'
+    minimum: 1

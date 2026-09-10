@@ -1,0 +1,54 @@
+type: object
+additionalProperties: false
+required:
+- version
+- transaction_id
+- cluster_id
+- proposal_digest
+- member_node_id
+- node_rank
+- measured_latency_us
+- measured_bandwidth_mbps
+- operation_elapsed_ms
+- fabric_authentication
+- observed_at
+- authority_signature
+properties:
+  version:
+    type: integer
+    const: 1
+  transaction_id:
+    type: string
+    format: uuid
+  cluster_id:
+    type: string
+    format: uuid
+  proposal_digest:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  member_node_id:
+    type: string
+    format: uuid
+  node_rank:
+    type: integer
+    minimum: 0
+    maximum: 1
+  measured_latency_us:
+    type: integer
+    minimum: 0
+    maximum: 5000
+  measured_bandwidth_mbps:
+    type: integer
+    minimum: 10000
+  operation_elapsed_ms:
+    type: integer
+    minimum: 0
+    maximum: 190000
+  fabric_authentication:
+    $ref: ../../openapi.yaml#/components/schemas/ClusterFabricAuthenticationProof
+  observed_at:
+    type: string
+    format: date-time
+  authority_signature:
+    type: string
+    pattern: ^[A-Za-z0-9_-]{86}$

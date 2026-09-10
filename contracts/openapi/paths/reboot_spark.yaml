@@ -1,0 +1,17 @@
+post:
+  tags:
+  - Power
+  operationId: rebootSpark
+  summary: Reboot the Spark host after owner confirmation
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  responses:
+    '202':
+      description: Reboot operation accepted
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,17 @@
+get:
+  tags:
+  - Workloads
+  operationId: listWorkloads
+  summary: Observe workloads running on this Spark without changing any of them
+  description: Read-only inventory of the container workloads present on this node, each carrying the
+    ownership state defined in the master specification section 29.6. Spark Runtime sends no lifecycle
+    command as a result of this call, and a workload it did not start is never reported as Spark-managed.
+  responses:
+    '200':
+      description: Read-only workload inventory
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/WorkloadInventory
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

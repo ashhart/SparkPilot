@@ -1,0 +1,118 @@
+#!/bin/sh
+# Before dpkg replaces binaries, drain processes and verify the schema, then create a root-only backup outside service-owned paths.
+set -e
+
+LIB_DIR=/usr/lib/spark-runtime
+STATE_DIR=/var/lib/spark-runtime
+CONF_DIR=/etc/spark-runtime
+BACKUP_ROOT=/var/backups/spark-runtime
+MARKER="$BACKUP_ROOT/.pending-upgrade"
+RUNTIME_USER=sparkd
+# Identify the root helper by its executable because the service-uid scan cannot see it.
+PRIVD_PATH=/usr/lib/spark-runtime/spark-privd
+
+# The build substitutes the highest shipped migration for upgrade preflight.
+NEW_SCHEMA_VERSION="@SCHEMA_VERSION@"
+
+die() {
+  echo "spark-runtime: $*" >&2
+  exit 1
+}
+
+@QUIESCENCE@
+
+# Refuse redirected service-owned paths before any read or write.
+assert_not_symlink() {
+  [ ! -L "$1" ] || die "$1 is a symbolic link; refusing to follow it"
+}
+
+prepare_backup_root() {
+  [ ! -L "$BACKUP_ROOT" ] || die "$BACKUP_ROOT is a symbolic link; refusing to use it"
+  mkdir -p "$BACKUP_ROOT"
+  chown root:root "$BACKUP_ROOT"
+  chmod 0700 "$BACKUP_ROOT"
+  owner="$(stat -c '%u:%g' "$BACKUP_ROOT")"
+  mode="$(stat -c '%a' "$BACKUP_ROOT")"
+  [ "$owner" = "0:0" ] || die "$BACKUP_ROOT is owned by $owner, expected root"
+  [ "$mode" = "700" ] || die "$BACKUP_ROOT has mode $mode, expected 700"
+}
+
+case "$1" in
+  upgrade)
+    # Drain before checking or opening paths so a live daemon cannot swap a checked database for a symlink.
+    spark_require_quiescent "upgrade Spark Runtime"
+
+    # After quiescence, reject redirected paths before the schema probe reads them.
+    assert_not_symlink "$STATE_DIR"
+    assert_not_symlink "$STATE_DIR/runtime.db"
+    assert_not_symlink "$STATE_DIR/runtime.db-wal"
+    assert_not_symlink "$STATE_DIR/runtime.db-shm"
+    assert_not_symlink "$CONF_DIR"
+    assert_not_symlink "$CONF_DIR/config.toml"
+
+    # Preflight with the outgoing binary and fail closed on probe errors before dpkg replaces the working installation.
+    if [ -x "$LIB_DIR/spark-installer" ]; then
+      if ! probe="$("$LIB_DIR/spark-installer" schema --data-dir "$STATE_DIR" 2>&1)"; then
+        echo "spark-runtime: refusing to install." >&2
+        echo "  The installed spark-installer could not report the database schema," >&2
+        echo "  so this upgrade cannot tell whether the node's state is compatible:" >&2
+        echo "    $probe" >&2
+        echo "  Check the node, or remove and reinstall deliberately." >&2
+        exit 1
+      fi
+      applied="$(printf '%s' "$probe" | sed -n 's/.*"applied":\([0-9]*\).*/\1/p')"
+      if [ -z "$applied" ]; then
+        die "could not read the database schema version from: $probe"
+      fi
+      if [ -n "$NEW_SCHEMA_VERSION" ] && [ "$applied" -gt "$NEW_SCHEMA_VERSION" ]; then
+        echo "spark-runtime: refusing to install." >&2
+        echo "  The database is at schema $applied and this package understands" >&2
+        echo "  at most $NEW_SCHEMA_VERSION. Installing it would leave the node" >&2
+        echo "  unable to read its own state." >&2
+        echo "  Install the matching release, or use an explicit rollback package" >&2
+        echo "  that migrates the database down." >&2
+        exit 1
+      fi
+    fi
+
+    # Back up upgrade-sensitive state outside paths the service account can read, write or redirect.
+    if [ -f "$STATE_DIR/runtime.db" ]; then
+      prepare_backup_root
+
+      # Require sqlite3 .backup to capture database and WAL pages in one consistent snapshot.
+      command -v sqlite3 >/dev/null 2>&1 ||
+        die "sqlite3 is required to take a consistent database backup but is not installed"
+
+      backup="$(mktemp -d "$BACKUP_ROOT/upgrade-$(date -u +%Y%m%dT%H%M%SZ)-XXXXXX")"
+      chmod 0700 "$backup"
+
+      if ! sqlite3 "$STATE_DIR/runtime.db" ".backup '$backup/runtime.db'"; then
+        rm -rf "$backup"
+        die "could not take a consistent backup of $STATE_DIR/runtime.db; refusing to upgrade without one"
+      fi
+      # The .backup snapshot already contains committed WAL pages and needs no separate log replay.
+      if [ -f "$CONF_DIR/config.toml" ]; then
+        cp "$CONF_DIR/config.toml" "$backup/config.toml"
+      fi
+
+      # Keep rollback evidence root-owned and unreadable to the service account.
+      chown -R root:root "$backup"
+      chmod -R go-rwx "$backup"
+
+      printf '%s\n' "$backup" > "$MARKER"
+      chown root:root "$MARKER"
+      chmod 0600 "$MARKER"
+      echo "spark-runtime: backed up database and configuration to $backup"
+    fi
+    ;;
+
+  install|abort-upgrade)
+    ;;
+
+  *)
+    echo "preinst called with unknown argument \`$1'" >&2
+    exit 1
+    ;;
+esac
+
+exit 0

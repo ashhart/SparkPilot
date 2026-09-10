@@ -1,0 +1,21 @@
+post:
+  tags:
+  - Inference
+  operationId: previewLoadInferenceModel
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/LoadModelPreviewRequest
+  responses:
+    '200':
+      description: Digest-bound load or replacement preview
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ModelActionPreview
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,29 @@
+type: object
+additionalProperties: false
+description: Only the supplied fields change. An absent field is left as it is.
+properties:
+  name:
+    type: string
+    minLength: 1
+    maxLength: 80
+  instructions:
+    type: string
+    minLength: 1
+    maxLength: 2000
+  schedule:
+    $ref: ../../openapi.yaml#/components/schemas/AutomationSchedule
+  model_id:
+    type: string
+    minLength: 1
+    maxLength: 240
+  profile_id:
+    type:
+    - string
+    - 'null'
+    maxLength: 80
+  web_access:
+    type: boolean
+  delivery:
+    $ref: ../../openapi.yaml#/components/schemas/AutomationDelivery
+  enabled:
+    type: boolean

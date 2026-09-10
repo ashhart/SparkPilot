@@ -1,0 +1,10 @@
+type: object
+additionalProperties: false
+minProperties: 1
+maxProperties: 1
+description: Change exactly one preference; preserve all other Tailscale settings and account membership.
+properties:
+  enabled:
+    type: boolean
+  accept_dns:
+    type: boolean

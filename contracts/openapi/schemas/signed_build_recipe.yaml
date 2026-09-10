@@ -1,0 +1,20 @@
+type: object
+additionalProperties: false
+required:
+- payload
+- authority_public_key
+- authority_fingerprint
+- signature
+properties:
+  payload:
+    $ref: ../../openapi.yaml#/components/schemas/BuildRecipePayload
+  authority_public_key:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  authority_fingerprint:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  signature:
+    type: string
+    minLength: 86
+    maxLength: 86

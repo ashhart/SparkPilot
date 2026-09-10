@@ -1,0 +1,6 @@
+{
+  "basis": "Existing Nemotron release, carried forward without changing its recipe; new or changed recipes require the recipe release checklist.",
+  "recipes": {
+    "nvidia/nemotron-3.5-lightning-30b-a3b-nvfp4": "9a0f9a15af991d35f06e0381bbc3c3578efea66d0b07d93e2f13aa05b58d3d7c"
+  }
+}

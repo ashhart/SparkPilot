@@ -1,0 +1,18 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/ModelId
+- $ref: ../../openapi.yaml#/components/parameters/ProfileId
+post:
+  tags:
+  - Models
+  operationId: previewReenableModelProfile
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  responses:
+    '200':
+      description: Digest-bound preview of the unsafe profile under review
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ModelActionPreview
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

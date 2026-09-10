@@ -1,0 +1,24 @@
+type: object
+required:
+- path
+- sensitivity
+- description
+- bytes
+- sha256
+properties:
+  path:
+    type: string
+    pattern: ^[a-z0-9-]+\.json$
+  sensitivity:
+    type: string
+    enum:
+    - operational
+    - identifying
+  description:
+    type: string
+  bytes:
+    type: integer
+    minimum: 0
+  sha256:
+    type: string
+    pattern: ^[a-f0-9]{64}$

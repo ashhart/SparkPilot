@@ -1,0 +1,41 @@
+get:
+  tags:
+  - Builds
+  operationId: listBuildWorkers
+  responses:
+    '200':
+      description: Registered workers
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - items
+            properties:
+              items:
+                type: array
+                items:
+                  $ref: ../../openapi.yaml#/components/schemas/BuildWorker
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+post:
+  tags:
+  - Builds
+  operationId: registerBuildWorker
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/BuildWorkerRegistration
+  responses:
+    '202':
+      description: Worker registered
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/BuildWorker
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

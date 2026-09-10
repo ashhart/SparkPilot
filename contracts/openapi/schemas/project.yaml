@@ -1,0 +1,71 @@
+type: object
+additionalProperties: false
+required:
+- id
+- name
+- state
+- capabilities
+- created_at
+- updated_at
+properties:
+  id:
+    type: string
+    format: uuid
+  name:
+    type: string
+  state:
+    type: string
+    enum:
+    - creating
+    - ready
+    - stopped
+    - failed
+    - deleting
+  repository_url:
+    type:
+    - string
+    - 'null'
+    format: uri
+  default_branch:
+    type:
+    - string
+    - 'null'
+  capabilities:
+    type: array
+    items:
+      type: string
+      enum:
+      - read
+      - write
+      - terminal
+      - preview
+      - agent_run
+      - review
+      - delete
+  created_at:
+    type: string
+    format: date-time
+  updated_at:
+    type: string
+    format: date-time
+  harness_updates:
+    description: Prepared coding agents with a newer version pinned by this signed runtime; opening a new session prepares the update without stopping existing work.
+    type: array
+    maxItems: 5
+    items:
+      type: object
+      additionalProperties: false
+      required:
+      - harness
+      - installed_version
+      - available_version
+      properties:
+        harness:
+          type: string
+          enum: [oh_my_pi, open_code, pi, claude_code, codex]
+        installed_version:
+          type: string
+          maxLength: 64
+        available_version:
+          type: string
+          maxLength: 64

@@ -1,0 +1,33 @@
+Package: spark-runtime
+Version: @VERSION@
+Architecture: @ARCHITECTURE@
+Maintainer: SparkPilot <feedback@sparkpilot.dev>
+Installed-Size: @INSTALLED_SIZE@
+Section: admin
+Priority: optional
+Homepage: https://example.invalid/spark-runtime
+Depends: libc6 (>= 2.36), adduser, systemd, util-linux, sqlite3, nftables, python3, docker.io | docker-ce, docker-buildx | docker-buildx-plugin, nvidia-container-toolkit, network-manager, iproute2
+Recommends: iputils-arping, iputils-ping, bluez, rfkill, git, fwupd
+Description: Spark Runtime control service for NVIDIA DGX Spark
+ Spark Runtime turns a DGX Spark into an appliance the SparkPilot Apple
+ applications can discover, pair with, monitor, and use. It installs two
+ services: sparkd, the unprivileged control daemon that serves the local
+ HTTPS API and advertises the node over Bonjour, and spark-privd, a minimal
+ root helper that accepts only typed, allowlisted operations over a
+ Unix-domain socket.
+ .
+ The package ships no model weights, no credentials, and no generated state.
+ A node identity and database are created by the postinst on first install
+ and are never replaced by a later one. sqlite3 is a hard dependency: an
+ upgrade takes a consistent database snapshot with it and refuses to proceed
+ without one, because copying the database and its write-ahead log as separate
+ files produces a snapshot whose halves can disagree.
+ .
+ LAB AND DEVELOPMENT USE. This build is not a production release and its
+ trust root says so: the shipped release keys are scoped to the dev and lab
+ channels, and a beta or stable manifest is refused by that shipped root.
+ Schema-2 offline-root delegation and root-owned node authority delivered
+ through read-only systemd credentials are implemented. Production release
+ root enrollment and physical acceptance are still required before beta or
+ stable qualification. Development invocations outside the packaged service
+ retain explicit service-account file storage for local tests and tooling.

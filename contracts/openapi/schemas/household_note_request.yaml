@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "expected_revision",
+    "title",
+    "body",
+    "delete"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "expected_revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 240
+    },
+    "body": {
+      "type": "string",
+      "maxLength": 16384
+    },
+    "delete": {
+      "type": "boolean"
+    }
+  },
+  "description": "Create with revision zero; editing and deleting require the last observed revision. Deleted note text is purged; id and revision remain to reject stale writes."
+}

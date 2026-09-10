@@ -1,0 +1,50 @@
+parameters:
+- name: id
+  in: path
+  required: true
+  schema:
+    type: string
+    format: uuid
+patch:
+  tags:
+  - Automations
+  operationId: updateAutomation
+  summary: Change an automation, recomputing its next run
+  responses:
+    '200':
+      description: Change an automation, recomputing its next run
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Automation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/UserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/AutomationUpdateRequest
+  description: Only supplied fields change. A schedule or zone change recomputes the next run from the current
+    Spark clock and never fires the slot it just left. Turning web access on requires a fresh user-presence proof.
+delete:
+  tags:
+  - Automations
+  operationId: deleteAutomation
+  summary: Delete an automation and its run history
+  responses:
+    '200':
+      description: Delete an automation and its run history
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/AutomationList
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/UserPresence
+  description: A run already in flight keeps its durable operation; the automation stops scheduling immediately.

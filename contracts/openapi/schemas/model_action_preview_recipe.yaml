@@ -1,0 +1,25 @@
+type: object
+additionalProperties: false
+required:
+- model_id
+- recipe_revision
+- source_revision
+- recipe_digest
+- signature_key_id
+- profile_id
+properties:
+  model_id:
+    type: string
+  recipe_revision:
+    type: string
+  source_revision:
+    type: string
+  recipe_digest:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  signature_key_id:
+    type: string
+  profile_id:
+    type:
+    - string
+    - 'null'

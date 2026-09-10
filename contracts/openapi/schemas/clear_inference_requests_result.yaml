@@ -1,0 +1,12 @@
+type: object
+additionalProperties: false
+required:
+- cleared
+- active_requests_preserved
+properties:
+  cleared:
+    type: integer
+    minimum: 0
+  active_requests_preserved:
+    type: boolean
+    const: true

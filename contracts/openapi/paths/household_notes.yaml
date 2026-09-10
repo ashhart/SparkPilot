@@ -1,0 +1,63 @@
+{
+  "get": {
+    "tags": [
+      "Household"
+    ],
+    "operationId": "getHousehold",
+    "summary": "Read deliberately shared household notes and membership",
+    "responses": {
+      "200": {
+        "description": "Read deliberately shared household notes and membership",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../openapi.yaml#/components/schemas/HouseholdSnapshot"
+            }
+          }
+        }
+      },
+      "default": {
+        "$ref": "../../openapi.yaml#/components/responses/Error"
+      }
+    },
+    "description": "Owners and administrators manage the household; other paired devices must be explicitly added. Guest grants must remain active and unexpired. Private chat history is never included."
+  },
+  "post": {
+    "tags": [
+      "Household"
+    ],
+    "operationId": "saveHouseholdNote",
+    "summary": "Create, update or delete an attributed household note",
+    "responses": {
+      "200": {
+        "description": "Create, update or delete an attributed household note",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../openapi.yaml#/components/schemas/HouseholdChange"
+            }
+          }
+        }
+      },
+      "default": {
+        "$ref": "../../openapi.yaml#/components/responses/Error"
+      }
+    },
+    "parameters": [
+      {
+        "$ref": "../../openapi.yaml#/components/parameters/IdempotencyKey"
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../../openapi.yaml#/components/schemas/HouseholdNoteRequest"
+          }
+        }
+      }
+    },
+    "description": "Members create notes; only the author or an administrator may edit or delete a note. Compare-and-swap revision checks and idempotency prevent stale or duplicate mutations. Note content is excluded from audit and replay records."
+  }
+}

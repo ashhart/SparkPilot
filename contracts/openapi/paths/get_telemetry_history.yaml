@@ -1,0 +1,41 @@
+get:
+  tags:
+  - Telemetry
+  operationId: getTelemetryHistory
+  summary: Return this Spark's own recorded telemetry history
+  description: Recorded by the runtime whether or not a client is connected, and only while functional
+    telemetry consent is enabled. Rows are newest first. `resolution` says whether a row is one ten-second
+    sample or a one-minute aggregate, and `sample_count` says how many samples an aggregate folded, so
+    a client can tell a full minute from a partial one.
+  parameters:
+  - name: from
+    in: query
+    required: false
+    description: Inclusive lower bound, RFC 3339. Defaults to 24 hours ago.
+    schema:
+      type: string
+      format: date-time
+  - name: to
+    in: query
+    required: false
+    description: Inclusive upper bound, RFC 3339. Defaults to now.
+    schema:
+      type: string
+      format: date-time
+  - name: limit
+    in: query
+    required: false
+    schema:
+      type: integer
+      minimum: 1
+      maximum: 2880
+      default: 720
+  responses:
+    '200':
+      description: Recorded history for the requested window
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/TelemetryHistory
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

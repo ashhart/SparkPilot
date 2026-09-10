@@ -1,0 +1,17 @@
+type: object
+description: One UTF-8 text entry. `content` is a JSON document the owner can read before sharing it.
+required:
+- path
+- sensitivity
+- content
+properties:
+  path:
+    type: string
+    pattern: ^[a-z0-9-]+\.json$
+  sensitivity:
+    type: string
+    enum:
+    - operational
+    - identifying
+  content:
+    type: string

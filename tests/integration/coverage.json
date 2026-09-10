@@ -1,0 +1,75 @@
+{
+  "matrix": "PLAN \u00a749.2 Integration tests",
+  "note": "Cases needing a disposable VM or a real LAN carry explicit evidence blockers; retired public-remote cases point to rejection tests.",
+  "cases": {
+    "Real `sparkd` with fake `spark-privd`.": {
+      "tests": [
+        "product_adapter_prepares_the_image_before_starting_the_model",
+        "a_terminal_descriptor_crosses_the_privileged_socket"
+      ]
+    },
+    "Real `spark-privd` in disposable VM with fake Docker engine.": {
+      "blocked": {
+        "reason": "Needs a disposable Linux VM: the helper's production paths are systemd, NetworkManager and the Docker socket, none of which exist on a macOS workstation. The argv and lifecycle of every one of those paths is unit-tested here; what a VM adds is that the real binaries accept that argv.",
+        "evidence_command": "On a DGX Spark or disposable Ubuntu VM: sudo ./packaging/debian/test_install.sh && sudo systemctl status spark-privd.service && cargo test --manifest-path runtime/Cargo.toml -p spark-privd --all-features",
+        "expected_evidence": "test_install.sh reports every require_file and account check passing; spark-privd.service is active with Group=sparkd; the socket is root:sparkd 0660."
+      }
+    },
+    "Real vLLM-compatible stub for streaming/tool calls/errors.": {
+      "tests": [
+        "full_lifecycle_load_chat_unload",
+        "stream_cancellation_stops_upstream_and_slot_is_released",
+        "capabilities_reports_dev_stub_truthfully_and_is_role_protected"
+      ]
+    },
+    "Signed package install.": {
+      "tests": [
+        "successful_apply_seals_commits_and_retains",
+        "verification_failure_refuses_before_dpkg",
+        "failed_install_rolls_back_to_the_retained_package"
+      ]
+    },
+    "Bonjour discovery on isolated test LAN.": {
+      "blocked": {
+        "reason": "Needs a second machine on an isolated LAN. The TXT record contract and the parsing on both sides are unit-tested; what a LAN adds is that mDNS actually propagates between two hosts.",
+        "evidence_command": "With a Spark and a Mac on one isolated switch: dns-sd -B _spark-runtime._tcp local. and then dns-sd -L <instance> _spark-runtime._tcp local.",
+        "expected_evidence": "The browse lists the node instance; the lookup prints the TXT keys with a tls_fingerprint matching GET /api/v1/identity on that node."
+      }
+    },
+    "Pairing and revocation.": {
+      "tests": [
+        "full_pair_and_signed_request_flow",
+        "revocation_terminates_access",
+        "administrator_cannot_escalate_or_revoke_owner_before_presence_prompt"
+      ]
+    },
+    "Model download resume and digest failure.": {
+      "tests": [
+        "interrupt_then_resume_completes",
+        "wrong_digest_never_installs_and_cleans_partial",
+        "content_addressed_install_resumes_once_after_database_restart"
+      ]
+    },
+    "Route failover between two endpoints for same node identity.": {
+      "tests": [
+        "routePriorityFollowsDefaultOrder",
+        "repeatedFailuresDemoteRoute",
+        "identityMismatchRejectsRoute"
+      ]
+    },
+    "Cloudflare staging tunnel.": {
+      "retired": "Owner decision on 2026-09-05: public remote access was removed; Tailscale is the supported remote provider.",
+      "tests": [
+        "retired_public_remote_mode_cannot_be_enabled",
+        "retired_public_connector_operations_are_rejected"
+      ]
+    },
+    "Project worktree lifecycle.": {
+      "tests": [
+        "worktrees_branch_off_head_and_keep_the_main_checkout_clean",
+        "project_lifecycle_list_and_get",
+        "agent_runs_tools_and_reaches_review_with_diff"
+      ]
+    }
+  }
+}

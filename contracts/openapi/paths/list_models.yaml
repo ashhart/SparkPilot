@@ -1,0 +1,27 @@
+get:
+  tags:
+  - Models
+  operationId: listModels
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/Limit
+  - $ref: ../../openapi.yaml#/components/parameters/Cursor
+  responses:
+    '200':
+      description: Catalogue and installed models
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - items
+            properties:
+              items:
+                type: array
+                items:
+                  $ref: ../../openapi.yaml#/components/schemas/Model
+              next_cursor:
+                type:
+                - string
+                - 'null'
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

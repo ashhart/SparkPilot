@@ -1,0 +1,14 @@
+get:
+  tags:
+  - Health
+  operationId: getStatus
+  summary: Return current node, system, inference, and operation status
+  responses:
+    '200':
+      description: Status
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Status
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,36 @@
+version: 1
+retrieval_policy:
+  official_only: true
+  record_timestamp_and_version: true
+  pin_source_or_package_revision: true
+sources:
+  - area: apple_foundation_models
+    url: https://developer.apple.com/documentation/foundationmodels
+  - area: apple_custom_provider_video
+    url: https://developer.apple.com/videos/play/wwdc2026/339/
+  - area: apple_foundation_models_utilities
+    url: https://github.com/apple/foundation-models-utilities
+  - area: apple_app_intents
+    url: https://developer.apple.com/documentation/appintents
+  - area: apple_network
+    url: https://developer.apple.com/documentation/network
+  - area: apple_network_extension
+    url: https://developer.apple.com/documentation/networkextension
+  - area: nvidia_dgx_spark_hardware
+    url: https://docs.nvidia.com/dgx/dgx-spark/hardware.html
+  - area: nvidia_dgx_spark_first_boot
+    url: https://docs.nvidia.com/dgx/dgx-spark/first-boot.html
+  - area: nvidia_custom_install
+    url: https://docs.nvidia.com/dgx/dgx-spark/enterprise-custom-install.html
+  - area: nvidia_vllm
+    url: https://build.nvidia.com/spark/vllm/instructions
+  - area: nvidia_vllm_multi_node
+    url: https://build.nvidia.com/spark/vllm/multi-node
+  - area: nvidia_connect_two_sparks
+    url: https://build.nvidia.com/spark/connect-two-sparks
+  - area: vllm_openai_server
+    url: https://docs.vllm.ai/en/latest/serving/openai_compatible_server/
+  - area: vllm_sleep_mode_security_reference_only
+    url: https://docs.vllm.ai/en/latest/features/sleep_mode/
+  - area: vllm_production_security
+    url: https://docs.vllm.ai/en/latest/usage/security/

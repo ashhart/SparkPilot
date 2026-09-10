@@ -1,0 +1,17 @@
+type: object
+additionalProperties: false
+required:
+- principal_id
+- revoked
+- accepted_work
+properties:
+  principal_id:
+    type: string
+    format: uuid
+  revoked:
+    type: boolean
+    const: true
+  accepted_work:
+    type: string
+    enum:
+    - drain

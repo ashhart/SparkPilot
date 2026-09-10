@@ -1,0 +1,17 @@
+get:
+  tags:
+  - Health
+  operationId: getHealth
+  security: []
+  summary: Narrow unauthenticated reachability check
+  responses:
+    '200':
+      description: Runtime is reachable
+      headers:
+        X-Spark-API-Version:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Health

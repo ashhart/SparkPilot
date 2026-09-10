@@ -1,0 +1,14 @@
+get:
+  tags:
+  - Inference
+  operationId: listInferencePools
+  summary: List policies visible to this paired caller
+  responses:
+    '200':
+      description: List policies visible to this paired caller
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/InferencePoolList
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

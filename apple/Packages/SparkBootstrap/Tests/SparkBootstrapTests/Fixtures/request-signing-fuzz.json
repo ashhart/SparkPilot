@@ -1,0 +1,1927 @@
+{
+  "$comment": "Generated cross-language vectors for SPARK2 canonicalisation. Rebuilt from the seed by sparkd's signature_fuzz test and rebuilt from the file by the Apple side, so the two implementations cannot drift apart silently. Do not hand-edit: regenerate with SPARK_FUZZ_WRITE_VECTORS=1 cargo test -p sparkd --test signature_fuzz.",
+  "cases": [
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/inference/load/preview\n2026-09-05T20:56:29Z\nTJDyObOt5_cyaBdHKc_QuqgF4V0dvXgB\n0f478a6c12e925707236841a6d7e5137957c46a861ac2c703937c2387f909c4b\n78e1e5b2-54d3-187c-8255-dbdaa9d4531b\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "4330e76fe355bd3fff9674e72d6eb767ea7ecfbb88686d908feea8da5d213698",
+      "content_sha256": "0f478a6c12e925707236841a6d7e5137957c46a861ac2c703937c2387f909c4b",
+      "name": "generated-000",
+      "request": {
+        "body": "{\"name\":\"﻿\"}",
+        "device_id": "78e1e5b2-54d3-187c-8255-dbdaa9d4531b",
+        "method": "GET",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "TJDyObOt5_cyaBdHKc_QuqgF4V0dvXgB",
+        "path_and_query": "/api/v1/inference/load/preview",
+        "timestamp": "2026-09-05T20:56:29Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/inference/load?limit=100\n2026-09-07T19:12:34Z\nBgz2udAOGqQoYE9Ruo2MI3XGkIzvLYB2\n71959f12425dbcae2ff049dc5f77b5a80eb6e674f6d16c41488ca07c3bc96a86\ne1719349-61cf-a00d-c1f5-de902cde1698\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "2a8701aec2b97ca0efadf8b83773fa9033f3770d5910c5dea6b4eb2dcea87312",
+      "content_sha256": "71959f12425dbcae2ff049dc5f77b5a80eb6e674f6d16c41488ca07c3bc96a86",
+      "name": "generated-001",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"\",\"role\":\"user\"}]}",
+        "device_id": "e1719349-61cf-a00d-c1f5-de902cde1698",
+        "method": "GET",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "Bgz2udAOGqQoYE9Ruo2MI3XGkIzvLYB2",
+        "path_and_query": "/api/v1/inference/load?limit=100",
+        "timestamp": "2026-09-07T19:12:34Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/inference/load?a=%09&b=1668388575619680320\n2026-05-02T18:32:11Z\ndD-cAJYkNI-6Nt3lXRKvciRzfPyOE-ZZ\ndb9831c49459cad5a854f845607a9a919bace700118ed54397d48c541f8e47fd\nebb5a9fc-4dfa-25f4-7ca1-69484c383933\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "53ef4863d624b1138c71159d464ee2284dc61a0d31994ecf6592ff74e19d3048",
+      "content_sha256": "db9831c49459cad5a854f845607a9a919bace700118ed54397d48c541f8e47fd",
+      "name": "generated-002",
+      "request": {
+        "body": "{\"name\":\"\\\"\"}",
+        "device_id": "ebb5a9fc-4dfa-25f4-7ca1-69484c383933",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "dD-cAJYkNI-6Nt3lXRKvciRzfPyOE-ZZ",
+        "path_and_query": "/api/v1/inference/load?a=%09&b=1668388575619680320",
+        "timestamp": "2026-05-02T18:32:11Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?cursor=H_XiBefEbxw\n2026-12-19T04:40:58Z\nuueSwCNZ7TuJcM3yYj15rjMYl1Q12Tbl\n98d513d8a569af317d82e6d80c07661fbcb6fb8efd1488c9c9e833e951e2fa6a\nec6099fd-201a-c290-88f6-3490e071249f\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "8b451ae6d8ad4213f5d9b7286b5f0e5523c2a93530010330fa4450097e5a3afe",
+      "content_sha256": "98d513d8a569af317d82e6d80c07661fbcb6fb8efd1488c9c9e833e951e2fa6a",
+      "name": "generated-003",
+      "request": {
+        "body": "{\"name\":\"İ\"}",
+        "device_id": "ec6099fd-201a-c290-88f6-3490e071249f",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "uueSwCNZ7TuJcM3yYj15rjMYl1Q12Tbl",
+        "path_and_query": "/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?cursor=H_XiBefEbxw",
+        "timestamp": "2026-12-19T04:40:58Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/inference/load?cursor=Jn52oKblyzg\n2026-09-22T07:04:54Z\nOvV9dDU1Aie1jXCqcn07KvqqFxcfNr2x\nb44b3ee9ac68c170ca569639380baa017819b88068ee46488cfe16134ab770a3\n59867a55-9026-a86c-bb70-5a88929cb04b\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "e2717c55b413b051ef70444b9efcdc4b1ef3749502de1268338a97777910b690",
+      "content_sha256": "b44b3ee9ac68c170ca569639380baa017819b88068ee46488cfe16134ab770a3",
+      "name": "generated-004",
+      "request": {
+        "body": "{\"name\":\"\\\\\"}",
+        "device_id": "59867a55-9026-a86c-bb70-5a88929cb04b",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "OvV9dDU1Aie1jXCqcn07KvqqFxcfNr2x",
+        "path_and_query": "/api/v1/inference/load?cursor=Jn52oKblyzg",
+        "timestamp": "2026-09-22T07:04:54Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/telemetry/history?cursor=x-Amq2sP2JQ\n2026-07-08T08:32:18Z\nIjN4RqPF_1Nr5MLKOi6P5iP0PyhT1-a9\neea101f619ec736d15c1b32790c839601f63f333e376a2e4165943b40a3b7077\ncb532f90-37d3-d388-f9a2-93895bbc2837\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "db17836cac4f90711065a566ed046e36f7bdc2f5f729ca32fc78abbddf0a56df",
+      "content_sha256": "eea101f619ec736d15c1b32790c839601f63f333e376a2e4165943b40a3b7077",
+      "name": "generated-005",
+      "request": {
+        "body": "{\"name\":\"﷽\"}",
+        "device_id": "cb532f90-37d3-d388-f9a2-93895bbc2837",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "IjN4RqPF_1Nr5MLKOi6P5iP0PyhT1-a9",
+        "path_and_query": "/api/v1/telemetry/history?cursor=x-Amq2sP2JQ",
+        "timestamp": "2026-07-08T08:32:18Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/inference/load/preview?cursor=_ynI-V3EEzA\n2026-09-30T16:29:02Z\nmfxtGiNTsL8w0yZfRPdT4h0INQm0CF4J\nff136fef9ee7c2d548d02ca372f1390bb32bf740727bc900eae7ff50eb93505e\n78d0fee2-2ac3-7fe4-2ef0-354c97eb1863\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "098b035f8ddbc8aefd9f66885f058251f737faf137d22f85833f58f7e755dcdf",
+      "content_sha256": "ff136fef9ee7c2d548d02ca372f1390bb32bf740727bc900eae7ff50eb93505e",
+      "name": "generated-006",
+      "request": {
+        "body": "{\"name\":\"‮drowssap\"}",
+        "device_id": "78d0fee2-2ac3-7fe4-2ef0-354c97eb1863",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "mfxtGiNTsL8w0yZfRPdT4h0INQm0CF4J",
+        "path_and_query": "/api/v1/inference/load/preview?cursor=_ynI-V3EEzA",
+        "timestamp": "2026-09-30T16:29:02Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?name=%C4%B0\n2026-11-24T03:47:22Z\ndTLxZK_HImu2LlNTc8KjHiSd9JO4AA-V\n54833dc5e8f39a2ef3954c865ea73caf7949d2049270df814db4b6849bb463ae\na1ba9f98-a4de-2980-27e5-783e508b4ccf\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "1e162f5d5ce28443167dffe81f12c63b26e3a9d6fdc33fa1786f1465b3110a1c",
+      "content_sha256": "54833dc5e8f39a2ef3954c865ea73caf7949d2049270df814db4b6849bb463ae",
+      "name": "generated-007",
+      "request": {
+        "body": "{\"name\":\" \"}",
+        "device_id": "a1ba9f98-a4de-2980-27e5-783e508b4ccf",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "dTLxZK_HImu2LlNTc8KjHiSd9JO4AA-V",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?name=%C4%B0",
+        "timestamp": "2026-11-24T03:47:22Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/telemetry?limit=100\n2026-03-23T13:43:34Z\n51JFgPaNQChP2oPEmFegV4M09oZd_Nma\n72402de9a24ee51a017ddada229ee62ccb0da1c39c8d2d880f49a6bd134175d5\n19504694-4b6f-2761-769d-bc6c15ef8c5c\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "2ebca1693b4b051132b8b5365429232da4364ada4a38f5b0863c0edd0b2b0133",
+      "content_sha256": "72402de9a24ee51a017ddada229ee62ccb0da1c39c8d2d880f49a6bd134175d5",
+      "name": "generated-008",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"İ\",\"role\":\"user\"}]}",
+        "device_id": "19504694-4b6f-2761-769d-bc6c15ef8c5c",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "51JFgPaNQChP2oPEmFegV4M09oZd_Nma",
+        "path_and_query": "/api/v1/telemetry?limit=100",
+        "timestamp": "2026-03-23T13:43:34Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/telemetry\n2026-11-18T00:33:35Z\nfLiVeqndlyn5celh6DVqhCVsn9F3draD\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\nad0e34e2-fa0f-9356-b17a-6a5eef4a116d\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "b282973cedd2003deb8650b737e978ad38c97c89ff3950a015c9ca96cb49237f",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-009",
+      "request": {
+        "body": "",
+        "device_id": "ad0e34e2-fa0f-9356-b17a-6a5eef4a116d",
+        "method": "GET",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "fLiVeqndlyn5celh6DVqhCVsn9F3draD",
+        "path_and_query": "/api/v1/telemetry",
+        "timestamp": "2026-11-18T00:33:35Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/telemetry?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-12-30T22:08:49Z\ncFiQs-uUJItZ4i1_Z3nivs3hC-D_5p61\n158062d55700cfabe1f6a162f80011cdefeeb7a4230c9f892ab2aa3a481ed1b0\nd97a0328-7706-3220-5fe9-89c4a2fc30ef\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "532bc5ac1758f55f89445a59c0724be67c3cea04bf04defbce1d6c87c2d14c3f",
+      "content_sha256": "158062d55700cfabe1f6a162f80011cdefeeb7a4230c9f892ab2aa3a481ed1b0",
+      "name": "generated-010",
+      "request": {
+        "body": "{\"name\":\"'; DROP TABLE devices; --\"}",
+        "device_id": "d97a0328-7706-3220-5fe9-89c4a2fc30ef",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "cFiQs-uUJItZ4i1_Z3nivs3hC-D_5p61",
+        "path_and_query": "/api/v1/telemetry?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-12-30T22:08:49Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/telemetry/history?limit=100\n2026-05-08T14:24:38Z\n7Yfxi8hkfMiXeVArC2Cod6nCR-VMOyc6\ndf0289d10a589436a02e5907c77099c9993c2478472b318075e5f6588b4bd5a6\n5910fae3-c305-2c81-7013-652e037952fc\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "361fc2cbfcce2dae173399fca13f72524a65700f949dd620d93b9fc73d465f2d",
+      "content_sha256": "df0289d10a589436a02e5907c77099c9993c2478472b318075e5f6588b4bd5a6",
+      "name": "generated-011",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"é́́́\",\"role\":\"user\"}]}",
+        "device_id": "5910fae3-c305-2c81-7013-652e037952fc",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "7Yfxi8hkfMiXeVArC2Cod6nCR-VMOyc6",
+        "path_and_query": "/api/v1/telemetry/history?limit=100",
+        "timestamp": "2026-05-08T14:24:38Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/models\n2026-09-25T12:24:31Z\nr4YYTiCM4EnZa0jJyewlJHyu2u_qSuSj\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n55392304-c4dd-8ef6-c6b2-f5a2b973ac8d\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "c44c92acf10a7921aa55a0e39399450f6dded40f1f8bd831ddcce932c4cdd55d",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-012",
+      "request": {
+        "body": "",
+        "device_id": "55392304-c4dd-8ef6-c6b2-f5a2b973ac8d",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "r4YYTiCM4EnZa0jJyewlJHyu2u_qSuSj",
+        "path_and_query": "/api/v1/models",
+        "timestamp": "2026-09-25T12:24:31Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?a=%E2%80%AEdrowssap&b=4103090308585910878\n2026-11-23T00:02:25Z\nafNmKVxaPdU4K2LnMOoKwL7uZo_toKUP\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n996e38d1-f441-f5f2-f0e1-43859ddccad9\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "335391e61ea6c7eaeee7291e264d0f6b7126a6542923b852121b14ab21fc04ea",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-013",
+      "request": {
+        "body": "",
+        "device_id": "996e38d1-f441-f5f2-f0e1-43859ddccad9",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "afNmKVxaPdU4K2LnMOoKwL7uZo_toKUP",
+        "path_and_query": "/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?a=%E2%80%AEdrowssap&b=4103090308585910878",
+        "timestamp": "2026-11-23T00:02:25Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-11-16T02:27:41Z\nHTJ8MVZfQJd_8p0s0xPE2uJ4dFsra0Gh\ndb9831c49459cad5a854f845607a9a919bace700118ed54397d48c541f8e47fd\n67384445-cd85-e99c-e5fb-3d70cea1f5bb\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "c30b58d66bca29c5bc57f5c3d4b2a39ef371fc8c3c55358eb160326b38e1c2f4",
+      "content_sha256": "db9831c49459cad5a854f845607a9a919bace700118ed54397d48c541f8e47fd",
+      "name": "generated-014",
+      "request": {
+        "body": "{\"name\":\"\\\"\"}",
+        "device_id": "67384445-cd85-e99c-e5fb-3d70cea1f5bb",
+        "method": "GET",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "HTJ8MVZfQJd_8p0s0xPE2uJ4dFsra0Gh",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-11-16T02:27:41Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/models?name=%27%3B%20DROP%20TABLE%20devices%3B%20--\n2026-12-03T05:14:42Z\nqQqXmsNvosOEpUU6U0Talvr84mSEQFet\n1390696a77e5d6f4375e9b36450c26bb67e99662fcd31b71cecd8ceda332040e\n0b2a85a9-85e6-bdb8-ffd4-3cb0052d22a7\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "5cf0da0185db55a50a617214c366458f4a5da9b7655eff1c8cebf1d21a9aabc4",
+      "content_sha256": "1390696a77e5d6f4375e9b36450c26bb67e99662fcd31b71cecd8ceda332040e",
+      "name": "generated-015",
+      "request": {
+        "body": "{\"name\":\"\"}",
+        "device_id": "0b2a85a9-85e6-bdb8-ffd4-3cb0052d22a7",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "qQqXmsNvosOEpUU6U0Talvr84mSEQFet",
+        "path_and_query": "/api/v1/models?name=%27%3B%20DROP%20TABLE%20devices%3B%20--",
+        "timestamp": "2026-12-03T05:14:42Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/telemetry?limit=100\n2026-07-04T02:54:54Z\nktKnruYxs2CAc319_QCpLy9CCAcwzo-S\n3210ec01e69010a2c344c2e770b64e96a5bed1c0cd43ab053ef87cd1da964335\n05a1957b-ecea-2bf9-5ee7-b4ee4c4ec314\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "53948950318706eeda67d3d23782d7ba3d6cdb532b2b8cb61e35d9f31e68df22",
+      "content_sha256": "3210ec01e69010a2c344c2e770b64e96a5bed1c0cd43ab053ef87cd1da964335",
+      "name": "generated-016",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"'; DROP TABLE devices; --\",\"role\":\"user\"}]}",
+        "device_id": "05a1957b-ecea-2bf9-5ee7-b4ee4c4ec314",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "ktKnruYxs2CAc319_QCpLy9CCAcwzo-S",
+        "path_and_query": "/api/v1/telemetry?limit=100",
+        "timestamp": "2026-07-04T02:54:54Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/inference/load/preview?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-09-09T14:35:35Z\n_uwAdjVpZsEI7JmMvz1QPD63GSmC6F_b\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n023742f0-1044-ffce-7c9e-9b141955aa85\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "caf4e1f95e8b0667b5a76996d6dc6ebd51faa993ed1bb4a56d9a9e5b872ace00",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-017",
+      "request": {
+        "body": "",
+        "device_id": "023742f0-1044-ffce-7c9e-9b141955aa85",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "_uwAdjVpZsEI7JmMvz1QPD63GSmC6F_b",
+        "path_and_query": "/api/v1/inference/load/preview?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-09-09T14:35:35Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?a=%00&b=11852875315203110454\n2026-04-19T02:08:09Z\n8rz0l034Es1VLULGiqeCWNVY7tdtuxLH\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n9bd9b73d-116d-874a-f686-f5cc13d7ff51\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "ee2cef2a0c9fb8838450394b98cd8af2105c745fb066aa527b42344c1339993a",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-018",
+      "request": {
+        "body": "",
+        "device_id": "9bd9b73d-116d-874a-f686-f5cc13d7ff51",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "8rz0l034Es1VLULGiqeCWNVY7tdtuxLH",
+        "path_and_query": "/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?a=%00&b=11852875315203110454",
+        "timestamp": "2026-04-19T02:08:09Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/telemetry/history?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-12-28T20:29:09Z\nDqnM7UGkPU88aT5yHqt5Mn6AylfOxZ0Z\n7c89e80a40875b185081b9d1c5ebf1ab2143e678efcc5979e622fb1eb29a3197\n0aea118f-34a0-85b4-4774-f68a1bb74df3\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "798050a83c2e9943ada2f32fb59c9baf194a9c4522b191c914d3c9e4cd5d0656",
+      "content_sha256": "7c89e80a40875b185081b9d1c5ebf1ab2143e678efcc5979e622fb1eb29a3197",
+      "name": "generated-019",
+      "request": {
+        "body": "{\"name\":\"é́́́\"}",
+        "device_id": "0aea118f-34a0-85b4-4774-f68a1bb74df3",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "DqnM7UGkPU88aT5yHqt5Mn6AylfOxZ0Z",
+        "path_and_query": "/api/v1/telemetry/history?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-12-28T20:29:09Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?cursor=zy06W5fHhtw\n2026-11-28T18:53:14Z\nPYMlu29tWfsfXngzsFrXblLNlDwTRPGl\nae8d285197f43c61d367d02f4b6261706a2012a7f4bfe7397821530e4addfbf6\n0206c47c-2f6f-d650-4349-5ca345f1dd5f\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "62054c9e1712b8e51404d060a6580730c4b7e2a87609602789b1000e4c61869d",
+      "content_sha256": "ae8d285197f43c61d367d02f4b6261706a2012a7f4bfe7397821530e4addfbf6",
+      "name": "generated-020",
+      "request": {
+        "body": "{\"name\":\"．．／\"}",
+        "device_id": "0206c47c-2f6f-d650-4349-5ca345f1dd5f",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "PYMlu29tWfsfXngzsFrXblLNlDwTRPGl",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?cursor=zy06W5fHhtw",
+        "timestamp": "2026-11-28T18:53:14Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/telemetry/history?name=%20\n2026-11-22T07:12:22Z\nmPIHW9-Skud67v0WD37s6jMvSmcEcTxx\n7c89e80a40875b185081b9d1c5ebf1ab2143e678efcc5979e622fb1eb29a3197\n19ca3285-a610-302c-fd65-87d449c1cd0b\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "48a8f6315d0ed5757813f08e909e70d2453364abe140e62cd5b658d7a4ab0fb4",
+      "content_sha256": "7c89e80a40875b185081b9d1c5ebf1ab2143e678efcc5979e622fb1eb29a3197",
+      "name": "generated-021",
+      "request": {
+        "body": "{\"name\":\"é́́́\"}",
+        "device_id": "19ca3285-a610-302c-fd65-87d449c1cd0b",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "mPIHW9-Skud67v0WD37s6jMvSmcEcTxx",
+        "path_and_query": "/api/v1/telemetry/history?name=%20",
+        "timestamp": "2026-11-22T07:12:22Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/v1/chat/completions?cursor=_IHgVFtDGFQ\n2026-08-01T15:20:50Z\nEeQjo2QodBMSZJ8_1yhVpkv9n4ntmel9\n2348ef1def6f69bb34c7bfe898b59692d064b99051b6946e85eac0afa16bb75c\n5eb71e7c-180b-8f48-7c13-a428b26c68f7\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "046a4161f3edfcc578126952aa695a51197958b412781fe90d0460508c172e34",
+      "content_sha256": "2348ef1def6f69bb34c7bfe898b59692d064b99051b6946e85eac0afa16bb75c",
+      "name": "generated-022",
+      "request": {
+        "body": "{\"name\":\"\\u0000\"}",
+        "device_id": "5eb71e7c-180b-8f48-7c13-a428b26c68f7",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "EeQjo2QodBMSZJ8_1yhVpkv9n4ntmel9",
+        "path_and_query": "/v1/chat/completions?cursor=_IHgVFtDGFQ",
+        "timestamp": "2026-08-01T15:20:50Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/telemetry?limit=100\n2026-10-07T23:00:30Z\noToVRzhwBvAnPKF2wDnJf5BbR4JncO2i\nb34f04028da314e6edd965995b2c6af0961d8771d22652a0aaceb54f2948ae19\nc3c0a77c-936e-a4c9-225b-ed2f5a972fa4\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "76d3117aa0d1cd1986064c8f0be3ec3e81b45a2322f6d039a4f7c7e50db22495",
+      "content_sha256": "b34f04028da314e6edd965995b2c6af0961d8771d22652a0aaceb54f2948ae19",
+      "name": "generated-023",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"%2e%2e%2f\",\"role\":\"user\"}]}",
+        "device_id": "c3c0a77c-936e-a4c9-225b-ed2f5a972fa4",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "oToVRzhwBvAnPKF2wDnJf5BbR4JncO2i",
+        "path_and_query": "/api/v1/telemetry?limit=100",
+        "timestamp": "2026-10-07T23:00:30Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-03-19T21:03:03Z\nYGixeWoWiZHNlrvp6QGezK4-ASa3M58r\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n2dcccf0b-2f77-d0de-80b7-eec7394b5a55\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "230571b65b7583b05dc4ae7d9681b17326b2a19ced4f8775381bf4c33f0338af",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-024",
+      "request": {
+        "body": "",
+        "device_id": "2dcccf0b-2f77-d0de-80b7-eec7394b5a55",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "YGixeWoWiZHNlrvp6QGezK4-ASa3M58r",
+        "path_and_query": "/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-03-19T21:03:03Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60\n2026-08-19T04:23:53Z\nUF9VFPkGKjPHkKPNgBs5Rujep1MbWEyd\nff136fef9ee7c2d548d02ca372f1390bb32bf740727bc900eae7ff50eb93505e\nb4e05c67-c74f-dbe8-3fea-b4297c914117\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "116de24ee11b752a966fd461acf048e9282a6beefcf9cb385722933c200ec8b6",
+      "content_sha256": "ff136fef9ee7c2d548d02ca372f1390bb32bf740727bc900eae7ff50eb93505e",
+      "name": "generated-025",
+      "request": {
+        "body": "{\"name\":\"‮drowssap\"}",
+        "device_id": "b4e05c67-c74f-dbe8-3fea-b4297c914117",
+        "method": "GET",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "UF9VFPkGKjPHkKPNgBs5Rujep1MbWEyd",
+        "path_and_query": "/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60",
+        "timestamp": "2026-08-19T04:23:53Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/telemetry/history?limit=100\n2026-07-12T18:49:18Z\nKTNZ5osgB5BwiLg9dplFn8kLrPaTbZ9C\nddd78705ce6260a677ce66517e00692b3e53a6625f0910fa62dd858e98ea8b7d\n8f1b76a9-8d18-3de9-d947-bbbdfffdfa44\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "1201c0077d555672789298b6f64b80596ab213858004f42e134f11b9dc24d6da",
+      "content_sha256": "ddd78705ce6260a677ce66517e00692b3e53a6625f0910fa62dd858e98ea8b7d",
+      "name": "generated-026",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"\\t\",\"role\":\"user\"}]}",
+        "device_id": "8f1b76a9-8d18-3de9-d947-bbbdfffdfa44",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "KTNZ5osgB5BwiLg9dplFn8kLrPaTbZ9C",
+        "path_and_query": "/api/v1/telemetry/history?limit=100",
+        "timestamp": "2026-07-12T18:49:18Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/settings/telemetry\n2026-11-20T18:38:31Z\nRniuMeOP5rGGbEaDLCndbEEQ8YxveAFL\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n5db7d3e5-1cca-f07e-fd1c-c3b715b84975\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "eb1480257d071ab9ae87d18813d3f53db67e78a074d07123a04c1bbf81a3615c",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-027",
+      "request": {
+        "body": "",
+        "device_id": "5db7d3e5-1cca-f07e-fd1c-c3b715b84975",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "RniuMeOP5rGGbEaDLCndbEEQ8YxveAFL",
+        "path_and_query": "/api/v1/settings/telemetry",
+        "timestamp": "2026-11-20T18:38:31Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-05-30T14:53:45Z\nNYr3ze9YcFM8Kp7X7fts5lhoCpwxfb-9\ndb9831c49459cad5a854f845607a9a919bace700118ed54397d48c541f8e47fd\nf7d4d0d6-c1a1-f888-53e5-d4446253a937\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "0e97562c74d408f8381be640327b14221c9f95acf070d64fa1aa8c5f88620734",
+      "content_sha256": "db9831c49459cad5a854f845607a9a919bace700118ed54397d48c541f8e47fd",
+      "name": "generated-028",
+      "request": {
+        "body": "{\"name\":\"\\\"\"}",
+        "device_id": "f7d4d0d6-c1a1-f888-53e5-d4446253a937",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "NYr3ze9YcFM8Kp7X7fts5lhoCpwxfb-9",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-05-30T14:53:45Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?cursor=YF0yVqUn2DA\n2026-11-16T06:12:30Z\nLxUFd9eYUb8kTwQDteag4nt0DhwWS-cJ\nce330bba2916e3e1df3222422f34f116d5b388fa077bfa29dc85429fdc2317e6\n5cc898d7-ae99-94e4-7386-0cb231f7c963\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "fad1e3ada816503f015c31f8b706f47e63c57c2cbc25e81f241c76be07663b93",
+      "content_sha256": "ce330bba2916e3e1df3222422f34f116d5b388fa077bfa29dc85429fdc2317e6",
+      "name": "generated-029",
+      "request": {
+        "body": "{\"name\":\"%2e%2e%2f\"}",
+        "device_id": "5cc898d7-ae99-94e4-7386-0cb231f7c963",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "LxUFd9eYUb8kTwQDteag4nt0DhwWS-cJ",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?cursor=YF0yVqUn2DA",
+        "timestamp": "2026-11-16T06:12:30Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?limit=100\n2026-07-26T20:30:02Z\nMfnmIwSw7AxxxX4jgpbza6Ql3XQ_-WAe\nbd146966b58d409f8891899e26ca82cad603865895b3add96b087652daf6ac2b\nc721d69e-c662-4895-a759-64c413692e80\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "8e0c7ffbed463dd1d33daaaa449d004ed45e7948637c3ebc9e4f7dfa311c75f8",
+      "content_sha256": "bd146966b58d409f8891899e26ca82cad603865895b3add96b087652daf6ac2b",
+      "name": "generated-030",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"ﬁ\",\"role\":\"user\"}]}",
+        "device_id": "c721d69e-c662-4895-a759-64c413692e80",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "MfnmIwSw7AxxxX4jgpbza6Ql3XQ_-WAe",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?limit=100",
+        "timestamp": "2026-07-26T20:30:02Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/models\n2027-01-07T14:42:59Z\nfQCna0BSQt1-017Vm6nlKGSykTbdO6FX\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\nd9d8f9ca-2b90-069a-6004-bd80a2a11061\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "d25e986f7eb41e7bb9c60630b9c656e05847c58f15bf8b7da4474d5b138bd9a9",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-031",
+      "request": {
+        "body": "",
+        "device_id": "d9d8f9ca-2b90-069a-6004-bd80a2a11061",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "fQCna0BSQt1-017Vm6nlKGSykTbdO6FX",
+        "path_and_query": "/api/v1/models",
+        "timestamp": "2027-01-07T14:42:59Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/inference/load?a=%22&b=9799550388763095682\n2027-02-06T14:31:01Z\nQFbAXPTRoCmV9V4NYpH_hJTVGMigp-eD\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n7fdd46f2-2404-3056-afc1-bfd50a2caa6d\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "8d590204e59582a91ea55a6de0be0464349a3531638f64e387b807b3ae589316",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-032",
+      "request": {
+        "body": "",
+        "device_id": "7fdd46f2-2404-3056-afc1-bfd50a2caa6d",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "QFbAXPTRoCmV9V4NYpH_hJTVGMigp-eD",
+        "path_and_query": "/api/v1/inference/load?a=%22&b=9799550388763095682",
+        "timestamp": "2027-02-06T14:31:01Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/v1/chat/completions?a=%E2%80%AEdrowssap&b=17104824109334470590\n2026-10-10T21:02:41Z\n4q9gg06RV7Vk5GYAqc-3IHS_7r3yY5Hv\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n00edc46b-dc68-b952-ec75-a02ede79c2b9\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "13924597329c179e3cf609a0a63ecab41c80a8c114e4f685b21dba41730f5bb8",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-033",
+      "request": {
+        "body": "",
+        "device_id": "00edc46b-dc68-b952-ec75-a02ede79c2b9",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "4q9gg06RV7Vk5GYAqc-3IHS_7r3yY5Hv",
+        "path_and_query": "/v1/chat/completions?a=%E2%80%AEdrowssap&b=17104824109334470590",
+        "timestamp": "2026-10-10T21:02:41Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2027-01-29T19:37:33Z\nhs6BsYrRKXczJfWJmADUOkF9NMXWl5WB\nf282e049bdbea7db109a91b8214db3959791174a82d566e7cc680d56013d666b\n00060a04-334c-c7fc-4191-520a48c8ac9b\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "1c55232597bf102099704b7f64a3d877353b91d63bd3a1592384994e0de056c4",
+      "content_sha256": "f282e049bdbea7db109a91b8214db3959791174a82d566e7cc680d56013d666b",
+      "name": "generated-034",
+      "request": {
+        "body": "{\"name\":\"../../etc/shadow\"}",
+        "device_id": "00060a04-334c-c7fc-4191-520a48c8ac9b",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "hs6BsYrRKXczJfWJmADUOkF9NMXWl5WB",
+        "path_and_query": "/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2027-01-29T19:37:33Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/inference/load?name=%0A\n2026-03-29T09:17:22Z\n23TqdCrglaOS5p36Zvyr9n9mH_WJTsWN\neea101f619ec736d15c1b32790c839601f63f333e376a2e4165943b40a3b7077\nd240540e-0552-2e18-21bd-af559faf8387\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "bd4746ca20fa8c682fb59b6c3679f10761d9922485ce2023d21a428b0e8b4a3d",
+      "content_sha256": "eea101f619ec736d15c1b32790c839601f63f333e376a2e4165943b40a3b7077",
+      "name": "generated-035",
+      "request": {
+        "body": "{\"name\":\"﷽\"}",
+        "device_id": "d240540e-0552-2e18-21bd-af559faf8387",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "23TqdCrglaOS5p36Zvyr9n9mH_WJTsWN",
+        "path_and_query": "/api/v1/inference/load?name=%0A",
+        "timestamp": "2026-03-29T09:17:22Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/v1/chat/completions?cursor=Y6SDfHUyD8A\n2026-11-22T00:20:46Z\n-_YuE5HEhg-h4lYRkC-C8mBDBi3wkZPZ\ndf4990ccce0a4f16dea25ee73df00a3cb285171b39f6f1ea76ae9ac993189b95\ne63169ae-f2a4-2574-553f-f3ab495aa2b3\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "fae606d8b689371c71d700151041d6c8b1f1c97faef40428500c84d0a243501a",
+      "content_sha256": "df4990ccce0a4f16dea25ee73df00a3cb285171b39f6f1ea76ae9ac993189b95",
+      "name": "generated-036",
+      "request": {
+        "body": "{\"name\":\"😀🏻‍♀\"}",
+        "device_id": "e63169ae-f2a4-2574-553f-f3ab495aa2b3",
+        "method": "GET",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "-_YuE5HEhg-h4lYRkC-C8mBDBi3wkZPZ",
+        "path_and_query": "/v1/chat/completions?cursor=Y6SDfHUyD8A",
+        "timestamp": "2026-11-22T00:20:46Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/telemetry/history?limit=100\n2026-11-04T19:43:22Z\ntyD414MP3pyp7vMkwW0Guz810j18v3Uu\nbd146966b58d409f8891899e26ca82cad603865895b3add96b087652daf6ac2b\ncf7fd47f-bbf6-ec65-79bb-bad913de2a10\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "cccf1e3548418a7c34633082d95d32712000f927661213af5fedbd84f6453d64",
+      "content_sha256": "bd146966b58d409f8891899e26ca82cad603865895b3add96b087652daf6ac2b",
+      "name": "generated-037",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"ﬁ\",\"role\":\"user\"}]}",
+        "device_id": "cf7fd47f-bbf6-ec65-79bb-bad913de2a10",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "tyD414MP3pyp7vMkwW0Guz810j18v3Uu",
+        "path_and_query": "/api/v1/telemetry/history?limit=100",
+        "timestamp": "2026-11-04T19:43:22Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/telemetry?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-11-17T05:01:55Z\n3qvEsmtT8K1gZCfR6j-iuMSY1EsLaGOn\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\nbb70590b-5663-deaa-37c2-dc75c35dfb31\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "edd3587a1e9354fbc4532bab58108d3ef2b3f138212d0e0a8e9c18352996b8e7",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-038",
+      "request": {
+        "body": "",
+        "device_id": "bb70590b-5663-deaa-37c2-dc75c35dfb31",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "3qvEsmtT8K1gZCfR6j-iuMSY1EsLaGOn",
+        "path_and_query": "/api/v1/telemetry?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-11-17T05:01:55Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/inference/load/preview\n2026-04-07T13:13:25Z\nv_ujOWohCi87idLA5J6ckvBADUhP73T5\nb44b3ee9ac68c170ca569639380baa017819b88068ee46488cfe16134ab770a3\n2c0e31ba-d073-9814-1466-56b067cf28d3\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "84cf39b005724422d4a52a5ecd0ac016e5ea4a39f01e55ab1165c7cecb9ea422",
+      "content_sha256": "b44b3ee9ac68c170ca569639380baa017819b88068ee46488cfe16134ab770a3",
+      "name": "generated-039",
+      "request": {
+        "body": "{\"name\":\"\\\\\"}",
+        "device_id": "2c0e31ba-d073-9814-1466-56b067cf28d3",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "v_ujOWohCi87idLA5J6ckvBADUhP73T5",
+        "path_and_query": "/api/v1/inference/load/preview",
+        "timestamp": "2026-04-07T13:13:25Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?name=%EF%BC%8E%EF%BC%8E%EF%BC%8F\n2026-11-22T06:13:14Z\nH4Ut3ICH8Nt-bywkM0B8zqs3dRTDjaOF\n2348ef1def6f69bb34c7bfe898b59692d064b99051b6946e85eac0afa16bb75c\nd3d3bd85-43d5-3ab0-7411-c20a1470223f\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "12d2c669389a3540080c3a0d22ffb3ef066dc7069dbd98f7d4b1c64251c5837a",
+      "content_sha256": "2348ef1def6f69bb34c7bfe898b59692d064b99051b6946e85eac0afa16bb75c",
+      "name": "generated-040",
+      "request": {
+        "body": "{\"name\":\"\\u0000\"}",
+        "device_id": "d3d3bd85-43d5-3ab0-7411-c20a1470223f",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "H4Ut3ICH8Nt-bywkM0B8zqs3dRTDjaOF",
+        "path_and_query": "/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?name=%EF%BC%8E%EF%BC%8E%EF%BC%8F",
+        "timestamp": "2026-11-22T06:13:14Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?limit=100\n2026-06-09T10:21:42Z\nkU0sMDCu51ikGPURESLTx6DxPR6YaXRK\n08d887451805b7fc420be57635d3ccb0770c3da13926eda91c55d9811dfcac95\n3c976464-b9b3-a851-25d4-4f19bfa1468c\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "5242d3d0a6a49540afa7c99a8d88d8506fa877264fe55e0bcdeb363a8904cd63",
+      "content_sha256": "08d887451805b7fc420be57635d3ccb0770c3da13926eda91c55d9811dfcac95",
+      "name": "generated-041",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"\\n\",\"role\":\"user\"}]}",
+        "device_id": "3c976464-b9b3-a851-25d4-4f19bfa1468c",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "kU0sMDCu51ikGPURESLTx6DxPR6YaXRK",
+        "path_and_query": "/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?limit=100",
+        "timestamp": "2026-06-09T10:21:42Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-03-11T12:23:43Z\nKXFMSHBbZhk8liHe56vatLFX4jOs4D7z\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n6b63bf43-617c-1f06-14e2-4a35841aef5d\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "da7bfc94cc5e9ed145a8e20bed936df4a7159f2f441371b493fc380f0b4e8254",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-042",
+      "request": {
+        "body": "",
+        "device_id": "6b63bf43-617c-1f06-14e2-4a35841aef5d",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "KXFMSHBbZhk8liHe56vatLFX4jOs4D7z",
+        "path_and_query": "/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-03-11T12:23:43Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/status?a=%F0%9F%98%80%F0%9F%8F%BB%E2%80%8D%E2%99%80&b=7577222808312271982\n2026-09-19T03:32:49Z\nB1U9pM2laqW7fONtO2wbUGpdYUSwhP5f\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n08f523c3-3a44-5902-4643-604683bd24a9\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "8f025b091475cae63dd1a8954680469f1db28fb91ec143e45d147b321534e7e1",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-043",
+      "request": {
+        "body": "",
+        "device_id": "08f523c3-3a44-5902-4643-604683bd24a9",
+        "method": "GET",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "B1U9pM2laqW7fONtO2wbUGpdYUSwhP5f",
+        "path_and_query": "/api/v1/status?a=%F0%9F%98%80%F0%9F%8F%BB%E2%80%8D%E2%99%80&b=7577222808312271982",
+        "timestamp": "2026-09-19T03:32:49Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/telemetry/history?a=%22&b=9868533763477953002\n2026-07-01T16:57:17Z\nQ4gFy5CNZXFafyJEHFplLH-rWuq-GB4L\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\nd2a97bf4-18f3-3e3e-087c-22bba8203435\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "9634e9840445d99b354d24957514a054902c4b67574b3ea0b1928314f8bf4927",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-044",
+      "request": {
+        "body": "",
+        "device_id": "d2a97bf4-18f3-3e3e-087c-22bba8203435",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "Q4gFy5CNZXFafyJEHFplLH-rWuq-GB4L",
+        "path_and_query": "/api/v1/telemetry/history?a=%22&b=9868533763477953002",
+        "timestamp": "2026-07-01T16:57:17Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes\n2027-02-18T13:20:57Z\nXFkt44WV5RMrPgxZx3QypjO-5hJuksJ9\n6802ef0665468da427978f9109f14a3d6382ae7994aa06ef3bbca431a061dc09\n14fd52b8-8470-b448-dbb9-6b68768ee9f7\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "f18e63aabc5a00a41e3784ea210351da8f2b1bc2895c5f54fdc441fa5d1cb997",
+      "content_sha256": "6802ef0665468da427978f9109f14a3d6382ae7994aa06ef3bbca431a061dc09",
+      "name": "generated-045",
+      "request": {
+        "body": "{\"name\":\"ﬁ\"}",
+        "device_id": "14fd52b8-8470-b448-dbb9-6b68768ee9f7",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "XFkt44WV5RMrPgxZx3QypjO-5hJuksJ9",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes",
+        "timestamp": "2027-02-18T13:20:57Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?limit=100\n2026-06-06T16:42:54Z\nYdGXq7BKy_DN1bpmAmlqf1BeUetfrzqi\nfc373daec5286bd72ba3ca22a6744f9d5233a14c04ec30a1c88e28029e6fba04\na0961335-ef95-2dc9-d4e8-f995685444a4\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "580e190d92d6185074d6d17f6b7826f52b11dcbda01043d61a1253d257b09a03",
+      "content_sha256": "fc373daec5286bd72ba3ca22a6744f9d5233a14c04ec30a1c88e28029e6fba04",
+      "name": "generated-046",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"😀🏻‍♀\",\"role\":\"user\"}]}",
+        "device_id": "a0961335-ef95-2dc9-d4e8-f995685444a4",
+        "method": "GET",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "YdGXq7BKy_DN1bpmAmlqf1BeUetfrzqi",
+        "path_and_query": "/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?limit=100",
+        "timestamp": "2026-06-06T16:42:54Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/telemetry?a=%0A&b=16479034915059553228\n2026-08-25T23:47:19Z\nIR44oyL-cCs5Avl7ZM2N3kClxvkjIJNV\n8244b26f010dda1a79ced42e6745c77e8bf5a3a943cecdacc82502828ebce796\n835a155b-49b1-9240-dd51-d71f226bf68f\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "73742b05a6fcc76db35815f97782459d5aa9cd438849f4c1fee108a4ae0b6f27",
+      "content_sha256": "8244b26f010dda1a79ced42e6745c77e8bf5a3a943cecdacc82502828ebce796",
+      "name": "generated-047",
+      "request": {
+        "body": "{\"name\":\"\\n\"}",
+        "device_id": "835a155b-49b1-9240-dd51-d71f226bf68f",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "IR44oyL-cCs5Avl7ZM2N3kClxvkjIJNV",
+        "path_and_query": "/api/v1/telemetry?a=%0A&b=16479034915059553228",
+        "timestamp": "2026-08-25T23:47:19Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/settings/telemetry?cursor=pdFMti6DgOg\n2026-06-04T01:09:26Z\n2Bk-L0iAQhegKq8Woh-IWqqq9Y4v-R8h\nae8d285197f43c61d367d02f4b6261706a2012a7f4bfe7397821530e4addfbf6\n17cafd53-e6d8-591c-eb90-93100cf00f3b\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "19936a7896dcc93f1d60964e98893a8f0f5cdfc4ec1dba8d30bc1afb278b77eb",
+      "content_sha256": "ae8d285197f43c61d367d02f4b6261706a2012a7f4bfe7397821530e4addfbf6",
+      "name": "generated-048",
+      "request": {
+        "body": "{\"name\":\"．．／\"}",
+        "device_id": "17cafd53-e6d8-591c-eb90-93100cf00f3b",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "2Bk-L0iAQhegKq8Woh-IWqqq9Y4v-R8h",
+        "path_and_query": "/api/v1/settings/telemetry?cursor=pdFMti6DgOg",
+        "timestamp": "2026-06-04T01:09:26Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?cursor=z8z3MUvBj0Q\n2026-06-06T12:49:06Z\nTfPw4uEUbEOsQFXXkLLGFkyGl-Xp5z0t\nae8d285197f43c61d367d02f4b6261706a2012a7f4bfe7397821530e4addfbf6\n4e7cac9b-c397-9538-c0e1-8b4705ab8427\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "9004030b90fd1fcfd53b977b832d44b2ae9d25e27810e63b7a5600782bab51f7",
+      "content_sha256": "ae8d285197f43c61d367d02f4b6261706a2012a7f4bfe7397821530e4addfbf6",
+      "name": "generated-049",
+      "request": {
+        "body": "{\"name\":\"．．／\"}",
+        "device_id": "4e7cac9b-c397-9538-c0e1-8b4705ab8427",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "TfPw4uEUbEOsQFXXkLLGFkyGl-Xp5z0t",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?cursor=z8z3MUvBj0Q",
+        "timestamp": "2026-06-06T12:49:06Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/inference/load/preview?name=%00\n2027-02-21T02:07:58Z\npMSN_ewGuq-0XGVSZw4jEu2wq-jZw5l5\n54833dc5e8f39a2ef3954c865ea73caf7949d2049270df814db4b6849bb463ae\n8d7b5622-8759-8294-d0bb-1e971a0ee153\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "b39fc6cc6e2829f0a6a844cd9ce8d2f3ca3a4f720889f3ed4f1e2e369674ce5c",
+      "content_sha256": "54833dc5e8f39a2ef3954c865ea73caf7949d2049270df814db4b6849bb463ae",
+      "name": "generated-050",
+      "request": {
+        "body": "{\"name\":\" \"}",
+        "device_id": "8d7b5622-8759-8294-d0bb-1e971a0ee153",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "pMSN_ewGuq-0XGVSZw4jEu2wq-jZw5l5",
+        "path_and_query": "/api/v1/inference/load/preview?name=%00",
+        "timestamp": "2027-02-21T02:07:58Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/telemetry/history?limit=100\n2026-05-28T14:40:58Z\nlBs7eIrBf7zh6JUcgjU5W3fxPRqoLbtO\n72402de9a24ee51a017ddada229ee62ccb0da1c39c8d2d880f49a6bd134175d5\n8b6d2d8c-63c3-2005-4d89-859e6c7f9d30\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "7c237f662a5fb194729a58712dc31e63d07be6352383068686e55c7809242349",
+      "content_sha256": "72402de9a24ee51a017ddada229ee62ccb0da1c39c8d2d880f49a6bd134175d5",
+      "name": "generated-051",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"İ\",\"role\":\"user\"}]}",
+        "device_id": "8b6d2d8c-63c3-2005-4d89-859e6c7f9d30",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "lBs7eIrBf7zh6JUcgjU5W3fxPRqoLbtO",
+        "path_and_query": "/api/v1/telemetry/history?limit=100",
+        "timestamp": "2026-05-28T14:40:58Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19\n2026-05-11T15:59:31Z\n-UTx09CTuE35ThxuCp4Z2NnSmsRuvDRH\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n09665280-4dbe-eaca-f5f3-5df2f802fcd1\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "51f2634f5f36ab51d9163a6070df3e5b7b15ccbec0dd99a5cb14215183cb0749",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-052",
+      "request": {
+        "body": "",
+        "device_id": "09665280-4dbe-eaca-f5f3-5df2f802fcd1",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "-UTx09CTuE35ThxuCp4Z2NnSmsRuvDRH",
+        "path_and_query": "/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19",
+        "timestamp": "2026-05-11T15:59:31Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/models?a=%C4%B0&b=3763692531189992626\n2027-01-12T04:46:13Z\nc2fkl9Q3ypk0YIH6ScUFNGQWZnIj4jdz\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n4ade83b3-e99c-4d86-534d-9a8e79549bdd\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "f8c51dd64f42e28eae2d89aa0858460d15438b48a917b70b2ef00c4526312a30",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-053",
+      "request": {
+        "body": "",
+        "device_id": "4ade83b3-e99c-4d86-534d-9a8e79549bdd",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "c2fkl9Q3ypk0YIH6ScUFNGQWZnIj4jdz",
+        "path_and_query": "/api/v1/models?a=%C4%B0&b=3763692531189992626",
+        "timestamp": "2027-01-12T04:46:13Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/telemetry/history\n2026-11-10T10:20:17Z\n1_P5EAAY83vnLbLIlytS7ulWsGv0rycl\nae8d285197f43c61d367d02f4b6261706a2012a7f4bfe7397821530e4addfbf6\ne40f9bed-a325-bdd0-6c3a-8f1598440edf\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "a5ed1feda997a5d4d34bdc31c24e7b6a042951e3bfc3bc7f7a93500b1e7bb6df",
+      "content_sha256": "ae8d285197f43c61d367d02f4b6261706a2012a7f4bfe7397821530e4addfbf6",
+      "name": "generated-054",
+      "request": {
+        "body": "{\"name\":\"．．／\"}",
+        "device_id": "e40f9bed-a325-bdd0-6c3a-8f1598440edf",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "1_P5EAAY83vnLbLIlytS7ulWsGv0rycl",
+        "path_and_query": "/api/v1/telemetry/history",
+        "timestamp": "2026-11-10T10:20:17Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/settings/telemetry?cursor=M4dvWvRubng\n2026-04-18T04:08:54Z\nkD8F6KN2dGcTUd8WyuwQagBGHBLEvPnx\ndf4990ccce0a4f16dea25ee73df00a3cb285171b39f6f1ea76ae9ac993189b95\n724cf9f3-51e2-ffac-d87e-0f25d840c68b\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "0afb2dc1e07197f29e7749577a2b5c25719db540d4d29cb77ff8c78aa9e31620",
+      "content_sha256": "df4990ccce0a4f16dea25ee73df00a3cb285171b39f6f1ea76ae9ac993189b95",
+      "name": "generated-055",
+      "request": {
+        "body": "{\"name\":\"😀🏻‍♀\"}",
+        "device_id": "724cf9f3-51e2-ffac-d87e-0f25d840c68b",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "kD8F6KN2dGcTUd8WyuwQagBGHBLEvPnx",
+        "path_and_query": "/api/v1/settings/telemetry?cursor=M4dvWvRubng",
+        "timestamp": "2026-04-18T04:08:54Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/telemetry/history?limit=100\n2026-06-25T02:47:46Z\nOL9102xhV9TgQo9sXXodk-Dca5zVGaEm\n08d887451805b7fc420be57635d3ccb0770c3da13926eda91c55d9811dfcac95\n15d26338-36f8-aefd-bfd0-88cff52ec6c8\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "488706f739490368bc349f237b7391a5e35ce0686592371b93d08a2413678d0c",
+      "content_sha256": "08d887451805b7fc420be57635d3ccb0770c3da13926eda91c55d9811dfcac95",
+      "name": "generated-056",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"\\n\",\"role\":\"user\"}]}",
+        "device_id": "15d26338-36f8-aefd-bfd0-88cff52ec6c8",
+        "method": "GET",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "OL9102xhV9TgQo9sXXodk-Dca5zVGaEm",
+        "path_and_query": "/api/v1/telemetry/history?limit=100",
+        "timestamp": "2026-06-25T02:47:46Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes\n2026-03-29T01:06:35Z\nJ6ZkNVqEPkUiVjhdNbOucMGdpJNStrr_\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n5eb6ce1e-b2b5-e122-2fa3-ef38bcd9f249\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "0f3a585e8b497513bf17acbed12a358b499514ad8adb9d8543330479b18aa68c",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-057",
+      "request": {
+        "body": "",
+        "device_id": "5eb6ce1e-b2b5-e122-2fa3-ef38bcd9f249",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "J6ZkNVqEPkUiVjhdNbOucMGdpJNStrr_",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes",
+        "timestamp": "2026-03-29T01:06:35Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/telemetry?a=%5C&b=8917693666210842122\n2026-03-21T07:36:45Z\nlvOGS__jBxGYrJIFu7YuTKEO6MPZoVir\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n47b1b22d-a347-ec5e-715b-f913d404afd5\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "cd323f45fcda7375402d44ce6a51d32d914a07a9cf35e19d5efb4dfabf546a34",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-058",
+      "request": {
+        "body": "",
+        "device_id": "47b1b22d-a347-ec5e-715b-f913d404afd5",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "lvOGS__jBxGYrJIFu7YuTKEO6MPZoVir",
+        "path_and_query": "/api/v1/telemetry?a=%5C&b=8917693666210842122",
+        "timestamp": "2026-03-21T07:36:45Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/settings/telemetry?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2027-02-14T00:56:57Z\nDRo2eqfek7Nsa0Mx__xExpDZylPsG9Id\n58ce5a0d5582e54e2c84e7841d40a53191a0555e54f07ce4f86cceccd256e4da\nbaf2f00c-2c68-d368-25e8-f8b8b23d4297\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "4ec2bccc32b10a79121ff130aeca28bcedf458c2184f8e376b45c3c7dbe380ff",
+      "content_sha256": "58ce5a0d5582e54e2c84e7841d40a53191a0555e54f07ce4f86cceccd256e4da",
+      "name": "generated-059",
+      "request": {
+        "body": "{\"name\":\"‍‍‍\"}",
+        "device_id": "baf2f00c-2c68-d368-25e8-f8b8b23d4297",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "DRo2eqfek7Nsa0Mx__xExpDZylPsG9Id",
+        "path_and_query": "/api/v1/settings/telemetry?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2027-02-14T00:56:57Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/settings/telemetry?name=%EF%BC%8E%EF%BC%8E%EF%BC%8F\n2026-03-08T04:29:34Z\nOFt9_b-g9x_809GqilZSwrsIigPejEtp\neea101f619ec736d15c1b32790c839601f63f333e376a2e4165943b40a3b7077\n76122d14-bf96-d9c4-fba0-16176a0804c3\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "848a1afbe13f6bb89c9d4b16a877562947661edec3f9e70f38ecdb64e620c8d3",
+      "content_sha256": "eea101f619ec736d15c1b32790c839601f63f333e376a2e4165943b40a3b7077",
+      "name": "generated-060",
+      "request": {
+        "body": "{\"name\":\"﷽\"}",
+        "device_id": "76122d14-bf96-d9c4-fba0-16176a0804c3",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "OFt9_b-g9x_809GqilZSwrsIigPejEtp",
+        "path_and_query": "/api/v1/settings/telemetry?name=%EF%BC%8E%EF%BC%8E%EF%BC%8F",
+        "timestamp": "2026-03-08T04:29:34Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/status?cursor=lASVjgugLOw\n2026-07-22T06:31:06Z\nospkR640essFRrYzW7LL_sUuZEnr3l71\n2348ef1def6f69bb34c7bfe898b59692d064b99051b6946e85eac0afa16bb75c\nbe174a2f-bf32-bd60-4a43-585e78256b2f\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "57b020a5dc67023dd772331bf10660a367f689bc9c999a76da0fcb61600005d9",
+      "content_sha256": "2348ef1def6f69bb34c7bfe898b59692d064b99051b6946e85eac0afa16bb75c",
+      "name": "generated-061",
+      "request": {
+        "body": "{\"name\":\"\\u0000\"}",
+        "device_id": "be174a2f-bf32-bd60-4a43-585e78256b2f",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "ospkR640essFRrYzW7LL_sUuZEnr3l71",
+        "path_and_query": "/api/v1/status?cursor=lASVjgugLOw",
+        "timestamp": "2026-07-22T06:31:06Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/inference/load/preview?cursor=3boUNA6QsAg\n2026-03-31T04:58:14Z\nfh7bwCLSarfYO1fc6dgMeimDPTu7lDjB\n7c89e80a40875b185081b9d1c5ebf1ab2143e678efcc5979e622fb1eb29a3197\n6722fd18-ccf2-3a3c-3013-e558ddcb81db\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "b164665f9100fb766a25defba2a2c6b066fe769dc1a0679efb78a9a4f96fe7d9",
+      "content_sha256": "7c89e80a40875b185081b9d1c5ebf1ab2143e678efcc5979e622fb1eb29a3197",
+      "name": "generated-062",
+      "request": {
+        "body": "{\"name\":\"é́́́\"}",
+        "device_id": "6722fd18-ccf2-3a3c-3013-e558ddcb81db",
+        "method": "GET",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "fh7bwCLSarfYO1fc6dgMeimDPTu7lDjB",
+        "path_and_query": "/api/v1/inference/load/preview?cursor=3boUNA6QsAg",
+        "timestamp": "2026-03-31T04:58:14Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/telemetry?cursor=I1q7GEjcNGQ\n2026-03-18T02:45:54Z\nDNW4NTJOUuMedrbmTGmwNqH3LTRr1ETN\nf282e049bdbea7db109a91b8214db3959791174a82d566e7cc680d56013d666b\n8e2bb236-212a-4c58-1781-d13756ee94c7\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "7eea792e306842110f56c4c00390992d01c08f6933114d0026f22b69a84560ab",
+      "content_sha256": "f282e049bdbea7db109a91b8214db3959791174a82d566e7cc680d56013d666b",
+      "name": "generated-063",
+      "request": {
+        "body": "{\"name\":\"../../etc/shadow\"}",
+        "device_id": "8e2bb236-212a-4c58-1781-d13756ee94c7",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "DNW4NTJOUuMedrbmTGmwNqH3LTRr1ETN",
+        "path_and_query": "/api/v1/telemetry?cursor=I1q7GEjcNGQ",
+        "timestamp": "2026-03-18T02:45:54Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/inference/load?name=%09\n2026-12-22T14:03:10Z\n6g6OX5lB_094SedssqSTMuAqc4CHdS8Z\n58ce5a0d5582e54e2c84e7841d40a53191a0555e54f07ce4f86cceccd256e4da\nec3448de-beeb-2fb4-c472-af0d672d2ff3\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "9161e4178fef92c49e5b58959c4d5dce03b595cd1e341e19bffd564ad7046db7",
+      "content_sha256": "58ce5a0d5582e54e2c84e7841d40a53191a0555e54f07ce4f86cceccd256e4da",
+      "name": "generated-064",
+      "request": {
+        "body": "{\"name\":\"‍‍‍\"}",
+        "device_id": "ec3448de-beeb-2fb4-c472-af0d672d2ff3",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "6g6OX5lB_094SedssqSTMuAqc4CHdS8Z",
+        "path_and_query": "/api/v1/inference/load?name=%09",
+        "timestamp": "2026-12-22T14:03:10Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/inference/load?name=%27%3B%20DROP%20TABLE%20devices%3B%20--\n2026-11-13T11:46:34Z\nXjoIAaJ5e_tvUlwFeFrRbntyCoi6SeOl\ndb9831c49459cad5a854f845607a9a919bace700118ed54397d48c541f8e47fd\nfe58ce89-d95c-6050-3534-49facefc1f5f\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "80d6cd691faf665a7461caafd2ea22d5578b52fd454d42a624ceb04743040191",
+      "content_sha256": "db9831c49459cad5a854f845607a9a919bace700118ed54397d48c541f8e47fd",
+      "name": "generated-065",
+      "request": {
+        "body": "{\"name\":\"\\\"\"}",
+        "device_id": "fe58ce89-d95c-6050-3534-49facefc1f5f",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "XjoIAaJ5e_tvUlwFeFrRbntyCoi6SeOl",
+        "path_and_query": "/api/v1/inference/load?name=%27%3B%20DROP%20TABLE%20devices%3B%20--",
+        "timestamp": "2026-11-13T11:46:34Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/inference/load?cursor=2rMzVDix4Pg\n2026-10-26T15:18:46Z\nPP8DVr2fFOf7Qoo29i_G6jRjg0gvrY5x\nb44b3ee9ac68c170ca569639380baa017819b88068ee46488cfe16134ab770a3\n35d66300-e658-9a2c-a22b-be0035126f0b\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "6a840a6a9e28659f7126a4bab34c2393d6905b027af411d310099e3ac8940006",
+      "content_sha256": "b44b3ee9ac68c170ca569639380baa017819b88068ee46488cfe16134ab770a3",
+      "name": "generated-066",
+      "request": {
+        "body": "{\"name\":\"\\\\\"}",
+        "device_id": "35d66300-e658-9a2c-a22b-be0035126f0b",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "PP8DVr2fFOf7Qoo29i_G6jRjg0gvrY5x",
+        "path_and_query": "/api/v1/inference/load?cursor=2rMzVDix4Pg",
+        "timestamp": "2026-10-26T15:18:46Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/inference/load/preview?name=%24%7Bjndi%3Aldap%3A%2F%2Fexample.invalid%2Fa%7D\n2026-09-14T13:04:18Z\nPdoXSBInVhOKNc_1aRQPppGk3kPHT5t9\n2348ef1def6f69bb34c7bfe898b59692d064b99051b6946e85eac0afa16bb75c\n08a149c1-1a49-d948-5f04-49a010156af7\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "e0d92116265390e6f67816c622aa51a888138ebc6e521395152f06764935faa7",
+      "content_sha256": "2348ef1def6f69bb34c7bfe898b59692d064b99051b6946e85eac0afa16bb75c",
+      "name": "generated-067",
+      "request": {
+        "body": "{\"name\":\"\\u0000\"}",
+        "device_id": "08a149c1-1a49-d948-5f04-49a010156af7",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "PdoXSBInVhOKNc_1aRQPppGk3kPHT5t9",
+        "path_and_query": "/api/v1/inference/load/preview?name=%24%7Bjndi%3Aldap%3A%2F%2Fexample.invalid%2Fa%7D",
+        "timestamp": "2026-09-14T13:04:18Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60?name=%E2%80%AEdrowssap\n2026-11-14T12:16:14Z\nxublhJp9C38sorf2jQGHosMM52uMP7bJ\n158062d55700cfabe1f6a162f80011cdefeeb7a4230c9f892ab2aa3a481ed1b0\nb257c4a8-4945-59a4-1b3a-d73b1c849f23\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "7dd527749d8174cf0374706d182e1e9f8ffe71911dcfeccfcee66f16f7d3be57",
+      "content_sha256": "158062d55700cfabe1f6a162f80011cdefeeb7a4230c9f892ab2aa3a481ed1b0",
+      "name": "generated-068",
+      "request": {
+        "body": "{\"name\":\"'; DROP TABLE devices; --\"}",
+        "device_id": "b257c4a8-4945-59a4-1b3a-d73b1c849f23",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "xublhJp9C38sorf2jQGHosMM52uMP7bJ",
+        "path_and_query": "/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60?name=%E2%80%AEdrowssap",
+        "timestamp": "2026-11-14T12:16:14Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/status?cursor=LbWcyNd3CMw\n2026-10-23T18:18:50Z\nU3FocZNtQSv2kN4XxvdK3kmkSpAaOcxV\n54833dc5e8f39a2ef3954c865ea73caf7949d2049270df814db4b6849bb463ae\n465b6f14-6967-9740-a2fd-d2d1eae5d78f\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "6e991d734fe157d03102530a227e5eb5b88e10c2e657309f62716a72426ba7a3",
+      "content_sha256": "54833dc5e8f39a2ef3954c865ea73caf7949d2049270df814db4b6849bb463ae",
+      "name": "generated-069",
+      "request": {
+        "body": "{\"name\":\" \"}",
+        "device_id": "465b6f14-6967-9740-a2fd-d2d1eae5d78f",
+        "method": "GET",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "U3FocZNtQSv2kN4XxvdK3kmkSpAaOcxV",
+        "path_and_query": "/api/v1/status?cursor=LbWcyNd3CMw",
+        "timestamp": "2026-10-23T18:18:50Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/telemetry/history?cursor=OB2zcOkrJeg\n2026-11-20T10:58:14Z\nflJZKkvTQxdpN7R3-jW1Wls49aHdMggh\n2348ef1def6f69bb34c7bfe898b59692d064b99051b6946e85eac0afa16bb75c\ndfc07004-3270-4e1c-90e2-5ebb5231203b\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "92b1346cffd454fefafae4a3592a7e7a516e2cfb8e8c350b2dea2d2bb9785723",
+      "content_sha256": "2348ef1def6f69bb34c7bfe898b59692d064b99051b6946e85eac0afa16bb75c",
+      "name": "generated-070",
+      "request": {
+        "body": "{\"name\":\"\\u0000\"}",
+        "device_id": "dfc07004-3270-4e1c-90e2-5ebb5231203b",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "flJZKkvTQxdpN7R3-jW1Wls49aHdMggh",
+        "path_and_query": "/api/v1/telemetry/history?cursor=OB2zcOkrJeg",
+        "timestamp": "2026-11-20T10:58:14Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/v1/chat/completions?limit=100\n2026-07-30T17:58:26Z\ndxccG3S5JETRSSG0oISdQ8rIUIdkumMW\nb4a413ce2a7e1fc84aced45cc33a83113e7123279f27c4b562823e501008c976\n6f0e2708-5720-d62d-a9bd-7aca969e7a38\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "f59d5695f338f4cc3f40aae896fe6b5183239c938bd23436cdb8dd2b5b91ee19",
+      "content_sha256": "b4a413ce2a7e1fc84aced45cc33a83113e7123279f27c4b562823e501008c976",
+      "name": "generated-071",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"‮drowssap\",\"role\":\"user\"}]}",
+        "device_id": "6f0e2708-5720-d62d-a9bd-7aca969e7a38",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "dxccG3S5JETRSSG0oISdQ8rIUIdkumMW",
+        "path_and_query": "/v1/chat/completions?limit=100",
+        "timestamp": "2026-07-30T17:58:26Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-08-12T18:15:39Z\nPZmXR4Q3u3VGboVQskt_4JmDHWmwfRuv\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\nc9519c6d-1efc-3012-9a85-9f43d80ee279\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "b2b0625481dd71c6aeccaa68e0c00ea9bdadfa918a5c6d129065aa169c17e872",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-072",
+      "request": {
+        "body": "",
+        "device_id": "c9519c6d-1efc-3012-9a85-9f43d80ee279",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "PZmXR4Q3u3VGboVQskt_4JmDHWmwfRuv",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-08-12T18:15:39Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-12-29T02:02:37Z\nts7q_xuuqzfM99U7dw7i-rBhXAGbIW1B\n6802ef0665468da427978f9109f14a3d6382ae7994aa06ef3bbca431a061dc09\n7357d30d-b44f-f4bc-cb78-4598954aca5b\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "b49da62fec50b27f404ec8b0ef3cf4023f92a30b38486071dc0150fdf4f11f9f",
+      "content_sha256": "6802ef0665468da427978f9109f14a3d6382ae7994aa06ef3bbca431a061dc09",
+      "name": "generated-073",
+      "request": {
+        "body": "{\"name\":\"ﬁ\"}",
+        "device_id": "7357d30d-b44f-f4bc-cb78-4598954aca5b",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "ts7q_xuuqzfM99U7dw7i-rBhXAGbIW1B",
+        "path_and_query": "/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-12-29T02:02:37Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?name=%20\n2026-08-27T16:44:18Z\n0n-l0pZ9K2PzpdZOKI0-tkUz9CuyRdFN\nb44b3ee9ac68c170ca569639380baa017819b88068ee46488cfe16134ab770a3\nadc4bfec-9e53-7ed8-fa75-b6db2bb9f547\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "7aac2a579ac323d7632d3a2a993e90f42f076d2bcd3a3b37e9801bea6125da18",
+      "content_sha256": "b44b3ee9ac68c170ca569639380baa017819b88068ee46488cfe16134ab770a3",
+      "name": "generated-074",
+      "request": {
+        "body": "{\"name\":\"\\\\\"}",
+        "device_id": "adc4bfec-9e53-7ed8-fa75-b6db2bb9f547",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "0n-l0pZ9K2PzpdZOKI0-tkUz9CuyRdFN",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?name=%20",
+        "timestamp": "2026-08-27T16:44:18Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/settings/telemetry?limit=100\n2026-12-20T17:32:14Z\nfmgP4v9bOIBEgoZx_ffvz_UNimmjb1my\n71959f12425dbcae2ff049dc5f77b5a80eb6e674f6d16c41488ca07c3bc96a86\n3874d2de-fc13-9399-2751-78da511e5a34\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "0dccc8008f07878680578a24bf5d3aebdf533159690de52083b7d3b531de2385",
+      "content_sha256": "71959f12425dbcae2ff049dc5f77b5a80eb6e674f6d16c41488ca07c3bc96a86",
+      "name": "generated-075",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"\",\"role\":\"user\"}]}",
+        "device_id": "3874d2de-fc13-9399-2751-78da511e5a34",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "fmgP4v9bOIBEgoZx_ffvz_UNimmjb1my",
+        "path_and_query": "/api/v1/settings/telemetry?limit=100",
+        "timestamp": "2026-12-20T17:32:14Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60\n2026-10-11T22:33:59Z\nsvshZlcQ4mFQkw7DNCJrXE3GCcABQwR7\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n77c419d4-8eff-4fee-22d7-63f6f075a025\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "a78ec3459fcdcd6217d6af5e1c78bd665020717fe64438c1862d28cb1655f4c2",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-076",
+      "request": {
+        "body": "",
+        "device_id": "77c419d4-8eff-4fee-22d7-63f6f075a025",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "svshZlcQ4mFQkw7DNCJrXE3GCcABQwR7",
+        "path_and_query": "/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60",
+        "timestamp": "2026-10-11T22:33:59Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/inference/load\n2026-11-30T12:48:41Z\nTCDcP2l2SYNZle-o3OlqVle66lAEPdxt\n8244b26f010dda1a79ced42e6745c77e8bf5a3a943cecdacc82502828ebce796\n4767d645-0e12-5378-f4b0-1527bce0b567\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "25cff9effd00ce5d34cd01e6214bc0e55424f2cde435d36f5684a17a7a9804a3",
+      "content_sha256": "8244b26f010dda1a79ced42e6745c77e8bf5a3a943cecdacc82502828ebce796",
+      "name": "generated-077",
+      "request": {
+        "body": "{\"name\":\"\\n\"}",
+        "device_id": "4767d645-0e12-5378-f4b0-1527bce0b567",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "TCDcP2l2SYNZle-o3OlqVle66lAEPdxt",
+        "path_and_query": "/api/v1/inference/load",
+        "timestamp": "2026-11-30T12:48:41Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/telemetry/history?cursor=rKhJQNw-wSA\n2027-02-21T21:48:46Z\ncE7NpLfeU-9yDOr_YzrTUrCtAgDuTlS5\nf282e049bdbea7db109a91b8214db3959791174a82d566e7cc680d56013d666b\n5ac57924-f2e1-2cd4-d9d4-431d659d8e93\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "9d10de18b99ff3bfd40ab82e3cd599b47a147174374f9aba35a7b6b30afa36ab",
+      "content_sha256": "f282e049bdbea7db109a91b8214db3959791174a82d566e7cc680d56013d666b",
+      "name": "generated-078",
+      "request": {
+        "body": "{\"name\":\"../../etc/shadow\"}",
+        "device_id": "5ac57924-f2e1-2cd4-d9d4-431d659d8e93",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "cE7NpLfeU-9yDOr_YzrTUrCtAgDuTlS5",
+        "path_and_query": "/api/v1/telemetry/history?cursor=rKhJQNw-wSA",
+        "timestamp": "2027-02-21T21:48:46Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?limit=100\n2026-08-27T10:51:38Z\nN7b61_UPsfy8NXpNPCHOmz_OYimTDreO\ndee94d3f91702d8492a53ae46ce1015424b7c991c390d3ac71268d07b3ff4e9a\nec51eec7-1bb3-3745-3e01-0a15657c7370\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "a6934aec4e97012276fe869db711c05c415ea58f4f028cae43dde1b5695724c4",
+      "content_sha256": "dee94d3f91702d8492a53ae46ce1015424b7c991c390d3ac71268d07b3ff4e9a",
+      "name": "generated-079",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"${jndi:ldap://example.invalid/a}\",\"role\":\"user\"}]}",
+        "device_id": "ec51eec7-1bb3-3745-3e01-0a15657c7370",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "N7b61_UPsfy8NXpNPCHOmz_OYimTDreO",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?limit=100",
+        "timestamp": "2026-08-27T10:51:38Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/telemetry\n2026-05-16T10:40:35Z\nGRcyBaNQ9411eRHoyIL4GCVILvy1eQWH\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n373c4dc1-32fe-730a-a351-f7c31605b011\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "4f4548a9257c24fea0dbd19ae8ec557561b8051418b7b56ab6fc64e8f71feedd",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-080",
+      "request": {
+        "body": "",
+        "device_id": "373c4dc1-32fe-730a-a351-f7c31605b011",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "GRcyBaNQ9411eRHoyIL4GCVILvy1eQWH",
+        "path_and_query": "/api/v1/telemetry",
+        "timestamp": "2026-05-16T10:40:35Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/v1/chat/completions\n2026-06-17T00:24:53Z\nz-dNaGa4SA8TKVcX1kac8omNijfahyXZ\n2d4e0e10298e6b479057c80ade6774886c39a4b19d6ba32b15d083c00235bcf8\n4c5847c3-e03c-cf74-1ad6-dd8abb8684b3\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "6006061b11cccd3233bebbe409aa7ccf1726b33f6829eccc1f205d7e729d1e9b",
+      "content_sha256": "2d4e0e10298e6b479057c80ade6774886c39a4b19d6ba32b15d083c00235bcf8",
+      "name": "generated-081",
+      "request": {
+        "body": "{\"name\":\"\\t\"}",
+        "device_id": "4c5847c3-e03c-cf74-1ad6-dd8abb8684b3",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "z-dNaGa4SA8TKVcX1kac8omNijfahyXZ",
+        "path_and_query": "/v1/chat/completions",
+        "timestamp": "2026-06-17T00:24:53Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?limit=100\n2026-07-05T02:00:58Z\nisNlGq4_yJyxj8u7T-8ou_smIzzifW8u\nbeb646373eff5c0d3c876e1bd544a56b77a58ca70c4cdad648556ae2dd9cd725\n167454a8-5f61-de65-20e9-d226b5b8b410\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "66636454a9b8eb244ec26c35a2390bbc6be893c6e1996a1595f33a8d53f2a59b",
+      "content_sha256": "beb646373eff5c0d3c876e1bd544a56b77a58ca70c4cdad648556ae2dd9cd725",
+      "name": "generated-082",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"．．／\",\"role\":\"user\"}]}",
+        "device_id": "167454a8-5f61-de65-20e9-d226b5b8b410",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "isNlGq4_yJyxj8u7T-8ou_smIzzifW8u",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?limit=100",
+        "timestamp": "2026-07-05T02:00:58Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/status?a=%09&b=11141277733819870392\n2026-07-21T02:02:43Z\nHSlZlWkK5acihUO_FHK4qjhNorRsIE0x\n67bcbb6113c82cbd98e4f612bcfad29cdd1097a4bcd44d655e341c7c8f2d405b\nd040622e-78e5-61ec-8e4f-68b411a9cbcb\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "57bfae8c709ee432def2aa706e8aad9683873cdda412da896742233ffebc9d75",
+      "content_sha256": "67bcbb6113c82cbd98e4f612bcfad29cdd1097a4bcd44d655e341c7c8f2d405b",
+      "name": "generated-083",
+      "request": {
+        "body": "{\"name\":\"${jndi:ldap://example.invalid/a}\"}",
+        "device_id": "d040622e-78e5-61ec-8e4f-68b411a9cbcb",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "HSlZlWkK5acihUO_FHK4qjhNorRsIE0x",
+        "path_and_query": "/api/v1/status?a=%09&b=11141277733819870392",
+        "timestamp": "2026-07-21T02:02:43Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?cursor=v1Bgl_dZQhQ\n2026-09-17T13:13:54Z\nQPL-AB-ECtNDdb9O88sVZmNScc1OFd49\n54833dc5e8f39a2ef3954c865ea73caf7949d2049270df814db4b6849bb463ae\n7a9c7bc0-0000-d508-3c64-ce61bee3ebb7\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "76a2465db26095443f6a084e110f84e32db65bfdffa7222673ff2d502a75dcbf",
+      "content_sha256": "54833dc5e8f39a2ef3954c865ea73caf7949d2049270df814db4b6849bb463ae",
+      "name": "generated-084",
+      "request": {
+        "body": "{\"name\":\" \"}",
+        "device_id": "7a9c7bc0-0000-d508-3c64-ce61bee3ebb7",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "QPL-AB-ECtNDdb9O88sVZmNScc1OFd49",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?cursor=v1Bgl_dZQhQ",
+        "timestamp": "2026-09-17T13:13:54Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/inference/load/preview?cursor=4io4FkZsxLA\n2026-10-30T14:10:22Z\n0Wn-_AiJZD-IAcLVrPRhYoV7eTtgtj2J\nb44b3ee9ac68c170ca569639380baa017819b88068ee46488cfe16134ab770a3\n3f2c0954-dcb4-4964-e196-6a339ab503e3\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "1a375a1e40766c369682af58a54da54bcda1937b849594b9395e636e4c6443ae",
+      "content_sha256": "b44b3ee9ac68c170ca569639380baa017819b88068ee46488cfe16134ab770a3",
+      "name": "generated-085",
+      "request": {
+        "body": "{\"name\":\"\\\\\"}",
+        "device_id": "3f2c0954-dcb4-4964-e196-6a339ab503e3",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "0Wn-_AiJZD-IAcLVrPRhYoV7eTtgtj2J",
+        "path_and_query": "/api/v1/inference/load/preview?cursor=4io4FkZsxLA",
+        "timestamp": "2026-10-30T14:10:22Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/models?limit=100\n2027-01-31T09:07:22Z\nEJXCBieksIz3eBQe9Gv96xELUL0PIbie\nddd78705ce6260a677ce66517e00692b3e53a6625f0910fa62dd858e98ea8b7d\n557a5471-b6e1-5715-6526-66e8d2703b00\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "a1f43c7d3c556eb731a918be25262fd465a7e23014bef9ab035fc3f906997263",
+      "content_sha256": "ddd78705ce6260a677ce66517e00692b3e53a6625f0910fa62dd858e98ea8b7d",
+      "name": "generated-086",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"\\t\",\"role\":\"user\"}]}",
+        "device_id": "557a5471-b6e1-5715-6526-66e8d2703b00",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "EJXCBieksIz3eBQe9Gv96xELUL0PIbie",
+        "path_and_query": "/api/v1/models?limit=100",
+        "timestamp": "2027-01-31T09:07:22Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-04-21T15:14:59Z\n2Y5f2TWnoV1zpBYdFg0BqNxU6SQiSyPX\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n3f36e106-f587-771a-59cd-544c5e6f56e1\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "538147ccdd9f4608c4e327abd6abcb1abce7c8435d1697577b68e9d2bf8c2b97",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-087",
+      "request": {
+        "body": "",
+        "device_id": "3f36e106-f587-771a-59cd-544c5e6f56e1",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "2Y5f2TWnoV1zpBYdFg0BqNxU6SQiSyPX",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-04-21T15:14:59Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/status?a=%24%7Bjndi%3Aldap%3A%2F%2Fexample.invalid%2Fa%7D&b=2517637596557341442\n2026-05-30T02:47:01Z\nMAW0rDe1NqmI2pXPpLz0BAyVgtfgAGID\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n7ccb276a-77d7-38d6-178b-d56b69fca8ed\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "24af5960ee2fe450e4c87643979246b2b7f068f63dd64d2fa4c192f5d4c0a927",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-088",
+      "request": {
+        "body": "",
+        "device_id": "7ccb276a-77d7-38d6-178b-d56b69fca8ed",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "MAW0rDe1NqmI2pXPpLz0BAyVgtfgAGID",
+        "path_and_query": "/api/v1/status?a=%24%7Bjndi%3Aldap%3A%2F%2Fexample.invalid%2Fa%7D&b=2517637596557341442",
+        "timestamp": "2026-05-30T02:47:01Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/v1/chat/completions?a=%EF%AC%81&b=1042513306677786686\n2026-09-07T21:56:01Z\nDG1CtdaFpjUtha9UczMDoInmh2IiS4Rv\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\nada06b8a-7dfb-d9d2-2fe7-a1812cf5f939\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "08140d81fb58fd98edfd3f41b4bc1fc3012e47d3aeca032ccb6722aaf66d8b41",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-089",
+      "request": {
+        "body": "",
+        "device_id": "ada06b8a-7dfb-d9d2-2fe7-a1812cf5f939",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "DG1CtdaFpjUtha9UczMDoInmh2IiS4Rv",
+        "path_and_query": "/v1/chat/completions?a=%EF%AC%81&b=1042513306677786686",
+        "timestamp": "2026-09-07T21:56:01Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-10-17T02:10:05Z\no2Yyto7_6_fX5RHzuzaEukeSUAtkFxwB\nff136fef9ee7c2d548d02ca372f1390bb32bf740727bc900eae7ff50eb93505e\n09dd3217-9ef0-ec7c-bbab-cbb9e13e971b\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "58475f3fb763b3a240f9485fda6f4d543255fe3abd76a37e1e55c2d80f1ef50b",
+      "content_sha256": "ff136fef9ee7c2d548d02ca372f1390bb32bf740727bc900eae7ff50eb93505e",
+      "name": "generated-090",
+      "request": {
+        "body": "{\"name\":\"‮drowssap\"}",
+        "device_id": "09dd3217-9ef0-ec7c-bbab-cbb9e13e971b",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "o2Yyto7_6_fX5RHzuzaEukeSUAtkFxwB",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-10-17T02:10:05Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/v1/chat/completions?limit=100\n2026-12-30T18:10:42Z\nES32ZE1qbqSEv_gndXRQI7CcBFdY-fR2\n71959f12425dbcae2ff049dc5f77b5a80eb6e674f6d16c41488ca07c3bc96a86\nc52102c9-ec4c-040d-6a38-58f26e57aa98\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "4c2a02c97c43ed848b04507be7a851798d9f79cb2825aa5678937f130fda70bd",
+      "content_sha256": "71959f12425dbcae2ff049dc5f77b5a80eb6e674f6d16c41488ca07c3bc96a86",
+      "name": "generated-091",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"\",\"role\":\"user\"}]}",
+        "device_id": "c52102c9-ec4c-040d-6a38-58f26e57aa98",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "ES32ZE1qbqSEv_gndXRQI7CcBFdY-fR2",
+        "path_and_query": "/v1/chat/completions?limit=100",
+        "timestamp": "2026-12-30T18:10:42Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/inference/load/preview\n2026-04-22T12:48:43Z\nm6Qj5q6XBVXITaMU6hGcQEyBdC3KQ7iP\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n9d2b303a-fd18-e372-143d-8f7906f70a59\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "01b7aa00910a06f34ce2dc794b1a568115702572ecc107b88f19b81abca89653",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-092",
+      "request": {
+        "body": "",
+        "device_id": "9d2b303a-fd18-e372-143d-8f7906f70a59",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "m6Qj5q6XBVXITaMU6hGcQEyBdC3KQ7iP",
+        "path_and_query": "/api/v1/inference/load/preview",
+        "timestamp": "2026-04-22T12:48:43Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/telemetry?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-11-08T01:21:33Z\nmV3JSZaKRBdDXe3Yet_iWsOTPNUYbvEh\n158062d55700cfabe1f6a162f80011cdefeeb7a4230c9f892ab2aa3a481ed1b0\nd821e308-70bc-431c-a3e7-91538d16313b\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "8c6a095c6f87c6b1169cf59a77ef14de8bfe0b9640eb463c87b9f86a38ebc1e4",
+      "content_sha256": "158062d55700cfabe1f6a162f80011cdefeeb7a4230c9f892ab2aa3a481ed1b0",
+      "name": "generated-093",
+      "request": {
+        "body": "{\"name\":\"'; DROP TABLE devices; --\"}",
+        "device_id": "d821e308-70bc-431c-a3e7-91538d16313b",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "mV3JSZaKRBdDXe3Yet_iWsOTPNUYbvEh",
+        "path_and_query": "/api/v1/telemetry?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-11-08T01:21:33Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?name=%F0%9F%98%80%F0%9F%8F%BB%E2%80%8D%E2%99%80\n2026-02-28T15:01:22Z\nAAdMPh4YzkO_XrLLgRYAFm0LhAEnHm8t\n2348ef1def6f69bb34c7bfe898b59692d064b99051b6946e85eac0afa16bb75c\na95e7ebc-0219-5f38-3c7c-e576f7b20627\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "0405b90401a70f62725c0f16a0e1518e0b15b09f03e7d82ea4bf1d1ec199a3a7",
+      "content_sha256": "2348ef1def6f69bb34c7bfe898b59692d064b99051b6946e85eac0afa16bb75c",
+      "name": "generated-094",
+      "request": {
+        "body": "{\"name\":\"\\u0000\"}",
+        "device_id": "a95e7ebc-0219-5f38-3c7c-e576f7b20627",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "AAdMPh4YzkO_XrLLgRYAFm0LhAEnHm8t",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?name=%F0%9F%98%80%F0%9F%8F%BB%E2%80%8D%E2%99%80",
+        "timestamp": "2026-02-28T15:01:22Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/telemetry/history?cursor=Yoy1V_q0BOA\n2026-03-05T13:34:54Z\nEIS47q3XfK_etkPj8v49EmElTGGx3it5\ndb9831c49459cad5a854f845607a9a919bace700118ed54397d48c541f8e47fd\n7ce8d364-ac73-2c94-882c-0c074ce7c353\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "0f6e3ba4f63f3b363d92e5a786cce56d43f44261a750b853ac527772ef59860e",
+      "content_sha256": "db9831c49459cad5a854f845607a9a919bace700118ed54397d48c541f8e47fd",
+      "name": "generated-095",
+      "request": {
+        "body": "{\"name\":\"\\\"\"}",
+        "device_id": "7ce8d364-ac73-2c94-882c-0c074ce7c353",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "EIS47q3XfK_etkPj8v49EmElTGGx3it5",
+        "path_and_query": "/api/v1/telemetry/history?cursor=Yoy1V_q0BOA",
+        "timestamp": "2026-03-05T13:34:54Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60?name=%EF%AC%81\n2026-10-06T00:04:10Z\nbZclMiAEW1vSWpvX8XS1Tq2hZrP9QxIF\n7c89e80a40875b185081b9d1c5ebf1ab2143e678efcc5979e622fb1eb29a3197\nbed6140a-bb0b-2730-15de-24bc6fbe34bf\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "40da4e6f8a8338c8decfba9c5a5b2c0c299ce8702fb1d42d990a7156231f2a1d",
+      "content_sha256": "7c89e80a40875b185081b9d1c5ebf1ab2143e678efcc5979e622fb1eb29a3197",
+      "name": "generated-096",
+      "request": {
+        "body": "{\"name\":\"é́́́\"}",
+        "device_id": "bed6140a-bb0b-2730-15de-24bc6fbe34bf",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "bZclMiAEW1vSWpvX8XS1Tq2hZrP9QxIF",
+        "path_and_query": "/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60?name=%EF%AC%81",
+        "timestamp": "2026-10-06T00:04:10Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/v1/chat/completions?limit=100\n2026-04-02T18:40:54Z\nSBb0uXR849h8ck4vIxu2R9LT--wOBsTK\nfbb0bf8a82f69448056814b5c251beb6dd8234209109aa2c6dbd7f2a195d0893\na07c2ad1-4bca-4ed1-df38-11c592b60b0c\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "2992b1a67bcc00e3a1a1fe7c01fb3de80d8f3ee784323114943711675932c706",
+      "content_sha256": "fbb0bf8a82f69448056814b5c251beb6dd8234209109aa2c6dbd7f2a195d0893",
+      "name": "generated-097",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"\\u0000\",\"role\":\"user\"}]}",
+        "device_id": "a07c2ad1-4bca-4ed1-df38-11c592b60b0c",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "SBb0uXR849h8ck4vIxu2R9LT--wOBsTK",
+        "path_and_query": "/v1/chat/completions?limit=100",
+        "timestamp": "2026-04-02T18:40:54Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/inference/load?a=%09&b=17450386509242543924\n2026-09-11T13:10:39Z\n-OXUSY7EGXPUC68oTG8HhsMzwOikpU3d\n0f478a6c12e925707236841a6d7e5137957c46a861ac2c703937c2387f909c4b\n834d093e-d7b7-d428-6bf2-d491703fa457\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "10fb7971b92df4d14f86f1f4ddfc34d48e0294ee99f3f9181832436e8f76baf3",
+      "content_sha256": "0f478a6c12e925707236841a6d7e5137957c46a861ac2c703937c2387f909c4b",
+      "name": "generated-098",
+      "request": {
+        "body": "{\"name\":\"﻿\"}",
+        "device_id": "834d093e-d7b7-d428-6bf2-d491703fa457",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "-OXUSY7EGXPUC68oTG8HhsMzwOikpU3d",
+        "path_and_query": "/api/v1/inference/load?a=%09&b=17450386509242543924",
+        "timestamp": "2026-09-11T13:10:39Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/status?limit=100\n2026-06-06T13:00:30Z\nt9Jo_HbuR9ARfARxoPpQ3x6XZzq3UVmC\n638a6ea0812c96113478ed8736f2bd760e87bef26231a23eb78042f730a5e21b\nd9303e88-3cc5-bb29-7cfa-1c72d8dfbe84\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "c30e39e10c3c9e74a8b706a05354f79c27210b77b93658f98da0d4d6e618cc85",
+      "content_sha256": "638a6ea0812c96113478ed8736f2bd760e87bef26231a23eb78042f730a5e21b",
+      "name": "generated-099",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"﻿\",\"role\":\"user\"}]}",
+        "device_id": "d9303e88-3cc5-bb29-7cfa-1c72d8dfbe84",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "t9Jo_HbuR9ARfARxoPpQ3x6XZzq3UVmC",
+        "path_and_query": "/api/v1/status?limit=100",
+        "timestamp": "2026-06-06T13:00:30Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/v1/chat/completions?a=..%2F..%2Fetc%2Fshadow&b=10878618080532457900\n2026-07-11T02:26:47Z\nv3S_W-99aIvOwDXtZDbWvsfqLgIuKYK1\neea101f619ec736d15c1b32790c839601f63f333e376a2e4165943b40a3b7077\n1321558f-7be4-4620-e9b5-687c4df1b4ef\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "efade0f49417667d288c1cacd8ca3e487726f6fd91e0892283d874ac8ae8d8d9",
+      "content_sha256": "eea101f619ec736d15c1b32790c839601f63f333e376a2e4165943b40a3b7077",
+      "name": "generated-100",
+      "request": {
+        "body": "{\"name\":\"﷽\"}",
+        "device_id": "1321558f-7be4-4620-e9b5-687c4df1b4ef",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "v3S_W-99aIvOwDXtZDbWvsfqLgIuKYK1",
+        "path_and_query": "/v1/chat/completions?a=..%2F..%2Fetc%2Fshadow&b=10878618080532457900",
+        "timestamp": "2026-07-11T02:26:47Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/inference/load/preview?cursor=32ZZv2fJEMg\n2026-11-19T19:46:46Z\nIF7iyxl6rHcDlRdbAsnbOnhmGqRpZtCB\nae8d285197f43c61d367d02f4b6261706a2012a7f4bfe7397821530e4addfbf6\n0cca341a-26ff-26fc-bbf4-19d0e7445f9b\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "38f24349184c0deeb732623d92ae4095eb50447068d2740d69e8adfe5552a4f2",
+      "content_sha256": "ae8d285197f43c61d367d02f4b6261706a2012a7f4bfe7397821530e4addfbf6",
+      "name": "generated-101",
+      "request": {
+        "body": "{\"name\":\"．．／\"}",
+        "device_id": "0cca341a-26ff-26fc-bbf4-19d0e7445f9b",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "IF7iyxl6rHcDlRdbAsnbOnhmGqRpZtCB",
+        "path_and_query": "/api/v1/inference/load/preview?cursor=32ZZv2fJEMg",
+        "timestamp": "2026-11-19T19:46:46Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?name=%00\n2026-03-31T10:00:02Z\nRTm4YoV5qKNBTJOOU1IC9v5U27QNeBCN\nce330bba2916e3e1df3222422f34f116d5b388fa077bfa29dc85429fdc2317e6\nb8383568-63c9-5d18-977f-c167b5f3c687\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "13ea889ea1aaa4e330f2d19596edec20f4f8412d0ce40e9260a11733801c0d8c",
+      "content_sha256": "ce330bba2916e3e1df3222422f34f116d5b388fa077bfa29dc85429fdc2317e6",
+      "name": "generated-102",
+      "request": {
+        "body": "{\"name\":\"%2e%2e%2f\"}",
+        "device_id": "b8383568-63c9-5d18-977f-c167b5f3c687",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "RTm4YoV5qKNBTJOOU1IC9v5U27QNeBCN",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?name=%00",
+        "timestamp": "2026-03-31T10:00:02Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?name=%F0%9F%98%80%F0%9F%8F%BB%E2%80%8D%E2%99%80\n2026-08-14T17:14:06Z\nbyJEs7eIKQ8kB3k2IHAp8s3d2WCRx-7Z\n7c89e80a40875b185081b9d1c5ebf1ab2143e678efcc5979e622fb1eb29a3197\nddcc9e36-3757-2474-f33a-3d69945275b3\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "9c0fe8b87fafb171b7e44f6efd8c1e1375c8e9e1d977e499d76b10bdb6c9052f",
+      "content_sha256": "7c89e80a40875b185081b9d1c5ebf1ab2143e678efcc5979e622fb1eb29a3197",
+      "name": "generated-103",
+      "request": {
+        "body": "{\"name\":\"é́́́\"}",
+        "device_id": "ddcc9e36-3757-2474-f33a-3d69945275b3",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "byJEs7eIKQ8kB3k2IHAp8s3d2WCRx-7Z",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes?name=%F0%9F%98%80%F0%9F%8F%BB%E2%80%8D%E2%99%80",
+        "timestamp": "2026-08-14T17:14:06Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/inference/load/preview?limit=100\n2026-11-19T01:11:54Z\n2Zkz4MPlvZxHIVieC6Y5u6az-dCYGmwu\n9ec15e9986542362b49d27f4ecaef7c24bab15d9763bccaaf817e19f92d3b2a2\nf4761c33-6e7d-5765-95cc-1a006b93f910\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "bf077a432ef0a2347d58ae2eb0e6f256e85a8b9bb595b5d9aa468b317dce3c83",
+      "content_sha256": "9ec15e9986542362b49d27f4ecaef7c24bab15d9763bccaaf817e19f92d3b2a2",
+      "name": "generated-104",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"\\\\\",\"role\":\"user\"}]}",
+        "device_id": "f4761c33-6e7d-5765-95cc-1a006b93f910",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "2Zkz4MPlvZxHIVieC6Y5u6az-dCYGmwu",
+        "path_and_query": "/api/v1/inference/load/preview?limit=100",
+        "timestamp": "2026-11-19T01:11:54Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/inference/load/preview?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-04-10T09:52:03Z\nKy5E76Emu637F6c8GgJRuARcQurgcian\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n2e854166-1fd8-25aa-b676-ff1d2f077631\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "d2908550a813bf6fecf2b0e9de4e34c6d7113cee69c6be844cdb60fc1f1b115b",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-105",
+      "request": {
+        "body": "",
+        "device_id": "2e854166-1fd8-25aa-b676-ff1d2f077631",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "Ky5E76Emu637F6c8GgJRuARcQurgcian",
+        "path_and_query": "/api/v1/inference/load/preview?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-04-10T09:52:03Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/inference/load/preview\n2027-01-22T18:50:29Z\njGWSubbaLS85VFeDmIbDklNsd3TOF0_5\neea101f619ec736d15c1b32790c839601f63f333e376a2e4165943b40a3b7077\n199faf59-3a1a-1714-9b2c-408e7e147bd3\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "a05e83ca43ffebeb808eb018ce371553769605ba17ee987e9bbb4cfc7aa0dbb4",
+      "content_sha256": "eea101f619ec736d15c1b32790c839601f63f333e376a2e4165943b40a3b7077",
+      "name": "generated-106",
+      "request": {
+        "body": "{\"name\":\"﷽\"}",
+        "device_id": "199faf59-3a1a-1714-9b2c-408e7e147bd3",
+        "method": "POST",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "jGWSubbaLS85VFeDmIbDklNsd3TOF0_5",
+        "path_and_query": "/api/v1/inference/load/preview",
+        "timestamp": "2027-01-22T18:50:29Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/inference/load?limit=100\n2026-10-04T17:14:34Z\n0nZi_y13JDzRbN2N9z6j20mT5LTjKvPO\nb34f04028da314e6edd965995b2c6af0961d8771d22652a0aaceb54f2948ae19\n054e9794-43cd-8e85-e482-fc864ba689b0\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "dab1cbcd7a21227f3b3ea9df23c92cf8689601c85fbf4c3121516b8852ffb29f",
+      "content_sha256": "b34f04028da314e6edd965995b2c6af0961d8771d22652a0aaceb54f2948ae19",
+      "name": "generated-107",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"%2e%2e%2f\",\"role\":\"user\"}]}",
+        "device_id": "054e9794-43cd-8e85-e482-fc864ba689b0",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "0nZi_y13JDzRbN2N9z6j20mT5LTjKvPO",
+        "path_and_query": "/api/v1/inference/load?limit=100",
+        "timestamp": "2026-10-04T17:14:34Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/status\n2026-10-26T20:36:51Z\nVRGpjDzAds1J0qCcIX0WWM6qmXYJshbH\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n75b33473-5ad5-3b4a-d80e-0d8d315ea351\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "5e0bba72f9c0de7e59bf4d02046db24e68884500d9b4abeac045339ea9bfcf43",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-108",
+      "request": {
+        "body": "",
+        "device_id": "75b33473-5ad5-3b4a-d80e-0d8d315ea351",
+        "method": "GET",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "VRGpjDzAds1J0qCcIX0WWM6qmXYJshbH",
+        "path_and_query": "/api/v1/status",
+        "timestamp": "2026-10-26T20:36:51Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/status?a=&b=13827019130616524082\n2026-04-14T23:07:01Z\nOLCtVVY0wRkJjuSwGgXZtPBKwgmXMxHz\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\na6dd46f5-77b8-3606-224d-50589f13fa5d\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "01c6a784fb4b475698a624ee3a262d49677dbc01b563d7977454f6c4d9b6d2d5",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-109",
+      "request": {
+        "body": "",
+        "device_id": "a6dd46f5-77b8-3606-224d-50589f13fa5d",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "OLCtVVY0wRkJjuSwGgXZtPBKwgmXMxHz",
+        "path_and_query": "/api/v1/status?a=&b=13827019130616524082",
+        "timestamp": "2026-04-14T23:07:01Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes\n2026-06-16T22:44:49Z\n7Mbq45wVnfv5HvSKl6rLblQwzjxqXtWl\n0f478a6c12e925707236841a6d7e5137957c46a861ac2c703937c2387f909c4b\n77299783-0b18-ea50-1515-6b296796615f\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "85780039b4c0e2c9bac8b8992a0e8b983af11663369da52ddea6ddf1922a886e",
+      "content_sha256": "0f478a6c12e925707236841a6d7e5137957c46a861ac2c703937c2387f909c4b",
+      "name": "generated-110",
+      "request": {
+        "body": "{\"name\":\"﻿\"}",
+        "device_id": "77299783-0b18-ea50-1515-6b296796615f",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "7Mbq45wVnfv5HvSKl6rLblQwzjxqXtWl",
+        "path_and_query": "/api/v1/projects/7c1d9e33-2f44-4a55-9b66-8d7e6f5a4b3c/changes",
+        "timestamp": "2026-06-16T22:44:49Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/v1/chat/completions?limit=100\n2026-06-08T00:54:46Z\nXCKRXJjhqvjTlWBP7TuW589mh1KjMKDq\n72402de9a24ee51a017ddada229ee62ccb0da1c39c8d2d880f49a6bd134175d5\n14ae002f-e6f9-e071-fcc0-0d6eb571042c\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "929a10f532b03616c462a5787fad784c02c1d7b6d91feeaa539afa098b3891f9",
+      "content_sha256": "72402de9a24ee51a017ddada229ee62ccb0da1c39c8d2d880f49a6bd134175d5",
+      "name": "generated-111",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"İ\",\"role\":\"user\"}]}",
+        "device_id": "14ae002f-e6f9-e071-fcc0-0d6eb571042c",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "XCKRXJjhqvjTlWBP7TuW589mh1KjMKDq",
+        "path_and_query": "/v1/chat/completions?limit=100",
+        "timestamp": "2026-06-08T00:54:46Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/v1/chat/completions?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-11-12T11:35:11Z\nDHK6PkHoQjmRXWL_PUJsVJTL_FastjgT\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n57456c75-004f-c9a6-aff7-1fb340154d7d\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "f80b32182bea212754c0960e8f0108b29a937d0ceef8ba14d594e3dd0ad76f8f",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-112",
+      "request": {
+        "body": "",
+        "device_id": "57456c75-004f-c9a6-aff7-1fb340154d7d",
+        "method": "GET",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "DHK6PkHoQjmRXWL_PUJsVJTL_FastjgT",
+        "path_and_query": "/v1/chat/completions?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-11-12T11:35:11Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/inference/load?a=%20&b=6905158073569112846\n2026-07-10T21:37:05Z\nAZ9lrZd5LMUoyj6aP5Ma8DfAKvQMUE1_\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n8af8c792-c6e2-21a2-7a4b-9609c720c8c9\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "31095f3b26a98d62297bbb40e7728a921a99426be8d872946bb7ba0e6ada4bb9",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-113",
+      "request": {
+        "body": "",
+        "device_id": "8af8c792-c6e2-21a2-7a4b-9609c720c8c9",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "AZ9lrZd5LMUoyj6aP5Ma8DfAKvQMUE1_",
+        "path_and_query": "/api/v1/inference/load?a=%20&b=6905158073569112846",
+        "timestamp": "2026-07-10T21:37:05Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-12-04T20:20:29Z\n5XnBa2qWpwfdb5DBu9JWim4VixmqoS2R\nff136fef9ee7c2d548d02ca372f1390bb32bf740727bc900eae7ff50eb93505e\n930d0a7b-7cbc-72cc-2581-bfb4c236e32b\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "f3af1fa0758582c8337b49a49b2c2bf1c52ed873270cd72c92001ad097163ae6",
+      "content_sha256": "ff136fef9ee7c2d548d02ca372f1390bb32bf740727bc900eae7ff50eb93505e",
+      "name": "generated-114",
+      "request": {
+        "body": "{\"name\":\"‮drowssap\"}",
+        "device_id": "930d0a7b-7cbc-72cc-2581-bfb4c236e32b",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "5XnBa2qWpwfdb5DBu9JWim4VixmqoS2R",
+        "path_and_query": "/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-12-04T20:20:29Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/models?cursor=fr902_33zvQ\n2026-06-10T19:11:46Z\n2xp8uG-l7jPBYaCPsGytRhg_HUaGNbCd\n6802ef0665468da427978f9109f14a3d6382ae7994aa06ef3bbca431a061dc09\n3dfa5ac0-98d6-6fe8-9448-64fc38a54517\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "b68db5a03050f55d80fbccf1ac2e0e4304b5da435642a14a9834e283add97425",
+      "content_sha256": "6802ef0665468da427978f9109f14a3d6382ae7994aa06ef3bbca431a061dc09",
+      "name": "generated-115",
+      "request": {
+        "body": "{\"name\":\"ﬁ\"}",
+        "device_id": "3dfa5ac0-98d6-6fe8-9448-64fc38a54517",
+        "method": "GET",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "2xp8uG-l7jPBYaCPsGytRhg_HUaGNbCd",
+        "path_and_query": "/api/v1/models?cursor=fr902_33zvQ",
+        "timestamp": "2026-06-10T19:11:46Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/telemetry?name=%27%3B%20DROP%20TABLE%20devices%3B%20--\n2027-01-27T18:51:26Z\n7TpYLX4hyZ9gXPuJc-jTQiu6gv1ljGHp\nf282e049bdbea7db109a91b8214db3959791174a82d566e7cc680d56013d666b\n7c244925-9e44-4e44-b4af-f79169d0ff43\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "97bc9512beccdeffb3249e6de2faae4bfd9c67c464cc88d65911b414bb46ab67",
+      "content_sha256": "f282e049bdbea7db109a91b8214db3959791174a82d566e7cc680d56013d666b",
+      "name": "generated-116",
+      "request": {
+        "body": "{\"name\":\"../../etc/shadow\"}",
+        "device_id": "7c244925-9e44-4e44-b4af-f79169d0ff43",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "7TpYLX4hyZ9gXPuJc-jTQiu6gv1ljGHp",
+        "path_and_query": "/api/v1/telemetry?name=%27%3B%20DROP%20TABLE%20devices%3B%20--",
+        "timestamp": "2027-01-27T18:51:26Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60?limit=100\n2026-06-04T12:08:10Z\nyBvv0Kk-sWxn5GVIJU1FS-zWZGl0A-R-\ndf0289d10a589436a02e5907c77099c9993c2478472b318075e5f6588b4bd5a6\n87ac62d5-afc7-2d75-c044-cf3fde1089e0\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "5da4fb205fde5d2f70b017425dfdfd904291e823e2244d7dd1fd951a3d4c92bc",
+      "content_sha256": "df0289d10a589436a02e5907c77099c9993c2478472b318075e5f6588b4bd5a6",
+      "name": "generated-117",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"é́́́\",\"role\":\"user\"}]}",
+        "device_id": "87ac62d5-afc7-2d75-c044-cf3fde1089e0",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "yBvv0Kk-sWxn5GVIJU1FS-zWZGl0A-R-",
+        "path_and_query": "/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60?limit=100",
+        "timestamp": "2026-06-04T12:08:10Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-09-02T09:07:31Z\nM_zT6329I72NGVEvz2KMiHxwwsR6ma03\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n51bb0a63-e65c-3cfa-9405-5411ed603f41\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "8737f6e119b2b6aed44c472be392fefdfa5d5f2e4e84833a67e04be365f789c8",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-118",
+      "request": {
+        "body": "",
+        "device_id": "51bb0a63-e65c-3cfa-9405-5411ed603f41",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "M_zT6329I72NGVEvz2KMiHxwwsR6ma03",
+        "path_and_query": "/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-09-02T09:07:31Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/telemetry/history?a=%00&b=2518299283454416098\n2026-04-18T05:41:25Z\nxcW50wyCCwl5vUBYxfno5DqygPz7ko1j\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\ncd29cd71-92ed-78b6-1864-a464e3f6034d\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "54ca9079e2f9dd830f1ca8315400ef617c2fd54f7a91c8a84d9aa993038a1ca9",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-119",
+      "request": {
+        "body": "",
+        "device_id": "cd29cd71-92ed-78b6-1864-a464e3f6034d",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "xcW50wyCCwl5vUBYxfno5DqygPz7ko1j",
+        "path_and_query": "/api/v1/telemetry/history?a=%00&b=2518299283454416098",
+        "timestamp": "2026-04-18T05:41:25Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPOST\n/api/v1/status?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-11-04T22:33:53Z\naKQU_SQ-N2s5_AtyORxUHtkWMKPskyyV\nce330bba2916e3e1df3222422f34f116d5b388fa077bfa29dc85429fdc2317e6\n683397c2-bf1d-4280-a87d-61cfc809b1cf\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "6e099a2a97f5e65146b64db8d1a61340d1a08f187818dc638b2ddb2f4af9a448",
+      "content_sha256": "ce330bba2916e3e1df3222422f34f116d5b388fa077bfa29dc85429fdc2317e6",
+      "name": "generated-120",
+      "request": {
+        "body": "{\"name\":\"%2e%2e%2f\"}",
+        "device_id": "683397c2-bf1d-4280-a87d-61cfc809b1cf",
+        "method": "post",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "aKQU_SQ-N2s5_AtyORxUHtkWMKPskyyV",
+        "path_and_query": "/api/v1/status?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-11-04T22:33:53Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?limit=100\n2026-10-11T03:20:38Z\nVi8JrLqkeSghE8EtwrOlV2J1yBFfpLqa\n1fe8eab8a58715b1c8720bf973a15013cecf845794437b09053d8e73d0914806\n38056c57-d390-b461-46b3-5ab6b9c8555c\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "365f5340135e073dafcc8776daa80a1c1d7f787054f3e60b9685d6656a9545ec",
+      "content_sha256": "1fe8eab8a58715b1c8720bf973a15013cecf845794437b09053d8e73d0914806",
+      "name": "generated-121",
+      "request": {
+        "body": "{\"messages\":[{\"content\":\"\\r\\n\",\"role\":\"user\"}]}",
+        "device_id": "38056c57-d390-b461-46b3-5ab6b9c8555c",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "Vi8JrLqkeSghE8EtwrOlV2J1yBFfpLqa",
+        "path_and_query": "/api/v1/operations/2b7f0a11-0c9d-4f3a-8b21-6e5d4c3b2a19?limit=100",
+        "timestamp": "2026-10-11T03:20:38Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60\n2027-02-14T17:43:59Z\niARFfAHJxCklWrcOuAxThHaFPI861KuD\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n1e9e9195-871e-a456-c47d-d98d195f0e6d\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "ebda78f8eaef75a8c6985e3b5c5672a8bba12f17192ee1bc19db102ce2b217fe",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "generated-122",
+      "request": {
+        "body": "",
+        "device_id": "1e9e9195-871e-a456-c47d-d98d195f0e6d",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "iARFfAHJxCklWrcOuAxThHaFPI861KuD",
+        "path_and_query": "/api/v1/devices/9f1c2f4e-6a3b-4d21-9f60-3f7c1a4d5e60",
+        "timestamp": "2027-02-14T17:43:59Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/api/v1/inference/load/preview?resolution=minute&since=2026-08-31T00%3A00%3A00Z\n2026-09-12T02:31:13Z\n1EkQKrMRuYuV1xerfngTvgz5ioep5Du1\ndb9831c49459cad5a854f845607a9a919bace700118ed54397d48c541f8e47fd\n914dc901-8a7d-cb20-2b43-bc9d70e915ef\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "62f4278ff3bf2ba1167bba10c94bd0ae624f25ca5207a760345042c9e807d9a2",
+      "content_sha256": "db9831c49459cad5a854f845607a9a919bace700118ed54397d48c541f8e47fd",
+      "name": "generated-123",
+      "request": {
+        "body": "{\"name\":\"\\\"\"}",
+        "device_id": "914dc901-8a7d-cb20-2b43-bc9d70e915ef",
+        "method": "GET",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "1EkQKrMRuYuV1xerfngTvgz5ioep5Du1",
+        "path_and_query": "/api/v1/inference/load/preview?resolution=minute&since=2026-08-31T00%3A00%3A00Z",
+        "timestamp": "2026-09-12T02:31:13Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nDELETE\n/v1/chat/completions?name=%22\n2026-11-07T01:36:38Z\nOTqdbS57LXcfaFrbCN-IOu4K3iPtCTmB\nce330bba2916e3e1df3222422f34f116d5b388fa077bfa29dc85429fdc2317e6\n44a91d84-f9a2-9bfc-8ce3-d0f61e0af09b\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "0341a7d83100532f34347c49e143727f9715ecb257ea65e45a225963ba354a7a",
+      "content_sha256": "ce330bba2916e3e1df3222422f34f116d5b388fa077bfa29dc85429fdc2317e6",
+      "name": "generated-124",
+      "request": {
+        "body": "{\"name\":\"%2e%2e%2f\"}",
+        "device_id": "44a91d84-f9a2-9bfc-8ce3-d0f61e0af09b",
+        "method": "DELETE",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "OTqdbS57LXcfaFrbCN-IOu4K3iPtCTmB",
+        "path_and_query": "/v1/chat/completions?name=%22",
+        "timestamp": "2026-11-07T01:36:38Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nGET\n/v1/chat/completions?name=%EF%BB%BF\n2026-06-10T02:00:02Z\nT1xZXrafWaNZ8-TArsEf9rGmajIgYymN\n7c89e80a40875b185081b9d1c5ebf1ab2143e678efcc5979e622fb1eb29a3197\n60650035-e583-c218-d722-f35bc4d28787\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "baefc604d8cbf8c533cf9e496e54d36a7bb6d1adfaa844da6a83adad62a8e052",
+      "content_sha256": "7c89e80a40875b185081b9d1c5ebf1ab2143e678efcc5979e622fb1eb29a3197",
+      "name": "generated-125",
+      "request": {
+        "body": "{\"name\":\"é́́́\"}",
+        "device_id": "60650035-e583-c218-d722-f35bc4d28787",
+        "method": "get",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "T1xZXrafWaNZ8-TArsEf9rGmajIgYymN",
+        "path_and_query": "/v1/chat/completions?name=%EF%BB%BF",
+        "timestamp": "2026-06-10T02:00:02Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPATCH\n/api/v1/models?cursor=EPzmAr_aI8A\n2026-04-07T19:58:22Z\nKk78e7c8Cg8nc8a2RK228u7nMZCKjLfZ\nce330bba2916e3e1df3222422f34f116d5b388fa077bfa29dc85429fdc2317e6\nc4227643-8ea5-7974-a2f7-d8e5424266b3\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "557025dedf02947a75a661ee31b79e706fb9b38093c3e2892b4dc574e7cf4374",
+      "content_sha256": "ce330bba2916e3e1df3222422f34f116d5b388fa077bfa29dc85429fdc2317e6",
+      "name": "generated-126",
+      "request": {
+        "body": "{\"name\":\"%2e%2e%2f\"}",
+        "device_id": "c4227643-8ea5-7974-a2f7-d8e5424266b3",
+        "method": "PATCH",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "Kk78e7c8Cg8nc8a2RK228u7nMZCKjLfZ",
+        "path_and_query": "/api/v1/models?cursor=EPzmAr_aI8A",
+        "timestamp": "2026-04-07T19:58:22Z"
+      }
+    },
+    {
+      "canonical": "SPARK2\nPUT\n/api/v1/telemetry/history?cursor=ARUT4kQ_spw\n2026-05-19T05:17:14Z\nUVbxpdUBSrv8j_UgD4tpLseEPku73NBl\n8244b26f010dda1a79ced42e6745c77e8bf5a3a943cecdacc82502828ebce796\na36bcc25-cf63-3e10-827b-740686f35a1f\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "e176ef82d543306f0828b7b2979a526f736d0f17deedfb98c839be3f63d0115a",
+      "content_sha256": "8244b26f010dda1a79ced42e6745c77e8bf5a3a943cecdacc82502828ebce796",
+      "name": "generated-127",
+      "request": {
+        "body": "{\"name\":\"\\n\"}",
+        "device_id": "a36bcc25-cf63-3e10-827b-740686f35a1f",
+        "method": "PUT",
+        "node_id": "00000000-0000-0000-0000-000000000002",
+        "nonce": "UVbxpdUBSrv8j_UgD4tpLseEPku73NBl",
+        "path_and_query": "/api/v1/telemetry/history?cursor=ARUT4kQ_spw",
+        "timestamp": "2026-05-19T05:17:14Z"
+      }
+    }
+  ],
+  "generator": "runtime/crates/sparkd/tests/signature_fuzz.rs",
+  "seed": "0x5349474e56454354"
+}

@@ -1,0 +1,12 @@
+type: object
+additionalProperties: false
+properties:
+  recipe_revision:
+    type:
+    - string
+    - 'null'
+  provider_credential_id:
+    type:
+    - string
+    - 'null'
+    format: uuid

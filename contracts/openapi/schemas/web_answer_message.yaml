@@ -1,0 +1,15 @@
+type: object
+additionalProperties: false
+required:
+- role
+- content
+properties:
+  role:
+    type: string
+    enum:
+    - system
+    - user
+    - assistant
+  content:
+    type: string
+    maxLength: 120000

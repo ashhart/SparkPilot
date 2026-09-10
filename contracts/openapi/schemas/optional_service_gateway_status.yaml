@@ -1,0 +1,24 @@
+type: object
+additionalProperties: false
+required:
+- scopes
+- healthy
+- port
+- loopback_only
+properties:
+  scopes:
+    type: array
+    uniqueItems: true
+    items:
+      type: string
+      enum:
+      - models.read
+      - chat.completions.create
+  healthy:
+    type: boolean
+  port:
+    type: integer
+    const: 18081
+  loopback_only:
+    type: boolean
+    const: true

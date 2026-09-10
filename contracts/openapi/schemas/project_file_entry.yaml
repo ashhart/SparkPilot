@@ -1,0 +1,20 @@
+type: object
+additionalProperties: false
+required:
+- path
+- revision
+- size_bytes
+properties:
+  path:
+    type: string
+  revision:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  size_bytes:
+    type: integer
+    minimum: 0
+  modified_at:
+    type:
+    - string
+    - 'null'
+    format: date-time

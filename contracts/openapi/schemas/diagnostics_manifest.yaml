@@ -1,0 +1,40 @@
+type: object
+description: Every file in the bundle with its sensitivity class, plus what was left out. Derived from
+  the produced files, so a file without a manifest entry cannot exist.
+required:
+- schema
+- generated_at
+- node_id
+- runtime_version
+- files
+- optional_included
+- optional_excluded
+- never_exported
+properties:
+  schema:
+    type: integer
+    const: 1
+  generated_at:
+    type: string
+    format: date-time
+  node_id:
+    type: string
+    format: uuid
+  runtime_version:
+    type: string
+  files:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/DiagnosticsManifestEntry
+  optional_included:
+    type: array
+    items:
+      type: string
+  optional_excluded:
+    type: array
+    items:
+      type: string
+  never_exported:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/DiagnosticsExclusion

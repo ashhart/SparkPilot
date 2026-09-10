@@ -1,0 +1,23 @@
+post:
+  tags:
+  - Cluster
+  operationId: commitClusterTransaction
+  summary: Commit identical membership after every Spark issued a matching grant
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/CommitClusterTransaction
+  responses:
+    '200':
+      description: Node-authority receipt proving this member durably committed
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ClusterCommitReceipt
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

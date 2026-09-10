@@ -1,0 +1,40 @@
+type: object
+additionalProperties: false
+required:
+- utilisation
+- temperature_celsius
+- power_draw_watts
+- power_limit_watts
+- memory_used_bytes
+- memory_total_bytes
+properties:
+  utilisation:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+    maximum: 1
+  temperature_celsius:
+    type:
+    - number
+    - 'null'
+  power_draw_watts:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+  power_limit_watts:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+  memory_used_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  memory_total_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0

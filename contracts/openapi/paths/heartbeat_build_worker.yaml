@@ -1,0 +1,18 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/WorkerId
+post:
+  tags:
+  - Builds
+  operationId: heartbeatBuildWorker
+  summary: Renew the liveness record for the calling Mac worker
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  responses:
+    '200':
+      description: Worker liveness and current slot use
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/BuildWorkerHeartbeat
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

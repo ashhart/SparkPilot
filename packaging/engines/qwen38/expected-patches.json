@@ -1,0 +1,42 @@
+{
+  "models/qwen3_8_flash_next/nvidia/ple_layer.py": {
+    "original_sha256": "a71144c1d36e06f22a2da1b1ada900076597fe5e824a911e7ada86249a0993e7",
+    "patched_sha256": "ea87fdc5683fc02d2651982b911bd659e97b6e4952a2d1ae0148471ec3dde6f9"
+  },
+  "model_executor/layers/quantization/modelopt.py": {
+    "original_sha256": "3f3ca743fd3c66d72be92b7544591a8632f1aa422b73bb50c83e8a3281196e7d",
+    "patched_sha256": "103e78b948f7cdb1f6421d56ed2da7777f204234b7411086b0c3db97f96224be"
+  },
+  "models/qwen3_8_flash_next/nvidia/ops/qsa.py": {
+    "original_sha256": "c4ffe3674cafa0ce2dabc39a39f0ddbb4b594bc358ad210ffce9d04383350c7f",
+    "patched_sha256": "0669d6334f58a624c89c15f3e46c90f28e59b0b913507101dec1c5765e3c3b12"
+  },
+  "models/qwen3_8_flash_next/nvidia/qsa.py": {
+    "original_sha256": "748addc85efaa8f7df940d1245bc900192f92e1f17af8fa774625758600751cb",
+    "patched_sha256": "ee5de40742ad48a6064ea24b99a285ff69c47d57bbb170f57c4eef71567a1df3"
+  },
+  "models/qwen3_8_flash_next/nvidia/mtp.py": {
+    "original_sha256": "7735cee47d0d1e4776bebd30d907e4a62160409ce4ef2d65611559f8d58af431",
+    "patched_sha256": "8da66d9f48bd93c935d74e2635c45483dc999c87b94bc4ce828e727eb1713349"
+  },
+  "model_executor/layers/ple_offload_layer.py": {
+    "original_sha256": "9c0ab215116d0e1b2dbc4c337a51339946b186a41d35f8480d762e2d123acfc1",
+    "patched_sha256": "8a0906467764b3fc9b88badedafdecb85880360f5380e314c1f3e6194bdd2df4"
+  },
+  "v1/ple_offload/connector.py": {
+    "original_sha256": "b911d00cf4a39556d946e86ac34ea70e6230683b22adf5ef14ac299e9ef36206",
+    "patched_sha256": "9ca076235bb523128ea774215e2d6a42d1a6bfe45ffa3c91323b08dc99814979"
+  },
+  "v1/ple_offload/worker.py": {
+    "original_sha256": "f93a0a8c40ee3c536e60cb027f5d6e76cde0a51e62b540c82e2c15b2a72b7f5f",
+    "patched_sha256": "47274a8fe79f65e3fa8f04b2224cb2a7d352be9bf5f2e9dcefc44edcd5c2420a"
+  },
+  "v1/ple_offload/protocol.py": {
+    "original_sha256": "3e943753e6427c5b227e542b711d4bff37d48ba4cb310b079abe818a6490dde4",
+    "patched_sha256": "cf64579ca3cf1daa9ff617a1a8c4690e0db2d1d7412a74e3b8b32629492a05da"
+  },
+  "v1/worker/gpu_worker.py": {
+    "original_sha256": "923767cea120a027ca36683bd48b7659eadbfa4cbd4acbcf52a80cee0c0a0ec4",
+    "patched_sha256": "e339982bed619ea7d0e7607ff6799d9a8b1c21998728c6e5256f4e3a0337b0b7"
+  }
+}

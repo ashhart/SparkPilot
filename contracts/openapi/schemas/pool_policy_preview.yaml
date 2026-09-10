@@ -1,0 +1,20 @@
+type: object
+additionalProperties: false
+required:
+- preview_id
+- expected_revision
+- expires_at
+- policy
+properties:
+  preview_id:
+    type: string
+    format: uuid
+  expected_revision:
+    type: integer
+    format: int64
+    minimum: 0
+  expires_at:
+    type: integer
+    format: int64
+  policy:
+    $ref: ../../openapi.yaml#/components/schemas/InferencePoolPolicy

@@ -1,0 +1,7 @@
+type: object
+additionalProperties: false
+required:
+- change
+properties:
+  change:
+    $ref: ../../openapi.yaml#/components/schemas/ProjectChange

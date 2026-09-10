@@ -1,0 +1,23 @@
+post:
+  tags:
+  - Workloads
+  operationId: previewWorkloadRelinquish
+  parameters:
+  - name: workload_id
+    in: path
+    required: true
+    schema:
+      type: string
+      minLength: 64
+      maxLength: 64
+      pattern: ^[0-9a-fA-F]+$
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  responses:
+    '200':
+      description: Review removal of SparkPilot ownership metadata
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ModelActionPreview
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,73 @@
+type: object
+additionalProperties: false
+required:
+- workload_id
+- name
+- ownership
+- kind
+- recognised_engine
+- state
+- image_reference
+- published_ports
+properties:
+  workload_id:
+    type: string
+    minLength: 1
+    maxLength: 64
+  # Null omits an unsafe runtime name without substituting a sanitized guess.
+  name:
+    type:
+    - string
+    - 'null'
+    maxLength: 128
+  ownership:
+    $ref: ../../openapi.yaml#/components/schemas/WorkloadOwnership
+  kind:
+    $ref: ../../openapi.yaml#/components/schemas/WorkloadKind
+  recognised_engine:
+    $ref: ../../openapi.yaml#/components/schemas/WorkloadEngine
+  management_origin:
+    oneOf:
+    - $ref: ../../openapi.yaml#/components/schemas/WorkloadManagementOrigin
+    - type: 'null'
+    description: Why a managed workload is in SparkPilot's lifecycle. Null for every externally managed
+      workload.
+  state:
+    $ref: ../../openapi.yaml#/components/schemas/WorkloadState
+  image_reference:
+    type:
+    - string
+    - 'null'
+    maxLength: 256
+  published_ports:
+    type: array
+    maxItems: 16
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ObservedWorkloadPort
+  configuration_state:
+    type: string
+    description: Whether a credential-free, loopback-only OpenAI model-list probe established the external
+      engine configuration. unavailable never means that no model is served.
+    enum:
+    - not_applicable
+    - verified
+    - unavailable
+    - ambiguous
+  api_protocol:
+    type:
+    - string
+    - 'null'
+    pattern: ^openai_compatible$
+  api_port:
+    type:
+    - integer
+    - 'null'
+    minimum: 1
+    maximum: 65535
+  served_models:
+    type: array
+    maxItems: 16
+    items:
+      type: string
+      minLength: 1
+      maxLength: 240

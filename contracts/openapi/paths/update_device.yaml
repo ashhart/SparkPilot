@@ -1,0 +1,36 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/DeviceId
+patch:
+  tags:
+  - Devices
+  operationId: updateDevice
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/UserPresence
+  requestBody:
+    required: true
+    content:
+      application/merge-patch+json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/UpdateDevice
+  responses:
+    '200':
+      description: Updated device
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Device
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+delete:
+  tags:
+  - Devices
+  operationId: revokeDevice
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  responses:
+    '204':
+      description: Device revoked
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

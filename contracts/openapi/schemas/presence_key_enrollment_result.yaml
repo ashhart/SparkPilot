@@ -1,0 +1,8 @@
+type: object
+additionalProperties: false
+required:
+- presence_key_fingerprint
+properties:
+  presence_key_fingerprint:
+    type: string
+    pattern: ^[a-f0-9]{64}$

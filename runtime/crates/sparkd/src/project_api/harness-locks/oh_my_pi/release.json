@@ -1,0 +1,8 @@
+{
+  "version": "18.1.12",
+  "source": "https://github.com/can1357/oh-my-pi/releases/tag/v18.1.12",
+  "sha256": {
+    "arm64": "128c79498e5b9d3285d57b7b43d46139aad5473a698767314ffbe60c7c5de314",
+    "x64": "f5431008f71d2f3971617205cfce9cb227c1d135665930088244c76d86b2fb42"
+  }
+}

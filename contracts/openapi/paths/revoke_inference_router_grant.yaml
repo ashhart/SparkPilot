@@ -1,0 +1,24 @@
+post:
+  tags:
+  - Inference
+  operationId: revokeInferenceRouterGrant
+  summary: Revoke authority and drain accepted work
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  responses:
+    '200':
+      description: Revoke authority and drain accepted work
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/RevokeRouterGrantResult
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+parameters:
+- name: grant_id
+  in: path
+  required: true
+  schema:
+    type: string
+    format: uuid

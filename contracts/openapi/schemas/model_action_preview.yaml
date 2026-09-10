@@ -1,0 +1,60 @@
+type: object
+additionalProperties: false
+required:
+- preview_digest
+- action
+- target
+- recipe
+- evidence
+- evidence_timestamps
+- consequences
+- blockers
+- warnings
+- issued_at
+- expires_at
+properties:
+  preview_digest:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  action:
+    type: string
+    enum:
+    - install
+    - load
+    - warmup
+    - replace
+    - stop
+    - remove
+    - catalogue.refresh
+    - profile.reenable
+    - workload.adopt
+    - workload.relinquish
+    - remote.enable
+    - remote.disable
+    - remote.rotate
+  target:
+    $ref: ../../openapi.yaml#/components/schemas/ModelActionPreviewTarget
+  recipe:
+    oneOf:
+    - $ref: ../../openapi.yaml#/components/schemas/ModelActionPreviewRecipe
+    - type: 'null'
+  evidence:
+    $ref: ../../openapi.yaml#/components/schemas/ModelActionPreviewEvidence
+  evidence_timestamps:
+    $ref: ../../openapi.yaml#/components/schemas/ModelActionPreviewTimestamps
+  consequences:
+    $ref: ../../openapi.yaml#/components/schemas/ModelActionPreviewConsequences
+  blockers:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ModelActionPreviewMessage
+  warnings:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ModelActionPreviewMessage
+  issued_at:
+    type: string
+    format: date-time
+  expires_at:
+    type: string
+    format: date-time

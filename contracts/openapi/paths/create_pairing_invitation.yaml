@@ -1,0 +1,25 @@
+post:
+  tags:
+  - Pairing
+  operationId: createPairingInvitation
+  summary: Create a signed, expiring, single-use invitation
+  description: X-Spark-User-Presence is required when the requested role is administrator. Ordinary user
+    invitations do not require it.
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/UserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/CreatePairingInvitation
+  responses:
+    '201':
+      description: Invitation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/PairingInvitation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

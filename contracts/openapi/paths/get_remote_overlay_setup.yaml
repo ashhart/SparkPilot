@@ -1,0 +1,15 @@
+get:
+  tags:
+  - Remote
+  operationId: getRemoteOverlaySetup
+  description: Owner-only live state of the Spark's Tailscale client. While a remote enable operation is at stage
+    awaiting_owner_login this carries the sign-in link the app shows as a button and QR code.
+  responses:
+    '200':
+      description: Tailscale setup state
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/RemoteOverlaySetup
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

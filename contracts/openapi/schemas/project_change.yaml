@@ -1,0 +1,77 @@
+type: object
+additionalProperties: false
+required:
+- id
+- project_id
+- status
+- task
+- base_commit
+- changed_files
+- test_evidence
+- tool_evidence
+- evidence_complete
+- created_at
+- updated_at
+properties:
+  id:
+    type: string
+    format: uuid
+  project_id:
+    type: string
+    format: uuid
+  status:
+    type: string
+    enum:
+    - creating
+    - planning
+    - editing
+    - review
+    - approved
+    - rejected
+    - merged
+    - failed
+  task:
+    type: string
+    maxLength: 20000
+  base_commit:
+    type: string
+  head_commit:
+    type:
+    - string
+    - 'null'
+    pattern: ^[0-9a-f]{40,64}$
+  protected_head_commit:
+    type:
+    - string
+    - 'null'
+    pattern: ^[0-9a-f]{40,64}$
+  review_digest:
+    type:
+    - string
+    - 'null'
+    pattern: ^[0-9a-f]{64}$
+  branch:
+    type: string
+  changed_files:
+    type: array
+    maxItems: 2000
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ProjectChangedFile
+  test_evidence:
+    type: array
+    maxItems: 200
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ProjectTestEvidence
+  tool_evidence:
+    type: array
+    maxItems: 200
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ProjectToolEvidence
+  evidence_complete:
+    type: boolean
+  created_at:
+    type: string
+    format: date-time
+  updated_at:
+    type: string
+    format: date-time

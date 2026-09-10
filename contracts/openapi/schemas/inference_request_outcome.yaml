@@ -1,0 +1,8 @@
+type: string
+enum:
+- running
+- succeeded
+- failed
+- incomplete
+- cancelled_unconfirmed
+- interrupted_unknown

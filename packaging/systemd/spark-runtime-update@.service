@@ -1,0 +1,32 @@
+[Unit]
+Description=Apply Spark Runtime release %i
+Documentation=https://example.invalid/spark-runtime
+After=local-fs.target docker.service
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/lib/spark-runtime/spark-updater worker --release-id %i
+TimeoutStartSec=30min
+
+# This worker deliberately owns the package-manager boundary: it must stop and
+# replace sparkd/spark-privd and let dpkg's maintainer scripts write the
+# installed tree. It therefore cannot inherit the capability-empty,
+# NoNewPrivileges, ProtectSystem=strict profile used by the network services.
+# Keep the surface narrow instead: one fixed binary, one validated instance id,
+# no shell, no ambient environment, and no install target at boot.
+PrivateTmp=yes
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictRealtime=yes
+RemoveIPC=yes
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+UMask=0077

@@ -1,0 +1,29 @@
+type: object
+additionalProperties: false
+required:
+- ssid
+- security
+- signal_percent
+- connected
+- saved
+properties:
+  ssid:
+    type: string
+    minLength: 1
+    maxLength: 32
+  security:
+    type: string
+    enum:
+    - open
+    - wpa2
+    - wpa3
+    - enterprise
+    - unknown
+  signal_percent:
+    type: integer
+    minimum: 0
+    maximum: 100
+  connected:
+    type: boolean
+  saved:
+    type: boolean

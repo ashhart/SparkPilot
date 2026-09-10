@@ -1,0 +1,21 @@
+post:
+  tags:
+  - Pairing
+  operationId: createPairingChallenge
+  security: []
+  summary: Create a short-lived challenge for a signed invitation
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/PairingChallengeRequest
+  responses:
+    '200':
+      description: Challenge
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/PairingChallenge
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

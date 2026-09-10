@@ -1,0 +1,40 @@
+post:
+  tags:
+  - Cluster
+  operationId: rollbackClusterTransaction
+  summary: Remove only the profile and membership owned by this transaction
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          additionalProperties: false
+          required:
+          - proposal
+          properties:
+            proposal:
+              $ref: ../../openapi.yaml#/components/schemas/ClusterProposal
+  responses:
+    '200':
+      description: Transaction rollback result
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: false
+            required:
+            - transaction_id
+            - state
+            properties:
+              transaction_id:
+                type: string
+                format: uuid
+              state:
+                type: string
+                const: rolled_back
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

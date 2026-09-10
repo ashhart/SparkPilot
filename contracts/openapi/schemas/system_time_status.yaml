@@ -1,0 +1,13 @@
+type: object
+additionalProperties: false
+required:
+- timezone
+- ntp_enabled
+- synchronized
+properties:
+  timezone:
+    type: string
+  ntp_enabled:
+    type: boolean
+  synchronized:
+    type: boolean

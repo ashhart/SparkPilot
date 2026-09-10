@@ -1,0 +1,34 @@
+post:
+  tags:
+  - Remote
+  operationId: enableRemoteAccess
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          additionalProperties: false
+          required:
+          - mode
+          - accepted_preview_digest
+          properties:
+            mode:
+              type: string
+              enum:
+              - private_overlay
+            accepted_preview_digest:
+              type: string
+              pattern: ^[0-9a-f]{64}$
+  responses:
+    '202':
+      description: Remote enable operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

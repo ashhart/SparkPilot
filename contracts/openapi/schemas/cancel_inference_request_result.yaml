@@ -1,0 +1,10 @@
+type: object
+additionalProperties: false
+required:
+- cancel_requested
+- outcome
+properties:
+  cancel_requested:
+    type: boolean
+  outcome:
+    $ref: ../../openapi.yaml#/components/schemas/InferenceRequestOutcome

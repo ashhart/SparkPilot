@@ -1,0 +1,45 @@
+type: object
+additionalProperties: false
+required:
+- enabled
+- mode
+- health
+- available_modes
+properties:
+  enabled:
+    type: boolean
+  mode:
+    type: string
+    enum:
+    - disabled
+    - private_overlay
+  health:
+    type: string
+    enum:
+    - disabled
+    - starting
+    - healthy
+    - degraded
+    - failed
+  hostname:
+    type:
+    - string
+    - 'null'
+  available_modes:
+    type: array
+    uniqueItems: true
+    items:
+      type: string
+      enum:
+      - private_overlay
+  private_overlay_provider:
+    type:
+    - string
+    - 'null'
+    maxLength: 32
+  private_overlay_address:
+    type:
+    - string
+    - 'null'
+    description: The live 100.64/10 address beside the published hostname, which is the MagicDNS name when
+      the Spark's Tailscale client reports one.

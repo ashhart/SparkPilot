@@ -1,0 +1,74 @@
+type: object
+additionalProperties: false
+required:
+- grant_id
+- pool_id
+- caller_device_id
+- request_id
+- attempt_id
+- deployment_id
+- request_sha256
+- request_bytes
+- policy_revision
+- context_budget
+- output_budget
+- lease_seconds
+- required_capabilities
+properties:
+  grant_id:
+    type: string
+    format: uuid
+  pool_id:
+    type: string
+    format: uuid
+  caller_device_id:
+    type: string
+    format: uuid
+  request_id:
+    type: string
+    format: uuid
+    pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-7[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$
+    description: UUIDv7 logical request identity. New requests must be at most 120 seconds old and at
+      most 5 seconds ahead of the node clock. Known exact receipts are recovered before the age gate.
+      Terminal or proven-stopped receipts expire after 10 minutes; old IDs remain inadmissible after retirement.
+      Unknown attempts still holding capacity never expire by age alone.
+  attempt_id:
+    type: string
+    format: uuid
+  deployment_id:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  request_sha256:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  request_bytes:
+    type: integer
+    format: int64
+    minimum: 1
+    maximum: 1048576
+  policy_revision:
+    type: integer
+    format: int64
+    minimum: 0
+  context_budget:
+    type: integer
+    format: int64
+    minimum: 1
+  output_budget:
+    type: integer
+    format: int64
+    minimum: 1
+    maximum: 4294967295
+  lease_seconds:
+    type: integer
+    format: int64
+    minimum: 1
+    maximum: 30
+  required_capabilities:
+    type: array
+    items:
+      type: string
+      enum:
+      - text_chat
+      - streaming
+    minItems: 1

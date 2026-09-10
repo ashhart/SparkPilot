@@ -1,0 +1,72 @@
+get:
+  tags:
+  - Inference
+  operationId: listInferenceRequests
+  summary: Read bounded content-free fixed-target attempt history
+  description: Only this caller's attempts are returned by default. Explicit all_callers requires an owner
+    or administrator. Recording follows local functional telemetry consent. No prompts, responses or credentials
+    are recorded. Runtime proxy timing is not engine queue or token-generation timing.
+  parameters:
+  - name: attempt_id
+    in: query
+    schema:
+      type: string
+      format: uuid
+  - name: model_id
+    in: query
+    schema:
+      type: string
+      maxLength: 512
+  - name: outcome
+    in: query
+    schema:
+      $ref: ../../openapi.yaml#/components/schemas/InferenceRequestOutcome
+  - name: after
+    in: query
+    description: Inclusive Unix timestamp in seconds
+    schema:
+      type: integer
+      format: int64
+  - name: before
+    in: query
+    description: Inclusive Unix timestamp in seconds
+    schema:
+      type: integer
+      format: int64
+  - name: limit
+    in: query
+    schema:
+      type: integer
+      minimum: 1
+      maximum: 200
+      default: 100
+  - name: all_callers
+    in: query
+    schema:
+      type: boolean
+      default: false
+  responses:
+    '200':
+      description: Caller-scoped history and collection policy
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/InferenceRequestHistory
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+delete:
+  tags:
+  - Inference
+  operationId: clearInferenceRequests
+  summary: Clear this caller's finished attempts while retaining active work
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  responses:
+    '200':
+      description: Own terminal records removed without cancelling requests
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ClearInferenceRequestsResult
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

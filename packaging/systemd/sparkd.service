@@ -1,0 +1,76 @@
+[Unit]
+Description=Spark Runtime Control Service
+Documentation=https://example.invalid/spark-runtime
+After=network-online.target spark-privd.service
+Wants=network-online.target
+Requires=spark-privd.service
+
+[Service]
+Type=notify
+User=sparkd
+Group=sparkd
+# --data-dir is explicit: sparkd only defaults to /var/lib/spark-runtime when
+# it is running as root, and under this unit it is not. Without the flag it
+# would resolve a path relative to the working directory, which
+# ProtectSystem=strict makes read-only.
+ExecStart=/usr/lib/spark-runtime/sparkd \
+    --config /etc/spark-runtime/config.toml \
+    --data-dir /var/lib/spark-runtime \
+    --identity-credentials %d \
+    --json-logs
+LoadCredential=identity.key:/etc/spark-runtime/identity/identity.key
+LoadCredential=identity.json:/etc/spark-runtime/identity/identity.json
+LoadCredential=node.key:/etc/spark-runtime/identity/node.key
+LoadCredential=node.crt:/etc/spark-runtime/identity/node.crt
+Restart=on-failure
+RestartSec=3s
+TimeoutStartSec=90s
+TimeoutStopSec=45s
+WatchdogSec=30s
+
+# The runtime directory belongs to spark-privd.service; this unit only opens
+# the socket inside it and never writes there.
+StateDirectory=spark-runtime
+StateDirectoryMode=0750
+CacheDirectory=spark-runtime
+CacheDirectoryMode=0750
+
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+PrivateTmp=yes
+# Not PrivateDevices=yes: that mounts a private /dev with only the pseudo
+# devices, so the accelerator probe's nvidia-smi could not reach the driver
+# and every DGX reported its GPU load as unavailable. A closed device policy
+# gives the same protection with exactly the NVIDIA nodes allowed.
+PrivateDevices=no
+DevicePolicy=closed
+# The DGX Spark carries one GPU, so nvidia0 is the whole set. systemd does
+# not glob device paths; a multi-GPU host needs one DeviceAllow line per
+# node, and verify_units.sh pins this list so the change is deliberate.
+DeviceAllow=/dev/nvidiactl rw
+DeviceAllow=/dev/nvidia0 rw
+DeviceAllow=/dev/nvidia-uvm rw
+DeviceAllow=/dev/nvidia-uvm-tools rw
+DeviceAllow=/dev/nvidia-modeset rw
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+RestrictSUIDSGID=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+RemoveIPC=yes
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+ReadWritePaths=/var/lib/spark-runtime /var/cache/spark-runtime
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

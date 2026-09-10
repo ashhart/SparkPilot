@@ -1,0 +1,58 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/ProjectId
+- $ref: ../../openapi.yaml#/components/parameters/TerminalId
+delete:
+  tags:
+  - Projects
+  operationId: closeTerminal
+  summary: 'Close one interactive session and reap the container process (§42.9). Closing is an explicit
+    step of the lifecycle: dropping the socket alone would leave the helper''s child to be reaped by chance.'
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  responses:
+    '200':
+      description: Session closed
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - terminal_id
+            - project_id
+            - state
+            properties:
+              terminal_id:
+                type: string
+                format: uuid
+              project_id:
+                type: string
+                format: uuid
+              state:
+                type: string
+                const: closed
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+get:
+  tags: [Projects]
+  operationId: getProjectTerminalState
+  summary: Read the authorized session state before reconnecting or restarting a saved development workspace.
+  responses:
+    '200':
+      description: Session state
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [terminal_id, project_id, state]
+            properties:
+              terminal_id:
+                type: string
+                format: uuid
+              project_id:
+                type: string
+                format: uuid
+              state:
+                type: string
+                enum: [starting, running, stopped, failed]
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

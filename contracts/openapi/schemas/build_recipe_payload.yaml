@@ -1,0 +1,79 @@
+type: object
+additionalProperties: false
+required:
+- protocol
+- build_id
+- worker_id
+- claim_generation
+- project_id
+- commit
+- source_sha256
+- scheme
+- configuration
+- destination
+- actions
+- timeout_seconds
+- requirements
+- source_ticket
+- artifact_ticket
+- issued_at
+- expires_at
+properties:
+  protocol:
+    type: string
+    pattern: ^SPARK-BUILD-1$
+  build_id:
+    type: string
+    format: uuid
+  worker_id:
+    type: string
+    format: uuid
+  claim_generation:
+    type: integer
+    minimum: 1
+  project_id:
+    type: string
+    format: uuid
+  commit:
+    type: string
+    pattern: ^[0-9a-f]{40}$
+  source_sha256:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  scheme:
+    type: string
+    minLength: 1
+    maxLength: 200
+  configuration:
+    type: string
+    minLength: 1
+    maxLength: 100
+  destination:
+    type: string
+    minLength: 1
+    maxLength: 500
+  actions:
+    type: array
+    minItems: 1
+    maxItems: 2
+    items:
+      type: string
+      enum:
+      - build
+      - test
+  timeout_seconds:
+    type: integer
+    minimum: 60
+    maximum: 1800
+  requirements:
+    $ref: ../../openapi.yaml#/components/schemas/BuildRequirements
+  source_ticket:
+    $ref: ../../openapi.yaml#/components/schemas/BuildSourceTicket
+  artifact_ticket:
+    $ref: ../../openapi.yaml#/components/schemas/BuildArtifactTicket
+  issued_at:
+    type: string
+    format: date-time
+  expires_at:
+    type: string
+    format: date-time

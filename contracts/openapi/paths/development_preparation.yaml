@@ -1,0 +1,28 @@
+get:
+  tags:
+  - Projects
+  operationId: getDevelopmentPreparation
+  summary: Report whether the development image and coding agent are ready on this Spark
+  responses:
+    '200':
+      description: Preparation status
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/DevelopmentPreparation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+post:
+  tags:
+  - Projects
+  operationId: prepareDevelopment
+  summary: Pull the development image and cache the pinned coding agent in the background
+  responses:
+    '202':
+      description: Preparation started or already running
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/DevelopmentPreparation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,93 @@
+type: object
+required:
+- id
+- display_name
+- install_state
+- capabilities
+- profiles
+properties:
+  id:
+    type: string
+  display_name:
+    type: string
+  description:
+    type:
+    - string
+    - 'null'
+  recipe_revision:
+    type: string
+  source_revision:
+    type: string
+  source_provider:
+    type:
+    - string
+    - 'null'
+  gated:
+    type: boolean
+    default: false
+  publisher:
+    type:
+    - string
+    - 'null'
+    description: Who published the model weights (the recipe's metadata.publisher).
+  publisher_url:
+    type:
+    - string
+    - 'null'
+    format: uri
+  licence_url:
+    type:
+    - string
+    - 'null'
+    format: uri
+  recipe_source:
+    type:
+    - object
+    - 'null'
+    description: Who wrote the serving recipe, as distinct from who published the model.
+    required:
+    - name
+    - url
+    properties:
+      name:
+        type: string
+      url:
+        type: string
+        format: uri
+      revision:
+        type:
+        - string
+        - 'null'
+  install_state:
+    type: string
+    enum:
+    - available
+    - downloading
+    - verifying
+    - installed
+    - failed
+    - incompatible
+    - unverified
+  total_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  capabilities:
+    type: object
+    additionalProperties:
+      type: boolean
+  fit:
+    type: string
+    enum:
+    - ready
+    - fits
+    - fits_after_unload
+    - smaller_profile_required
+    - cluster_required
+    - incompatible
+    - unknown
+  profiles:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ModelProfile

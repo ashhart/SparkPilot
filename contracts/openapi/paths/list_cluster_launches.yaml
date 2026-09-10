@@ -1,0 +1,39 @@
+get:
+  tags:
+  - Cluster
+  operationId: listClusterLaunches
+  summary: List durable distributed launch states on this member
+  responses:
+    '200':
+      description: Durable local launch states
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../../openapi.yaml#/components/schemas/ClusterLaunchStatus
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+post:
+  tags:
+  - Cluster
+  operationId: startClusterLaunch
+  summary: Start the local half of a qualified distributed launch
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/StartClusterLaunchRequest
+  responses:
+    '200':
+      description: Durable local launch state
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ClusterLaunchStatus
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

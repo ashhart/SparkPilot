@@ -1,0 +1,18 @@
+get:
+  tags:
+  - Diagnostics
+  operationId: getDiagnosticsCatalogue
+  summary: Describe what a support bundle would contain
+  description: Server-authored description of the redacted support bundle defined by the master specification
+    section 46. Clients render their owner controls from this document and never from copy of their own,
+    so a category the runtime does not offer cannot appear as a control. Every optional category is reported
+    off by default.
+  responses:
+    '200':
+      description: Bundle description
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/DiagnosticsCatalogue
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

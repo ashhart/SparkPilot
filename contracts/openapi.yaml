@@ -1,0 +1,301 @@
+# Bundle with tools/openapi_bundle.py; wildcard FilePath and PreviewPath separators stay literal.
+openapi: 3.1.0
+info:
+  title: Spark Runtime API
+  version: 0.1.0
+  summary: Authenticated control and inference API for Spark Fabric
+  description: Canonical public contract exposed by sparkd. Control endpoints use /api/v1. OpenAI-compatible
+    inference endpoints use /v1 and are an allowlisted gateway, never a transparent proxy to vLLM.
+servers:
+- url: https://spark.local
+  description: Local Bonjour-resolved route
+- url: https://{node}.spark.example
+  description: Optional secure remote route
+  variables:
+    node:
+      default: replace-me
+security:
+- SparkDeviceSignature: []
+tags:
+- name: Health
+- name: Telemetry
+- name: Pairing
+- name: Devices
+- name: Operations
+- name: Models
+- name: Inference
+- name: Network
+- name: Optional Services
+- name: Remote
+- name: Cluster
+- name: Projects
+- name: Diagnostics
+- name: Shared Access
+- name: Automations
+paths:
+  $ref: openapi/paths.yaml
+components:
+  securitySchemes:
+    SparkDeviceSignature:
+      type: apiKey
+      in: header
+      name: X-Spark-Signature
+      description: Part of a multi-header P-256 request-signing scheme. `X-Spark-Signature` carries the
+        signature; the canonical string it signs also requires `X-Spark-Node-ID`, `X-Spark-Device-Id`,
+        `X-Spark-Timestamp`, `X-Spark-Nonce` and `X-Spark-Content-Sha256` on every request, declared as
+        the `SparkNodeId`, `SparkDeviceId`, `SparkTimestamp`, `SparkNonce` and `SparkContentSha256` parameters
+        below. A request missing any of them cannot be verified and is refused.
+  parameters:
+    SparkNodeId:
+      name: X-Spark-Node-ID
+      in: header
+      required: true
+      description: Trusted paired recipient node UUID, which must equal the receiving runtime identity
+        and is signed as the final SPARK2 canonical line.
+      schema:
+        type: string
+        format: uuid
+    SparkDeviceId:
+      name: X-Spark-Device-Id
+      in: header
+      required: true
+      description: The paired device making the request.
+      schema:
+        type: string
+        format: uuid
+    SparkTimestamp:
+      name: X-Spark-Timestamp
+      in: header
+      required: true
+      description: RFC 3339 instant the request was signed. The runtime refuses anything outside a 120-second
+        window in either direction.
+      schema:
+        type: string
+        format: date-time
+    SparkNonce:
+      name: X-Spark-Nonce
+      in: header
+      required: true
+      description: Single-use value, unique per device, that makes a captured request unreplayable within
+        the timestamp window.
+      schema:
+        type: string
+        minLength: 16
+        maxLength: 128
+    SparkContentSha256:
+      name: X-Spark-Content-Sha256
+      in: header
+      required: true
+      description: Lowercase hex SHA-256 of the request body, empty-string digest when there is no body.
+        Binds the signature to the bytes sent.
+      schema:
+        type: string
+        pattern: ^[0-9a-f]{64}$
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      description: Caller-chosen key that makes a retry the same request. A UUID is what every first-party
+        client sends and what the documentation recommends, but the runtime stores and compares the value
+        as opaque text, so the contract does not impose a format the server does not enforce — a non-UUID
+        key was accepted by the Spark and rejected by contract validation.
+      schema:
+        type: string
+        minLength: 8
+        maxLength: 200
+    UserPresence:
+      name: X-Spark-User-Presence
+      in: header
+      required: false
+      description: Conditionally required proof using the same compact JSON and SPARK-PRESENCE2 scheme
+        as RequiredUserPresence.
+      schema:
+        type: string
+        minLength: 16
+        maxLength: 512
+    RequiredUserPresence:
+      name: X-Spark-User-Presence
+      in: header
+      required: true
+      description: Unpadded base64url of a compact JSON object containing version 2, an RFC3339 expires_at
+        no more than 60 seconds after both the SPARK2 timestamp and server verification time, and a raw
+        P-256 signature. The signature uses the separately registered presence key and canonical scheme
+        SPARK-PRESENCE2.
+      schema:
+        type: string
+        minLength: 16
+        maxLength: 512
+    PresenceKeyProof:
+      name: X-Spark-Presence-Key-Proof
+      in: header
+      required: true
+      description: Unpadded base64url raw P-256 r||s signature by the proposed presence key over SPARK-PRESENCE-ENROLL2,
+        bound to the authenticated method, path/query, timestamp, nonce, content digest, device ID, and
+        canonical presence-key fingerprint and trusted recipient node UUID.
+      schema:
+        type: string
+        minLength: 86
+        maxLength: 86
+    DeviceId:
+      name: deviceId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    OperationId:
+      name: operationId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    ModelId:
+      name: modelId
+      in: path
+      required: true
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 240
+    ProfileId:
+      name: profileId
+      in: path
+      required: true
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 240
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    FilePath:
+      name: path
+      in: path
+      required: true
+      description: Repository-relative file path. May contain `/` separators, which are sent literally.
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 4096
+    TerminalId:
+      name: terminalId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    PreviewPort:
+      name: port
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 65535
+    PreviewPath:
+      name: path
+      in: path
+      required: true
+      description: Path within the previewed service. May contain `/` separators, which are sent literally.
+      schema:
+        type: string
+    ChangeId:
+      name: changeId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    BuildId:
+      name: buildId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    WorkerId:
+      name: workerId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    ArtifactId:
+      name: artifactId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    BuildClaimToken:
+      name: X-Spark-Build-Claim
+      in: header
+      required: true
+      schema:
+        type: string
+        minLength: 43
+        maxLength: 43
+    BuildArtifactToken:
+      name: X-Spark-Artifact-Token
+      in: header
+      required: true
+      schema:
+        type: string
+        minLength: 43
+        maxLength: 43
+    BuildArtifactSha256:
+      name: X-Spark-Artifact-Sha256
+      in: header
+      required: true
+      schema:
+        type: string
+        pattern: ^[0-9a-f]{64}$
+    BuildArtifactKind:
+      name: X-Spark-Artifact-Kind
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - xcresult
+        - screenshot
+        - recording
+        - archive
+        - diagnostics
+    BuildArtifactPath:
+      name: X-Spark-Artifact-Path
+      in: header
+      required: true
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 1024
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 50
+    Cursor:
+      name: cursor
+      in: query
+      required: false
+      schema:
+        type: string
+  responses:
+    Error:
+      description: Spark error envelope
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+  schemas:
+    $ref: openapi/schemas.yaml

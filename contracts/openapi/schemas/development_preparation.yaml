@@ -1,0 +1,22 @@
+type: object
+additionalProperties: false
+required:
+- status
+- image_ready
+- harness_ready
+properties:
+  status:
+    type: string
+    enum:
+    - idle
+    - preparing
+    - ready
+    - failed
+  image_ready:
+    type: boolean
+  harness_ready:
+    type: boolean
+  detail:
+    type:
+    - string
+    - 'null'

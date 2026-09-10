@@ -1,0 +1,336 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "Analyse a file with \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analyse a file with \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Ask Spark in \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ask Spark in \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Ask \\(.applicationName) a question": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ask \\(.applicationName) a question"
+          }
+        }
+      }
+    },
+    "Ask my Spark in \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ask my Spark in \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Check my Spark in \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check my Spark in \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Draft a reply with \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Draft a reply with \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Draft an email with \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Draft an email with \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Free up my Spark in \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free up my Spark in \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Get a Spark analysis in \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Get a Spark analysis in \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Get a model ready in \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Get a model ready in \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Give me the short version with \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Give me the short version with \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Help me reply with \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Help me reply with \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Help me write an email with \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Help me write an email with \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "How is my Spark in \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How is my Spark in \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Is my Spark online in \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Is my Spark online in \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Load a model in \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Load a model in \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Look at this file with \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Look at this file with \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Read a file with \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Read a file with \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Rewrite text with \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rewrite text with \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Rewrite this with \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rewrite this with \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Say this better with \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Say this better with \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Show my file analysis in \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show my file analysis in \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Start a model in \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start a model in \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Stop the model in \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop the model in \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Summarise this with \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Summarise this with \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Summarise with \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Summarise with \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Unload the active model in \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unload the active model in \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "What did my Spark make of my file in \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What did my Spark make of my file in \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Write a reply with \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Write a reply with \\(.applicationName)"
+          }
+        }
+      }
+    },
+    "Write an email with \\(.applicationName)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Write an email with \\(.applicationName)"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,120 @@
+[runtime]  # reserved: parsed, not yet wired (ADR-022)
+node_name = "DGX Spark"
+listen_address = "0.0.0.0:7443"
+api_version = 1
+data_dir = "/var/lib/spark-runtime"
+cache_dir = "/var/cache/spark-runtime"
+run_dir = "/run/spark-runtime"
+database_url = "sqlite:///var/lib/spark-runtime/runtime.db"
+privileged_socket = "/run/spark-runtime/spark-privd.sock"
+log_format = "json"
+log_level = "info"
+
+[tls]  # reserved: parsed, not yet wired (ADR-022)
+certificate_path = "/var/lib/spark-runtime/identity/node.crt"
+private_key_credential = "spark-node-key"
+authority_public_key_path = "/var/lib/spark-runtime/identity/authority.pub"
+minimum_tls_version = "1.3"
+
+[discovery]  # reserved: parsed, not yet wired (ADR-022)
+enabled = true
+service_type = "_spark-runtime._tcp"
+domain = "local."
+port = 7443
+advertise_interfaces = ["auto"]
+
+[security]  # reserved: parsed, not yet wired (ADR-022)
+request_timestamp_tolerance_seconds = 120
+nonce_retention_seconds = 600
+idempotency_retention_seconds = 86400
+# PLAN §15.3: five minutes by default, clamped to a fifteen-minute ceiling.
+pairing_invitation_default_seconds = 300
+pairing_invitation_maximum_seconds = 900
+fresh_user_presence_seconds = 120
+maximum_request_body_bytes = 16777216  # enforced in route.rs/auth.rs (ADR-022)
+maximum_prompt_log_bytes = 0
+
+[operations]
+worker_count = 4
+lease_seconds = 30
+heartbeat_seconds = 10
+event_replay_minimum_count = 10000
+event_replay_minimum_hours = 24
+
+[models]
+catalogue_path = "/var/lib/spark-runtime/catalogue/catalogue.json"
+catalogue_root_key_path = "/usr/share/spark-runtime/trust/catalogue-root.pub"
+# The immutable package catalogue replaces a live copy that fails verification after root rotation.
+bootstrap_catalogue_path = "/usr/share/spark-runtime/catalog/bootstrap.json"
+models_dir = "/var/lib/spark-runtime/models"
+downloads_dir = "/var/cache/spark-runtime/downloads"
+one_heavy_model_per_node = true
+# Unified-memory reserve applied at engine-load admission (§32.2).
+minimum_system_reserve_bytes = 23622320128
+# Free disk reserved after model installation is independent of the memory reserve (PLAN §30.4).
+minimum_free_disk_bytes = 4294967296
+# A cold 30B load took about nine minutes on DGX Spark; subsequent loads reuse the compile cache.
+health_check_timeout_seconds = 900
+drain_timeout_seconds = 120
+unload_memory_recovery_timeout_seconds = 60
+
+[inference]  # reserved: parsed, not yet wired (ADR-022)
+container_runtime = "docker"
+loopback_host = "127.0.0.1"
+port_range_start = 18100
+port_range_end = 18199
+internal_secret_credential_prefix = "spark-vllm-"
+allowed_openai_paths = [
+  "/v1/models",
+  "/v1/chat/completions",
+  "/v1/responses"
+]
+
+[memory_guard]
+sample_interval_milliseconds = 1000
+warning_available_bytes = 17179869184
+critical_available_bytes = 10737418240
+emergency_available_bytes = 6442450944
+warning_psi_some_avg10 = 0.25
+critical_psi_full_avg10 = 0.10
+recovery_hysteresis_seconds = 30
+auto_retry_maximum = 1
+
+# Pending hardware qualification, sustained heat refuses work or requests graceful unload without an emergency stop.
+[thermal_guard]
+warning_celsius = 75.0
+hot_celsius = 84.0
+critical_celsius = 90.0
+escalation_minimum_seconds = 15
+recovery_hysteresis_celsius = 5.0
+recovery_hysteresis_seconds = 60
+
+[telemetry]
+visible_refresh_hz = 1
+persist_usage_daily = true
+retain_raw_inference_events_days = 7
+retain_operation_events_days = 30
+# Compatibility only; the tamper-evident audit chain is retained indefinitely.
+retain_audit_days = 90
+# Aggregated per-day usage rows; 0 keeps them indefinitely.
+usage_retention_days = 90
+
+[projects]  # reserved: parsed, not yet wired (ADR-022)
+enabled = false
+projects_dir = "/var/lib/spark-runtime/projects"
+maximum_projects_per_owner = 50
+default_cpu_limit = 8
+default_memory_limit_bytes = 34359738368
+default_pids_limit = 1024
+allow_host_docker_socket = false
+network_default = "deny"
+
+[updates]  # reserved: sparkd ignores this table; spark-privd and spark-installer read the trust root directly (ADR-022)
+channel = "lab"  # the shipped schema-1 trust root authorises only dev and lab, so a stable manifest would be refused
+manifest_url = "https://updates.example.invalid/spark-runtime/lab/manifest.json"
+release_root_key_path = "/usr/share/spark-runtime/trust/release-keys.json"  # installed by packaging/debian/build.sh
+retain_previous_releases = 1
+health_check_seconds = 60
+
+[cluster]
+# collective_image_digest = "registry.example.invalid/spark/vllm@sha256:0000000000000000000000000000000000000000000000000000000000000000" # Required for collectives.

@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spark.example/schemas/pairing-invite.schema.json",
+  "title": "Spark Pairing Invitation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "node_id",
+    "authority_fingerprint",
+    "invitation_id",
+    "nonce",
+    "role",
+    "expires_at",
+    "signature"
+  ],
+  "properties": {
+    "version": {
+      "enum": [
+        1,
+        2
+      ]
+    },
+    "node_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "cluster_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid"
+    },
+    "local_endpoint": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "remote_endpoint": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "authority_fingerprint": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{16,128}$"
+    },
+    "invitation_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "nonce": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{22,}$"
+    },
+    "issued_by_device_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "recipient_device_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "recipient_public_key_fingerprint": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "role": {
+      "enum": [
+        "owner",
+        "administrator",
+        "developer",
+        "user",
+        "observer",
+        "guest"
+      ]
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "signature": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{43,}$"
+    },
+    "node_name": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "tls_fingerprint": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "remote_hostname": {
+      "type": "string",
+      "maxLength": 253
+    },
+    "shared_access": {
+      "type": "object"
+    }
+  }
+}

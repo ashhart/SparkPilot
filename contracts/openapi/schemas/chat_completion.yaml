@@ -1,0 +1,24 @@
+type: object
+required:
+- id
+- object
+- created
+- model
+- choices
+properties:
+  id:
+    type: string
+  object:
+    type: string
+  created:
+    type: integer
+  model:
+    type: string
+  choices:
+    type: array
+    items:
+      type: object
+      additionalProperties: true
+  usage:
+    type: object
+    additionalProperties: true

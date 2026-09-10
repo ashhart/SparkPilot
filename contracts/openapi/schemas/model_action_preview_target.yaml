@@ -1,0 +1,14 @@
+type: object
+additionalProperties: false
+required:
+- node_id
+- cluster_id
+properties:
+  node_id:
+    type: string
+    format: uuid
+  cluster_id:
+    type:
+    - string
+    - 'null'
+    format: uuid

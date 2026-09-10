@@ -1,0 +1,25 @@
+{
+  "$comment": "Cross-language canonical bytes signed by both the normal device key and the presence key when a pairing claim registers a presence key. The fingerprint is lowercase SHA-256 over the canonical 65-byte uncompressed SEC1 P-256 point, not over caller-supplied SPKI DER.",
+  "cases": [
+    {
+      "input": {
+        "challenge": "VGVzdCBwYWlyaW5nIGNoYWxsZW5nZQ",
+        "invitation_id": "d0483950-f543-443e-819b-78d06b620186",
+        "device_id": "e3778301-3007-47f1-86cd-92dc0eaf4dc5",
+        "node_id": "ca890ed7-7c8c-4b2c-9218-b77ef24f569a",
+        "presence_key_fingerprint": "4e46f39ed679967574f9a3f0476c5337f422bd8e8dbb7ef08ab865513f55c85b"
+      },
+      "canonical": "SPARK-PAIRING-PRESENCE1\nVGVzdCBwYWlyaW5nIGNoYWxsZW5nZQ\nd0483950-f543-443e-819b-78d06b620186\ne3778301-3007-47f1-86cd-92dc0eaf4dc5\nca890ed7-7c8c-4b2c-9218-b77ef24f569a\n4e46f39ed679967574f9a3f0476c5337f422bd8e8dbb7ef08ab865513f55c85b"
+    },
+    {
+      "input": {
+        "challenge": "AAECAwQFBgcICQ",
+        "invitation_id": "00000000-0000-4000-8000-000000000001",
+        "device_id": "00000000-0000-4000-8000-000000000002",
+        "node_id": "00000000-0000-4000-8000-000000000003",
+        "presence_key_fingerprint": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "canonical": "SPARK-PAIRING-PRESENCE1\nAAECAwQFBgcICQ\n00000000-0000-4000-8000-000000000001\n00000000-0000-4000-8000-000000000002\n00000000-0000-4000-8000-000000000003\n0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ]
+}

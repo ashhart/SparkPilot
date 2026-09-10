@@ -1,0 +1,8 @@
+{
+  "name": "spark-pilot-codex",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@openai/codex": "0.153.4"
+  }
+}

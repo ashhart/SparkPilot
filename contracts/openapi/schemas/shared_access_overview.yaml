@@ -1,0 +1,9 @@
+type: object
+additionalProperties: false
+required:
+- guests
+properties:
+  guests:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/SharedAccessGuest

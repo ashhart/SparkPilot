@@ -1,0 +1,37 @@
+post:
+  tags:
+  - Cluster
+  operationId: createCluster
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+          - name
+          - member_node_ids
+          properties:
+            name:
+              type: string
+              minLength: 1
+              maxLength: 80
+            member_node_ids:
+              type: array
+              minItems: 2
+              uniqueItems: true
+              items:
+                type: string
+                format: uuid
+  responses:
+    '202':
+      description: Cluster creation operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

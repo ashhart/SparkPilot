@@ -1,0 +1,35 @@
+get:
+  tags: [Remote]
+  operationId: getRemoteOverlayPreferences
+  description: Owner-only live Spark VPN and DNS preferences; unavailable state is an error, never inferred as off.
+  responses:
+    '200':
+      description: Live public preferences, with all private Tailscale state excluded.
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/RemoteOverlayPreferences
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+post:
+  tags: [Remote]
+  operationId: configureRemoteOverlay
+  description: Owner-only, presence-gated VPN pause/resume or DNS change; pausing disconnects remote clients but keeps account membership.
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/ConfigureRemoteOverlayRequest
+  responses:
+    '202':
+      description: Durable operation; success confirms the saved preference, not end-to-end reachability.
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

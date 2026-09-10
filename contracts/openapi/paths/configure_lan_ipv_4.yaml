@@ -1,0 +1,23 @@
+post:
+  tags:
+  - Network
+  operationId: configureLanIpv4
+  summary: Apply manual IPv4 to the active ordinary LAN profile with a 30-second failsafe
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/ConfigureLanIpv4Request
+  responses:
+    '202':
+      description: Pending manual IPv4 operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,21 @@
+type: object
+required:
+- name
+properties:
+  name:
+    type: string
+    minLength: 1
+    maxLength: 120
+  repository_url:
+    type:
+    - string
+    - 'null'
+    format: uri
+  revision:
+    type:
+    - string
+    - 'null'
+  template_id:
+    type:
+    - string
+    - 'null'

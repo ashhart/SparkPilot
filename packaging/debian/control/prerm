@@ -1,0 +1,28 @@
+#!/bin/sh
+# Confirm process quiescence before dpkg removes binaries, preserving identity, database and grants on removal.
+set -e
+
+RUNTIME_USER=sparkd
+# Identify the root helper by its executable because the service-uid scan cannot see it.
+PRIVD_PATH=/usr/lib/spark-runtime/spark-privd
+
+@QUIESCENCE@
+
+case "$1" in
+  remove|deconfigure)
+    spark_require_quiescent "remove Spark Runtime"
+    ;;
+  upgrade|failed-upgrade)
+    # The incoming package may predate credential custody, including during automatic rollback.
+    if [ -e /etc/spark-runtime/identity ] || [ -L /etc/spark-runtime/identity ]; then
+      spark_require_quiescent "prepare Spark Runtime package replacement"
+      /usr/lib/spark-runtime/spark-installer restore-legacy-identity >/dev/null
+    fi
+    ;;
+  *)
+    echo "prerm called with unknown argument \`$1'" >&2
+    exit 1
+    ;;
+esac
+
+exit 0

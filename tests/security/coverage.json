@@ -1,0 +1,189 @@
+{
+  "matrix": "PLAN \u00a749.3 Security tests",
+  "note": "Each plan case maps to tests that must exist in the tree, or to a declared blocker with the command that would produce the missing evidence. tests/security/test_security_matrix.py enforces both directions.\n\nRelease-readiness fuzz (\u00a765 entry 81) is listed against the cases it strengthens rather than as a case of its own: the corpora in api_fuzz, signature_fuzz, inference_proxy_fuzz, protocol_fuzz, SSEParserFuzzTests and RequestSigningFuzzTests are what stop these cases being true only for the inputs someone thought of. Seeds, counts and invariants are recorded in docs/reviews/plan-closure-74.md entry 81; `just test-fuzz-security` runs them.",
+  "cases": {
+    "Expired/replayed pairing invitation.": {
+      "tests": [
+        "an_expired_challenge_is_unusable",
+        "bootstrap_owner_issues_a_verifiable_single_use_invitation",
+        "the_installer_grant_is_revoked_once_the_owner_claims"
+      ]
+    },
+    "Challenge replay.": {
+      "tests": [
+        "an_expired_challenge_is_unusable",
+        "a_presence_proof_is_single_use"
+      ]
+    },
+    "Request nonce replay.": {
+      "tests": [
+        "one_nonce_admits_exactly_one_concurrent_request",
+        "a_broken_replay_store_fails_closed",
+        "replay_and_tampering_are_rejected"
+      ]
+    },
+    "Timestamp skew.": {
+      "tests": [
+        "a_correctly_signed_request_outside_the_window_is_refused",
+        "the_runtime_rebuilds_every_committed_vector"
+      ]
+    },
+    "Body tampering.": {
+      "tests": [
+        "replay_and_tampering_are_rejected",
+        "a_refused_body_is_a_client_error_that_changes_no_stored_state",
+        "the_answer_does_not_depend_on_how_the_body_was_chunked",
+        "a_refusal_never_echoes_the_body_back"
+      ]
+    },
+    "Signature from wrong device.": {
+      "tests": [
+        "a_claim_may_not_substitute_a_different_device_key",
+        "aSignatureFromAnotherKeyIsRefusedBeforeTransfer",
+        "replay_and_tampering_are_rejected",
+        "no_two_distinct_requests_share_canonical_bytes",
+        "one_changed_field_changes_the_canonical_bytes_and_the_signature",
+        "theAppRebuildsEveryGeneratedVector"
+      ]
+    },
+    "Revoked grant.": {
+      "tests": [
+        "revocation_terminates_access",
+        "administrator_cannot_escalate_or_revoke_owner_before_presence_prompt"
+      ]
+    },
+    "Role escalation.": {
+      "tests": [
+        "an_observer_cannot_reach_any_privileged_surface",
+        "administrator_cannot_escalate_or_revoke_owner_before_presence_prompt",
+        "device_management_respects_the_authority_ceiling"
+      ]
+    },
+    "Cloudflare token without Spark device signature.": {
+      "retired": "Owner decision on 2026-09-05: public remote access was removed; Tailscale is the supported remote provider.",
+      "tests": [
+        "retired_public_remote_mode_cannot_be_enabled",
+        "retired_public_connector_operations_are_rejected"
+      ]
+    },
+    "Wrong Cloudflare audience/issuer.": {
+      "retired": "Owner decision on 2026-09-05: public remote access was removed; Tailscale is the supported remote provider.",
+      "tests": [
+        "retired_public_remote_mode_cannot_be_enabled",
+        "retired_public_connector_operations_are_rejected"
+      ]
+    },
+    "Certificate mismatch.": {
+      "tests": [
+        "aPinThatIsNotAFingerprintIsRefusedAtConstruction",
+        "aSecondClaimAgainstADifferentCertificateIsRefused",
+        "identity_keeps_tls_leaf_pin_distinct_from_pairing_authority"
+      ]
+    },
+    "Unsigned/stale/revoked catalogue.": {
+      "tests": [
+        "tampered_catalogue_is_rejected_at_load",
+        "aManifestSignedByAnUnknownKeyIsRefused",
+        "aRevokedKeyIsRefused",
+        "aKeyOutsideItsWindowIsRefused"
+      ]
+    },
+    "OCI tag substitution for pinned digest.": {
+      "tests": [
+        "image_preparation_accepts_only_a_digest_pinned_reference"
+      ]
+    },
+    "Mount path traversal.": {
+      "tests": [
+        "remote_manifest_paths_cannot_escape_the_download_root",
+        "traversal_ids_are_handled_as_ids_not_paths"
+      ]
+    },
+    "Symlink escape from model/project root.": {
+      "tests": [
+        "the_file_api_never_follows_a_link_out_of_the_project",
+        "symlinked_staged_package_is_refused"
+      ]
+    },
+    "`trust_remote_code` attempt.": {
+      "tests": [
+        "trust_remote_code_is_rejected",
+        "only_the_allowlist_reaches_the_engine",
+        "a_refused_chat_body_never_moves_the_engine_counters"
+      ]
+    },
+    "Privileged-protocol malformed/fuzzed input.": {
+      "tests": [
+        "structured_corpus_never_panics",
+        "lcg_random_inputs_never_panic",
+        "malformed_headers_are_rejected_without_touching_storage",
+        "a_rejected_frame_never_reaches_the_backend",
+        "no_truncation_of_a_valid_request_is_executed",
+        "every_declared_length_edge_is_refused_without_work",
+        "a_replayed_request_id_is_executed_once",
+        "every_committed_regression_frame_is_refused_without_work"
+      ]
+    },
+    "SSRF through model URL or preview proxy.": {
+      "tests": [
+        "model_downloads_never_reach_an_internal_address",
+        "redirects_allow_only_provider_controlled_hosts_without_credentials",
+        "preview_proxy_serves_registered_ports_with_csp",
+        "preview_proxy_forwards_the_path_encoded_and_never_a_query",
+        "a_preview_path_reaches_upstream_as_an_encoded_path_with_no_query",
+        "the_proxy_can_only_reach_the_loopback_engine",
+        "admission_checks_identity_before_it_counts",
+        "an_engine_swapped_after_parsing_refuses_the_admission"
+      ]
+    },
+    "Terminal WebSocket cross-project access.": {
+      "tests": [
+        "terminals_cannot_be_reached_through_another_project",
+        "the_helper_refuses_terminals_outside_a_project_container"
+      ]
+    },
+    "Prompt-injected request for admin tool.": {
+      "tests": [
+        "injected_instructions_in_content_confer_no_authority",
+        "tool_allowlist_blocks_arbitrary_commands"
+      ]
+    },
+    "Network change without fresh user presence.": {
+      "tests": [
+        "network_mutations_require_administrator_authority_and_fresh_presence"
+      ]
+    },
+    "Network confirmation from a different paired device.": {
+      "tests": [
+        "a_different_paired_device_cannot_confirm_a_network_change",
+        "initiating_device_can_confirm_its_network_change"
+      ]
+    },
+    "Network confirmation over an unpinned or wrong-node route.": {
+      "tests": [
+        "candidateRouteIdentityMismatchFailsClosedWithoutConfirmation",
+        "successfulWifiHandoffNeedsExplicitKeepAfterFreshStableHostnameVerification"
+      ]
+    },
+    "Arbitrary interface name, NetworkManager UUID, profile path, and shell input.": {
+      "tests": [
+        "network_routes_reject_interface_uuid_profile_path_and_shell_fields"
+      ]
+    },
+    "Wi-Fi secret leakage through API, cache, event, audit, log, and diagnostics.": {
+      "tests": [
+        "settings_and_wifi_snapshots_are_typed_and_never_return_credentials",
+        "wifi_credentials_reach_only_the_typed_privileged_boundary",
+        "travel_access_point_secret_reaches_only_the_typed_privileged_boundary",
+        "wifi_secret_never_enters_debug_argv_or_the_failsafe_confirmation",
+        "nativeSetupClearsWiFiPasswordAndStartsHandoff"
+      ]
+    },
+    "Protected QSFP, loopback, bridge, and overlay mutation attempts.": {
+      "tests": [
+        "direct_ethernet_never_selects_protected_fabric_loopback_bridge_or_overlay_interfaces",
+        "direct_ethernet_fails_closed_when_only_protected_interfaces_exist"
+      ]
+    }
+  }
+}

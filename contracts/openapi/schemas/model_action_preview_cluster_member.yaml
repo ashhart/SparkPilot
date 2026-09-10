@@ -1,0 +1,21 @@
+type: object
+additionalProperties: false
+required:
+- node_id
+- role
+- reachable
+- reachability_source
+properties:
+  node_id:
+    type: string
+    format: uuid
+  role:
+    type: string
+    enum:
+    - leader
+    - worker
+  reachable:
+    type: boolean
+  reachability_source:
+    type: string
+    const: runtime_cache

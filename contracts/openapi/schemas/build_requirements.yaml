@@ -1,0 +1,36 @@
+type: object
+additionalProperties: false
+required:
+- platform
+- architecture
+- signing_required
+properties:
+  platform:
+    type: string
+    const: macOS
+  architecture:
+    type: string
+    minLength: 1
+    maxLength: 64
+    default: arm64
+  minimum_xcode_version:
+    type:
+    - string
+    - 'null'
+    minLength: 1
+    maxLength: 64
+  sdk:
+    type:
+    - string
+    - 'null'
+    minLength: 1
+    maxLength: 200
+  simulator:
+    type:
+    - string
+    - 'null'
+    minLength: 1
+    maxLength: 200
+  signing_required:
+    type: boolean
+    default: false

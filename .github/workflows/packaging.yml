@@ -1,0 +1,101 @@
+name: Packaging
+
+on:
+  push:
+    paths:
+      - "packaging/**"
+      - "runtime/**"
+      - "recipes/**"
+      - "config/**"
+      - "tools/release/**"
+      - "rust-toolchain.toml"
+      - ".github/workflows/packaging.yml"
+  pull_request:
+
+jobs:
+  # Build a real package so missing artifacts fail this job.
+  arm64-package:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Set up QEMU for linux/arm64
+        uses: docker/setup-qemu-action@49b3bc8e6bdd4a60e6116a5414239cba5943d3cf # v3.2.0
+        with:
+          platforms: arm64
+
+      - name: Verify target-systemd units and hardening
+        run: |
+          docker run --rm --platform linux/arm64 \
+            -v "$PWD:/src:ro" \
+            -w /src \
+            debian:bookworm bash -c '
+              set -e
+              export DEBIAN_FRONTEND=noninteractive
+              apt-get update -qq >/dev/null
+              apt-get install -y -qq systemd >/dev/null 2>&1
+              bash packaging/systemd/verify_units.sh
+            '
+
+      - name: Build the package, twice, and require the digests to match
+        run: ./packaging/debian/build.sh --verify-reproducible
+
+      - name: Build the upgrade revision
+        env:
+          SPARK_DEBIAN_REVISION: "2"
+        run: ./packaging/debian/build.sh
+
+      - name: Read the package back
+        run: |
+          schema="$(ls runtime/crates/sparkd/migrations/*.sql \
+            | sed -n 's#.*/\([0-9]\{4\}\)_.*#\1#p' | sort -n | tail -1 | sed 's/^0*//')"
+          for deb in build/packaging/out/*.deb; do
+            python3 packaging/debian/inspect_deb.py \
+              --deb "$deb" --expect-manifest --schema-version "$schema"
+          done
+
+      # Run dpkg on aarch64 to exercise maintainer scripts and service-account symlink attacks.
+      - name: Install lifecycle on aarch64
+        run: |
+          docker run --rm --platform linux/arm64 \
+            -v "$PWD/build/packaging/out:/pkg:ro" \
+            -v "$PWD/packaging/debian:/tests:ro" \
+            debian:bookworm bash -c '
+              set -e
+              export DEBIAN_FRONTEND=noninteractive
+              apt-get update -qq >/dev/null
+              apt-get install -y -qq systemd sqlite3 python3 adduser nftables >/dev/null 2>&1
+              timeout --kill-after=30 1800 bash /tests/test_install.sh \
+                /pkg/spark-runtime_*-1_arm64.deb /pkg/spark-runtime_*-2_arm64.deb
+            '
+
+      # The engine_flow memory-recovery case is excluded because Linux reads variable host /proc/meminfo; see docs/build/PR-010-INSTALLER.md.
+      - name: Runtime tests on aarch64
+        run: |
+          echo "::warning::skipping engine_flow::full_lifecycle_load_chat_unload — asserts a live-memory check, see PR-010-INSTALLER.md"
+          docker run --rm --platform linux/arm64 \
+            -e RUSTUP_TOOLCHAIN=1.94.0 -e CARGO_BUILD_JOBS=2 \
+            -v "$PWD:/src:ro" \
+            -v "$PWD/build/ci-target:/build/target" \
+            -w /src/runtime \
+            rust:1.94-bookworm \
+            bash -c '
+              # The agent tests shell out to `git commit`, which refuses
+              # without an identity — and a CI checkout has no global git
+              # config. Supplied through the environment rather than written
+              # into the repository, so nothing about the checkout changes.
+              export GIT_AUTHOR_NAME=spark-ci GIT_AUTHOR_EMAIL=ci@spark.invalid
+              export GIT_COMMITTER_NAME=spark-ci GIT_COMMITTER_EMAIL=ci@spark.invalid
+              git config --global --add safe.directory /src
+              timeout --kill-after=30 3600 cargo test --workspace --all-features \
+                --locked --target-dir /build/target -- \
+                --skip full_lifecycle_load_chat_unload
+            '
+
+      - name: Upload the package
+        if: always()
+        uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4.4.0
+        with:
+          name: spark-runtime-arm64
+          path: build/packaging/out/*.deb
+          if-no-files-found: error

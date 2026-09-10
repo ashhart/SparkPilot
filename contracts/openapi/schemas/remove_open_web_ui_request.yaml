@@ -1,0 +1,7 @@
+type: object
+additionalProperties: false
+required:
+- erase_data
+properties:
+  erase_data:
+    type: boolean

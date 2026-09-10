@@ -1,0 +1,14 @@
+type: object
+additionalProperties: false
+required:
+- mode_id
+- name
+properties:
+  mode_id:
+    type: integer
+    minimum: 0
+    maximum: 255
+  name:
+    type: string
+    minLength: 1
+    maxLength: 120

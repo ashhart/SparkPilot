@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SparkFeedbackEmail</key>
+	<string>feedback@sparkpilot.dev</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>SparkPilot</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.sparkfabric.Spark.widgets</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>sparkpilot</string>
+				<string>spark</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.productivity</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_spark-runtime._tcp</string>
+		<string>_ssh._tcp</string>
+	</array>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>SparkPilot shows your calendar and saves only changes you review. Titles, times and the calendar each event is in go to your Spark when you choose Include this week's calendar in a chat or turn on Share my calendar and reminders for a conversation; an item's notes go only when you choose Include in request.</string>
+	<key>NSCalendarsWriteOnlyAccessUsageDescription</key>
+	<string>SparkPilot adds only calendar events you review and save.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>SparkPilot uses your local network to find your DGX Spark.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>SparkPilot uses this permission only to recognise and join the DGX Spark Wi-Fi you choose. Your location is not stored or shared.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>SparkPilot uses the microphone when you dictate a message or start a voice chat.</string>
+	<key>NSRemindersFullAccessUsageDescription</key>
+	<string>SparkPilot shows your reminders and saves only changes you review. Titles, due dates and the list each reminder is in go to your Spark when you choose Include open reminders in a chat or turn on Share my calendar and reminders for a conversation; an item's notes go only when you choose Include in request.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>SparkPilot turns what you say into text on this device to send messages to your Spark. It sends your speech to Apple's speech service only if you turn on Use Apple's speech service in SparkPilot's voice settings, which is off to begin with.</string>
+	<key>SparkReleaseManifestURL</key>
+	<string>$(SPARK_RELEASE_MANIFEST_URL)</string>
+	<key>SparkCatalogueURL</key>
+	<string>https://sparkpilot.dev/models/v2/catalogue.json</string>
+</dict>
+</plist>

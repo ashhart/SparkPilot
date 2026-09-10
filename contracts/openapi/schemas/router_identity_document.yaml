@@ -1,0 +1,38 @@
+type: object
+additionalProperties: false
+properties:
+  protocol_version:
+    type: integer
+    const: 1
+  router_node_id:
+    type: string
+    format: uuid
+  principal_id:
+    type: string
+    format: uuid
+  key_generation:
+    type: integer
+    format: int64
+    minimum: 1
+  request_public_key_spki:
+    type: string
+  request_key_fingerprint:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  authority_public_key:
+    type: string
+  authority_fingerprint:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  authority_signature:
+    type: string
+required:
+- protocol_version
+- router_node_id
+- principal_id
+- key_generation
+- request_public_key_spki
+- request_key_fingerprint
+- authority_public_key
+- authority_fingerprint
+- authority_signature

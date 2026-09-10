@@ -1,0 +1,31 @@
+type: object
+additionalProperties: false
+required:
+- observed_at
+- available
+- adoption_supported
+- truncated
+- workloads
+properties:
+  observed_at:
+    type: string
+    format: date-time
+  # False means container state is unknown, even when the workload list is empty.
+  available:
+    type: boolean
+  unavailable_reason:
+    type:
+    - string
+    - 'null'
+    maxLength: 200
+  # False forbids reporting any workload as adoption_available.
+  adoption_supported:
+    type: boolean
+  # True marks workloads omitted because of response bounds or unreadable rows.
+  truncated:
+    type: boolean
+  workloads:
+    type: array
+    maxItems: 64
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ObservedWorkload

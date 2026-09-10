@@ -1,0 +1,28 @@
+type: object
+additionalProperties: false
+required:
+- model_id
+- profile_id
+- idle_policy
+properties:
+  model_id:
+    type: string
+    minLength: 1
+    maxLength: 240
+  profile_id:
+    type: string
+    minLength: 1
+    maxLength: 120
+  idle_policy:
+    type: string
+    enum:
+    - keep_ready
+    - unload_after_15m
+    - unload_after_30m
+    - unload_after_60m
+    - manual_only
+  idle_timeout_seconds:
+    type: integer
+    minimum: 60
+    maximum: 604800
+    description: Optional custom idle timeout for a timed unload policy; overrides its named duration. Omit to use the named duration. Not valid with keep_ready or manual_only.

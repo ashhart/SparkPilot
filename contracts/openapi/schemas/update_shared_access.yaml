@@ -1,0 +1,12 @@
+type: object
+additionalProperties: false
+description: Confirm, pause or re-limit one guest. Withdrawing access has its own route.
+properties:
+  state:
+    type: string
+    enum:
+    - pending
+    - active
+    - paused
+  limits:
+    $ref: ../../openapi.yaml#/components/schemas/SharedAccessLimits

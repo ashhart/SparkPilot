@@ -1,0 +1,61 @@
+# Rust
+target/
+**/*.rs.bk
+
+# Swift / Xcode
+.build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.swiftpm/
+**/.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.ruff_cache/
+.pytest_cache/
+
+# Node / Cloudflare relay
+node_modules/
+
+# Local build artifacts and secrets. Anchored: an unanchored `build/`
+# also matches docs/build, which is tracked documentation.
+/build/
+*.pem
+*.key
+.env
+.env.*
+!/contracts/examples/*.json
+
+# Diagnostics/private material
+.private/
+
+# Signing exports, local credentials and build products
+*.p12
+*.pfx
+*.ed25519
+*.mobileprovision
+*.ipa
+*.xcarchive/
+*.dSYM/
+*.deb
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.db-wal
+*.db-shm
+*.log
+*.core
+.envrc
+credentials.json
+secrets.json
+service-account.json
+.venv/
+venv/
+coverage/
+*.swp
+*.swo
+*~

@@ -1,0 +1,25 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/BuildId
+post:
+  tags:
+  - Builds
+  operationId: renewBuildLease
+  summary: Renew a live claim and learn whether cancellation was requested
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/BuildClaimToken
+  responses:
+    '200':
+      description: Renewed lease
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/BuildLeaseRenewal
+    '409':
+      description: Lease expired, was requeued, or cancellation is pending
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ErrorEnvelope
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

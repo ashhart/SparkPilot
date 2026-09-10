@@ -1,0 +1,9 @@
+type: object
+additionalProperties: false
+required:
+- ssid
+properties:
+  ssid:
+    type: string
+    minLength: 1
+    maxLength: 32

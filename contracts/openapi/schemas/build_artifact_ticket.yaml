@@ -1,0 +1,27 @@
+type: object
+additionalProperties: false
+required:
+- ticket_id
+- upload_path_template
+- max_file_bytes
+- max_total_bytes
+- max_files
+- expires_at
+properties:
+  ticket_id:
+    type: string
+    format: uuid
+  upload_path_template:
+    type: string
+  max_file_bytes:
+    type: integer
+    const: 8388608
+  max_total_bytes:
+    type: integer
+    const: 33554432
+  max_files:
+    type: integer
+    const: 16
+  expires_at:
+    type: string
+    format: date-time

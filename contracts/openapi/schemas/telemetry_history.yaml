@@ -1,0 +1,49 @@
+type: object
+additionalProperties: false
+required:
+- api_version
+- node_id
+- recording
+- retention
+- rows
+properties:
+  api_version:
+    type: integer
+  node_id:
+    type: string
+    format: uuid
+  recording:
+    type: boolean
+    description: Whether the runtime is recording. False means functional telemetry consent is off, and
+      an empty `rows` then means "not recorded" rather than "nothing happened".
+  latest_observed_at:
+    type:
+    - string
+    - 'null'
+    format: date-time
+    description: The newest bucket recorded, or null when there is none.
+  retention:
+    type: object
+    additionalProperties: false
+    required:
+    - raw_seconds
+    - aggregate_seconds
+    - raw_bucket_seconds
+    - aggregate_bucket_seconds
+    properties:
+      raw_seconds:
+        type: integer
+        minimum: 0
+      aggregate_seconds:
+        type: integer
+        minimum: 0
+      raw_bucket_seconds:
+        type: integer
+        minimum: 1
+      aggregate_bucket_seconds:
+        type: integer
+        minimum: 1
+  rows:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/TelemetryHistoryRow

@@ -1,0 +1,30 @@
+post:
+  tags:
+  - Workloads
+  operationId: previewWorkloadAdoption
+  summary: Review exact signed-recipe adoption of one external vLLM container
+  parameters:
+  - name: workload_id
+    in: path
+    required: true
+    schema:
+      type: string
+      minLength: 64
+      maxLength: 64
+      pattern: ^[0-9a-fA-F]+$
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/WorkloadAdoptionPreviewRequest
+  responses:
+    '200':
+      description: Server-authored exact-match review; blockers keep the workload external
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ModelActionPreview
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

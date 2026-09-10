@@ -1,0 +1,6 @@
+type: object
+additionalProperties: false
+properties:
+  expected_key_fingerprint:
+    type: string
+    pattern: ^[0-9a-f]{64}$

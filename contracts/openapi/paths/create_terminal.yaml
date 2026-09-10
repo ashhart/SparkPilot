@@ -1,0 +1,79 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/ProjectId
+post:
+  tags:
+  - Projects
+  operationId: createTerminal
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: false
+    content:
+      application/json:
+        schema:
+          type: object
+          description: "A terminal names one of a fixed set of shells, never a command\
+            \ (\xA742.9). A command string would be an arbitrary-execution primitive:\
+            \ the session runs inside the project container, and the argv belongs\
+            \ to the runtime."
+          properties:
+            shell:
+              type: string
+              enum:
+              - login
+              - bash
+              - python
+              - development
+              default: login
+            cols:
+              type: integer
+              minimum: 10
+              maximum: 500
+              default: 120
+            rows:
+              type: integer
+              minimum: 5
+              maximum: 250
+              default: 40
+            development:
+              type: object
+              additionalProperties: false
+              required:
+              - harness
+              - model_id
+              - workspace_session_id
+              properties:
+                harness:
+                  type: string
+                  enum:
+                  - oh_my_pi
+                  - open_code
+                  - pi
+                  - claude_code
+                  - codex
+                  default: oh_my_pi
+                model_id:
+                  type: string
+                  minLength: 1
+                  maxLength: 512
+                cluster_id:
+                  type: string
+                  format: uuid
+                thinking_token_budget:
+                  type: integer
+                  minimum: 0
+                  maximum: 8192
+                workspace_session_id:
+                  type: string
+                  format: uuid
+                  description: Stable client workspace identity; harness configuration
+                    and history are isolated by this ID within the project.
+  responses:
+    '202':
+      description: Terminal session created
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ProjectTerminal
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,24 @@
+type: object
+additionalProperties: false
+required:
+- command
+- status
+- exit_code
+- output_digest
+properties:
+  command:
+    type: string
+    minLength: 1
+    maxLength: 512
+  status:
+    type: string
+    enum:
+    - passed
+    - failed
+  exit_code:
+    type: integer
+    minimum: 0
+    maximum: 255
+  output_digest:
+    type: string
+    pattern: ^[0-9a-f]{64}$

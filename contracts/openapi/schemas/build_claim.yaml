@@ -1,0 +1,14 @@
+type: object
+additionalProperties: false
+required:
+- recipe
+- recipe_sha256
+- lease
+properties:
+  recipe:
+    $ref: ../../openapi.yaml#/components/schemas/SignedBuildRecipe
+  recipe_sha256:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  lease:
+    $ref: ../../openapi.yaml#/components/schemas/BuildLease

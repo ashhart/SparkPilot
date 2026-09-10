@@ -1,0 +1,12 @@
+type: object
+additionalProperties: false
+required:
+- days
+description: A guest's allowed hours for the whole week, always read in the owner's time zone.
+properties:
+  days:
+    type: array
+    minItems: 7
+    maxItems: 7
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/GuestDaySchedule

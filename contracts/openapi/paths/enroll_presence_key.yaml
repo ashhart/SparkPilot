@@ -1,0 +1,26 @@
+post:
+  tags:
+  - Devices
+  operationId: enrollPresenceKey
+  summary: Register this device's presence key once
+  description: Compatibility path for grants created before presence keys were supported. The normal SPARK2
+    signature binds the exact request body; the proposed key must separately sign SPARK-PRESENCE-ENROLL2.
+    Repeating the same key is idempotent. Replacing it requires a recovery flow.
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/PresenceKeyProof
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/PresenceKeyEnrollment
+  responses:
+    '200':
+      description: Presence key enrolled or already enrolled
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/PresenceKeyEnrollmentResult
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

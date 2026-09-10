@@ -1,0 +1,28 @@
+post:
+  tags:
+  - Remote
+  operationId: disableRemoteAccess
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+          - accepted_preview_digest
+          properties:
+            accepted_preview_digest:
+              type: string
+              pattern: ^[0-9a-f]{64}$
+  responses:
+    '202':
+      description: Remote disable operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

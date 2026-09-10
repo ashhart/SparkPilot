@@ -1,0 +1,37 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/ModelId
+get:
+  tags:
+  - Models
+  operationId: getModel
+  responses:
+    '200':
+      description: Model detail
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Model
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+delete:
+  tags:
+  - Models
+  operationId: removeModel
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/UserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/RemoveModelRequest
+  responses:
+    '202':
+      description: Removal operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

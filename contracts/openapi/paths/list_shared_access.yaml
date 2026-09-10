@@ -1,0 +1,16 @@
+get:
+  tags:
+  - Shared Access
+  operationId: listSharedAccess
+  summary: List every guest the owner has shared this Spark with
+  description: Owner only. Returns each guest's policy, where its access stands, and what it has used
+    today and over the last seven local days.
+  responses:
+    '200':
+      description: Shared access overview
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/SharedAccessOverview
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

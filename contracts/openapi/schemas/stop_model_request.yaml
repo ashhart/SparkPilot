@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+required:
+- accepted_preview_digest
+properties:
+  force:
+    type: boolean
+    default: false
+  accepted_preview_digest:
+    type: string
+    pattern: ^[0-9a-f]{64}$

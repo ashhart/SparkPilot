@@ -1,0 +1,41 @@
+type: object
+additionalProperties: false
+required:
+- api_version
+- observed_at
+- direct_ethernet_enabled
+- travel_access_point
+- bluetooth
+- power_profile
+- software_updates
+- memory_guard
+- model_idle_policies
+- time
+- telemetry_consent
+properties:
+  api_version:
+    type: integer
+    const: 1
+  observed_at:
+    type: string
+    format: date-time
+  direct_ethernet_enabled:
+    type: boolean
+  travel_access_point:
+    $ref: ../../openapi.yaml#/components/schemas/TravelAccessPointStatus
+  bluetooth:
+    $ref: ../../openapi.yaml#/components/schemas/BluetoothStatus
+  power_profile:
+    $ref: ../../openapi.yaml#/components/schemas/PowerProfileStatus
+  software_updates:
+    $ref: ../../openapi.yaml#/components/schemas/SoftwareUpdateStatus
+  memory_guard:
+    $ref: ../../openapi.yaml#/components/schemas/MemoryGuardSettings
+  model_idle_policies:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ModelIdlePolicySettings
+  time:
+    $ref: ../../openapi.yaml#/components/schemas/SystemTimeStatus
+  telemetry_consent:
+    $ref: ../../openapi.yaml#/components/schemas/TelemetryConsentSettings

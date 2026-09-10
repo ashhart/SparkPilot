@@ -1,0 +1,25 @@
+post:
+  tags:
+  - Inference
+  operationId: createRouterEnrollmentChallenge
+  summary: Issue a recipient-bound challenge for an independently trusted source router
+  responses:
+    '200':
+      description: Issue a recipient-bound challenge for an independently trusted source router
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/RouterEnrollmentChallenge
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/CreateRouterEnrollmentRequest
+  description: Owner-only preview. Source node and authority anchors must come independently from the
+    owner's already pinned source connection, not from the untrusted descriptor. The challenge expires
+    after 60 seconds and binds the recipient node, authority and TLS certificate.

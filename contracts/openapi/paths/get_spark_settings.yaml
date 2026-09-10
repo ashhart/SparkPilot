@@ -1,0 +1,14 @@
+get:
+  tags:
+  - Settings
+  operationId: getSparkSettings
+  summary: Return locally stored appliance preferences and host capabilities
+  responses:
+    '200':
+      description: Current Spark settings
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/SparkSettingsSnapshot
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

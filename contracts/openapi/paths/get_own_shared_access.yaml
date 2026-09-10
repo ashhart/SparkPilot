@@ -1,0 +1,16 @@
+get:
+  tags:
+  - Shared Access
+  operationId: getOwnSharedAccess
+  summary: Read this device's own shared access
+  description: A guest reads its own limits and today's usage against the budget. It never names another
+    device.
+  responses:
+    '200':
+      description: This device's shared access
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/SharedAccessSelf
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,15 @@
+type: object
+additionalProperties: false
+required:
+- code
+- owner_explanation
+- recovery_action
+properties:
+  code:
+    type: string
+  owner_explanation:
+    type: string
+  recovery_action:
+    type:
+    - string
+    - 'null'

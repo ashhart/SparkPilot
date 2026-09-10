@@ -1,0 +1,14 @@
+get:
+  tags:
+  - Cluster
+  operationId: getFabric
+  summary: Observe ConnectX fabric without changing host configuration
+  responses:
+    '200':
+      description: Read-only local fabric evidence
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/FabricStatus
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

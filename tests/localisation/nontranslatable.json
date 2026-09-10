@@ -1,0 +1,19 @@
+{
+  "note": "Visible strings that are identifiers rather than copy. PLAN §51.2 says model names are not translated; the same holds for a protocol suffix and for the example hostnames a placeholder shows. Each is in the catalogue so the drift gate still sees it, and each is marked shouldTranslate:false so a translation pass cannot quietly localise it.",
+  "cases": {
+    ".local": "The mDNS domain suffix. A translated suffix is an unreachable host.",
+    "Netplan": "Canonical's network configuration tool. The Spark's own files are named after it, so a translated label would not match what is on the machine.",
+    "Open WebUI": "The optional service's own product name. Shown on the dashboard and on its pinned surface; the same in every language.",
+    "Tailscale": "A third-party product name. It reaches the catalogue so the drift gate sees it, and ships shouldTranslate:false because a translated Tailscale names no product the owner has installed.",
+    "entity.subtitle.spark": "NVIDIA's product name. Marked here rather than hidden, so a translator sees it and knows to leave it.",
+    "spark-a1b2": "Example factory hostname in a text-field placeholder, shown so the owner recognises the shape of the real one.",
+    "spark1": "Example hostname in a text-field placeholder. Localising it would suggest a name the runtime would reject.",
+    "Ollama": "The local inference engine product name, shown in the engine selector and kept identical in every language.",
+    "LM Studio": "The local inference engine product name, shown in the engine selector and kept identical in every language.",
+    "Oh My Pi": "A coding-agent product name.",
+    "OpenCode": "A coding-agent product name.",
+    "Pi": "A coding-agent product name.",
+    "Claude Code": "A coding-agent product name.",
+    "Codex": "A coding-agent product name."
+  }
+}

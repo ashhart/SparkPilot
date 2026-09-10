@@ -1,0 +1,8 @@
+type: object
+additionalProperties: false
+required:
+- access_path
+properties:
+  access_path:
+    type: string
+    pattern: ^/services/open-webui/$

@@ -1,0 +1,32 @@
+type: object
+additionalProperties: false
+required:
+- error
+properties:
+  error:
+    type: object
+    required:
+    - code
+    - message
+    - request_id
+    properties:
+      code:
+        type: string
+        pattern: ^[A-Z0-9_]+$
+      message:
+        type: string
+      recovery:
+        type:
+        - object
+        - 'null'
+        additionalProperties: true
+      operation_id:
+        type:
+        - string
+        - 'null'
+        format: uuid
+      request_id:
+        type: string
+      details:
+        type: object
+        additionalProperties: true

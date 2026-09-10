@@ -1,0 +1,31 @@
+type: object
+additionalProperties: false
+required:
+- node_id
+- name
+- authority_public_key
+- authority_fingerprint
+- runtime_version
+- engine_image
+properties:
+  node_id:
+    type: string
+    format: uuid
+  name:
+    type: string
+    minLength: 1
+    maxLength: 120
+  authority_public_key:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  authority_fingerprint:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  runtime_version:
+    type: string
+    minLength: 1
+    maxLength: 64
+  engine_image:
+    type: string
+    minLength: 1
+    maxLength: 584

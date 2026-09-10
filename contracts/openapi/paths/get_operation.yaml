@@ -1,0 +1,15 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/OperationId
+get:
+  tags:
+  - Operations
+  operationId: getOperation
+  responses:
+    '200':
+      description: Operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

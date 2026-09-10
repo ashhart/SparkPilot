@@ -1,0 +1,22 @@
+type: object
+additionalProperties: false
+required:
+- cluster_id
+- launch_id
+- recipe_id
+- profile_id
+properties:
+  cluster_id:
+    type: string
+    format: uuid
+  launch_id:
+    type: string
+    format: uuid
+  recipe_id:
+    type: string
+    minLength: 1
+    maxLength: 240
+  profile_id:
+    type: string
+    minLength: 1
+    maxLength: 80

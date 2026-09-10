@@ -1,0 +1,26 @@
+type: object
+additionalProperties: false
+required:
+- sequence
+- tool
+- outcome
+properties:
+  sequence:
+    type: integer
+    minimum: 1
+    maximum: 200
+  tool:
+    type: string
+    enum:
+    - read_file
+    - search_files
+    - write_file
+    - delete_file
+    - run_command
+    - git
+  outcome:
+    type: string
+    enum:
+    - ok
+    - failed
+    - denied

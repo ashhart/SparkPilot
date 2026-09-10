@@ -1,0 +1,39 @@
+post:
+  tags:
+  - Network
+  operationId: configureTravelAccessPoint
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+          - enabled
+          properties:
+            enabled:
+              type: boolean
+            ssid:
+              type:
+              - string
+              - 'null'
+              minLength: 1
+              maxLength: 32
+            passphrase:
+              type:
+              - string
+              - 'null'
+              minLength: 12
+              maxLength: 63
+  responses:
+    '202':
+      description: Network operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

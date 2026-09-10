@@ -1,0 +1,177 @@
+type: object
+additionalProperties: false
+required:
+- install_state
+- installed_bytes
+- removable_bytes
+- download_bytes
+- locally_reusable_bytes
+- required_disk_bytes
+- disk_free_bytes
+- expected_disk_free_after_bytes
+- required_memory_bytes
+- available_memory_bytes
+- system_reserve_bytes
+- expected_memory_headroom_bytes
+- memory_pressure
+- memory_admission
+- profile_failure_code
+- active_inference_available
+- engine_transitioning
+- active_engine
+- cluster_membership_available
+- cluster_membership_source
+- cluster
+- external_workload_id
+- external_workload_evidence_digest
+- external_workload_healthy
+properties:
+  external_workload_id:
+    type:
+    - string
+    - 'null'
+    maxLength: 64
+  external_workload_evidence_digest:
+    type:
+    - string
+    - 'null'
+    pattern: ^[0-9a-f]{64}$
+  external_workload_healthy:
+    type:
+    - boolean
+    - 'null'
+  remote:
+    oneOf:
+    - $ref: ../../openapi.yaml#/components/schemas/RemoteActionPreviewEvidence
+    - type: 'null'
+  install_state:
+    type:
+    - string
+    - 'null'
+  installed_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  removable_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  download_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  locally_reusable_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  required_disk_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  disk_free_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  expected_disk_free_after_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  required_memory_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  available_memory_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  system_reserve_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  expected_memory_headroom_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  # ADR-043: the parts behind required_memory_bytes and what the current budget would admit instead. Present only for load previews of recipes that declare per-token arithmetic.
+  weight_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  kv_cache_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  state_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  engine_overhead_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  max_context_now:
+    description: Largest context, rounded down to a multiple of 4096 tokens, that fits at the profile's request count after the system reserve, weights, overhead and per-request state.
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  max_sequences_now:
+    description: Requests that fit at the profile's full context, bounded by the engine policy.
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+    maximum: 64
+  memory_pressure:
+    type:
+    - string
+    - 'null'
+  memory_admission:
+    oneOf:
+    - type: string
+      enum:
+      - allow
+      - deny_insufficient_memory
+      - deny_pressure_active
+      - deny_profile_unsafe
+    - type: 'null'
+  # Preserve the guard diagnostic without widening the closed admission decision enum.
+  profile_failure_code:
+    type:
+    - string
+    - 'null'
+    maxLength: 120
+  active_inference_available:
+    type: boolean
+  engine_transitioning:
+    type: boolean
+  active_engine:
+    oneOf:
+    - $ref: ../../openapi.yaml#/components/schemas/ModelActionPreviewActiveEngine
+    - type: 'null'
+  cluster_membership_available:
+    type: boolean
+  cluster_membership_source:
+    oneOf:
+    - type: string
+      const: runtime_cache
+    - type: 'null'
+  cluster:
+    oneOf:
+    - $ref: ../../openapi.yaml#/components/schemas/ModelActionPreviewCluster
+    - type: 'null'

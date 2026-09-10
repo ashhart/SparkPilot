@@ -1,0 +1,22 @@
+post:
+  tags:
+  - Automations
+  operationId: createWebAnswer
+  summary: Answer with web search and page reading performed by the Spark
+  responses:
+    '200':
+      description: Answer with web search and page reading performed by the Spark
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/WebAnswer
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/WebAnswerRequest
+  description: The conversation's per-request opt-in. The Spark runs the tool loop itself against the loopback
+    engine; the inference container never reaches the internet. The answer carries the sources it read.

@@ -1,0 +1,75 @@
+type: object
+additionalProperties: false
+required:
+- invitation_id
+- display_name
+- state
+- allowed_models
+- allowed_hours
+- time_zone
+- max_concurrent_requests
+- daily_token_budget
+- today
+- this_week
+- refusals_this_week
+description: One guest as the owner's Shared access screen shows it.
+properties:
+  invitation_id:
+    type: string
+    format: uuid
+  device_id:
+    type:
+    - string
+    - 'null'
+    format: uuid
+    description: Null until the friend has joined.
+  display_name:
+    type: string
+  state:
+    $ref: ../../openapi.yaml#/components/schemas/SharedAccessState
+  allowed_models:
+    type: array
+    items:
+      type: string
+  allowed_hours:
+    $ref: ../../openapi.yaml#/components/schemas/GuestSchedule
+  time_zone:
+    type: string
+  max_concurrent_requests:
+    type: integer
+  daily_token_budget:
+    type: integer
+  expires_at:
+    type:
+    - integer
+    - 'null'
+  joined_at:
+    type:
+    - string
+    - 'null'
+    format: date-time
+  confirmed_at:
+    type:
+    - string
+    - 'null'
+    format: date-time
+  revoked_at:
+    type:
+    - string
+    - 'null'
+    format: date-time
+  last_seen_at:
+    type:
+    - string
+    - 'null'
+    format: date-time
+  today:
+    $ref: ../../openapi.yaml#/components/schemas/GuestUsage
+  this_week:
+    $ref: ../../openapi.yaml#/components/schemas/GuestUsage
+  refusals_this_week:
+    type: object
+    description: Refusals over the last seven local days, counted by error code.
+    additionalProperties:
+      type: integer
+      minimum: 0

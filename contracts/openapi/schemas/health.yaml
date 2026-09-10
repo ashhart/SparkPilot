@@ -1,0 +1,26 @@
+type: object
+additionalProperties: false
+required:
+- status
+- api_version
+- runtime_version
+- node_id
+properties:
+  status:
+    type: string
+    const: ok
+  api_version:
+    type: integer
+    const: 1
+  runtime_version:
+    type: string
+  node_id:
+    type: string
+    format: uuid
+  auth_protocols:
+    type: array
+    description: Request-signing protocols this runtime accepts. An app that speaks none of them must update itself or the runtime before requests can succeed.
+    items:
+      type: string
+      enum:
+      - SPARK2

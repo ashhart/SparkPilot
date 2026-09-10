@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spark.example/schemas/release-manifest.schema.json",
+  "title": "Spark Runtime Release Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "channel", "released_at", "minimum_dgx_os", "artifacts", "signature"],
+  "properties": {
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+([+-][A-Za-z0-9.-]+)?$" },
+    "channel": { "enum": ["dev", "lab", "beta", "stable"] },
+    "released_at": { "type": "string", "format": "date-time" },
+    "minimum_dgx_os": { "type": "string" },
+    "maximum_dgx_os": { "type": ["string", "null"] },
+    "api_version": { "type": "integer", "minimum": 1 },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "architecture", "url", "size", "sha256", "signature_url"],
+        "properties": {
+          "name": { "type": "string" },
+          "architecture": { "enum": ["aarch64"] },
+          "url": { "type": "string", "format": "uri" },
+          "size": { "type": "integer", "minimum": 1 },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "signature_url": { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "signature": {
+      "type": "object",
+      "required": ["key_id", "algorithm", "value"],
+      "properties": {
+        "key_id": { "type": "string" },
+        "algorithm": { "enum": ["ed25519", "cosign"] },
+        "value": { "type": "string" }
+      }
+    }
+  }
+}

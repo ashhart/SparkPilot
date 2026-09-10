@@ -1,0 +1,31 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/ProjectId
+get:
+  tags:
+  - Projects
+  operationId: getProject
+  responses:
+    '200':
+      description: Project
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Project
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+delete:
+  tags:
+  - Projects
+  operationId: deleteProject
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/UserPresence
+  responses:
+    '202':
+      description: Deletion operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

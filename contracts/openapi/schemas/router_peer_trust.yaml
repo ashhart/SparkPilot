@@ -1,0 +1,22 @@
+type: object
+additionalProperties: false
+properties:
+  node_id:
+    type: string
+    format: uuid
+  authority_fingerprint:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  tls_certificate_sha256:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  endpoint:
+    type: string
+    format: uri
+    description: Owner-approved numeric on-link HTTPS origin; no hostnames, credentials, path, query,
+      fragment, redirects or proxy.
+required:
+- node_id
+- authority_fingerprint
+- tls_certificate_sha256
+- endpoint

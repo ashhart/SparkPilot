@@ -1,0 +1,24 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/BuildId
+post:
+  tags:
+  - Builds
+  operationId: reportBuildResult
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/BuildClaimToken
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/SignedBuildResult
+  responses:
+    '200':
+      description: Result recorded
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/BuildJob
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

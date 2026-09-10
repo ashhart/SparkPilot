@@ -1,0 +1,26 @@
+type: object
+additionalProperties: false
+required:
+- preset
+- expression
+- timezone
+properties:
+  preset:
+    type: string
+    description: How the app composed the expression. `custom` means the owner typed one.
+    enum:
+    - daily
+    - weekdays
+    - every_n_hours
+    - weekly
+    - custom
+  expression:
+    type: string
+    maxLength: 120
+    description: Five cron fields — minute hour day-of-month month day-of-week — accepting `*`, a number,
+      a comma list, an inclusive range and `*/N`. Every preset is stored as an ordinary expression.
+  timezone:
+    type: string
+    maxLength: 64
+    description: IANA zone the expression is read in, for example `Europe/London`. Stored with the automation
+      so a Spark in another zone still fires at the owner's local time.

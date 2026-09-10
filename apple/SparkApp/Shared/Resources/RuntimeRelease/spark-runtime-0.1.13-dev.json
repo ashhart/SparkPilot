@@ -1,0 +1,22 @@
+{
+  "version": "0.1.13",
+  "channel": "dev",
+  "released_at": "2026-09-08T10:17:53Z",
+  "minimum_dgx_os": "7.0",
+  "api_version": 1,
+  "artifacts": [
+    {
+      "name": "spark-runtime_0.1.13-0qa20260908.1_arm64.deb",
+      "architecture": "aarch64",
+      "url": "https://downloads.sparkpilot.local/dev/spark-runtime_0.1.13-0qa20260908.1_arm64.deb",
+      "size": 9098044,
+      "sha256": "3336299d50ae995af235d06027011a22324493815162e828122c6d1af772377b",
+      "signature_url": "https://downloads.sparkpilot.local/dev/spark-runtime_0.1.13-0qa20260908.1_arm64.deb.sig"
+    }
+  ],
+  "signature": {
+    "key_id": "spark-release-dev-2026b",
+    "algorithm": "ed25519",
+    "value": "YJ7FsPXe9XbkqSD514oLbyml1VLP27F43wdjzNdN3EDAJeC7td0KOLKlIn7F7kDKk2JhddWxuTO09EjwmqEkDA"
+  }
+}

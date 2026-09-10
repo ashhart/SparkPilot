@@ -1,0 +1,36 @@
+get:
+  tags:
+  - Network
+  operationId: getWifiNetworks
+  summary: Return visible Wi-Fi networks without stored credentials
+  responses:
+    '200':
+      description: Current Wi-Fi scan
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/WifiNetworksSnapshot
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+post:
+  tags:
+  - Network
+  operationId: connectWifiNetwork
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/ConnectWifiRequest
+  responses:
+    '202':
+      description: Wi-Fi operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

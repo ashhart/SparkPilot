@@ -1,0 +1,11 @@
+type: object
+required:
+- manifest
+- files
+properties:
+  manifest:
+    $ref: ../../openapi.yaml#/components/schemas/DiagnosticsManifest
+  files:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/DiagnosticsFile

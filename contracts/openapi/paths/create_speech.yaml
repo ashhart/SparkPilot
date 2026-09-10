@@ -1,0 +1,22 @@
+post:
+  tags:
+  - Inference
+  operationId: createSpeech
+  summary: Generate Kokoro speech on this Spark through the authenticated gateway
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/SpeechRequest
+  responses:
+    '200':
+      description: Bounded WAV audio without persistent caching
+      content:
+        audio/wav:
+          schema:
+            type: string
+            format: binary
+            maxLength: 33554432
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

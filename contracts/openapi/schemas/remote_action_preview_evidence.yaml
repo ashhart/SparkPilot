@@ -1,0 +1,38 @@
+type: object
+additionalProperties: false
+required:
+- mode
+- health
+- requested_mode_available
+properties:
+  mode:
+    type: string
+    enum:
+    - disabled
+    - private_overlay
+  health:
+    type: string
+    enum:
+    - disabled
+    - starting
+    - healthy
+    - degraded
+    - failed
+  hostname:
+    type:
+    - string
+    - 'null'
+  requested_mode_available:
+    type: boolean
+  provider:
+    type:
+    - string
+    - 'null'
+    maxLength: 32
+  overlay_setup_state:
+    type:
+    - string
+    - 'null'
+    maxLength: 32
+    description: The Tailscale client state the review found when it would set the overlay up rather than
+      reuse an enrolled route.

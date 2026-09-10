@@ -1,0 +1,48 @@
+type: object
+required:
+- state
+- members
+properties:
+  id:
+    type:
+    - string
+    - 'null'
+    format: uuid
+  name:
+    type:
+    - string
+    - 'null'
+  state:
+    type: string
+    enum:
+    - standalone
+    - forming
+    - validating
+    - ready
+    - degraded
+    - failed
+  members:
+    type: array
+    items:
+      type: object
+      required:
+      - node_id
+      - role
+      - reachable
+      properties:
+        node_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        role:
+          type: string
+          enum:
+          - leader
+          - worker
+        reachable:
+          type: boolean
+        qsfp_health:
+          type:
+          - string
+          - 'null'

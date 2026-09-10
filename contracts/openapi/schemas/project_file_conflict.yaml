@@ -1,0 +1,26 @@
+type: object
+additionalProperties: false
+required:
+- error
+properties:
+  error:
+    type: object
+    additionalProperties: false
+    required:
+    - code
+    - base_revision
+    - current_revision
+    - current_content
+    properties:
+      code:
+        type: string
+        const: FILE_CONFLICT
+      base_revision:
+        type: string
+        pattern: ^[0-9a-f]{64}$
+      current_revision:
+        type: string
+        pattern: ^[0-9a-f]{64}$
+      current_content:
+        type: string
+        maxLength: 8388608

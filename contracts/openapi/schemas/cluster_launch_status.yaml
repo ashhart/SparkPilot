@@ -1,0 +1,50 @@
+type: object
+additionalProperties: false
+required:
+- launch_id
+- cluster_id
+- recipe_id
+- profile_id
+- state
+- coordinator_node_id
+- worker_node_id
+- failure_code
+- updated_at
+properties:
+  launch_id:
+    type: string
+    format: uuid
+  cluster_id:
+    type: string
+    format: uuid
+  recipe_id:
+    type: string
+    minLength: 1
+    maxLength: 240
+  profile_id:
+    type: string
+    minLength: 1
+    maxLength: 80
+  state:
+    type: string
+    enum:
+    - preparing
+    - running
+    - degraded
+    - stopping
+    - stopped
+    - failed
+  coordinator_node_id:
+    type: string
+    format: uuid
+  worker_node_id:
+    type: string
+    format: uuid
+  failure_code:
+    type:
+    - string
+    - 'null'
+    maxLength: 128
+  updated_at:
+    type: string
+    format: date-time

@@ -1,0 +1,49 @@
+type: object
+additionalProperties: false
+required:
+- display_name
+- allowed_models
+- allowed_hours
+- time_zone
+- max_concurrent_requests
+- daily_token_budget
+description: The limits for one shared-access invitation, plus how long the link should live.
+properties:
+  display_name:
+    type: string
+    minLength: 1
+    maxLength: 60
+  allowed_models:
+    type: array
+    maxItems: 32
+    items:
+      type: string
+  allowed_hours:
+    type: array
+    minItems: 7
+    maxItems: 7
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/GuestDaySchedule
+  time_zone:
+    type: string
+    minLength: 1
+    maxLength: 64
+  max_concurrent_requests:
+    type: integer
+    minimum: 1
+    maximum: 8
+  daily_token_budget:
+    type: integer
+    minimum: 1
+    maximum: 100000000
+  expires_at:
+    type:
+    - integer
+    - 'null'
+  invitation_expires_in_seconds:
+    type:
+    - integer
+    - 'null'
+    minimum: 60
+    maximum: 604800
+    description: Defaults to seven days, the maximum for a shared-access link.

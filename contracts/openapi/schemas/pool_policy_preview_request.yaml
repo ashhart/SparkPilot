@@ -1,0 +1,12 @@
+type: object
+additionalProperties: false
+required:
+- expected_revision
+- policy
+properties:
+  expected_revision:
+    type: integer
+    format: int64
+    minimum: 0
+  policy:
+    $ref: ../../openapi.yaml#/components/schemas/InferencePoolPolicy

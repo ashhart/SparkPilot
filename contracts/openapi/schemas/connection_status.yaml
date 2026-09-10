@@ -1,0 +1,24 @@
+type: object
+additionalProperties: false
+required:
+- server_observed_transport
+- remote_access
+properties:
+  server_observed_transport:
+    type: string
+    enum:
+    - unclassified
+    - ethernet
+    description: The runtime has no trusted ingress binding and therefore does not guess LAN, Wi-Fi, or
+      overlay transport.
+  access_authentication:
+    type: string
+    enum:
+    - device_signature
+    description: Absent on older API v1 runtimes.
+  remote_access:
+    type: string
+    enum:
+    - disabled
+    - private_overlay
+    - unavailable

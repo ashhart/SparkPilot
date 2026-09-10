@@ -1,0 +1,23 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/ProjectId
+get:
+  tags:
+  - Projects
+  operationId: listProjectChanges
+  summary: Diff/test summary per change (§42.6)
+  responses:
+    '200':
+      description: Changes
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - items
+            properties:
+              items:
+                type: array
+                items:
+                  $ref: ../../openapi.yaml#/components/schemas/ProjectChange
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

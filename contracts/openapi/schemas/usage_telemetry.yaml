@@ -1,0 +1,44 @@
+description: 'Today''s accounting, in UTC. Exact for the requests it covers, and it covers a narrower
+  set than "everything this Spark served": only requests SparkPilot itself mediated, that completed, that
+  reported usage, and that ran while functional telemetry consent was enabled. Requests served directly
+  by an engine, or that failed before reporting usage, are not here. See docs/operations/telemetry-accounting.md.'
+type: object
+additionalProperties: false
+required:
+- day
+- requests
+- prompt_tokens
+- cached_prompt_tokens
+- generated_tokens
+- reasoning_tokens
+- total_tokens
+properties:
+  day:
+    type: string
+    format: date
+  requests:
+    type: integer
+    minimum: 0
+    description: Completed SparkPilot-mediated requests that reported usage.
+  failures:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+    description: Null when this runtime does not account for failures, which it currently does not. Null
+      means "not counted"; zero would mean "none happened", which this build cannot establish.
+  prompt_tokens:
+    type: integer
+    minimum: 0
+  cached_prompt_tokens:
+    type: integer
+    minimum: 0
+  generated_tokens:
+    type: integer
+    minimum: 0
+  reasoning_tokens:
+    type: integer
+    minimum: 0
+  total_tokens:
+    type: integer
+    minimum: 0

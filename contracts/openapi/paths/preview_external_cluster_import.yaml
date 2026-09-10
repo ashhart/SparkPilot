@@ -1,0 +1,22 @@
+post:
+  tags:
+  - Cluster
+  operationId: previewExternalClusterImport
+  summary: Check an externally configured member set without registering it
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/ExternalClusterImportPreviewRequest
+  responses:
+    '200':
+      description: Read-only external-cluster candidate evidence
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ExternalClusterImportPreview
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

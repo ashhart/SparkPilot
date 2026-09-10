@@ -1,0 +1,42 @@
+get:
+  tags:
+  - Inference
+  operationId: getRouterIdentity
+  summary: Read the separate local runtime-router public identity
+  responses:
+    '200':
+      description: Read the separate local runtime-router public identity
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/RouterIdentityDocument
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+post:
+  tags:
+  - Inference
+  operationId: prepareRouterIdentity
+  summary: Prepare or explicitly rotate the owner-approved router signing key
+  responses:
+    '200':
+      description: Prepare or explicitly rotate the owner-approved router signing key
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/RouterIdentityDocument
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/PrepareRouterIdentityRequest
+  description: Owner-only. An empty body object prepares or returns the current dedicated P-256 identity;
+    expected_key_fingerprint explicitly rotates the matching current key and disables use of prior outbound
+    identities while retaining destination retirement records. Private key material never leaves the source
+    Spark; a copied prior key remains usable at a destination until that destination explicitly revokes
+    it or enrolls the new identity.

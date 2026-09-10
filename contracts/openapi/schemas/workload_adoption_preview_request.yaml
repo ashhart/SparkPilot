@@ -1,0 +1,14 @@
+type: object
+additionalProperties: false
+required:
+- model_id
+- profile_id
+properties:
+  model_id:
+    type: string
+    minLength: 1
+    maxLength: 240
+  profile_id:
+    type: string
+    minLength: 1
+    maxLength: 128

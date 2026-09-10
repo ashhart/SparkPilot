@@ -1,0 +1,44 @@
+post:
+  tags:
+  - Inference
+  operationId: executeInferenceReservation
+  summary: Execute the exact reserved body on this node without forwarding
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/ChatCompletionRequest
+  responses:
+    '200':
+      description: Execute the exact reserved body on this node without forwarding
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ChatCompletion
+        text/event-stream:
+          schema:
+            type: string
+      headers:
+        X-Spark-Reservation-Id:
+          schema:
+            type: string
+            format: uuid
+        X-Spark-Attempt-Id:
+          schema:
+            type: string
+            format: uuid
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+  description: The raw request SHA-256 and byte count must match the reservation. Accepted execution is
+    never replayed after an uncertain result. Content is bounded in memory and is not persisted. This
+    is a terminal node endpoint, not a pool router.
+parameters:
+- name: reservation_id
+  in: path
+  required: true
+  schema:
+    type: string
+    format: uuid

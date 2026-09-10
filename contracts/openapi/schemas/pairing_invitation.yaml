@@ -1,0 +1,98 @@
+type: object
+required:
+- version
+- node_id
+- authority_fingerprint
+- invitation_id
+- nonce
+- role
+- expires_at
+- signature
+properties:
+  # Version 2 adds the routes, the pin and the shared-access limits; version 1 payloads stay valid.
+  version:
+    type: integer
+    enum:
+    - 1
+    - 2
+  node_id:
+    type: string
+    format: uuid
+  cluster_id:
+    type:
+    - string
+    - 'null'
+    format: uuid
+  local_endpoint:
+    type:
+    - string
+    - 'null'
+    format: uri
+  remote_endpoint:
+    type:
+    - string
+    - 'null'
+    format: uri
+  # Keep fingerprint and nonce patterns identical to contracts/schemas/pairing-invite.schema.json.
+  authority_fingerprint:
+    type: string
+    pattern: ^[A-Za-z0-9_-]{16,128}$
+  invitation_id:
+    type: string
+    format: uuid
+  nonce:
+    type: string
+    contentEncoding: base64url
+    pattern: ^[A-Za-z0-9_-]{22,}$
+  issued_by_device_id:
+    type:
+    - string
+    - 'null'
+    format: uuid
+  recipient_device_id:
+    type:
+    - string
+    - 'null'
+    format: uuid
+  recipient_public_key_fingerprint:
+    type:
+    - string
+    - 'null'
+    pattern: ^[a-f0-9]{64}$
+  role:
+    $ref: ../../openapi.yaml#/components/schemas/Role
+  expires_at:
+    type: string
+    format: date-time
+  join_code:
+    type:
+    - string
+    - 'null'
+    pattern: ^[0-9]{6}$
+    description: Short-lived code for adding another local Apple device.
+  node_name:
+    type:
+    - string
+    - 'null'
+    maxLength: 120
+    description: Version 2. The Spark's name, signed so a link cannot claim to be another Spark.
+  tls_fingerprint:
+    type:
+    - string
+    - 'null'
+    pattern: ^[a-f0-9]{64}$
+    description: Version 2. The TLS leaf pin the joining device must see.
+  remote_hostname:
+    type:
+    - string
+    - 'null'
+    maxLength: 253
+    description: Version 2. The Spark's MagicDNS name, present only when remote access is enabled.
+  shared_access:
+    oneOf:
+    - $ref: ../../openapi.yaml#/components/schemas/SharedAccessSummary
+    - type: 'null'
+    description: Version 2. The guest limits this invitation grants.
+  signature:
+    type: string
+    contentEncoding: base64url

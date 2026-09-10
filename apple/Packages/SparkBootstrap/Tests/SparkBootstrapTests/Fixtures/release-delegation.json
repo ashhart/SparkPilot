@@ -1,0 +1,2254 @@
+{
+  "trust": {
+    "schema": 2,
+    "keys": [
+      {
+        "key_id": "fixture-online",
+        "algorithm": "ed25519",
+        "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+        "channels": [
+          "beta",
+          "stable"
+        ],
+        "purposes": [
+          "release-manifest",
+          "release-package"
+        ],
+        "not_before": "2026-01-01T00:00:00Z",
+        "not_after": "2027-01-01T00:00:00Z"
+      }
+    ],
+    "root_keys": [
+      {
+        "key_id": "fixture-offline",
+        "algorithm": "ed25519",
+        "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+        "channels": [
+          "beta",
+          "stable"
+        ],
+        "purposes": [
+          "release-delegation"
+        ],
+        "not_before": "2026-01-01T00:00:00Z",
+        "not_after": "2027-01-01T00:00:00Z"
+      }
+    ],
+    "minimum_delegation_version": 1,
+    "delegation": {
+      "version": 1,
+      "not_before": "2026-01-01T00:00:00Z",
+      "not_after": "2027-01-01T00:00:00Z",
+      "signature": {
+        "key_id": "fixture-offline",
+        "algorithm": "ed25519",
+        "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+      }
+    }
+  },
+  "manifest": {
+    "version": "0.1.12",
+    "channel": "stable",
+    "released_at": "2026-09-04T00:00:00Z",
+    "minimum_dgx_os": "7.0",
+    "artifacts": [
+      {
+        "name": "fixture.deb",
+        "architecture": "aarch64",
+        "url": "https://example.invalid/fixture.deb",
+        "size": 29,
+        "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+        "signature_url": "https://example.invalid/fixture.deb.sig"
+      }
+    ],
+    "signature": {
+      "key_id": "fixture-online",
+      "algorithm": "ed25519",
+      "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+    }
+  },
+  "package": "synthetic delegation package\n",
+  "package_signature": "Ao_pAhsCsxqYyklrtTNshcaIohnekzh4Zq1AV_Rc1L8oGOj-afLZL6eDoXTjR-tSx3PpJfvxqqWYE39fk310BA",
+  "at": "2026-09-04T00:00:00Z",
+  "cases": [
+    {
+      "name": "valid-root-delegated-release",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": true,
+      "accept_package": true
+    },
+    {
+      "name": "expired",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2027-01-01T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "not-yet-valid",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2025-12-31T23:59:59Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "unsigned-child-key-change",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "unsigned-key-scope-change",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "dev",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "unsigned-certificate-window",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2026-12-31T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "revoked-offline-root",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z",
+            "revoked_at": "2026-03-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "revoked-online-key",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z",
+            "revoked_at": "2026-03-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "hlKWLqveDWFUzs45JRRc9wBMKosHqAMhN0DX32YIY2QQ6OmidBK3YbuqT_zYCIVRMLNXK6n17USD64o5z1muCQ"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "future-revocation-fails-closed",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z",
+            "revoked_at": "2026-12-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "apm1totj24clNro9xt0yb6egItaZqoNClYnjB4rS7TMMza9qwBYBMwWezk95x8l2TN_WgpsD4W932vDDuPziAw"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "wrong-offline-public-key",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "unsigned-version-change",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 2,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "stale-version",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 2,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "zero-version",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 0,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "9fyC_TJMFv8Pn5_OhUDY3Lcd5u8KO5eTkCPHHOMaZCCSRmRQAHQYLzrke39LPYrGVkBZQ0f_zMUMfRbA4dLzBQ"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "root-purpose-confusion",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "catalogue-purpose-confusion",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "model-catalogue"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "MdcqEhO4L9jKjUw71xDL5S03SPZgt5XN_6XIoaPZ8lTSz-ELRx4z7h_-5aAsMHiX-wguoxbqKFX7zuHMLj0KCA"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "mixed-catalogue-release-purpose",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "model-catalogue",
+              "release-manifest"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "InjlyjXTEluzOmPKBGSO4Yk1x8HaQhMNnQnaksFPlP8ReSDa7qyF1SMqXsCQ-XFFyWmbuBOldWTVohEGYsTTDQ"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "manifest-key-cannot-sign-package",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Kms2MDXk7KVCoJObdcDR6h9loN3JCM-BFTNHwQM64StrnOvpO5IDOIaoasB7iUSqx8yJZv3zKIgyypBHrlKJAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": true,
+      "accept_package": false
+    },
+    {
+      "name": "online-key-cannot-be-root",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "vAFMx2t2RN0ei7BaA8aVEuK-oSCmUPzGN_dlzxxnFk24U3PmpxMrWQ8io_J55plC7ZoHrnYpzyKgCxfXEL3BBA"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "child-exceeds-window",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2028-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "I7TWwt85U4uwc0cjgyEpkzu9rgDQDHKvI8_D-1R0ufIgeuZUlNqqGFUCjrE98WKieI7dwWaEOvaw-sW9OUinAA"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "child-exceeds-channel-scope",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "dev",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "U6e-NVBfVEdxy-V35IUhYpS_IOnYyXsRIqxHElM1JBihOZ071tHTZ7zRZXK53Y29pib23cl6rXWIg80q9zmjCA"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "duplicate-online-id",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          },
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "ATkROIxb2SXD5xZcXzdHe6gowJ44dO8IS1MPAvCYwgLy6Ll9uY9s1xtAIZKW1_5sXgEzr351CvgVMPYLUe1dBA"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "duplicate-root-id",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          },
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "unknown-key-member",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z",
+            "surprise": true
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "01Wctdl4QAZJx3tJSqJKIdyxb8wsSPyEoFehP_SHmu0cZApbZPJMy6OiHDBt0tV7Mbz6Lnmyj6c1Q9xRDrtxAA"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "unknown-certificate-member",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          },
+          "surprise": true
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "malformed-revocation",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z",
+            "revoked_at": 123
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "zX9s1k2StCSjngx7vtIw4I-4_cyCmyYSuqYn6Ixp3TUEOt5LuoeCGik1bUCRqQ0_ifd3tDLtjx-PKbSD0ezhAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "unsigned-manifest-change",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.13",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "wrong-manifest-algorithm",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "none",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": false,
+      "accept_package": false
+    },
+    {
+      "name": "beta-delegated-release",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 1,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "Pc3CJpZNLVG0kdxE05JOTdzb-rZHv320wZdgDzn7wG31q0JH6OewQqfsF3UKHSqID8pjWw2KKG1acPK7jg-cAg"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "beta",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "KlU0Nu-Xc-DXd0wGsnarOeBNxFWeQkIln0EehJSm5Fy-qbuO3YeZ60eO-0KDxMdwwPIS50asvIQYDu5Vk1MFAw"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": true,
+      "accept_package": true
+    },
+    {
+      "name": "online-rotation-version",
+      "trust": {
+        "schema": 2,
+        "keys": [
+          {
+            "key_id": "fixture-online",
+            "algorithm": "ed25519",
+            "public_key": "4ed32f63bf35f0eeefcb25f28a2e1fbdc873ae2835671b0c9460f5f12e4556a8",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-manifest",
+              "release-package"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "root_keys": [
+          {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "public_key": "43046bfe4092b3e94994eada15dcc20d8aaa07b658fd3954eb8e0efb8bdca5de",
+            "channels": [
+              "beta",
+              "stable"
+            ],
+            "purposes": [
+              "release-delegation"
+            ],
+            "not_before": "2026-01-01T00:00:00Z",
+            "not_after": "2027-01-01T00:00:00Z"
+          }
+        ],
+        "minimum_delegation_version": 1,
+        "delegation": {
+          "version": 2,
+          "not_before": "2026-01-01T00:00:00Z",
+          "not_after": "2027-01-01T00:00:00Z",
+          "signature": {
+            "key_id": "fixture-offline",
+            "algorithm": "ed25519",
+            "value": "DX_VxZWbQsbhEnhcqrBiYAAcbd4QMRsbdIYROh1NEVK459L-g_qBgvWKZNvMxxy7l1AMPXISNFrpipq6-ANLCw"
+          }
+        }
+      },
+      "manifest": {
+        "version": "0.1.12",
+        "channel": "stable",
+        "released_at": "2026-09-04T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "artifacts": [
+          {
+            "name": "fixture.deb",
+            "architecture": "aarch64",
+            "url": "https://example.invalid/fixture.deb",
+            "size": 29,
+            "sha256": "d63c8a64d73c15e09b5b1e48aaf919c028f1894c1925908870bfef93a3b87717",
+            "signature_url": "https://example.invalid/fixture.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "fixture-online",
+          "algorithm": "ed25519",
+          "value": "_pcWOwsP7too-t_Vc0EZecXL_vxvmbmYnAQ1TUbIBYniE4PszrMubNFIdD6sYZcSSsmD0xUgMr5Y-v2rskTABA"
+        }
+      },
+      "at": "2026-09-04T00:00:00Z",
+      "accept_manifest": true,
+      "accept_package": true
+    }
+  ]
+}

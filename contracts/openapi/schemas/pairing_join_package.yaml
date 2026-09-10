@@ -1,0 +1,20 @@
+type: object
+additionalProperties: false
+required:
+- node_name
+- tls_fingerprint
+- authority_public_key
+- invitation
+properties:
+  node_name:
+    type: string
+    minLength: 1
+    maxLength: 120
+  tls_fingerprint:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  authority_public_key:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  invitation:
+    $ref: ../../openapi.yaml#/components/schemas/PairingInvitation

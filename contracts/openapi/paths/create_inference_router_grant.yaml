@@ -1,0 +1,23 @@
+post:
+  tags:
+  - Inference
+  operationId: createInferenceRouterGrant
+  summary: Delegate exact caller and deployment scopes to a paired router
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/CreateRouterGrantRequest
+  responses:
+    '200':
+      description: Delegate exact caller and deployment scopes to a paired router
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/RouterGrant
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

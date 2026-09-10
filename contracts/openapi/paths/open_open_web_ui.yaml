@@ -1,0 +1,17 @@
+get:
+  tags:
+  - Optional Services
+  operationId: openOpenWebUI
+  security: []
+  summary: Redirect to the dedicated Open WebUI origin on this Spark
+  description: The destination uses the same pinned Spark leaf certificate on the control API port plus
+    one. Clients must retain certificate pinning while following the redirect.
+  responses:
+    '307':
+      description: Dedicated full-root Open WebUI origin
+      headers:
+        Location:
+          required: true
+          schema:
+            type: string
+            format: uri

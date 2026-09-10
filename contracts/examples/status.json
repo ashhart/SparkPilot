@@ -1,0 +1,45 @@
+{
+  "api_version": 1,
+  "node": {
+    "node_id": "7a836150-16e1-46b5-8ac0-32b2a5f2f820",
+    "cluster_id": null,
+    "name": "Alex's Spark",
+    "role": "standalone",
+    "authority_fingerprint": "t9lNEpIu94qMhG3XG2ThMg",
+    "tls_fingerprint": "a9f2c76194a56b80372c67d874306e4f40d3b0a8c77aeb7314e23422989b3a10",
+    "runtime_version": "0.1.0",
+    "dgx_os_version": "REPLACE_WITH_DETECTED_VALUE"
+  },
+  "cluster": null,
+  "connection": {
+    "server_observed_transport": "unclassified",
+    "access_authentication": "device_signature",
+    "remote_access": "disabled"
+  },
+  "system": {
+    "unified_memory_total_bytes": 137438953472,
+    "unified_memory_available_bytes": 28743895347,
+    "memory_pressure": "normal",
+    "cpu_utilisation": 0.18,
+    "load_average_1m": 1.2,
+    "disk_free_bytes": 91827364512,
+    "temperature_celsius": 52,
+    "power_state": "normal",
+    "uptime_seconds": 123456
+  },
+  "inference": {
+    "state": "ready",
+    "model_id": "example/model-32b",
+    "profile_id": "balanced-32k",
+    "context_length": 32768,
+    "active_requests": 1,
+    "queue_depth": 0,
+    "tokens_per_second": 41.8,
+    "time_to_first_token_ms": 284
+  },
+  "operations": {
+    "active": 2,
+    "waiting_for_approval": 0,
+    "failed_last_24h": 0
+  }
+}

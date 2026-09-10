@@ -1,0 +1,17 @@
+type: object
+additionalProperties: false
+required:
+- accepted_preview_digest
+properties:
+  recipe_revision:
+    type:
+    - string
+    - 'null'
+  provider_credential_id:
+    type:
+    - string
+    - 'null'
+    format: uuid
+  accepted_preview_digest:
+    type: string
+    pattern: ^[0-9a-f]{64}$

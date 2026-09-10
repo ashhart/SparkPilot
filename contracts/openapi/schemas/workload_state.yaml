@@ -1,0 +1,10 @@
+type: string
+enum:
+- created
+- running
+- paused
+- restarting
+- removing
+- exited
+- dead
+- unknown

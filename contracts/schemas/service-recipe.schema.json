@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spark.example/schemas/service-recipe.schema.json",
+  "title": "Spark Optional Service Recipe",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["apiVersion", "kind", "metadata", "container", "gateway", "security", "signature"],
+  "properties": {
+    "apiVersion": { "const": "spark.runtime/v1" },
+    "kind": { "const": "ServiceRecipe" },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "revision", "displayName", "publisher"],
+      "properties": {
+        "id": { "const": "open-webui" },
+        "revision": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "displayName": { "const": "Open WebUI" },
+        "publisher": { "type": "string", "minLength": 1, "maxLength": 120 }
+      }
+    },
+    "container": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["image", "version", "internalPort", "loopbackPort", "dataVolume"],
+      "properties": {
+        "image": { "type": "string", "pattern": "^ghcr\\.io/open-webui/open-webui@sha256:[a-f0-9]{64}$" },
+        "version": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "internalPort": { "const": 8080 },
+        "loopbackPort": { "const": 18080 },
+        "dataVolume": { "const": "spark-open-webui-data" }
+      }
+    },
+    "gateway": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["baseURL", "scopes"],
+      "properties": {
+        "baseURL": { "const": "http://127.0.0.1:18081/v1" },
+        "scopes": {
+          "const": ["models.read", "chat.completions.create"]
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["loopbackOnly", "networkMode", "readOnlyRoot", "dropAllCapabilities", "noNewPrivileges", "signupDisabledAfterBootstrap"],
+      "properties": {
+        "loopbackOnly": { "const": true },
+        "networkMode": { "const": "host" },
+        "readOnlyRoot": { "const": true },
+        "dropAllCapabilities": { "const": true },
+        "noNewPrivileges": { "const": true },
+        "signupDisabledAfterBootstrap": { "const": true }
+      }
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["keyID", "algorithm", "value"],
+      "properties": {
+        "keyID": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "algorithm": { "const": "ed25519" },
+        "value": { "type": "string", "pattern": "^[A-Za-z0-9_-]{43,}$" }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+type: object
+additionalProperties: false
+required:
+- current_principal_id
+- peers
+properties:
+  current_principal_id:
+    type: string
+    format: uuid
+  peers:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/RouterPeerRecord

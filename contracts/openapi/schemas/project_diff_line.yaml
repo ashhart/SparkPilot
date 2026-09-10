@@ -1,0 +1,25 @@
+type: object
+additionalProperties: false
+required:
+- kind
+- content
+properties:
+  kind:
+    type: string
+    enum:
+    - context
+    - addition
+    - deletion
+  content:
+    type: string
+    maxLength: 16384
+  old_line:
+    type:
+    - integer
+    - 'null'
+    minimum: 1
+  new_line:
+    type:
+    - integer
+    - 'null'
+    minimum: 1

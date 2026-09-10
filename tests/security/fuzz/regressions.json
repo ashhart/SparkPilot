@@ -1,0 +1,42 @@
+{
+  "note": "Minimal inputs kept for replay, not a coverage claim. Coverage comes from the seeded corpora in the fuzz gates; this file is what a reduced failure becomes once it has been found, so the exact bytes are re-run for good rather than depending on a seed still reaching them. `text` is used verbatim; `base64` is base64url for bytes that are not valid UTF-8. Every case must say what it catches.",
+  "sections": {
+    "api_bodies": "Request bodies driven at signed API routes and at the typed body deserialisers.",
+    "sse_frames": "Upstream frame bytes fed to the proxy's usage scanner and to the app's SSE parser.",
+    "helper_frames": "Whole privileged-protocol frames, length header included.",
+    "proxy_bodies": "Client chat bodies driven at the inference proxy boundary."
+  },
+  "api_bodies": [
+    { "why": "Empty body. Serde reports EOF rather than a syntax error, which is a different code path.", "text": "" },
+    { "why": "Duplicate keys are legal JSON text; last-wins must not become first-wins silently.", "text": "{\"model_id\":\"a\",\"model_id\":\"b\",\"profile_id\":\"p\"}" },
+    { "why": "A lone high surrogate has no UTF-8 encoding; the decoder must refuse rather than emit a replacement into a stored field.", "text": "{\"model_id\":\"\\ud800\",\"profile_id\":\"p\"}" },
+    { "why": "Nesting past serde_json's recursion limit. A parser without one dies here rather than returning an error.", "text": "[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[" },
+    { "why": "An unknown field must be refused, not ignored: deny_unknown_fields is what stops a caller smuggling engine configuration through a load request.", "text": "{\"model_id\":\"a\",\"profile_id\":\"p\",\"trust_remote_code\":true}" },
+    { "why": "A number that overflows f64. Parsing must fail or saturate, never panic.", "text": "{\"model_id\":\"a\",\"profile_id\":\"p\",\"replace_active\":1e400}" },
+    { "why": "Invalid UTF-8 inside otherwise well-formed JSON syntax (a bare continuation byte).", "base64": "eyJtb2RlbF9pZCI6IoCAgCIsInByb2ZpbGVfaWQiOiJwIn0" }
+  ],
+  "sse_frames": [
+    { "why": "A data line with no terminating newline at end of stream: EOF must not emit a half-parsed frame or lose a complete one.", "text": "data: {\"usage\":{\"total_tokens\":7}}" },
+    { "why": "CRLF line endings. \\r\\n is one grapheme cluster in Swift, which hides the LF from a character-level parser.", "text": "data: {\"usage\":{\"total_tokens\":7,\"prompt_tokens\":3,\"completion_tokens\":4}}\r\n\r\n" },
+    { "why": "A comment-only heartbeat dispatches nothing.", "text": ": keep-alive\n\n" },
+    { "why": "A field with no colon at all, then a real event: the malformed line must not consume the one after it.", "text": "notafield\ndata: {\"usage\":{\"total_tokens\":1,\"prompt_tokens\":1,\"completion_tokens\":0}}\n\n" },
+    { "why": "The terminator vLLM sends after the last chunk; it carries no usage and must not reset what was counted.", "text": "data: [DONE]\n\n" },
+    { "why": "A data line that is valid JSON but not an object; from_json must return None rather than index into it.", "text": "data: [1,2,3]\n\n" }
+  ],
+  "helper_frames": [
+    { "why": "Header alone, declaring more payload than follows: the parser must not read past the buffer.", "hex": "00000028" },
+    { "why": "A declared length above MAX_REQUEST_BYTES must be refused on the header, before any payload is buffered.", "hex": "ffffffff" },
+    { "why": "Zero-length payload: a legal header with nothing to parse.", "hex": "00000000" },
+    { "why": "An operation tag that does not exist. The helper answers a bounded protocol error and runs nothing.", "hex": "000000457b226f7065726174696f6e223a2278222c22726571756573745f6964223a2230303030303030302d303030302d303030302d303030302d303030303030303030303030227d" },
+    { "why": "A shell-shaped request, which the typed protocol has no representation for and must never gain one.", "hex": "0000002e7b226f7065726174696f6e223a2272756e5f7368656c6c222c22636f6d6d616e64223a22726d202d7266202f227d" }
+  ],
+  "proxy_bodies": [
+    { "why": "An upstream base URL offered as a chat parameter; it must be dropped, not forwarded.", "text": "{\"model\":\"served\",\"messages\":[],\"api_base\":\"http://attacker.invalid/v1\"}" },
+    { "why": "A bearer credential offered as a chat parameter.", "text": "{\"model\":\"served\",\"messages\":[],\"api_key\":\"sk-not-ours\",\"authorization\":\"Bearer x\"}" },
+    { "why": "trust_remote_code is arbitrary code execution in the engine's loader; it must never cross the boundary.", "text": "{\"model\":\"served\",\"messages\":[],\"trust_remote_code\":true}" },
+    { "why": "A banned generation-control parameter is refused outright rather than dropped, so a caller learns it is not merely ignored.", "text": "{\"model\":\"served\",\"messages\":[],\"guided_json\":{\"a\":1}}" },
+    { "why": "A model name that is not the loaded one: the proxy must not silently rewrite it into the active engine.", "text": "{\"model\":\"some-other-model\",\"messages\":[]}" },
+    { "why": "Valid JSON that is not an object; the boundary must reject it rather than treating a missing model as a match.", "text": "[]" },
+    { "why": "A JSON null body: `null.get(\"model\")` is None, which must not read as the served name.", "text": "null" }
+  ]
+}

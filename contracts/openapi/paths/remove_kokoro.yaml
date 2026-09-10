@@ -1,0 +1,16 @@
+post:
+  tags:
+  - Optional Services
+  operationId: removeKokoro
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  responses:
+    '202':
+      description: Durable Kokoro remove operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

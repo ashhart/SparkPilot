@@ -1,0 +1,305 @@
+{
+  "matrix": "PLAN \u00a749.4 Connectivity matrix and \u00a749.7 Cluster matrix",
+  "note": "Almost every case here needs hardware the CI host does not have: a second Spark, a QSFP cable, particular Wi-Fi topologies. Each is declared with the exact command and the evidence it must produce, so the gap is a stated prerequisite rather than an absence nobody records. Cases that a workstation can genuinely decide are mapped to tests.",
+  "cases": {
+    "Spark setup hotspot.": {
+      "blocked": {
+        "reason": "Needs the factory setup hotspot on a retail Spark, which exists only before first boot completes.",
+        "evidence_command": "On a factory-reset Spark, from an iPhone: Settings > Wi-Fi, join the spark-* network, then run the app's Add Spark flow.",
+        "expected_evidence": "The app joins without sending the user to Settings and reaches the provisioning stage; the onboarding model records connection before provisioning."
+      }
+    },
+    "Home Wi-Fi.": {
+      "blocked": {
+        "reason": "Needs a real Wi-Fi network; the route logic itself is covered by routePriorityFollowsDefaultOrder.",
+        "evidence_command": "With Spark and an iPad on one home Wi-Fi network: run the app's discovery and open the dashboard.",
+        "expected_evidence": "Bonjour lists the node and GET /api/v1/status succeeds over the Wi-Fi route."
+      }
+    },
+    "Ethernet LAN.": {
+      "blocked": {
+        "reason": "Needs a wired LAN.",
+        "evidence_command": "With Spark and a Mac on one switch: dns-sd -B _spark-runtime._tcp local. then open the dashboard.",
+        "expected_evidence": "The node is discovered and the dashboard reports the wired route."
+      }
+    },
+    "Direct 10 GbE with no router.": {
+      "blocked": {
+        "reason": "Needs a Thunderbolt/USB-C Ethernet adapter and a direct cable (\u00a713.4).",
+        "evidence_command": "Mac and Spark cabled directly, then POST /api/v1/network/direct-profile with {\"enabled\": true} and a presence proof.",
+        "expected_evidence": "The operation succeeds; the Spark holds 192.168.251.2/30 with no default route (ip route show | grep -c default is unchanged) and the Mac reaches https://192.168.251.2:7443/api/v1/health."
+      }
+    },
+    "iPhone Personal Hotspot where supported.": {
+      "blocked": {
+        "reason": "Needs an iPhone with an active cellular plan and Personal Hotspot enabled.",
+        "evidence_command": "Join the Spark to the iPhone hotspot, then run discovery from the same iPhone.",
+        "expected_evidence": "The node is reachable; if mDNS is blocked on the hotspot the app falls back to the recorded route rather than failing silently."
+      }
+    },
+    "Travel AP.": {
+      "blocked": {
+        "reason": "Needs a Wi-Fi adapter in AP mode on the Spark (\u00a714).",
+        "evidence_command": "POST /api/v1/network/travel-ap with {\"enabled\": true} and a presence proof, then join the advertised SSID from an iPad.",
+        "expected_evidence": "nmcli connection show lists spark-travel-ap; the returned passphrase joins the network; https://192.168.252.1:7443/api/v1/health responds; existing LAN profiles are still present."
+      }
+    },
+    "Guest Wi-Fi with client isolation.": {
+      "blocked": {
+        "reason": "Needs a network configured for client isolation.",
+        "evidence_command": "Put Spark and iPad on an isolated guest network and run discovery.",
+        "expected_evidence": "Discovery finds nothing and the app explains client isolation rather than reporting a generic failure."
+      }
+    },
+    "IPv4-only.": {
+      "blocked": {
+        "reason": "Needs a network with IPv6 disabled.",
+        "evidence_command": "Disable IPv6 on the test network, then run discovery and open the dashboard.",
+        "expected_evidence": "The node is reachable over IPv4 and no route candidate is left permanently pending on an unreachable IPv6 address."
+      }
+    },
+    "IPv6-capable/link-local.": {
+      "blocked": {
+        "reason": "Needs an IPv6-capable link (\u00a713.4 prefers link-local + Bonjour).",
+        "evidence_command": "Cable Mac and Spark directly with no DHCP, then browse for the service.",
+        "expected_evidence": "The link-local address is used and https://[fe80::...%25en0]:7443/api/v1/health responds."
+      }
+    },
+    "mDNS blocked.": {
+      "blocked": {
+        "reason": "Needs a network that filters multicast.",
+        "evidence_command": "Block UDP 5353 on the test network, then open a previously paired Spark in the app.",
+        "expected_evidence": "The app reaches the node through its stored route and reports discovery as unavailable rather than the node as gone."
+      }
+    },
+    "Wi-Fi to Ethernet route transition.": {
+      "blocked": {
+        "reason": "Needs two physical interfaces on the client.",
+        "evidence_command": "With the dashboard open and streaming, unplug Ethernet so the Mac falls back to Wi-Fi.",
+        "expected_evidence": "The stream reconnects on the new route within the backoff window and the node identity is unchanged."
+      }
+    },
+    "Local to Cloudflare failover.": {
+      "retired": "Owner decision on 2026-09-05: public remote access was removed; Tailscale is the supported remote provider.",
+      "tests": [
+        "retired_public_remote_mode_cannot_be_enabled",
+        "retired_public_connector_operations_are_rejected"
+      ]
+    },
+    "Cloudflare outage while local works.": {
+      "retired": "Owner decision on 2026-09-05: public remote access was removed; Tailscale is the supported remote provider.",
+      "tests": [
+        "retired_public_remote_mode_cannot_be_enabled",
+        "retired_public_connector_operations_are_rejected"
+      ]
+    },
+    "Local-network permission denied and later restored.": {
+      "tests": [
+        "deniedPermissionProducesRecoveryUI"
+      ]
+    },
+    "Correct QSFP link.": {
+      "blocked": {
+        "reason": "Needs two Sparks and an approved QSFP cable.",
+        "evidence_command": "With both nodes cabled: POST /api/v1/cluster/validate on the coordinator.",
+        "expected_evidence": "The link probe reports the ConnectX interface up at >=100000 Mb/s with MTU 9000, and the cluster reaches ready."
+      }
+    },
+    "Cable absent.": {
+      "tests": [
+        "an_absent_cable_or_adapter_is_reported_not_guessed"
+      ]
+    },
+    "Wrong interface.": {
+      "tests": [
+        "the_connectx_interface_is_discovered_rather_than_named"
+      ]
+    },
+    "Runtime version mismatch.": {
+      "tests": [
+        "compatibility_checks_reject_mixed_fleets",
+        "create_fails_closed_when_a_member_has_no_trusted_peer_record"
+      ]
+    },
+    "Engine image mismatch.": {
+      "tests": [
+        "compatibility_checks_reject_mixed_fleets"
+      ]
+    },
+    "Model revision mismatch.": {
+      "blocked": {
+        "reason": "Needs two Sparks holding different model revisions.",
+        "evidence_command": "Install different revisions of one model on each node, then POST /api/v1/cluster/create.",
+        "expected_evidence": "Creation is refused naming the mismatched revision; neither node's local inference is disturbed."
+      }
+    },
+    "Ray head restart.": {
+      "blocked": {
+        "reason": "Needs a live two-node Ray cluster.",
+        "evidence_command": "On the coordinator with a distributed model loaded: docker restart the Ray head container, then GET /api/v1/cluster.",
+        "expected_evidence": "The cluster reports degraded, then ready once the head rejoins; in-flight requests fail with a retryable error rather than hanging."
+      }
+    },
+    "Worker loss during load.": {
+      "blocked": {
+        "reason": "Needs two Sparks.",
+        "evidence_command": "Start a distributed load, then unplug the QSFP cable before it completes.",
+        "expected_evidence": "The load operation fails with a named error, the coordinator returns to a usable single-node state, and no partial engine is left running."
+      }
+    },
+    "Worker loss during generation.": {
+      "blocked": {
+        "reason": "Needs two Sparks.",
+        "evidence_command": "During a streaming completion, unplug the QSFP cable.",
+        "expected_evidence": "The stream terminates with an error the client can retry; the coordinator reports degraded and remains recoverable."
+      }
+    },
+    "NCCL/bandwidth validation failure.": {
+      "tests": [
+        "a_cable_that_negotiated_too_slowly_fails_the_bandwidth_check"
+      ]
+    },
+    "Coordinator reboot.": {
+      "blocked": {
+        "reason": "Needs two Sparks.",
+        "evidence_command": "Reboot the coordinator with a formed cluster, then GET /api/v1/cluster on both nodes.",
+        "expected_evidence": "Both nodes agree on the cluster identity after restart and no operation is left running."
+      }
+    },
+    "Model replication interrupted.": {
+      "blocked": {
+        "reason": "Needs two Sparks and a partially replicated model.",
+        "evidence_command": "Start replication over QSFP and interrupt it, then retry.",
+        "expected_evidence": "The retry resumes from the content-addressed blobs already present rather than starting over, and the digest is verified before use."
+      }
+    },
+    "Cluster leave while idle/active.": {
+      "blocked": {
+        "reason": "Needs two Sparks.",
+        "evidence_command": "Leave the cluster once while idle and once during a generation.",
+        "expected_evidence": "Both nodes return to standalone; the active case fails the in-flight request safely and leaves single-node inference usable."
+      }
+    },
+    "App background and foreground while a dashboard is open.": {
+      "tests": [
+        "foregroundRefreshKeepsALastKnownOnlineCardOnlineWhileChecking",
+        "appActivationRefreshesAnOpenDashboardInsteadOfLeavingItConnecting"
+      ]
+    },
+    "Wi-Fi change accepted and confirmed over the new route.": {
+      "tests": [
+        "successfulWifiHandoffNeedsExplicitKeepAfterFreshStableHostnameVerification",
+        "initiating_device_can_confirm_its_network_change"
+      ]
+    },
+    "Wrong Wi-Fi password with automatic restoration of the prior profile.": {
+      "blocked": {
+        "reason": "The app's wrong-password state is deterministic, but proving NetworkManager retained the previous live profile needs a Spark joined to two real access points.",
+        "evidence_command": "On a Spark with a working saved WLAN, submit a wrong password for a second SSID through SparkPilot, then run nmcli -t -f NAME connection show --active.",
+        "expected_evidence": "The app reports the password error and the prior WLAN remains active without waiting for the failsafe timer."
+      }
+    },
+    "Static IP, gateway, or DNS mistake with 30-second rollback.": {
+      "blocked": {
+        "reason": "The typed route, local UI, root-owned journal and 30-second timer are covered in process tests, but proving that NetworkManager restores a live DGX LAN profile needs a physical Spark and a second management route.",
+        "evidence_command": "On a Spark reachable over both Wi-Fi and Ethernet, apply a valid but unreachable manual LAN/DNS candidate from SparkPilot, close the app without confirming, then watch nmcli connection show and ip route for 35 seconds.",
+        "expected_evidence": "The old profile and route return automatically and no caller-supplied nmcli argument reaches spark-privd."
+      }
+    },
+    "Initiating app terminated before confirmation.": {
+      "tests": [
+        "expired_network_rollback_runs_and_deletes_its_journal"
+      ]
+    },
+    "NetworkManager restart and Spark power loss during an uncommitted change.": {
+      "tests": [
+        "pending_network_rollback_survives_a_helper_restart",
+        "an_expired_journal_is_rolled_back_when_the_helper_restarts"
+      ]
+    },
+    "Duplicate static address detected before commit.": {
+      "tests": [
+        "manual_lan_ipv4_rejects_a_duplicate_before_profile_mutation"
+      ]
+    },
+    "A second trusted Apple device may observe but cannot confirm another device's transaction.": {
+      "tests": [
+        "a_different_paired_device_cannot_confirm_a_network_change"
+      ]
+    },
+    "Cable inserted before and after both Sparks are paired.": {
+      "blocked": {
+        "reason": "Needs two paired Sparks and a 200 GbE QSFP cable to exercise both insertion orders.",
+        "evidence_command": "Pair both Sparks, run discovery once with the cable already inserted and once inserting it while the cluster screen is open.",
+        "expected_evidence": "Both orders produce the same authenticated link candidate and neither creates a cluster without owner confirmation."
+      }
+    },
+    "Carrier present with unknown or non-Spark peer.": {
+      "tests": [
+        "a_new_member_is_not_claimed_reachable_before_it_is_observed",
+        "carrier_or_one_way_peer_claim_never_authenticates_a_fabric_link",
+        "carrier_does_not_become_peer_identity"
+      ]
+    },
+    "Reciprocal authenticated peer over the fabric.": {
+      "tests": [
+        "create_then_validate_walks_to_ready",
+        "create_fails_closed_when_a_member_has_no_trusted_peer_record",
+        "fabric_endpoint_binds_only_reciprocal_authenticated_peer_evidence"
+      ]
+    },
+    "Link through a switch is not drawn as a direct Spark-to-Spark cable.": {
+      "blocked": {
+        "reason": "The current authenticated cluster model does not yet carry switch-versus-direct topology evidence into the Apple presentation layer.",
+        "evidence_command": "Connect two paired Sparks through a supported fabric switch and inspect the cluster topology card.",
+        "expected_evidence": "Both members appear in one cluster without a direct-cable line between them."
+      }
+    },
+    "Negotiated rate below 200 Gbit/s.": {
+      "tests": [
+        "a_cable_that_negotiated_too_slowly_fails_the_bandwidth_check"
+      ]
+    },
+    "Two-node formation commits on both members or rolls back both.": {
+      "blocked": {
+        "reason": "The signed two-sided commit-receipt and finalize transaction is covered deterministically; proving both physical Sparks converge across real CX-7 timing requires the hardware pair.",
+        "evidence_command": "With two Sparks, interrupt the second member after prepare and compare GET /api/v1/cluster on both nodes.",
+        "expected_evidence": "Both nodes either report the same ready cluster ID or both remain standalone."
+      }
+    },
+    "App termination and coordinator restart during formation.": {
+      "blocked": {
+        "reason": "Expiry reconciliation and rollback after an app exit between member commits are covered deterministically; process termination against two real Sparks remains the physical proof.",
+        "evidence_command": "Terminate SparkPilot during prepare, restart the coordinator, then reopen the cluster on both members.",
+        "expected_evidence": "The durable transaction resumes or rolls back without duplicate clusters or a half-joined member."
+      }
+    },
+    "Import externally configured two-node cluster without changing Netplan, SSH, Ray, vLLM, or models.": {
+      "blocked": {
+        "reason": "The signed multi-node coordinator and retained grants are implemented; proving that a real import leaves Netplan, SSH, Ray, vLLM, models, containers and services byte-for-byte unchanged requires the physical cluster.",
+        "evidence_command": "On an existing two-node Ray/vLLM cluster, choose Add Existing Cluster and diff Netplan, SSH, Ray, vLLM and model state before and after.",
+        "expected_evidence": "SparkPilot records authenticated members and telemetry while every external configuration digest remains unchanged."
+      }
+    },
+    "User-declared cluster candidate cannot become trusted until every member authenticates.": {
+      "tests": [
+        "create_fails_closed_when_a_member_has_no_trusted_peer_record",
+        "aMemberListAloneNeverProducesAClusterClaim"
+      ]
+    },
+    "Add third direct member requires a complete three-cable ring.": {
+      "blocked": {
+        "reason": "Three-node ring topology validation is planned but not implemented and needs three Sparks plus three fabric links.",
+        "evidence_command": "Try adding a third Spark first with two links, then with all three ring links present.",
+        "expected_evidence": "The incomplete ring is refused; the complete authenticated ring becomes eligible."
+      }
+    },
+    "Add fourth member requires a supported switch topology.": {
+      "blocked": {
+        "reason": "Four-node switched-topology validation is planned but not implemented and needs four Sparks plus a supported switch.",
+        "evidence_command": "Try forming four direct peers, then repeat with all four connected to a supported fabric switch.",
+        "expected_evidence": "The unsupported direct topology is refused and only the authenticated switched topology can proceed."
+      }
+    }
+  }
+}

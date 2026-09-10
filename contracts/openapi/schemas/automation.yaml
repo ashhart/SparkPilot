@@ -1,0 +1,74 @@
+type: object
+additionalProperties: false
+required:
+- id
+- name
+- instructions
+- schedule
+- model_id
+- profile_id
+- web_access
+- delivery
+- enabled
+- next_run_at
+- last_run_at
+- last_run_state
+- created_at
+- updated_at
+properties:
+  id:
+    type: string
+    format: uuid
+  name:
+    type: string
+    minLength: 1
+    maxLength: 80
+  instructions:
+    type: string
+    minLength: 1
+    maxLength: 2000
+    description: What the owner asked the Spark to do, sent to the model as the task.
+  schedule:
+    $ref: ../../openapi.yaml#/components/schemas/AutomationSchedule
+  model_id:
+    type: string
+    maxLength: 240
+  profile_id:
+    type:
+    - string
+    - 'null'
+    maxLength: 80
+  web_access:
+    type: boolean
+    description: Whether this automation may search the web and read pages. Off unless the owner turned it on.
+  delivery:
+    $ref: ../../openapi.yaml#/components/schemas/AutomationDelivery
+  enabled:
+    type: boolean
+  next_run_at:
+    type:
+    - integer
+    - 'null'
+    format: int64
+    description: Absolute Unix seconds of the next slot, computed on the Spark in the automation's zone.
+  last_run_at:
+    type:
+    - integer
+    - 'null'
+    format: int64
+  last_run_state:
+    type: string
+    description: The state of the most recent run, or `none` when the automation has not run yet.
+    enum:
+    - none
+    - running
+    - succeeded
+    - failed
+    - skipped
+    - interrupted
+  created_at:
+    type: integer
+    format: int64
+  updated_at:
+    type: integer
+    format: int64

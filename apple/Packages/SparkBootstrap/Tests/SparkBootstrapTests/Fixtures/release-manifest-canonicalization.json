@@ -1,0 +1,135 @@
+{
+  "$comment": "Shared canonicalisation fixture for the Spark Runtime release manifest. The signing algorithm is specified in runtime/crates/spark-installer/src/manifest.rs and implemented identically in Rust, Python (tools/release/spark_release.py) and Swift (SparkBootstrap/ReleaseManifest.swift). Each case gives an input manifest and the exact canonical bytes every implementation must produce. If the three ever disagree, a release signed by one cannot be verified by another.",
+  "algorithm": [
+    "drop the signature member",
+    "drop object members whose value is null, recursively",
+    "order every object's members by key",
+    "serialise compactly with comma and colon separators and no whitespace",
+    "escape only the quote, the backslash, and control characters below U+0020",
+    "never escape the solidus; emit non-ASCII as raw UTF-8"
+  ],
+  "cases": [
+    {
+      "name": "explicit_null_optional",
+      "why": "A schema-valid manifest may write maximum_dgx_os as null. Rust and Swift decode that to an absent optional, so every implementation must drop it before signing or the signature can never verify across languages.",
+      "manifest": {
+        "version": "0.1.0",
+        "channel": "dev",
+        "released_at": "2026-08-27T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "maximum_dgx_os": null,
+        "api_version": 1,
+        "artifacts": [
+          {
+            "name": "spark-runtime_0.1.0-1_arm64.deb",
+            "architecture": "aarch64",
+            "url": "https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb",
+            "size": 4096,
+            "sha256": "3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f",
+            "signature_url": "https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb.sig"
+          }
+        ]
+      },
+      "canonical": "{\"api_version\":1,\"artifacts\":[{\"architecture\":\"aarch64\",\"name\":\"spark-runtime_0.1.0-1_arm64.deb\",\"sha256\":\"3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f\",\"signature_url\":\"https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb.sig\",\"size\":4096,\"url\":\"https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb\"}],\"channel\":\"dev\",\"minimum_dgx_os\":\"7.0\",\"released_at\":\"2026-08-27T00:00:00Z\",\"version\":\"0.1.0\"}",
+      "canonical_sha256": "62e89762ce6242a88dd7117f8842f2b8aed4571124c8669e128c59e7a6b9e7cc"
+    },
+    {
+      "name": "omitted_optionals",
+      "why": "The same manifest with the optional member left out entirely must produce byte-identical canonical output to the explicit-null case.",
+      "manifest": {
+        "version": "0.1.0",
+        "channel": "dev",
+        "released_at": "2026-08-27T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "api_version": 1,
+        "artifacts": [
+          {
+            "name": "spark-runtime_0.1.0-1_arm64.deb",
+            "architecture": "aarch64",
+            "url": "https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb",
+            "size": 4096,
+            "sha256": "3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f",
+            "signature_url": "https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb.sig"
+          }
+        ]
+      },
+      "canonical": "{\"api_version\":1,\"artifacts\":[{\"architecture\":\"aarch64\",\"name\":\"spark-runtime_0.1.0-1_arm64.deb\",\"sha256\":\"3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f\",\"signature_url\":\"https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb.sig\",\"size\":4096,\"url\":\"https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb\"}],\"channel\":\"dev\",\"minimum_dgx_os\":\"7.0\",\"released_at\":\"2026-08-27T00:00:00Z\",\"version\":\"0.1.0\"}",
+      "canonical_sha256": "62e89762ce6242a88dd7117f8842f2b8aed4571124c8669e128c59e7a6b9e7cc"
+    },
+    {
+      "name": "reordered_keys",
+      "why": "Key order in the transmitted document is not significant: canonical output sorts every object, including nested artifact objects.",
+      "manifest": {
+        "artifacts": [
+          {
+            "signature_url": "https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb.sig",
+            "sha256": "3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f",
+            "size": 4096,
+            "url": "https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb",
+            "architecture": "aarch64",
+            "name": "spark-runtime_0.1.0-1_arm64.deb"
+          }
+        ],
+        "api_version": 1,
+        "minimum_dgx_os": "7.0",
+        "released_at": "2026-08-27T00:00:00Z",
+        "channel": "dev",
+        "version": "0.1.0"
+      },
+      "canonical": "{\"api_version\":1,\"artifacts\":[{\"architecture\":\"aarch64\",\"name\":\"spark-runtime_0.1.0-1_arm64.deb\",\"sha256\":\"3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f\",\"signature_url\":\"https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb.sig\",\"size\":4096,\"url\":\"https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb\"}],\"channel\":\"dev\",\"minimum_dgx_os\":\"7.0\",\"released_at\":\"2026-08-27T00:00:00Z\",\"version\":\"0.1.0\"}",
+      "canonical_sha256": "62e89762ce6242a88dd7117f8842f2b8aed4571124c8669e128c59e7a6b9e7cc"
+    },
+    {
+      "name": "signature_member_is_excluded",
+      "why": "The signature block is removed before canonicalisation, so a manifest canonicalises to the same bytes before and after it is signed.",
+      "manifest": {
+        "version": "0.1.0",
+        "channel": "dev",
+        "released_at": "2026-08-27T00:00:00Z",
+        "minimum_dgx_os": "7.0",
+        "api_version": 1,
+        "artifacts": [
+          {
+            "name": "spark-runtime_0.1.0-1_arm64.deb",
+            "architecture": "aarch64",
+            "url": "https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb",
+            "size": 4096,
+            "sha256": "3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f",
+            "signature_url": "https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb.sig"
+          }
+        ],
+        "signature": {
+          "key_id": "spark-release-dev-2026a",
+          "algorithm": "ed25519",
+          "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      },
+      "canonical": "{\"api_version\":1,\"artifacts\":[{\"architecture\":\"aarch64\",\"name\":\"spark-runtime_0.1.0-1_arm64.deb\",\"sha256\":\"3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f3f\",\"signature_url\":\"https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb.sig\",\"size\":4096,\"url\":\"https://releases.example.invalid/dev/spark-runtime_0.1.0-1_arm64.deb\"}],\"channel\":\"dev\",\"minimum_dgx_os\":\"7.0\",\"released_at\":\"2026-08-27T00:00:00Z\",\"version\":\"0.1.0\"}",
+      "canonical_sha256": "62e89762ce6242a88dd7117f8842f2b8aed4571124c8669e128c59e7a6b9e7cc"
+    },
+    {
+      "name": "escapes_and_non_ascii",
+      "why": "Escaping rules: quote and backslash are escaped, control characters use the short forms JSON defines and the six-character form otherwise, the solidus is never escaped, and non-ASCII is emitted as raw UTF-8.",
+      "manifest": {
+        "version": "0.1.0",
+        "channel": "lab",
+        "released_at": "2026-08-27T00:00:00Z",
+        "minimum_dgx_os": "7.0 \"café\" / a\\b\t\n\u0007",
+        "maximum_dgx_os": "8.0 — über",
+        "api_version": 2,
+        "artifacts": [
+          {
+            "name": "spark-runtime_0.1.0-1_arm64.deb",
+            "architecture": "aarch64",
+            "url": "https://releases.example.invalid/lab/a/b/c.deb",
+            "size": 1,
+            "sha256": "abababababababababababababababababababababababababababababababab",
+            "signature_url": "https://releases.example.invalid/lab/a/b/c.deb.sig"
+          }
+        ]
+      },
+      "canonical": "{\"api_version\":2,\"artifacts\":[{\"architecture\":\"aarch64\",\"name\":\"spark-runtime_0.1.0-1_arm64.deb\",\"sha256\":\"abababababababababababababababababababababababababababababababab\",\"signature_url\":\"https://releases.example.invalid/lab/a/b/c.deb.sig\",\"size\":1,\"url\":\"https://releases.example.invalid/lab/a/b/c.deb\"}],\"channel\":\"lab\",\"maximum_dgx_os\":\"8.0 — über\",\"minimum_dgx_os\":\"7.0 \\\"café\\\" / a\\\\b\\t\\n\\u0007\",\"released_at\":\"2026-08-27T00:00:00Z\",\"version\":\"0.1.0\"}",
+      "canonical_sha256": "4d5704c12e26d9fda8766dd932ae09d42b26669c142577f59bcea72c9f9db13a"
+    }
+  ]
+}

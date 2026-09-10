@@ -1,0 +1,16 @@
+type: object
+additionalProperties: false
+required:
+- warning_available_bytes
+- critical_available_bytes
+- emergency_available_bytes
+properties:
+  warning_available_bytes:
+    type: integer
+    minimum: 1073741824
+  critical_available_bytes:
+    type: integer
+    minimum: 1073741824
+  emergency_available_bytes:
+    type: integer
+    minimum: 1073741824

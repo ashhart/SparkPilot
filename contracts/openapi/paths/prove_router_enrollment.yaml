@@ -1,0 +1,23 @@
+post:
+  tags:
+  - Inference
+  operationId: proveRouterEnrollment
+  summary: Verify the destination route and prove possession of the router key
+  responses:
+    '200':
+      description: Verify the destination route and prove possession of the router key
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/RouterEnrollmentProof
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/ProveRouterEnrollmentRequest

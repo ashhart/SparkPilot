@@ -1,0 +1,88 @@
+type: object
+additionalProperties: false
+required:
+- id
+- display_name
+- state
+- installed
+- running
+- healthy
+- installed_image_digest
+- available_revision
+- available_version
+- update_available
+- access_path
+- access_port
+- access_tls
+- inference_gateway
+- recovery
+properties:
+  id:
+    type: string
+    const: open-webui
+  display_name:
+    type: string
+    const: Open WebUI
+  ownership_verified:
+    type: boolean
+    description: Trusted privileged ownership evidence matches the exact current container and data volume
+  repair_available:
+    type: boolean
+    description: A bounded repair is available without starting an intentionally stopped service
+  state:
+    type: string
+    enum:
+    - not_installed
+    - starting
+    - healthy
+    - stopped
+    - failed
+    - recovering
+  installed:
+    type: boolean
+  running:
+    type: boolean
+  healthy:
+    type: boolean
+  installed_image_digest:
+    type:
+    - string
+    - 'null'
+    pattern: ^ghcr\\.io/open-webui/open-webui@sha256:[a-f0-9]{64}$
+  available_revision:
+    type: string
+    minLength: 1
+    maxLength: 128
+  available_version:
+    type: string
+    minLength: 1
+    maxLength: 128
+  update_available:
+    type: boolean
+  access_path:
+    type:
+    - string
+    - 'null'
+    pattern: ^/services/open-webui/$
+  access_port:
+    type:
+    - integer
+    - 'null'
+    minimum: 1
+    maximum: 65535
+  access_tls:
+    type: boolean
+  inference_gateway:
+    $ref: ../../openapi.yaml#/components/schemas/OptionalServiceGatewayStatus
+  recovery:
+    type:
+    - object
+    - 'null'
+    additionalProperties: true
+  adopted:
+    type: boolean
+    description: Existing container connected without lifecycle authority
+  service_port:
+    type: integer
+    minimum: 1024
+    maximum: 65535

@@ -1,0 +1,26 @@
+post:
+  tags:
+  - Shared Access
+  operationId: createSharedAccessInvitation
+  summary: Invite a friend to use this Spark under a guest policy
+  description: Owner only, with a fresh presence proof. The signed version 2 invitation carries the local
+    route, the Tailscale MagicDNS name when remote access is on, the TLS pin, the node id and the limits,
+    so none of them can be altered on the way to the friend.
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/CreateSharedAccessInvitation
+  responses:
+    '201':
+      description: Signed shared-access invitation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/SharedAccessInvitation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

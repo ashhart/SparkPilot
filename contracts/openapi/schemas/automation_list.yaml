@@ -1,0 +1,18 @@
+type: object
+additionalProperties: false
+required:
+- items
+- max_automations
+- observed_at
+properties:
+  items:
+    type: array
+    maxItems: 32
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/Automation
+  max_automations:
+    type: integer
+    const: 32
+  observed_at:
+    type: integer
+    format: int64

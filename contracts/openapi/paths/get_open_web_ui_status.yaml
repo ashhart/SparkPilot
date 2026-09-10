@@ -1,0 +1,13 @@
+get:
+  tags:
+  - Optional Services
+  operationId: getOpenWebUIStatus
+  responses:
+    '200':
+      description: Open WebUI installation and health status
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/OptionalServiceStatus
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

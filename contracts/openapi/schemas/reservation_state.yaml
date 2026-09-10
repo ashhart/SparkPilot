@@ -1,0 +1,10 @@
+type: string
+enum:
+- reserved
+- accepted
+- cancel_requested
+- outcome_unknown
+- succeeded
+- failed
+- cancelled
+- expired

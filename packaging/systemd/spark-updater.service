@@ -1,0 +1,51 @@
+[Unit]
+Description=Spark Runtime Update Health Gate
+Documentation=https://example.invalid/spark-runtime
+After=sparkd.service
+Requires=sparkd.service
+
+[Service]
+# Deliberately oneshot with no [Install] section: this unit is the post-update
+# health gate from the update sequence, run on demand by the installer or an
+# operator, not a service that starts itself at boot.
+#
+#   systemctl start spark-updater.service
+#
+# A non-zero exit means the gate failed and the update must be rolled back.
+Type=oneshot
+User=sparkd
+Group=sparkd
+ExecStart=/usr/lib/spark-runtime/spark-updater health \
+    --data-dir /var/lib/spark-runtime \
+    --identity-credentials %d \
+    --privileged-socket /run/spark-runtime/spark-privd.sock \
+    --require-privileged-helper
+LoadCredential=identity.key:/etc/spark-runtime/identity/identity.key
+LoadCredential=identity.json:/etc/spark-runtime/identity/identity.json
+LoadCredential=node.key:/etc/spark-runtime/identity/node.key
+LoadCredential=node.crt:/etc/spark-runtime/identity/node.crt
+RemainAfterExit=no
+TimeoutStartSec=120s
+
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+RestrictSUIDSGID=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+RestrictRealtime=yes
+RemoveIPC=yes
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX
+ReadWritePaths=/var/lib/spark-runtime
+UMask=0027

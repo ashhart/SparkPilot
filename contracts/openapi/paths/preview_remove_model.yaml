@@ -1,0 +1,17 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/ModelId
+post:
+  tags:
+  - Models
+  operationId: previewRemoveModel
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  responses:
+    '200':
+      description: Digest-bound removal preview
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ModelActionPreview
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

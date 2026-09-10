@@ -1,0 +1,9 @@
+type: object
+additionalProperties: false
+required:
+- candidate_json
+properties:
+  candidate_json:
+    type: string
+    minLength: 2
+    maxLength: 2097152

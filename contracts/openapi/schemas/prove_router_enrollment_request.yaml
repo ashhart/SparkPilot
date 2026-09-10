@@ -1,0 +1,10 @@
+type: object
+additionalProperties: false
+properties:
+  challenge:
+    $ref: ../../openapi.yaml#/components/schemas/RouterEnrollmentChallenge
+  recipient:
+    $ref: ../../openapi.yaml#/components/schemas/RouterPeerTrust
+required:
+- challenge
+- recipient

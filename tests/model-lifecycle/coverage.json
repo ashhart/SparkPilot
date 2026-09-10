@@ -1,0 +1,88 @@
+{
+ "matrix": "PLAN \u00a749.5 Model lifecycle matrix",
+ "note": "Download, admission, forced unload and automatic idle unload are driven through the production paths with mock engines and injected time; real vLLM and live gated-repository behavior remain separate physical acceptance cases.",
+ "cases": {
+  "Download success.": {
+   "tests": [
+    "full_download_verifies_and_materialises"
+   ]
+  },
+  "Interrupted/resumed download.": {
+   "tests": [
+    "a_resumed_install_starts_from_the_bytes_already_verified",
+    "interrupt_then_resume_completes"
+   ]
+  },
+  "Wrong digest.": {
+   "tests": [
+    "wrong_digest_never_installs_and_cleans_partial"
+   ]
+  },
+  "Gated model without token.": {
+   "blocked": {
+    "reason": "The in-process resolver is a double; a genuine gated-repository 401 needs a real Hugging Face gated model over the network.",
+    "evidence_command": "On a networked Spark, POST /api/v1/models/{id}/install for a gated recipe with no provider credential and record the failure and cleanup."
+   }
+  },
+  "Token revoked.": {
+   "tests": [
+    "exact_install_retry_replays_after_credential_revocation"
+   ]
+  },
+  "Insufficient disk.": {
+   "tests": [
+    "disk_preflight_blocks_oversized_downloads",
+    "disk_preflight_uses_the_disk_reserve_not_the_memory_reserve"
+   ]
+  },
+  "Preflight insufficient memory.": {
+   "tests": [
+    "admission_rejects_insufficient_memory"
+   ]
+  },
+  "Startup timeout.": {
+   "tests": [
+    "a_hung_engine_fails_the_load_inside_the_configured_window"
+   ]
+  },
+  "Invalid chat template.": {
+   "blocked": {
+    "reason": "The mock backend does not parse chat templates; a malformed-template rejection is produced only by a real vLLM engine.",
+    "evidence_command": "On a DGX, load a recipe carrying an invalid chat_template and record the load failure and rollback to the last ready engine."
+   }
+  },
+  "Inference stream cancellation.": {
+   "tests": [
+    "cancelling_a_text_analysis_stops_the_generation"
+   ]
+  },
+  "Graceful unload.": {
+   "tests": [
+    "graceful_unload",
+    "unload_succeeds_when_the_container_is_gone_but_memory_has_not_returned"
+   ]
+  },
+  "Forced unload.": {
+   "tests": [
+    "forced_unload_skips_active_request_drain"
+   ]
+  },
+  "Automatic idle unload.": {
+   "tests": [
+    "automatic_idle_unload_stops_the_loaded_backend_at_the_deadline",
+    "active_request_past_idle_deadline_yields_instead_of_spinning"
+   ]
+  },
+  "Profile marked unsafe after pressure failure.": {
+   "tests": [
+    "admission_blocks_unsafe_profiles",
+    "guard_emergency_stops_the_loaded_engine_and_blocks_readmission"
+   ]
+  },
+  "Runtime update with installed models.": {
+   "tests": [
+    "runtime_update_reconciles_after_daemon_restart_even_with_the_old_live_lease"
+   ]
+  }
+ }
+}

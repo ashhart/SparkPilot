@@ -1,0 +1,20 @@
+type: object
+additionalProperties: false
+properties:
+  identity:
+    $ref: ../../openapi.yaml#/components/schemas/RouterIdentityDocument
+  expected_router_node_id:
+    type: string
+    format: uuid
+  expected_router_authority_fingerprint:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  display_name:
+    type: string
+    minLength: 1
+    maxLength: 80
+required:
+- identity
+- expected_router_node_id
+- expected_router_authority_fingerprint
+- display_name

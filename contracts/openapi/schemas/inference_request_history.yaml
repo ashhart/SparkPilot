@@ -1,0 +1,32 @@
+type: object
+additionalProperties: false
+required:
+- recording
+- retention_seconds
+- maximum_records
+- timing_source
+- server_queue_ms
+- records
+properties:
+  recording:
+    type: boolean
+  retention_seconds:
+    type: integer
+    const: 2592000
+  maximum_records:
+    type: integer
+    const: 2000
+  timing_source:
+    type: string
+    const: runtime_proxy
+  server_queue_ms:
+    type:
+    - number
+    - 'null'
+    const: null
+    description: Engine queue timing is not reported by this collector
+  records:
+    type: array
+    maxItems: 200
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/InferenceRequestRecord

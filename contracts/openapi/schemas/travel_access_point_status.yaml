@@ -1,0 +1,24 @@
+type: object
+additionalProperties: false
+required:
+- enabled
+- ssid
+- security
+- auto_revert_seconds
+properties:
+  enabled:
+    type: boolean
+  ssid:
+    type:
+    - string
+    - 'null'
+  security:
+    type: string
+    enum:
+    - wpa3
+    - wpa2
+    - unavailable
+  auto_revert_seconds:
+    type: integer
+    minimum: 15
+    maximum: 120

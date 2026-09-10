@@ -1,0 +1,17 @@
+type: object
+additionalProperties: false
+required:
+- path
+- content
+- revision
+properties:
+  path:
+    type: string
+    minLength: 1
+    maxLength: 4096
+  content:
+    type: string
+    maxLength: 8388608
+  revision:
+    type: string
+    pattern: ^[0-9a-f]{64}$

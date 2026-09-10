@@ -1,0 +1,13 @@
+get:
+  tags:
+  - Cluster
+  operationId: getCluster
+  responses:
+    '200':
+      description: Cluster topology and status
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Cluster
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

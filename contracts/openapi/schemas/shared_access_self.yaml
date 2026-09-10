@@ -1,0 +1,40 @@
+type: object
+additionalProperties: false
+required:
+- display_name
+- state
+- allowed_models
+- allowed_hours
+- time_zone
+- max_concurrent_requests
+- daily_token_budget
+- today
+description: What one guest may read about its own access. It never names another device.
+properties:
+  display_name:
+    type: string
+  state:
+    $ref: ../../openapi.yaml#/components/schemas/SharedAccessState
+  allowed_models:
+    type: array
+    items:
+      type: string
+  allowed_hours:
+    $ref: ../../openapi.yaml#/components/schemas/GuestSchedule
+  time_zone:
+    type: string
+  max_concurrent_requests:
+    type: integer
+  daily_token_budget:
+    type: integer
+  expires_at:
+    type:
+    - integer
+    - 'null'
+  today:
+    $ref: ../../openapi.yaml#/components/schemas/GuestUsage
+  budget_resets_at:
+    type:
+    - integer
+    - 'null'
+    description: Unix seconds of the next local midnight in the owner's time zone.

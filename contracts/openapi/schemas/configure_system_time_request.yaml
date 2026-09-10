@@ -1,0 +1,13 @@
+type: object
+additionalProperties: false
+required:
+- timezone
+- ntp_enabled
+properties:
+  timezone:
+    type: string
+    minLength: 1
+    maxLength: 64
+    pattern: ^[A-Za-z0-9._+-]+(/[A-Za-z0-9._+-]+)+$
+  ntp_enabled:
+    type: boolean

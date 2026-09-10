@@ -1,0 +1,14 @@
+type: object
+additionalProperties: false
+required:
+- url
+- title
+properties:
+  url:
+    type: string
+    maxLength: 2048
+  title:
+    type:
+    - string
+    - 'null'
+    maxLength: 300

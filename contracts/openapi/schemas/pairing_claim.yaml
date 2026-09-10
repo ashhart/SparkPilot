@@ -1,0 +1,51 @@
+type: object
+required:
+- invitation
+- challenge_id
+- device_id
+- device_name
+- platform
+- device_public_key_spki
+- challenge_signature
+properties:
+  invitation:
+    $ref: ../../openapi.yaml#/components/schemas/PairingInvitation
+  challenge_id:
+    type: string
+    format: uuid
+  device_id:
+    type: string
+    format: uuid
+  device_name:
+    type: string
+    minLength: 1
+    maxLength: 120
+  platform:
+    type: string
+    enum:
+    - ios
+    - ipados
+    - macos
+  device_public_key_spki:
+    type: string
+    contentEncoding: base64
+    maxLength: 512
+  presence_public_key_spki:
+    type:
+    - string
+    - 'null'
+    contentEncoding: base64
+    maxLength: 512
+    description: Optional distinct P-256 SPKI for fresh user-presence proofs. Devices paired without this
+      field remain compatible but cannot authorize device revocation.
+  presence_key_signature:
+    type:
+    - string
+    - 'null'
+    contentEncoding: base64url
+    description: Required when presence_public_key_spki is present and forbidden when it is absent. The
+      presence key signs the same SPARK-PAIRING-PRESENCE1 registration message as the normal device key
+      challenge signature.
+  challenge_signature:
+    type: string
+    contentEncoding: base64url

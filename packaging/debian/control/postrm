@@ -1,0 +1,68 @@
+#!/bin/sh
+# Purge identity, grants and backups only after the service uid is quiet, preventing live processes from retaining a reusable orphan uid.
+set -e
+
+STATE_DIR=/var/lib/spark-runtime
+PRIVD_STATE_DIR=/var/lib/spark-privd
+CACHE_DIR=/var/cache/spark-runtime
+CONF_DIR=/etc/spark-runtime
+BACKUP_ROOT=/var/backups/spark-runtime
+RUNTIME_USER=sparkd
+# Identify the root helper by its executable because the service-uid scan cannot see it.
+PRIVD_PATH=/usr/lib/spark-runtime/spark-privd
+
+@QUIESCENCE@
+
+case "$1" in
+  remove)
+    if [ -d /run/systemd/system ]; then
+      systemctl daemon-reload || true
+    fi
+    ;;
+
+  purge)
+    if [ -d /run/systemd/system ]; then
+      systemctl daemon-reload || true
+    fi
+
+    # Check before deleting because purge of an already removed package can bypass prerm.
+    spark_require_quiescent "purge Spark Runtime"
+
+    rm -rf "$CACHE_DIR"
+    rm -rf "$STATE_DIR"
+    rm -rf "$PRIVD_STATE_DIR"
+    # Upgrade snapshots hold the node's database, so a purge clears them too.
+    rm -rf "$BACKUP_ROOT"
+    rm -rf "$CONF_DIR/identity" "$CONF_DIR/.identity.pending"
+    rm -f "$CONF_DIR/.identity-migration.lock"
+    rm -f "$CONF_DIR/config.toml"
+    rmdir --ignore-fail-on-non-empty "$CONF_DIR/trust" "$CONF_DIR" 2>/dev/null || true
+
+    # Report failed account removal while retaining its uid to prevent unsafe reuse.
+    if getent passwd "$RUNTIME_USER" >/dev/null; then
+      if ! deluser --system "$RUNTIME_USER" >/dev/null 2>&1; then
+        echo "spark-runtime: could not remove the $RUNTIME_USER account." >&2
+        echo "  Its files are gone; remove the account by hand:" >&2
+        echo "      sudo deluser --system $RUNTIME_USER" >&2
+        exit 1
+      fi
+    fi
+    if getent group "$RUNTIME_USER" >/dev/null; then
+      if ! delgroup --system "$RUNTIME_USER" >/dev/null 2>&1; then
+        echo "spark-runtime: could not remove the $RUNTIME_USER group." >&2
+        echo "      sudo delgroup --system $RUNTIME_USER" >&2
+        exit 1
+      fi
+    fi
+    ;;
+
+  upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+    ;;
+
+  *)
+    echo "postrm called with unknown argument \`$1'" >&2
+    exit 1
+    ;;
+esac
+
+exit 0

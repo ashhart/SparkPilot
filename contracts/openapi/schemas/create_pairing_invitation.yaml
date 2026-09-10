@@ -1,0 +1,30 @@
+type: object
+additionalProperties: false
+required:
+- role
+- expires_in_seconds
+properties:
+  role:
+    $ref: ../../openapi.yaml#/components/schemas/Role
+  expires_in_seconds:
+    type: integer
+    minimum: 60
+    maximum: 3600
+    default: 300
+  device_name_hint:
+    type:
+    - string
+    - 'null'
+    maxLength: 120
+  recipient_device_id:
+    type:
+    - string
+    - 'null'
+    format: uuid
+    description: Must be supplied with recipient_public_key_fingerprint.
+  recipient_public_key_fingerprint:
+    type:
+    - string
+    - 'null'
+    pattern: ^[a-f0-9]{64}$
+    description: Must be supplied with recipient_device_id.

@@ -1,0 +1,9 @@
+type: string
+description: The engine this workload was recognised as from bounded facts. `none` means recognition did
+  not succeed, not that no engine is present.
+enum:
+- none
+- vllm
+- sglang
+- ray
+- open_webui

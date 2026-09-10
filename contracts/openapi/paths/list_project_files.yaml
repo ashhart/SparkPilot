@@ -1,0 +1,33 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/ProjectId
+- name: workspace
+  in: query
+  required: false
+  description: Choose protected project files or the durable development checkout.
+  schema:
+    type: string
+    enum:
+    - project
+    - development
+    default: project
+get:
+  tags:
+  - Projects
+  operationId: listProjectFiles
+  summary: "Browse project files with revision metadata (\xA742.8)"
+  responses:
+    '200':
+      description: File list
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - items
+            properties:
+              items:
+                type: array
+                items:
+                  $ref: ../../openapi.yaml#/components/schemas/ProjectFileEntry
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

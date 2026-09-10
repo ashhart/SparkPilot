@@ -1,0 +1,14 @@
+get:
+  tags:
+  - Health
+  operationId: getCapabilities
+  summary: Return negotiated product capabilities
+  responses:
+    '200':
+      description: Capability document
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Capabilities
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,27 @@
+parameters:
+- name: id
+  in: path
+  required: true
+  schema:
+    type: string
+    format: uuid
+post:
+  tags:
+  - Inference
+  operationId: disableInferenceWarmup
+  summary: Disable a pending warm-up without stopping a dispatched model
+  responses:
+    '200':
+      description: Disable a pending warm-up without stopping a dispatched model
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/WarmupSchedule
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  description: Only pending work is disabled. A dispatched warm-up returns a conflict and must be inspected
+    as a model operation; completed outcomes are retained. Replaying the same idempotency key returns
+    its original receipt.

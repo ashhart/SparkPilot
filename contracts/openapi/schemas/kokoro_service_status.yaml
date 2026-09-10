@@ -1,0 +1,36 @@
+type: object
+additionalProperties: false
+required:
+- installed
+- running
+- healthy
+- image
+- available_revision
+- available_image
+- update_available
+- voices
+- memory_limit_bytes
+properties:
+  installed:
+    type: boolean
+  running:
+    type: boolean
+  healthy:
+    type: boolean
+  image:
+    type:
+    - string
+    - 'null'
+  available_revision:
+    type: string
+  available_image:
+    type: string
+  update_available:
+    type: boolean
+  voices:
+    type: array
+    items:
+      type: string
+  memory_limit_bytes:
+    type: integer
+    minimum: 1

@@ -1,0 +1,22 @@
+type: object
+required:
+- challenge_id
+- challenge
+- expires_at
+- authority_fingerprint
+- signature
+properties:
+  challenge_id:
+    type: string
+    format: uuid
+  challenge:
+    type: string
+    contentEncoding: base64url
+  expires_at:
+    type: string
+    format: date-time
+  authority_fingerprint:
+    type: string
+  signature:
+    type: string
+    contentEncoding: base64url

@@ -1,0 +1,35 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/ProjectId
+post:
+  tags:
+  - Projects
+  operationId: startProjectAgent
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+          - task
+          properties:
+            task:
+              type: string
+              minLength: 1
+              maxLength: 20000
+            base_commit:
+              type: string
+              pattern: ^[0-9a-f]{40,64}$
+            policy_id:
+              type: string
+  responses:
+    '202':
+      description: Agent operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

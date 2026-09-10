@@ -1,0 +1,18 @@
+type: object
+additionalProperties: false
+required:
+- available
+- powered
+- discovering
+- nearby_devices
+properties:
+  available:
+    type: boolean
+  powered:
+    type: boolean
+  discovering:
+    type: boolean
+  nearby_devices:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/BluetoothDevice

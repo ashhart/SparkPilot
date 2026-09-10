@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spark.example/schemas/runtime-event.schema.json",
+  "title": "Spark Runtime Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "sequence",
+    "event_id",
+    "occurred_at",
+    "node_id",
+    "type",
+    "severity",
+    "payload"
+  ],
+  "properties": {
+    "sequence": { "type": "integer", "minimum": 1 },
+    "event_id": { "type": "string", "format": "uuid" },
+    "occurred_at": { "type": "string", "format": "date-time" },
+    "node_id": { "type": "string", "format": "uuid" },
+    "cluster_id": { "type": ["string", "null"], "format": "uuid" },
+    "operation_id": { "type": ["string", "null"], "format": "uuid" },
+    "type": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)+$"
+    },
+    "severity": { "enum": ["debug", "info", "notice", "warning", "error", "critical"] },
+    "payload": { "type": "object" }
+  }
+}

@@ -1,0 +1,59 @@
+type: object
+additionalProperties: false
+required:
+- deployment_id
+- model_identity
+- model_id
+- source_repository
+- source_revision
+- recipe_sha256
+- profile_id
+- engine_image
+- runtime_version
+- generation
+- context_length
+- max_sequences
+- capabilities
+- qualification_id
+properties:
+  deployment_id:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  model_identity:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  model_id:
+    type: string
+  source_repository:
+    type: string
+  source_revision:
+    type: string
+  recipe_sha256:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  profile_id:
+    type: string
+  engine_image:
+    type: string
+  runtime_version:
+    type: string
+  generation:
+    type: string
+    format: uuid
+  context_length:
+    type: integer
+    format: int64
+    minimum: 0
+  max_sequences:
+    type: integer
+    format: int64
+    minimum: 0
+    maximum: 4294967295
+  capabilities:
+    type: array
+    items:
+      type: string
+  qualification_id:
+    type:
+    - string
+    - 'null'

@@ -1,0 +1,37 @@
+{
+  "apiVersion": "spark.runtime/v1",
+  "kind": "ServiceRecipe",
+  "metadata": {
+    "id": "open-webui",
+    "revision": "2026-08-29.1",
+    "displayName": "Open WebUI",
+    "publisher": "Open WebUI"
+  },
+  "container": {
+    "image": "ghcr.io/open-webui/open-webui@sha256:6bb1fbe8ab0a3e0456067f493044ffb66a30a65a34be47f6a5862176a370dd16",
+    "version": "0.11.1",
+    "internalPort": 8080,
+    "loopbackPort": 18080,
+    "dataVolume": "spark-open-webui-data"
+  },
+  "gateway": {
+    "baseURL": "http://127.0.0.1:18081/v1",
+    "scopes": [
+      "models.read",
+      "chat.completions.create"
+    ]
+  },
+  "security": {
+    "loopbackOnly": true,
+    "networkMode": "host",
+    "readOnlyRoot": true,
+    "dropAllCapabilities": true,
+    "noNewPrivileges": true,
+    "signupDisabledAfterBootstrap": true
+  },
+  "signature": {
+    "keyID": "service-2026-a",
+    "algorithm": "ed25519",
+    "value": "JA956mUNHZVssD_z0Id8LOOlE7-r3YIDHqa8rw4LoHB2yGwxl0UrUeCbohwYw3AXJrZkfVF4G8SDMuJvAlJiBg"
+  }
+}

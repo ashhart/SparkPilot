@@ -1,0 +1,99 @@
+{
+  "apiVersion": "spark.runtime/v1",
+  "kind": "ModelRecipe",
+  "metadata": {
+    "id": "nvidia/nemotron-3.5-lightning-30b-a3b-nvfp4",
+    "revision": "2026-09-07.1",
+    "displayName": "Nemotron 3.5 Lightning 30B",
+    "publisher": "NVIDIA",
+    "description": "Hybrid Mamba-MoE agent model: 30B total parameters, 3B active, with a 1,048,576-token context window. NVFP4 checkpoint for one DGX Spark under OpenMDW 1.1. Launch estimates include weights, FP8 attention cache at 3,072 bytes per token, 128 MiB per request for aligned recurrent state and cache-page padding, and engine overhead. The default preset reserves 262,144-token contexts for 16 concurrent requests.",
+    "publisherURL": "https://huggingface.co/nvidia",
+    "recipeSource": {
+      "name": "vLLM Recipes",
+      "url": "https://recipes.vllm.ai/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+      "retrievedAt": "2026-09-03"
+    }
+  },
+  "source": {
+    "provider": "huggingface",
+    "repository": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4",
+    "revision": "cc84af2fe71647d87f4486c064f320e1e7535243",
+    "gated": false,
+    "trustRemoteCode": false,
+    "licenceURL": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4/blob/cc84af2fe71647d87f4486c064f320e1e7535243/LICENSE"
+  },
+  "engine": {
+    "recipe": "vllm-dgx-spark-2026-09",
+    "image": "vllm/vllm-openai@sha256:2a7cde230b59f3ce6cab33dd245ba6bee41aa87b38c9fe84f966ff24016813ce",
+    "servedName": "nemotron-3.5-lightning",
+    "task": "generate",
+    "tokenizerMode": "auto",
+    "options": {
+      "mambaCacheMode": "align",
+      "kvCacheDtype": "fp8",
+      "reasoningParser": "nemotron_v3",
+      "toolCallParser": "qwen3_coder"
+    }
+  },
+  "capabilities": {
+    "chat": true,
+    "reasoning": true,
+    "toolCalling": true,
+    "parallelToolCalling": true,
+    "guidedGeneration": true,
+    "vision": false,
+    "embeddings": false,
+    "audioInput": false
+  },
+  "memory": {
+    "minimumSystemReserveBytes": 23622320128,
+    "expectedWeightBytes": 24000000000,
+    "expectedEngineOverheadBytes": 8589934592,
+    "kvCacheBytesPerToken": 3072,
+    "stateBytesPerSequence": 134217728,
+    "measurementConfidence": "estimated"
+  },
+  "profiles": [
+    {
+      "id": "agent-256k",
+      "displayName": "Agent 256K · 16 requests",
+      "maxModelLength": 262144,
+      "maxSequences": 16,
+      "maxBatchedTokens": 8192,
+      "gpuMemoryUtilisation": 0.7,
+      "expectedPeakBytes": 47622320128,
+      "idlePolicy": "unload_after_30m"
+    },
+    {
+      "id": "long-1m",
+      "displayName": "Long Context 1M · 4 requests",
+      "maxModelLength": 1048576,
+      "maxSequences": 4,
+      "maxBatchedTokens": 8192,
+      "gpuMemoryUtilisation": 0.7,
+      "expectedPeakBytes": 46011707392,
+      "idlePolicy": "unload_after_30m"
+    },
+    {
+      "id": "agent-64k",
+      "displayName": "Agent 64K · 32 requests",
+      "maxModelLength": 65536,
+      "maxSequences": 32,
+      "maxBatchedTokens": 8192,
+      "gpuMemoryUtilisation": 0.7,
+      "expectedPeakBytes": 43327352832,
+      "idlePolicy": "unload_after_30m"
+    }
+  ],
+  "security": {
+    "allowNetworkDuringInference": false,
+    "allowedMediaRoots": [],
+    "allowCustomLogitsProcessors": false,
+    "allowPlugins": []
+  },
+  "signature": {
+    "keyID": "catalogue-2026-b",
+    "algorithm": "ed25519",
+    "value": "Y5STcpLrHE_1U9vtsoyFjIMutjACQg-GsgeF3VTMmo_apKu9kCHstYFbSgfd9oLi48bWEGRb9YV7Zv0_1Rd3DA"
+  }
+}

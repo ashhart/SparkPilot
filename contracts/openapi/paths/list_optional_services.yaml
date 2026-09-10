@@ -1,0 +1,14 @@
+get:
+  tags:
+  - Optional Services
+  operationId: listOptionalServices
+  summary: List optional services whose bundled recipes verify locally
+  responses:
+    '200':
+      description: Optional service status
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/OptionalServiceList
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

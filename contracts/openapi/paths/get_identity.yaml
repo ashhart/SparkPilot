@@ -1,0 +1,14 @@
+get:
+  tags:
+  - Health
+  operationId: getIdentity
+  summary: Return stable node and cluster identity
+  responses:
+    '200':
+      description: Identity
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Identity
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

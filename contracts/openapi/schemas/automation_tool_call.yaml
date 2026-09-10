@@ -1,0 +1,52 @@
+type: object
+additionalProperties: false
+required:
+- index
+- tool
+- outcome
+- duration_ms
+properties:
+  index:
+    type: integer
+    minimum: 0
+    maximum: 63
+  tool:
+    type: string
+    enum:
+    - web_search
+    - web_fetch
+    - personal_context
+  query:
+    type:
+    - string
+    - 'null'
+    maxLength: 400
+    description: The exact search text that left the Spark, recorded so the owner can read it back.
+  url:
+    type:
+    - string
+    - 'null'
+    maxLength: 2048
+    description: The final URL after redirects, or the URL that was refused.
+  outcome:
+    type: string
+    enum:
+    - succeeded
+    - refused
+    - failed
+    - robots_checked
+    - stripped
+    description: A client must render an outcome it does not know generically rather than as a refusal.
+  error_code:
+    type:
+    - string
+    - 'null'
+    maxLength: 64
+  result_bytes:
+    type:
+    - integer
+    - 'null'
+    format: int64
+  duration_ms:
+    type: integer
+    format: int64

@@ -1,0 +1,23 @@
+post:
+  tags:
+  - Cluster
+  operationId: runClusterCollective
+  summary: Run this member's rank of the concurrent two-node NCCL all-reduce
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/ClusterProposal
+  responses:
+    '200':
+      description: Node-authority signed two-rank collective proof
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ClusterCollectiveProof
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

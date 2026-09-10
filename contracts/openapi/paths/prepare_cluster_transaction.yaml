@@ -1,0 +1,23 @@
+post:
+  tags:
+  - Cluster
+  operationId: prepareClusterTransaction
+  summary: Prepare this Spark's fenced CX-7 profile and issue its signed cluster grant
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/ClusterProposal
+  responses:
+    '200':
+      description: Node-authority signed member grant
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ClusterDeviceGrant
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

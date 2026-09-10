@@ -1,0 +1,50 @@
+type: object
+required:
+- state
+properties:
+  state:
+    type: string
+    enum:
+    - unloaded
+    - loading
+    - ready
+    - idle
+    - draining
+    - unloading
+    - failed
+  model_id:
+    type:
+    - string
+    - 'null'
+  profile_id:
+    type:
+    - string
+    - 'null'
+  context_length:
+    type:
+    - integer
+    - 'null'
+  active_requests:
+    type: integer
+    minimum: 0
+    default: 0
+  queue_depth:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  tokens_per_second:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+  time_to_first_token_ms:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+  last_unload:
+    description: Evidence from the most recent stop while nothing is loaded; null once a model is loaded again.
+    oneOf:
+    - $ref: ../../openapi.yaml#/components/schemas/UnloadEvidence
+    - type: 'null'

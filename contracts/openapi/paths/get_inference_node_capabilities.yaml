@@ -1,0 +1,14 @@
+get:
+  tags:
+  - Inference
+  operationId: getInferenceNodeCapabilities
+  summary: Read short-lived readiness and immutable deployment identity
+  responses:
+    '200':
+      description: Read short-lived readiness and immutable deployment identity
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/NodeCapabilitySnapshot
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

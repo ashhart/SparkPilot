@@ -1,0 +1,88 @@
+type: object
+additionalProperties: false
+required:
+- cpu_utilisation
+- load_average_1m
+- unified_memory_total_bytes
+- unified_memory_available_bytes
+- unified_memory_used_bytes
+- memory_pressure
+- memory_psi_some_avg10
+- memory_psi_full_avg10
+- uptime_seconds
+- power_state
+properties:
+  cpu_utilisation:
+    type: number
+    minimum: 0
+    maximum: 1
+  load_average_1m:
+    type: number
+    minimum: 0
+  unified_memory_total_bytes:
+    type: integer
+    minimum: 1
+  unified_memory_available_bytes:
+    type: integer
+    minimum: 0
+  unified_memory_used_bytes:
+    type: integer
+    minimum: 0
+  memory_pressure:
+    type: string
+    enum:
+    - normal
+    - warning
+    - critical
+    - emergency
+  memory_psi_some_avg10:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+    description: Linux memory PSI partial-stall percentage averaged over the preceding 10 seconds, or
+      null when unavailable
+  memory_psi_full_avg10:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+    description: Linux memory PSI full-stall percentage averaged over the preceding 10 seconds, or null
+      when unavailable
+  temperature_celsius:
+    type:
+    - number
+    - 'null'
+  thermal_state:
+    type: string
+    enum:
+    - unavailable
+    - unknown
+    - nominal
+    - warm
+    - hot
+    - critical
+    description: The guard's own sustained-heat rung (§41.5.2.1). `unavailable` means no memory guard
+      is running and `unknown` means it is running with no temperature reading; an absent member means
+      a runtime older than this field, which a client treats as `unavailable`. Clients present this
+      rather than deriving a verdict from `temperature_celsius`, which carries no thresholds.
+  thermal_warning_celsius:
+    type:
+    - number
+    - 'null'
+    description: Configured entry threshold for `warm`; null when no guard is running.
+  thermal_hot_celsius:
+    type:
+    - number
+    - 'null'
+    description: Configured entry threshold for `hot`, at which the guard stops admitting new load work.
+  thermal_critical_celsius:
+    type:
+    - number
+    - 'null'
+    description: Configured entry threshold for `critical`, at which the guard asks the engine to unload.
+  power_state:
+    type: string
+  uptime_seconds:
+    type: integer
+    minimum: 0

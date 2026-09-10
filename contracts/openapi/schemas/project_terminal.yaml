@@ -1,0 +1,25 @@
+type: object
+required:
+- terminal_id
+- project_id
+- state
+- created_at
+properties:
+  terminal_id:
+    type: string
+    format: uuid
+  project_id:
+    type: string
+    format: uuid
+  state:
+    type: string
+    enum:
+    - starting
+    - running
+    - stopped
+    - failed
+  created_at:
+    type: string
+    format: date-time
+  ws_url:
+    type: string

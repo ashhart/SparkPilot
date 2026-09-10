@@ -1,0 +1,22 @@
+post:
+  tags:
+  - Inference
+  operationId: reserveInferenceCapacity
+  summary: Reserve node-authoritative capacity for one exact request
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/ReserveInferenceRequest
+  responses:
+    '201':
+      description: Reserve node-authoritative capacity for one exact request
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/AdmissionReservation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

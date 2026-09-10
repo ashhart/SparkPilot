@@ -1,0 +1,32 @@
+type: object
+additionalProperties: false
+required:
+- path
+- change_type
+- additions
+- deletions
+- hunks
+properties:
+  path:
+    type: string
+    minLength: 1
+    maxLength: 4096
+  change_type:
+    type: string
+    enum:
+    - added
+    - modified
+    - deleted
+    - renamed
+    - binary
+  additions:
+    type: integer
+    minimum: 0
+  deletions:
+    type: integer
+    minimum: 0
+  hunks:
+    type: array
+    maxItems: 1000
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ProjectDiffHunk

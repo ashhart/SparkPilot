@@ -1,0 +1,77 @@
+type: object
+additionalProperties: false
+required:
+- protocol
+- build_id
+- worker_id
+- claim_generation
+- project_id
+- commit
+- source_sha256
+- recipe_sha256
+- exit_state
+- started_at
+- completed_at
+- output
+- output_sha256
+- test_failures
+- diagnostics
+- artifacts
+properties:
+  protocol:
+    type: string
+    pattern: ^SPARK-BUILD-1$
+  build_id:
+    type: string
+    format: uuid
+  worker_id:
+    type: string
+    format: uuid
+  claim_generation:
+    type: integer
+    minimum: 1
+  project_id:
+    type: string
+    format: uuid
+  commit:
+    type: string
+    pattern: ^[0-9a-f]{40}$
+  source_sha256:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  recipe_sha256:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  exit_state:
+    type: string
+    enum:
+    - succeeded
+    - failed
+    - cancelled
+  started_at:
+    type: string
+    format: date-time
+  completed_at:
+    type: string
+    format: date-time
+  output:
+    type: string
+    maxLength: 1048576
+  output_sha256:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  test_failures:
+    type: array
+    maxItems: 1000
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/BuildTestFailure
+  diagnostics:
+    type: array
+    maxItems: 5000
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/BuildDiagnostic
+  artifacts:
+    type: array
+    maxItems: 16
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/BuildArtifactEvidence

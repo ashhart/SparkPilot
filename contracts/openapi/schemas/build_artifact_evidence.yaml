@@ -1,0 +1,31 @@
+type: object
+additionalProperties: false
+required:
+- artifact_id
+- kind
+- relative_path
+- sha256
+- size_bytes
+properties:
+  artifact_id:
+    type: string
+    format: uuid
+  kind:
+    type: string
+    enum:
+    - xcresult
+    - screenshot
+    - recording
+    - archive
+    - diagnostics
+  relative_path:
+    type: string
+    minLength: 1
+    maxLength: 1024
+  sha256:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  size_bytes:
+    type: integer
+    minimum: 0
+    maximum: 8388608

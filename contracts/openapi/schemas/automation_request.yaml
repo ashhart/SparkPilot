@@ -1,0 +1,37 @@
+type: object
+additionalProperties: false
+required:
+- name
+- instructions
+- schedule
+- model_id
+properties:
+  name:
+    type: string
+    minLength: 1
+    maxLength: 80
+  instructions:
+    type: string
+    minLength: 1
+    maxLength: 2000
+  schedule:
+    $ref: ../../openapi.yaml#/components/schemas/AutomationSchedule
+  model_id:
+    type: string
+    minLength: 1
+    maxLength: 240
+  profile_id:
+    type:
+    - string
+    - 'null'
+    maxLength: 80
+  web_access:
+    type: boolean
+    default: false
+    description: Defaults to false. Turning it on requires a fresh user-presence proof because it changes
+      what the Spark sends to third parties.
+  delivery:
+    $ref: ../../openapi.yaml#/components/schemas/AutomationDelivery
+  enabled:
+    type: boolean
+    default: true

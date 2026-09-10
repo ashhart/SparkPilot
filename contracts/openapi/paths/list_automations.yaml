@@ -1,0 +1,40 @@
+get:
+  tags:
+  - Automations
+  operationId: listAutomations
+  summary: List the automations this Spark runs on its own
+  responses:
+    '200':
+      description: List the automations this Spark runs on its own
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/AutomationList
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+post:
+  tags:
+  - Automations
+  operationId: createAutomation
+  summary: Create an automation the Spark runs on its own schedule
+  responses:
+    '201':
+      description: Create an automation the Spark runs on its own schedule
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Automation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/UserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/AutomationRequest
+  description: Administrator or owner only, at most thirty-two per node. The schedule expression and its IANA
+    zone are parsed and the first run time computed before anything is stored; an expression the parser does
+    not accept is refused rather than saved. Turning web access on requires a fresh user-presence proof.

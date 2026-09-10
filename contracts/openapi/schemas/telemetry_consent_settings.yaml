@@ -1,0 +1,10 @@
+type: object
+additionalProperties: false
+required:
+- functional
+- technical
+properties:
+  functional:
+    type: boolean
+  technical:
+    type: boolean

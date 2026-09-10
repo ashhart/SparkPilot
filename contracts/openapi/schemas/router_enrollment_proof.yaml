@@ -1,0 +1,23 @@
+type: object
+additionalProperties: false
+properties:
+  challenge_id:
+    type: string
+    format: uuid
+  recipient_node_id:
+    type: string
+    format: uuid
+  principal_id:
+    type: string
+    format: uuid
+  challenge_sha256:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  possession_signature:
+    type: string
+required:
+- challenge_id
+- recipient_node_id
+- principal_id
+- challenge_sha256
+- possession_signature

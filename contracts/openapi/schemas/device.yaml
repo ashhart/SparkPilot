@@ -1,0 +1,37 @@
+type: object
+required:
+- id
+- display_name
+- platform
+- role
+- paired_at
+- revoked
+properties:
+  id:
+    type: string
+    format: uuid
+  display_name:
+    type: string
+  platform:
+    type: string
+    enum:
+    - ios
+    - ipados
+    - macos
+  role:
+    $ref: ../../openapi.yaml#/components/schemas/Role
+  capabilities:
+    type: array
+    uniqueItems: true
+    items:
+      type: string
+  paired_at:
+    type: string
+    format: date-time
+  last_seen_at:
+    type:
+    - string
+    - 'null'
+    format: date-time
+  revoked:
+    type: boolean

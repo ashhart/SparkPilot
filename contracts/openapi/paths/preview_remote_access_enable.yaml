@@ -1,0 +1,29 @@
+post:
+  tags:
+  - Remote
+  operationId: previewRemoteAccessEnable
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          additionalProperties: false
+          required:
+          - mode
+          properties:
+            mode:
+              type: string
+              enum:
+              - private_overlay
+  responses:
+    '200':
+      description: Server-authored remote enable review
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ModelActionPreview
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

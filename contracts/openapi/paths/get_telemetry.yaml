@@ -1,0 +1,14 @@
+get:
+  tags:
+  - Telemetry
+  operationId: getTelemetry
+  summary: Return current local hardware and read-only inference-engine telemetry
+  responses:
+    '200':
+      description: Live telemetry sampled by this Spark
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/TelemetrySnapshot
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

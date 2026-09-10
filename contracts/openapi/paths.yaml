@@ -1,0 +1,332 @@
+/api/v1/inference/pools:
+  $ref: paths/list_inference_pools.yaml
+/api/v1/inference/pools/preview:
+  $ref: paths/preview_inference_pool.yaml
+/api/v1/inference/pools/apply:
+  $ref: paths/apply_inference_pool.yaml
+/api/v1/inference/router-grants:
+  $ref: paths/create_inference_router_grant.yaml
+/api/v1/inference/router-grants/{grant_id}/revoke:
+  $ref: paths/revoke_inference_router_grant.yaml
+/api/v1/inference/node-capabilities:
+  $ref: paths/get_inference_node_capabilities.yaml
+/api/v1/inference/reservations:
+  $ref: paths/reserve_inference_capacity.yaml
+/api/v1/inference/reservations/{reservation_id}:
+  $ref: paths/get_inference_reservation.yaml
+/api/v1/inference/reservations/{reservation_id}/cancel:
+  $ref: paths/cancel_inference_reservation.yaml
+/api/v1/inference/reservations/{reservation_id}/execute:
+  $ref: paths/execute_inference_reservation.yaml
+/api/v1/inference/router-peers:
+  $ref: paths/list_router_peers.yaml
+/api/v1/inference/router-identity:
+  $ref: paths/get_router_identity.yaml
+/api/v1/inference/router-enrollments/challenge:
+  $ref: paths/create_router_enrollment_challenge.yaml
+/api/v1/inference/router-identity/proof:
+  $ref: paths/prove_router_enrollment.yaml
+/api/v1/inference/router-enrollments/{challenge_id}/apply:
+  $ref: paths/apply_router_enrollment.yaml
+/api/v1/inference/router-principals/{principal_id}/revoke:
+  $ref: paths/revoke_router_principal.yaml
+/api/v1/inference/warmups:
+  $ref: paths/list_inference_warmups.yaml
+/api/v1/inference/warmups/preview:
+  $ref: paths/preview_inference_warmup.yaml
+/api/v1/inference/warmups/{id}/disable:
+  $ref: paths/disable_inference_warmup.yaml
+/api/v1/inference/requests:
+  $ref: paths/list_inference_requests.yaml
+/api/v1/inference/requests/{attempt_id}/cancel:
+  $ref: paths/cancel_inference_request.yaml
+/api/v1/health:
+  $ref: paths/get_health.yaml
+/api/v1/capabilities:
+  $ref: paths/get_capabilities.yaml
+/api/v1/diagnostics:
+  $ref: paths/get_diagnostics_catalogue.yaml
+/api/v1/diagnostics/export:
+  $ref: paths/export_diagnostics_bundle.yaml
+/api/v1/identity:
+  $ref: paths/get_identity.yaml
+/api/v1/status:
+  $ref: paths/get_status.yaml
+/api/v1/telemetry:
+  $ref: paths/get_telemetry.yaml
+/api/v1/telemetry/history:
+  $ref: paths/get_telemetry_history.yaml
+/api/v1/network/interfaces:
+  $ref: paths/get_network_interfaces.yaml
+/api/v1/settings:
+  $ref: paths/get_spark_settings.yaml
+/api/v1/settings/memory-guard:
+  $ref: paths/update_memory_guard_settings.yaml
+/api/v1/settings/model-idle:
+  $ref: paths/update_model_idle_policy.yaml
+/api/v1/settings/telemetry:
+  $ref: paths/update_telemetry_consent.yaml
+/api/v1/network/wifi:
+  $ref: paths/get_wifi_networks.yaml
+/api/v1/network/wifi/forget:
+  $ref: paths/forget_wifi_network.yaml
+/api/v1/network/ethernet/ipv4:
+  $ref: paths/configure_lan_ipv_4.yaml
+/api/v1/network/changes/{configurationId}/confirm:
+  $ref: paths/confirm_network_change.yaml
+/api/v1/network/changes/{configurationId}/rollback:
+  $ref: paths/rollback_network_change.yaml
+/api/v1/pairing/challenge:
+  $ref: paths/create_pairing_challenge.yaml
+/api/v1/pairing/claim:
+  $ref: paths/claim_pairing_invitation.yaml
+/api/v1/pairing/join-codes/exchange:
+  $ref: paths/exchange_pairing_join_code.yaml
+/api/v1/pairing/join-codes/redeem:
+  $ref: paths/redeem_pairing_join_code.yaml
+/api/v1/pairing/invitations:
+  $ref: paths/create_pairing_invitation.yaml
+/api/v1/shared-access:
+  $ref: paths/list_shared_access.yaml
+/api/v1/shared-access/self:
+  $ref: paths/get_own_shared_access.yaml
+/api/v1/shared-access/invitations:
+  $ref: paths/create_shared_access_invitation.yaml
+/api/v1/shared-access/{deviceId}:
+  $ref: paths/update_shared_access.yaml
+/api/v1/presence/challenge:
+  $ref: paths/create_presence_challenge.yaml
+/api/v1/devices:
+  $ref: paths/list_devices.yaml
+/api/v1/devices/self/presence-key:
+  $ref: paths/enroll_presence_key.yaml
+/api/v1/devices/{deviceId}:
+  $ref: paths/update_device.yaml
+/api/v1/operations:
+  $ref: paths/list_operations.yaml
+/api/v1/operations/{operationId}:
+  $ref: paths/get_operation.yaml
+/api/v1/operations/{operationId}/cancel:
+  $ref: paths/cancel_operation.yaml
+/api/v1/events:
+  $ref: paths/stream_events.yaml
+/api/v1/models:
+  $ref: paths/list_models.yaml
+/api/v1/catalogue:
+  $ref: paths/get_catalogue_status.yaml
+/api/v1/catalogue/refresh/preview:
+  $ref: paths/preview_catalogue_refresh.yaml
+/api/v1/catalogue/refresh:
+  $ref: paths/refresh_catalogue.yaml
+/api/v1/models/{modelId}:
+  $ref: paths/get_model.yaml
+/api/v1/models/{modelId}/remove/preview:
+  $ref: paths/preview_remove_model.yaml
+/api/v1/models/{modelId}/install:
+  $ref: paths/install_model.yaml
+/api/v1/models/{modelId}/install/preview:
+  $ref: paths/preview_install_model.yaml
+/api/v1/models/{modelId}/profiles/{profileId}/re-enable/preview:
+  $ref: paths/preview_reenable_model_profile.yaml
+/api/v1/models/{modelId}/profiles/{profileId}/re-enable:
+  $ref: paths/reenable_model_profile.yaml
+/api/v1/models/import:
+  $ref: paths/import_unverified_model.yaml
+/api/v1/credentials:
+  $ref: paths/list_provider_credentials.yaml
+/api/v1/credentials/{credentialId}:
+  $ref: paths/revoke_provider_credential.yaml
+/api/v1/inference/active:
+  $ref: paths/get_active_inference.yaml
+/api/v1/inference/load:
+  $ref: paths/load_inference_model.yaml
+/api/v1/inference/load/preview:
+  $ref: paths/preview_load_inference_model.yaml
+/api/v1/inference/unload:
+  $ref: paths/unload_inference_model.yaml
+/api/v1/inference/unload/preview:
+  $ref: paths/preview_unload_inference_model.yaml
+/api/v1/inference/analyses:
+  $ref: paths/start_text_analysis.yaml
+/v1/models:
+  $ref: paths/list_open_ai_models.yaml
+/v1/audio/speech:
+  $ref: paths/create_speech.yaml
+/v1/chat/completions:
+  $ref: paths/create_chat_completion.yaml
+/v1/responses:
+  $ref: paths/create_open_ai_response.yaml
+/api/v1/network:
+  $ref: paths/get_network_status.yaml
+/api/v1/network/direct-profile:
+  $ref: paths/configure_direct_profile.yaml
+/api/v1/network/travel-ap:
+  $ref: paths/configure_travel_access_point.yaml
+/api/v1/remote:
+  $ref: paths/get_remote_status.yaml
+/api/v1/remote/refresh:
+  $ref: paths/refresh_remote_status.yaml
+/api/v1/remote/overlay/setup:
+  $ref: paths/get_remote_overlay_setup.yaml
+/api/v1/remote/overlay/preferences:
+  $ref: paths/remote_overlay_preferences.yaml
+/api/v1/remote/enable:
+  $ref: paths/enable_remote_access.yaml
+/api/v1/remote/enable/preview:
+  $ref: paths/preview_remote_access_enable.yaml
+/api/v1/remote/disable/preview:
+  $ref: paths/preview_remote_access_disable.yaml
+/api/v1/remote/disable:
+  $ref: paths/disable_remote_access.yaml
+/api/v1/power/reboot:
+  $ref: paths/reboot_spark.yaml
+/api/v1/power/shutdown:
+  $ref: paths/shutdown_spark.yaml
+/api/v1/system/hostname:
+  $ref: paths/set_spark_hostname.yaml
+/api/v1/system/bluetooth:
+  $ref: paths/configure_bluetooth.yaml
+/api/v1/system/power-profile:
+  $ref: paths/set_power_profile.yaml
+/api/v1/system/updates:
+  $ref: paths/get_software_update_status.yaml
+/api/v1/system/updates/check:
+  $ref: paths/check_software_updates.yaml
+/api/v1/services:
+  $ref: paths/list_optional_services.yaml
+/api/v1/services/kokoro:
+  $ref: paths/get_kokoro_status.yaml
+/api/v1/services/kokoro/install:
+  $ref: paths/install_kokoro.yaml
+/api/v1/services/kokoro/update:
+  $ref: paths/update_kokoro.yaml
+/api/v1/services/kokoro/remove:
+  $ref: paths/remove_kokoro.yaml
+/api/v1/services/kokoro/enable:
+  $ref: paths/enable_kokoro.yaml
+/api/v1/services/kokoro/disable:
+  $ref: paths/disable_kokoro.yaml
+/api/v1/services/open-webui:
+  $ref: paths/get_open_web_ui_status.yaml
+/api/v1/services/open-webui/install:
+  $ref: paths/install_open_web_ui.yaml
+/api/v1/services/open-webui/update:
+  $ref: paths/update_open_web_ui.yaml
+/api/v1/services/open-webui/repair:
+  $ref: paths/repair_open_web_ui.yaml
+/api/v1/services/open-webui/remove:
+  $ref: paths/remove_open_web_ui.yaml
+/api/v1/services/open-webui/access:
+  $ref: paths/get_open_web_ui_access.yaml
+/services/open-webui/:
+  $ref: paths/open_open_web_ui.yaml
+/api/v1/system/time:
+  $ref: paths/configure_system_time.yaml
+/api/v1/storage:
+  $ref: paths/get_storage_breakdown.yaml
+/api/v1/storage/cleanup:
+  $ref: paths/clean_storage.yaml
+/api/v1/workloads:
+  $ref: paths/list_workloads.yaml
+/api/v1/workloads/{workload_id}/adoption/preview:
+  $ref: paths/preview_workload_adoption.yaml
+/api/v1/workloads/{workload_id}/adopt:
+  $ref: paths/adopt_workload.yaml
+/api/v1/workloads/{workload_id}/relinquish/preview:
+  $ref: paths/preview_workload_relinquish.yaml
+/api/v1/workloads/{workload_id}/relinquish:
+  $ref: paths/relinquish_workload.yaml
+/api/v1/cluster:
+  $ref: paths/get_cluster.yaml
+/api/v1/cluster/descriptor:
+  $ref: paths/get_cluster_descriptor.yaml
+/api/v1/cluster/grants:
+  $ref: paths/list_cluster_device_grants.yaml
+/api/v1/fabric:
+  $ref: paths/get_fabric.yaml
+/api/v1/cluster/import/preview:
+  $ref: paths/preview_external_cluster_import.yaml
+/api/v1/cluster/create:
+  $ref: paths/create_cluster.yaml
+/api/v1/cluster/validate:
+  $ref: paths/validate_cluster.yaml
+/api/v1/cluster/transactions/prepare:
+  $ref: paths/prepare_cluster_transaction.yaml
+/api/v1/cluster/transactions/commit:
+  $ref: paths/commit_cluster_transaction.yaml
+/api/v1/cluster/transactions/finalize:
+  $ref: paths/finalize_cluster_transaction.yaml
+/api/v1/cluster/transactions/activate:
+  $ref: paths/activate_cluster_transaction.yaml
+/api/v1/cluster/transactions/prove:
+  $ref: paths/prove_cluster_transaction.yaml
+/api/v1/cluster/transactions/collective:
+  $ref: paths/run_cluster_collective.yaml
+/api/v1/cluster/transactions/rollback:
+  $ref: paths/rollback_cluster_transaction.yaml
+/api/v1/cluster/launches:
+  $ref: paths/list_cluster_launches.yaml
+/api/v1/cluster/launches/{launch_id}:
+  $ref: paths/get_cluster_launch.yaml
+/api/v1/cluster/launches/{launch_id}/stop:
+  $ref: paths/stop_cluster_launch.yaml
+/api/v1/development/preparation:
+  $ref: paths/development_preparation.yaml
+/api/v1/projects:
+  $ref: paths/list_projects.yaml
+/api/v1/projects/{projectId}:
+  $ref: paths/get_project.yaml
+/api/v1/projects/{projectId}/files:
+  $ref: paths/list_project_files.yaml
+/api/v1/projects/{projectId}/files/{path}:
+  $ref: paths/read_project_file.yaml
+/api/v1/projects/{projectId}/terminals:
+  $ref: paths/create_terminal.yaml
+/api/v1/projects/{projectId}/terminals/{terminalId}:
+  $ref: paths/close_terminal.yaml
+/api/v1/projects/{projectId}/terminals/{terminalId}/ws:
+  $ref: paths/attach_terminal.yaml
+/api/v1/projects/{projectId}/preview/{port}/{path}:
+  $ref: paths/preview_asset.yaml
+/api/v1/projects/{projectId}/changes:
+  $ref: paths/list_project_changes.yaml
+/api/v1/projects/{projectId}/changes/{changeId}/approve:
+  $ref: paths/approve_change.yaml
+/api/v1/projects/{projectId}/changes/{changeId}/request-changes:
+  $ref: paths/request_project_change_updates.yaml
+/api/v1/projects/{projectId}/changes/{changeId}/reject:
+  $ref: paths/reject_change.yaml
+/api/v1/build_workers:
+  $ref: paths/list_build_workers.yaml
+/api/v1/build_workers/{workerId}/heartbeat:
+  $ref: paths/heartbeat_build_worker.yaml
+/api/v1/build_workers/{workerId}/claims:
+  $ref: paths/claim_build.yaml
+/api/v1/builds:
+  $ref: paths/submit_build.yaml
+/api/v1/builds/{buildId}:
+  $ref: paths/get_build.yaml
+/api/v1/builds/{buildId}/lease:
+  $ref: paths/renew_build_lease.yaml
+/api/v1/builds/{buildId}/artifacts/{artifactId}:
+  $ref: paths/download_build_artifact.yaml
+/api/v1/builds/{buildId}/result:
+  $ref: paths/report_build_result.yaml
+/api/v1/projects/{projectId}/agents:
+  $ref: paths/start_project_agent.yaml
+/api/v1/automations:
+  $ref: paths/list_automations.yaml
+/api/v1/automations/{id}:
+  $ref: paths/update_automation.yaml
+/api/v1/automations/{id}/run:
+  $ref: paths/run_automation.yaml
+/api/v1/automations/{id}/runs:
+  $ref: paths/list_automation_runs.yaml
+/api/v1/web/settings:
+  $ref: paths/web_access_settings.yaml
+/api/v1/web/answer:
+  $ref: paths/create_web_answer.yaml
+/api/v1/household/notes:
+  $ref: paths/household_notes.yaml
+/api/v1/household/members:
+  $ref: paths/household_members.yaml

@@ -1,0 +1,55 @@
+get:
+  tags:
+  - Projects
+  operationId: listProjects
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/Limit
+  - $ref: ../../openapi.yaml#/components/parameters/Cursor
+  responses:
+    '200':
+      description: Projects
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - items
+            - capabilities
+            properties:
+              items:
+                type: array
+                items:
+                  $ref: ../../openapi.yaml#/components/schemas/Project
+              next_cursor:
+                type:
+                - string
+                - 'null'
+              capabilities:
+                type: array
+                items:
+                  type: string
+                  enum:
+                  - create
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+post:
+  tags:
+  - Projects
+  operationId: createProject
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/CreateProject
+  responses:
+    '202':
+      description: Project creation operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

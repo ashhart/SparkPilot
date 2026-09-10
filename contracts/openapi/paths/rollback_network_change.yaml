@@ -1,0 +1,23 @@
+post:
+  tags:
+  - Network
+  operationId: rollbackNetworkChange
+  summary: Restore a pending network change immediately
+  parameters:
+  - name: configurationId
+    in: path
+    required: true
+    schema:
+      type: string
+      format: uuid
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  responses:
+    '202':
+      description: Network rollback operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

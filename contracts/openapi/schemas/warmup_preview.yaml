@@ -1,0 +1,15 @@
+type: object
+additionalProperties: false
+required:
+- review
+- due_at
+- expires_at
+properties:
+  review:
+    $ref: ../../openapi.yaml#/components/schemas/ModelActionPreview
+  due_at:
+    type: integer
+    format: int64
+  expires_at:
+    type: integer
+    format: int64

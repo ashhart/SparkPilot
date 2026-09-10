@@ -1,0 +1,24 @@
+type: object
+additionalProperties: false
+required:
+- worker_id
+- state
+- active_jobs
+- heartbeat_seconds
+properties:
+  worker_id:
+    type: string
+    format: uuid
+  state:
+    type: string
+    enum:
+    - online
+    - busy
+  active_jobs:
+    type: integer
+    minimum: 0
+    maximum: 8
+  heartbeat_seconds:
+    type: integer
+    minimum: 5
+    maximum: 60

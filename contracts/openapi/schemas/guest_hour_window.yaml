@@ -1,0 +1,16 @@
+type: object
+additionalProperties: false
+required:
+- start_minute
+- end_minute
+description: One block of allowed local time. start_minute is inclusive, end_minute is exclusive, and 1440
+  means local midnight.
+properties:
+  start_minute:
+    type: integer
+    minimum: 0
+    maximum: 1439
+  end_minute:
+    type: integer
+    minimum: 1
+    maximum: 1440

@@ -1,0 +1,14 @@
+type: object
+additionalProperties: false
+required:
+- id
+- install_state
+- warning
+properties:
+  id:
+    type: string
+  install_state:
+    const: unverified
+    type: string
+  warning:
+    type: string

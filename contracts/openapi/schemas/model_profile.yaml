@@ -1,0 +1,55 @@
+type: object
+required:
+- id
+- display_name
+- max_model_length
+- max_sequences
+- expected_peak_bytes
+- safe
+properties:
+  id:
+    type: string
+  display_name:
+    type: string
+  max_model_length:
+    type: integer
+    minimum: 1
+  max_sequences:
+    type: integer
+    minimum: 1
+  expected_peak_bytes:
+    type: integer
+    minimum: 0
+  measured_peak_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  safe:
+    type: boolean
+  idle_policy:
+    type: string
+    enum:
+    - keep_ready
+    - unload_after_15m
+    - unload_after_30m
+    - unload_after_60m
+    - manual_only
+  supported_idle_policies:
+    type: array
+    items:
+      type: string
+      enum:
+      - keep_ready
+      - unload_after_15m
+      - unload_after_30m
+      - unload_after_60m
+      - manual_only
+  idle_timeout_seconds:
+    type: integer
+    minimum: 60
+    maximum: 604800
+    description: Saved custom timeout overriding the named timed idle policy, when present.
+  supports_custom_idle_timeout:
+    type: boolean
+    description: True only when this runtime and engine accept a custom idle_timeout_seconds setting.

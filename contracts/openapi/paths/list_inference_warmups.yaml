@@ -1,0 +1,42 @@
+get:
+  tags:
+  - Inference
+  operationId: listInferenceWarmups
+  summary: List owner-reviewed one-shot model warm-ups
+  responses:
+    '200':
+      description: List owner-reviewed one-shot model warm-ups
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/WarmupScheduleList
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+post:
+  tags:
+  - Inference
+  operationId: createInferenceWarmup
+  summary: Schedule an exact model and profile if idle at the due time
+  responses:
+    '201':
+      description: Schedule an exact model and profile if idle at the due time
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/WarmupSchedule
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/WarmupRequest
+  description: Owner-only delegation, reviewed one minute to seven days ahead on the Spark clock and accepted
+    before its due time, with a ten-minute execution grace and at most eight pending or active schedules.
+    The daemon rechecks owner authority, exact signed recipe and installed provenance, standalone state,
+    workload ownership and memory admission. It never stops or replaces a running workload; unknown dispatch
+    outcomes never authorize redispatch.

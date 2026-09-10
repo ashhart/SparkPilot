@@ -1,0 +1,18 @@
+type: object
+additionalProperties: false
+required:
+- items
+- max_pending
+- observed_at
+properties:
+  items:
+    type: array
+    maxItems: 136
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/WarmupSchedule
+  max_pending:
+    type: integer
+    const: 8
+  observed_at:
+    type: integer
+    format: int64

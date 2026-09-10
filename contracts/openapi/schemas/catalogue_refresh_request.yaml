@@ -1,0 +1,13 @@
+type: object
+additionalProperties: false
+required:
+- candidate_json
+- accepted_preview_digest
+properties:
+  candidate_json:
+    type: string
+    minLength: 2
+    maxLength: 2097152
+  accepted_preview_digest:
+    type: string
+    pattern: ^[0-9a-f]{64}$

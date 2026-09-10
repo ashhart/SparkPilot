@@ -1,0 +1,22 @@
+post:
+  tags:
+  - Inference
+  operationId: previewInferencePool
+  summary: Review an owner-scoped pool policy revision
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/PoolPolicyPreviewRequest
+  responses:
+    '200':
+      description: Review an owner-scoped pool policy revision
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/PoolPolicyPreview
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

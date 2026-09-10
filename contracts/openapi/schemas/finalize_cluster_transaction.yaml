@@ -1,0 +1,15 @@
+type: object
+additionalProperties: false
+required:
+- proposal
+- receipts
+properties:
+  proposal:
+    $ref: ../../openapi.yaml#/components/schemas/ClusterProposal
+  receipts:
+    type: array
+    minItems: 2
+    maxItems: 8
+    uniqueItems: true
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ClusterCommitReceipt

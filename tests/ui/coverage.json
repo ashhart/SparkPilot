@@ -1,0 +1,76 @@
+{
+  "matrix": "PLAN \u00a749.8 App experience matrix",
+  "note": "Layout and accessibility behaviour is decided by SwiftUI at runtime on a device, so most of this matrix is a device checklist. Where the app makes the decision itself \u2014 reduced motion, the iPad split layout, the offline card state \u2014 it is covered by a test.",
+  "cases": {
+    "iPhone compact layout.": {
+      "blocked": {
+        "reason": "Needs a device or simulator run; the size class decision belongs to SwiftUI.",
+        "evidence_command": "xcodebuild test -scheme SparkiOS -destination 'platform=iOS Simulator,name=iPhone 16'",
+        "expected_evidence": "Every plan section is reachable in the compact tab layout with no clipped or unreachable control."
+      }
+    },
+    "iPad portrait/landscape, Split View, Stage Manager.": {
+      "tests": [
+        "iPadNavigationIncludesExistingClustersInItsSplitView"
+      ]
+    },
+    "Mac window resizing and menu-bar mode.": {
+      "blocked": {
+        "reason": "Needs a windowed Mac run.",
+        "evidence_command": "Open Spark.app, resize from the minimum width to full screen, and switch to menu-bar mode.",
+        "expected_evidence": "No view collapses below its minimum content size and the menu-bar mode keeps status readable."
+      }
+    },
+    "Dynamic Type through accessibility sizes.": {
+      "blocked": {
+        "reason": "Needs a device run at the accessibility text sizes.",
+        "evidence_command": "In the simulator: Settings > Accessibility > Larger Text at AX5, then walk the dashboard.",
+        "expected_evidence": "No label truncates and no control becomes unreachable at AX5."
+      }
+    },
+    "VoiceOver.": {
+      "blocked": {
+        "reason": "Needs VoiceOver, which is a system service.",
+        "evidence_command": "Enable VoiceOver on the device and traverse onboarding and the dashboard.",
+        "expected_evidence": "Every control has a label and value; the operation progress is announced."
+      }
+    },
+    "Reduce Motion.": {
+      "tests": [
+        "connectedArtworkHonoursReducedMotion"
+      ]
+    },
+    "High contrast.": {
+      "blocked": {
+        "reason": "Needs the system Increase Contrast setting.",
+        "evidence_command": "Enable Increase Contrast, then screenshot the dashboard in light and dark.",
+        "expected_evidence": "Every text/background pair meets the contrast ratio the design system declares."
+      }
+    },
+    "Keyboard-only iPad/Mac navigation.": {
+      "blocked": {
+        "reason": "Needs a hardware keyboard.",
+        "evidence_command": "With a keyboard attached, traverse the app using Tab and arrow keys only.",
+        "expected_evidence": "Focus order follows the visual order and every action is reachable without a pointer."
+      }
+    },
+    "Offline cache.": {
+      "tests": [
+        "unauthenticatedProbeLeavesTheCardOfflineCached",
+        "cancelledProbeSurfacingURLErrorCannotMarkTheCardOffline"
+      ]
+    },
+    "Permission denied states.": {
+      "tests": [
+        "deniedPermissionProducesRecoveryUI"
+      ]
+    },
+    "Revoked device while app is active.": {
+      "blocked": {
+        "reason": "Needs a paired device and a second administrator to revoke it mid-session.",
+        "evidence_command": "With the app open on the dashboard, revoke that device from another: DELETE /api/v1/devices/{id} with a presence proof.",
+        "expected_evidence": "The app's next request fails with 401 and the app returns to pairing rather than showing stale data."
+      }
+    }
+  }
+}

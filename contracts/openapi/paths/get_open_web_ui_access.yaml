@@ -1,0 +1,16 @@
+post:
+  tags:
+  - Optional Services
+  operationId: getOpenWebUIAccess
+  summary: Return a same-Spark access path only while Open WebUI is healthy
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  responses:
+    '200':
+      description: Relative path on the authenticated Spark origin
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/OptionalServiceAccess
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

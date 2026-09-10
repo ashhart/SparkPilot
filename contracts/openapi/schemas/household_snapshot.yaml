@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "notes",
+    "members",
+    "can_manage_members"
+  ],
+  "properties": {
+    "notes": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "$ref": "../../openapi.yaml#/components/schemas/HouseholdNote"
+      }
+    },
+    "members": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "$ref": "../../openapi.yaml#/components/schemas/HouseholdMember"
+      }
+    },
+    "can_manage_members": {
+      "type": "boolean"
+    }
+  }
+}

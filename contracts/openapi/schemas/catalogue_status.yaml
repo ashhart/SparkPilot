@@ -1,0 +1,35 @@
+type: object
+additionalProperties: false
+required:
+- source
+- refresh_available
+- recipe_count
+- current_digest
+- signature_key_id
+- previous_snapshot_available
+- active_engine_unaffected
+properties:
+  source:
+    type: string
+    enum:
+    - device_local_signed_snapshot
+  refresh_available:
+    type: boolean
+  recipe_count:
+    type: integer
+    minimum: 0
+  current_digest:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  signature_key_id:
+    type: string
+    minLength: 1
+  previous_snapshot_available:
+    type: boolean
+  last_refreshed_at:
+    type:
+    - string
+    - 'null'
+    format: date-time
+  active_engine_unaffected:
+    type: boolean

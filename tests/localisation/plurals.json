@@ -1,0 +1,408 @@
+{
+  "note": "Keys whose sentence changes with a count. English needs two forms and other languages need more, so the catalogue carries plural variations rather than one form with an appended (s). The variation argument is the 1-based position of the counted specifier in the format string.",
+  "cases": {
+    "fleet.none.match": {
+      "argument": 1,
+      "one": "%lld Spark is paired with this device. None of them match the current search and filters.",
+      "other": "%lld Sparks are paired with this device. None of them match the current search and filters."
+    },
+    "fleet.cluster.of.sparks": {
+      "argument": 1,
+      "one": "Cluster of %lld Spark",
+      "other": "Cluster of %lld Sparks"
+    },
+    "cluster.independently.paired": {
+      "argument": 1,
+      "one": "%lld independently paired Spark",
+      "other": "%lld independently paired Sparks"
+    },
+    "telemetry.saved.samples": {
+      "argument": 1,
+      "one": "%lld locally saved sample",
+      "other": "%lld locally saved samples"
+    },
+    "diff.additions": {
+      "argument": 1,
+      "one": "%lld addition",
+      "other": "%lld additions"
+    },
+    "diff.removals": {
+      "argument": 1,
+      "one": "%lld removal",
+      "other": "%lld removals"
+    },
+    "diff.hunks": {
+      "argument": 1,
+      "one": "%lld hunk",
+      "other": "%lld hunks"
+    },
+    "change.files.changed": {
+      "argument": 1,
+      "one": "%lld file changed",
+      "other": "%lld files changed"
+    },
+    "preflight.services.running": {
+      "argument": 1,
+      "one": "%lld system service running",
+      "other": "%lld system services running"
+    },
+    "preflight.containers": {
+      "argument": 1,
+      "one": "%lld container",
+      "other": "%lld containers"
+    },
+    "preflight.netplan": {
+      "argument": 1,
+      "one": "%lld network configuration file already on this Spark",
+      "other": "%lld network configuration files already on this Spark"
+    },
+    "dashboard.recipes.snapshot": {
+      "argument": 1,
+      "one": "%lld verified recipe in the device-local snapshot",
+      "other": "%lld verified recipes in the device-local snapshot"
+    },
+    "fleet.elapsed.minutes": {
+      "argument": 1,
+      "one": "%lld minute ago",
+      "other": "%lld minutes ago"
+    },
+    "fleet.elapsed.hours": {
+      "argument": 1,
+      "one": "%lld hour ago",
+      "other": "%lld hours ago"
+    },
+    "fleet.elapsed.days": {
+      "argument": 1,
+      "one": "%lld day ago",
+      "other": "%lld days ago"
+    },
+    "fleet.models.installed": {
+      "argument": 1,
+      "one": "%lld model installed",
+      "other": "%lld models installed"
+    },
+    "preflight.signed.models": {
+      "argument": 1,
+      "one": "%lld signed model is available",
+      "other": "%lld signed models are available"
+    },
+    "elapsed.minutes.ago": {
+      "argument": 1,
+      "one": "%lld minute ago",
+      "other": "%lld minutes ago"
+    },
+    "elapsed.hours.ago": {
+      "argument": 1,
+      "one": "%lld hour ago",
+      "other": "%lld hours ago"
+    },
+    "elapsed.days.ago": {
+      "argument": 1,
+      "one": "%lld day ago",
+      "other": "%lld days ago"
+    },
+    "elapsed.weeks.ago": {
+      "argument": 1,
+      "one": "%lld week ago",
+      "other": "%lld weeks ago"
+    },
+    "elapsed.months.ago": {
+      "argument": 1,
+      "one": "%lld month ago",
+      "other": "%lld months ago"
+    },
+    "elapsed.years.ago": {
+      "argument": 1,
+      "one": "%lld year ago",
+      "other": "%lld years ago"
+    },
+    "shared.access.models.count": {
+      "argument": 1,
+      "one": "%lld model",
+      "other": "%lld models"
+    },
+    "shared.access.requests.today": {
+      "argument": 1,
+      "one": "%lld request today",
+      "other": "%lld requests today"
+    },
+    "shared.access.refusals.week": {
+      "argument": 1,
+      "one": "%lld request refused this week",
+      "other": "%lld requests refused this week"
+    },
+    "merge.contested.regions": {
+      "argument": 1,
+      "one": "%lld region was rewritten on both devices and stays marked.",
+      "other": "%lld regions were rewritten on both devices and stay marked."
+    },
+    "chat.shares.unreadable.count": {
+      "argument": 1,
+      "one": "%lld shared item could not be read. Removing it keeps every readable share.",
+      "other": "%lld shared items could not be read. Removing them keeps every readable share."
+    },
+    "inference.verdict.answering.rate": {
+      "argument": 1,
+      "one": "Answering %lld request at %@ tokens per second.",
+      "other": "Answering %lld requests at %@ tokens per second."
+    },
+    "inference.verdict.answering": {
+      "argument": 1,
+      "one": "Answering %lld request.",
+      "other": "Answering %lld requests."
+    },
+    "automations.every.hours": {
+      "argument": 1,
+      "one": "Every %lld hour",
+      "other": "Every %lld hours"
+    },
+    "guest.access.budget.remaining": {
+      "argument": 1,
+      "one": "%lld token left today",
+      "other": "%lld tokens left today"
+    },
+    "intent.error.too.large": {
+      "argument": 1,
+      "one": "This action accepts up to %lld byte. Open SparkPilot for larger work.",
+      "other": "This action accepts up to %lld bytes. Open SparkPilot for larger work."
+    },
+    "pairing.join.code.locked": {
+      "argument": 1,
+      "one": "Too many join codes were tried on this Spark, so it is not accepting any for about %lld minute. Your code stays valid until it expires; try again after the wait.",
+      "other": "Too many join codes were tried on this Spark, so it is not accepting any for about %lld minutes. Your code stays valid until it expires; try again after the wait."
+    },
+    "fleet.home.cluster.count": {
+      "argument": 1,
+      "one": "%lld cluster",
+      "other": "%lld clusters"
+    },
+    "fleet.dashboard.models.count": {
+      "argument": 1,
+      "one": "%lld model",
+      "other": "%lld models"
+    }
+  },
+  "substitution_note": "A sentence whose count sits beside other arguments needs a named substitution rather than a whole-string plural: the variation applies to one clause and the rest of the sentence stays put. `template` is the English sentence with positional specifiers and the substitution token; the generator checks that its non-substitution specifiers are the ones the compiler emitted for the same key.",
+  "substitutions": {
+    "fleet.showing.count": {
+      "name": "sparks",
+      "argNum": 2,
+      "formatSpecifier": "lld",
+      "template": "Showing %1$lld of %#@sparks@",
+      "one": "%arg Spark",
+      "other": "%arg Sparks"
+    },
+    "devices.trusted.of.paired": {
+      "name": "devices",
+      "argNum": 2,
+      "formatSpecifier": "lld",
+      "template": "%1$lld trusted of %#@devices@",
+      "one": "%arg paired device",
+      "other": "%arg paired devices"
+    },
+    "status.load.model.waiting": {
+      "name": "jobs",
+      "argNum": 3,
+      "formatSpecifier": "lld",
+      "template": "%1$@ is loaded, unified memory is %2$lld percent used, and %#@jobs@.",
+      "one": "1 job is waiting",
+      "other": "%arg jobs are waiting"
+    },
+    "status.load.none.waiting": {
+      "name": "jobs",
+      "argNum": 2,
+      "formatSpecifier": "lld",
+      "template": "No model is loaded, unified memory is %1$lld percent used, and %#@jobs@.",
+      "one": "1 job is waiting",
+      "other": "%arg jobs are waiting"
+    },
+    "preflight.containers.named": {
+      "name": "containers",
+      "argNum": 1,
+      "formatSpecifier": "lld",
+      "template": "%#@containers@: %2$@",
+      "one": "%arg container",
+      "other": "%arg containers"
+    },
+    "dashboard.cluster.roles": {
+      "name": "workers",
+      "argNum": 2,
+      "formatSpecifier": "lld",
+      "template": "%1$lld leader, %#@workers@",
+      "one": "%arg worker",
+      "other": "%arg workers"
+    },
+    "fleet.cluster.members.reachable": {
+      "name": "sparks",
+      "argNum": 2,
+      "formatSpecifier": "lld",
+      "template": "%1$@ of %#@sparks@ \u00b7 %3$lld reachable",
+      "one": "%arg Spark",
+      "other": "%arg Sparks"
+    },
+    "workloads.members.ready": {
+      "name": "members",
+      "argNum": 2,
+      "formatSpecifier": "lld",
+      "template": "%1$lld of %#@members@ ready",
+      "one": "%arg member",
+      "other": "%arg members"
+    },
+    "fleet.memory.contributing": {
+      "name": "sparks",
+      "argNum": 2,
+      "formatSpecifier": "lld",
+      "template": "From %1$lld of %#@sparks@ with current evidence.",
+      "one": "%arg Spark",
+      "other": "%arg Sparks"
+    },
+    "models.across.targets": {
+      "name": "targets",
+      "argNum": 2,
+      "formatSpecifier": "lld",
+      "template": "%1$lld models across %#@targets@",
+      "one": "%arg target",
+      "other": "%arg targets"
+    },
+    "preflight.conflict.port": {
+      "name": "ports",
+      "argNum": 1,
+      "formatSpecifier": "lld",
+      "template": "Something on this Spark is already using %#@ports@ %2$@, which Spark Runtime needs.",
+      "one": "port",
+      "other": "ports"
+    },
+    "preflight.conflict.port.recovery": {
+      "name": "ports",
+      "argNum": 1,
+      "formatSpecifier": "lld",
+      "template": "Stop or move whatever is listening on %#@ports@ %2$@, then check this Spark again. Spark Runtime will not take a port from a service you are already running.",
+      "one": "port",
+      "other": "ports"
+    },
+    "preflight.conflict.unit": {
+      "name": "units",
+      "argNum": 1,
+      "formatSpecifier": "lld",
+      "template": "This Spark already has %#@units@ %2$@, but no Spark Runtime package that would explain it.",
+      "one": "a service called",
+      "other": "services called"
+    },
+    "preflight.conflict.unit.recovery": {
+      "name": "units",
+      "argNum": 1,
+      "formatSpecifier": "lld",
+      "template": "Remove %#@units@ %2$@, then check this Spark again. Installing would replace a service this app did not put there.",
+      "one": "the service",
+      "other": "the services"
+    },
+    "execution.target.cluster": {
+      "name": "nodes",
+      "argNum": 1,
+      "formatSpecifier": "lld",
+      "template": "Spark cluster \u00b7 %#@nodes@",
+      "one": "%arg node",
+      "other": "%arg nodes"
+    },
+    "telemetry.tokens": {
+      "name": "tokens",
+      "argNum": 1,
+      "formatSpecifier": "lld",
+      "template": "%#@tokens@",
+      "one": "%arg token",
+      "other": "%arg tokens"
+    },
+    "telemetry.requests.today": {
+      "name": "requests",
+      "argNum": 1,
+      "formatSpecifier": "lld",
+      "template": "%#@requests@ today",
+      "one": "%arg request",
+      "other": "%arg requests"
+    },
+    "telemetry.requests.today.failures": {
+      "name": "requests",
+      "argNum": 1,
+      "formatSpecifier": "lld",
+      "template": "%#@requests@ \u00b7 %2$lld failed today",
+      "one": "%arg request",
+      "other": "%arg requests"
+    },
+    "services.recipes.available": {
+      "name": "recipes",
+      "argNum": 1,
+      "formatSpecifier": "lld",
+      "template": "%#@recipes@ available",
+      "one": "%arg verified recipe",
+      "other": "%arg verified recipes"
+    },
+    "workloads.across.targets": {
+      "name": "targets",
+      "argNum": 2,
+      "formatSpecifier": "lld",
+      "template": "%1$lld workloads across %#@targets@",
+      "one": "%arg target",
+      "other": "%arg targets"
+    },
+    "telemetry.history.minute": {
+      "name": "readings",
+      "argNum": 1,
+      "formatSpecifier": "lld",
+      "template": "An average of %#@readings@ over one minute.",
+      "one": "%arg reading",
+      "other": "%arg readings"
+    },
+    "shared.access.budget.today": {
+      "name": "tokens",
+      "argNum": 2,
+      "formatSpecifier": "lld",
+      "template": "%1$lld of %#@tokens@ today",
+      "one": "%arg token",
+      "other": "%arg tokens"
+    },
+    "onboarding.rediscovery.elapsed": {
+      "name": "minutes",
+      "argNum": 2,
+      "formatSpecifier": "lld",
+      "template": "%1$@ elapsed. Sparks usually come back within a few minutes; the search stops after %#@minutes@.",
+      "one": "%arg minute",
+      "other": "%arg minutes"
+    },
+    "onboarding.restart.hold": {
+      "name": "seconds",
+      "argNum": 1,
+      "formatSpecifier": "lld",
+      "template": "Watching for the Spark to begin restarting. Checks start anyway in %#@seconds@.",
+      "one": "%arg second",
+      "other": "%arg seconds"
+    },
+    "onboarding.restart.elapsed": {
+      "name": "minutes",
+      "argNum": 2,
+      "formatSpecifier": "lld",
+      "template": "%1$@ elapsed. Checking every few seconds; the wait stops after %#@minutes@.",
+      "one": "%arg minute",
+      "other": "%arg minutes"
+    },
+    "catalogue.published.available": {
+      "name": "recipes",
+      "argNum": 1,
+      "formatSpecifier": "lld",
+      "template": "New: %#@recipes@ published, different from this Spark's snapshot",
+      "one": "%arg recipe",
+      "other": "%arg recipes"
+    },
+    "catalogue.published.current": {
+      "name": "recipes",
+      "argNum": 1,
+      "formatSpecifier": "lld",
+      "template": "Up to date with sparkpilot.dev (%#@recipes@)",
+      "one": "%arg recipe",
+      "other": "%arg recipes"
+    }
+  },
+  "uncounted_note": "Keys the counted-copy gate would flag whose word after the count is not the noun being counted. Each entry says why, and the gate rejects an entry that no longer matches a declared key.",
+  "uncounted": {
+    "chat.attachment.pdf.blank.page": "the word after the page number is the verb 'has', not a noun agreeing with it"
+  }
+}

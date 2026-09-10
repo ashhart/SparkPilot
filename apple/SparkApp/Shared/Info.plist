@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SparkFeedbackEmail</key>
+	<string>feedback@sparkpilot.dev</string>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.sparkpilot.operations.refresh</string>
+		<string>com.sparkfabric.widgets.refresh</string>
+	</array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>SparkPilot</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.sparkfabric.Spark.widgets</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>sparkpilot</string>
+				<string>spark</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>tailscale</string>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_spark-runtime._tcp</string>
+		<string>_ssh._tcp</string>
+	</array>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>SparkPilot shows your calendar and saves only changes you review. Titles, times and the calendar each event is in go to your Spark when you choose Include this week's calendar in a chat or turn on Share my calendar and reminders for a conversation; an item's notes go only when you choose Include in request.</string>
+	<key>NSCalendarsWriteOnlyAccessUsageDescription</key>
+	<string>SparkPilot adds only calendar events you review and save.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>SparkPilot scans the Quick Start code that came with your DGX Spark.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>SparkPilot uses Face ID to unlock the app and confirm sensitive changes such as revoking a device.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>SparkPilot uses your local network to find and set up your DGX Spark.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>SparkPilot uses this permission to recognise the Wi-Fi network this device is connected to, and while connected to CarPlay to tell whether the car is moving so typing pauses until you stop. Your location is not stored or shared.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>SparkPilot uses the microphone when you dictate a message or start a voice chat.</string>
+	<key>NSRemindersFullAccessUsageDescription</key>
+	<string>SparkPilot shows your reminders and saves only changes you review. Titles, due dates and the list each reminder is in go to your Spark when you choose Include open reminders in a chat or turn on Share my calendar and reminders for a conversation; an item's notes go only when you choose Include in request.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>SparkPilot turns what you say into text on this device to send messages to your Spark. It sends your speech to Apple's speech service only if you turn on Use Apple's speech service in SparkPilot's voice settings, which is off to begin with.</string>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>SparkReleaseManifestURL</key>
+	<string>$(SPARK_RELEASE_MANIFEST_URL)</string>
+	<key>SparkCatalogueURL</key>
+	<string>https://sparkpilot.dev/models/v2/catalogue.json</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>audio</string>
+	</array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<true/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>CPTemplateApplicationSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneClassName</key>
+					<string>CPTemplateApplicationScene</string>
+					<key>UISceneConfigurationName</key>
+					<string>SparkPilot CarPlay</string>
+					<key>UISceneDelegateClassName</key>
+					<string>SparkCarPlaySceneDelegate</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+	<key>UILaunchScreen</key>
+	<dict/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,23 @@
+post:
+  tags:
+  - Inference
+  operationId: createChatCompletion
+  summary: Allowlisted OpenAI-compatible chat completions endpoint
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/ChatCompletionRequest
+  responses:
+    '200':
+      description: Completion or SSE chunks depending on stream
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ChatCompletion
+        text/event-stream:
+          schema:
+            type: string
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

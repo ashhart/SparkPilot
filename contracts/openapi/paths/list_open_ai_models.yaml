@@ -1,0 +1,33 @@
+get:
+  tags:
+  - Inference
+  operationId: listOpenAIModels
+  responses:
+    '200':
+      description: OpenAI-compatible model list
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - object
+            - data
+            properties:
+              object:
+                type: string
+                const: list
+              data:
+                type: array
+                items:
+                  type: object
+                  required:
+                  - id
+                  - object
+                  properties:
+                    id:
+                      type: string
+                    object:
+                      type: string
+                      const: model
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

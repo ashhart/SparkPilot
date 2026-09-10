@@ -1,0 +1,40 @@
+get:
+  tags:
+  - Automations
+  operationId: getWebAccessSettings
+  summary: Read what the model may reach on the internet and the per-run limits
+  responses:
+    '200':
+      description: Read what the model may reach on the internet and the per-run limits
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/WebAccessSettings
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+put:
+  tags:
+  - Automations
+  operationId: setWebAccessSettings
+  summary: Set what the model may reach on the internet, and which search service answers
+  responses:
+    '202':
+      description: Set what the model may reach on the internet, and which search service answers
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/WebAccessSettingsRequest
+  description: Owner only, with fresh presence, because it decides whether this Spark reaches the internet at
+    all and which third party sees the owner's searches. Settled as a durable operation like every other owner
+    setting. The backend endpoint is owner configuration and is validated here; it is never taken from a model.

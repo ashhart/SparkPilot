@@ -1,0 +1,17 @@
+type: object
+additionalProperties: false
+required:
+- api_version
+- observed_at
+- interfaces
+properties:
+  api_version:
+    type: integer
+    const: 1
+  observed_at:
+    type: string
+    format: date-time
+  interfaces:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/NetworkInterfaceStatus

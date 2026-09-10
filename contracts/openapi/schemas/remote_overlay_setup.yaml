@@ -1,0 +1,53 @@
+type: object
+additionalProperties: false
+required:
+- provider
+- state
+properties:
+  provider:
+    type: string
+    enum:
+    - tailscale
+  state:
+    type: string
+    enum:
+    - not_installed
+    - stopped
+    - login_required
+    - approval_required
+    - connecting
+    - ready
+    - unavailable
+    description: What the Spark's own Tailscale client needs before the private route can exist.
+  authorization_url:
+    type:
+    - string
+    - 'null'
+    format: uri
+    description: The owner's one-time browser sign-in link, always on the login.tailscale.com origin; present
+      only while a one-tap enable is waiting for it.
+  hostname:
+    type:
+    - string
+    - 'null'
+    description: The node's MagicDNS name once signed in (for example spark-example.tail1234.ts.net).
+  address:
+    type:
+    - string
+    - 'null'
+    description: The node's 100.64/10 Tailscale address once signed in.
+  tailnet:
+    type:
+    - string
+    - 'null'
+    description: The MagicDNS suffix of the tailnet the Spark joined.
+  installable:
+    type:
+    - boolean
+    - 'null'
+    description: When not_installed, whether the runtime can install the vendor package itself.
+  detail:
+    type:
+    - string
+    - 'null'
+    description: The helper's own reason for an unavailable or stopped state.

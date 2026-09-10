@@ -1,0 +1,33 @@
+type: object
+additionalProperties: false
+required:
+- model
+- input
+- voice
+- response_format
+- speed
+properties:
+  model:
+    type: string
+    const: kokoro
+  input:
+    type: string
+    minLength: 1
+    maxLength: 12000
+    description: Also bounded to 12000 UTF-8 bytes by the runtime.
+  voice:
+    type: string
+    enum:
+    - af_heart
+    - af_bella
+    - am_adam
+    - am_michael
+    - bf_emma
+    - bm_george
+  response_format:
+    type: string
+    const: wav
+  speed:
+    type: number
+    minimum: 0.75
+    maximum: 1.25

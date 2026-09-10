@@ -1,0 +1,7 @@
+type: string
+description: Where a guest's access is in its lifecycle. Only active can run inference.
+enum:
+- pending
+- active
+- paused
+- revoked

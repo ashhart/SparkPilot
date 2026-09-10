@@ -1,0 +1,214 @@
+{
+  "generated_at": "2026-08-28T16:21:29Z",
+  "xcode": {
+    "version": "26.6",
+    "build": "17F113"
+  },
+  "swift": {
+    "version": "Swift 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)",
+    "swift_tools_version_declared": "6.2"
+  },
+  "swift_packages": {
+    "foundation-models-utilities": {
+      "status": "not-used",
+      "reason": "No target links it and no source imports it. It was listed with a placeholder revision, which is not a pin."
+    },
+    "swift-openapi-generator": {
+      "status": "not-used",
+      "reason": "Contract bindings use the repository-pinned deterministic generator in tools/generate_openapi_clients.py."
+    },
+    "swift-asn1": {
+      "url": "https://github.com/apple/swift-asn1.git",
+      "version": "1.7.1",
+      "revision": "a9a5efd40eaf558a2bcd48d64b1d1646be686008",
+      "resolved_for": "SparkBootstrap (PR-010 SSH bootstrap)"
+    },
+    "swift-atomics": {
+      "url": "https://github.com/apple/swift-atomics.git",
+      "version": "1.3.1",
+      "revision": "0442cb5a3f98ab802acb777929fdb446bda11a34",
+      "resolved_for": "SparkBootstrap (PR-010 SSH bootstrap)"
+    },
+    "swift-collections": {
+      "url": "https://github.com/apple/swift-collections.git",
+      "version": "1.6.0",
+      "revision": "a0cb0954ecb21e4e31b0070e6ed5674e8556685a",
+      "resolved_for": "SparkBootstrap (PR-010 SSH bootstrap)"
+    },
+    "swift-crypto": {
+      "url": "https://github.com/apple/swift-crypto.git",
+      "version": "4.5.1",
+      "revision": "47d3869a7291f085c1fb9fb1e6d3b97a793f45c6",
+      "resolved_for": "SparkBootstrap (PR-010 SSH bootstrap)"
+    },
+    "swift-nio": {
+      "url": "https://github.com/apple/swift-nio.git",
+      "version": "2.101.3",
+      "revision": "0b18836bd8b0162e7e17a995a3fbee20ed8f3b2b",
+      "resolved_for": "SparkBootstrap (PR-010 SSH bootstrap)"
+    },
+    "swift-nio-ssh": {
+      "url": "https://github.com/apple/swift-nio-ssh.git",
+      "version": "0.15.0",
+      "revision": "3ec281496f28a3b6581afd946b759e2642f5cd8d",
+      "resolved_for": "SparkBootstrap (PR-010 SSH bootstrap)"
+    },
+    "swift-system": {
+      "url": "https://github.com/apple/swift-system.git",
+      "version": "1.8.1",
+      "revision": "869129b7bf4ecc57b97d0193ad29690ca2134750",
+      "resolved_for": "SparkBootstrap (PR-010 SSH bootstrap)"
+    },
+    "swiftterm": {
+      "url": "https://github.com/migueldeicaza/SwiftTerm.git",
+      "version": "1.20.0",
+      "revision": "5d14406844143538cd8f8851d2d8a67c1fe443e5",
+      "resolved_for": "SparkProjects (vendored library-only distribution)",
+      "path": "apple/Vendor/SwiftTerm",
+      "source_hashes": "apple/Vendor/SwiftTerm/UPSTREAM-SHA256.json",
+      "local_source_hashes": {
+        "Buffer.swift": "d9c48d3e755662d8beaa3a69a895eadfc8c23ab0a708514f5fc4aa6743fe09d7"
+      }
+    }
+  },
+  "contract_generation": {
+    "implementation": "tools/generate_openapi_clients.py",
+    "format_version": 3,
+    "python_policy": "3.12.x",
+    "pip": "25.3",
+    "pip_tools": "7.5.2",
+    "package_index": "https://pypi.org/simple",
+    "rustfmt": "1.94.0",
+    "requirements_source": "tools/requirements-contracts.in",
+    "requirements_source_sha256": "sha256:443ee406ea85217df17f1158139ea02f71a0f66fae5c5dce70cac608a79e296c",
+    "requirements": "tools/requirements-contracts.txt",
+    "requirements_sha256": "sha256:3f2852f69e543ee68244f494b8ae8fa5bab0804cacb58c892b34be427ed4f89c",
+    "dependency_policy": "Exact package versions and accepted distribution SHA-256 hashes are locked.",
+    "openapi_validator": "0.7.2",
+    "cryptography": "50.0.1",
+    "jsonschema_validator": "4.23.0",
+    "yaml_parser": "6.0.3"
+  },
+  "rust": {
+    "toolchain": "1.94.0",
+    "rustc": "1.94.0 (4a4ef493e 2026-03-02)",
+    "host": "aarch64-apple-darwin",
+    "edition": "2024",
+    "rust_version_floor": "1.94",
+    "cargo_audit": "0.22.2",
+    "cargo_lock_sha256": "sha256:6df61cee9cfb901993be0316de4885df2aff8faa24b4cfd05674c0adb89d2932"
+  },
+  "containers": {
+    "vllm": {
+      "reference": "vllm/vllm-openai",
+      "tag": "v0.28.0",
+      "digest": "sha256:2a7cde230b59f3ce6cab33dd245ba6bee41aa87b38c9fe84f966ff24016813ce",
+      "platform": "linux/arm64",
+      "source": "https://hub.docker.com/v2/repositories/vllm/vllm-openai/tags/v0.28.0",
+      "source_retrieved_at": "2026-09-03",
+      "qualification": "lab",
+      "note": "The linux/arm64 image manifest of the v0.28.0 release (9.7 GB), the version vLLM's Nemotron 3.5 Lightning recipe names for DGX Spark. The previous entry (sha256:b0e84e5f\u2026) was checked against the registry on 2026-09-03 and is a single-architecture amd64 manifest, so the earlier claim that it was an Arm64 image was wrong and it could never have started on a Spark."
+    },
+    "development": {
+      "reference": "node",
+      "tag": "22-bookworm",
+      "digest": "sha256:8a34c4ab3ea2c5cd194f07e317b2a8f09461d3c8b05c4e34c8ccd56d56024c4d",
+      "platforms": [
+        "linux/arm64",
+        "linux/amd64"
+      ],
+      "purpose": "Unprivileged durable development workspaces"
+    }
+  },
+  "models": {
+    "nvidia-nemotron-3.5-lightning-30b-a3b-nvfp4": {
+      "repository": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4",
+      "revision": "cc84af2fe71647d87f4486c064f320e1e7535243",
+      "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4/tree/cc84af2fe71647d87f4486c064f320e1e7535243",
+      "source_retrieved_at": "2026-09-03",
+      "license": "nvidia-open-model-license",
+      "gated": false,
+      "trust_remote_code": false,
+      "weights_bytes": 21583785362,
+      "recipe_source": "https://recipes.vllm.ai/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+      "qualification": "lab",
+      "note": "Replaces the Qwen3 0.6B starter, whose pinned engine image was an amd64-only manifest that could never run on the aarch64 Spark. weights_bytes is the size the provider resolved for this revision and the size installed on hardware on 2026-09-03; the signed recipe still carries the pre-install estimate of 38787316352 in memory.expectedWeightBytes and is corrected at its next revision. Serving on a DGX Spark was measured on 2026-09-03: the engine held about 92 GiB of unified memory at gpuMemoryUtilisation 0.7, against the agent-64k profile's 96 GB estimate."
+    }
+  },
+  "documentation_snapshot": [
+    {
+      "url": "https://docs.nvidia.com/nemoclaw/latest/user-guide/openclaw/inference/local-inference/set-up-vllm",
+      "retrieved_at": "2026-08-27"
+    },
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-0.6B/tree/c1899de289a04d12100db370d81485cdf75e47ca",
+      "retrieved_at": "2026-08-27"
+    }
+  ],
+  "platform_note": "Xcode 27 required for iOS/iPadOS/macOS 27 and Foundation Models conformance (see ADR-018). Packages build on the installed Xcode 26.6 SDK with .iOS(.v26)/.macOS(.v26) until the Xcode 27 toolchain is available.",
+  "cargo_lock_note": "The lock removes the retired public remote provider and replaces unmaintained interface and PEM parsers; unattended recipe signing remains local and private keys are never embedded.",
+  "release_signing": {
+    "trust_root": "packaging/trust/release-keys.json",
+    "schema": 1,
+    "algorithm": "ed25519",
+    "channels": [
+      "dev",
+      "lab"
+    ],
+    "note": "Schema 1 trusts its online keys directly, with no offline root delegating them, so it is limited to the dev and lab channels. The private key is generated by tools/release/spark_release.py keygen and is never committed."
+  },
+  "package_build": {
+    "image": "rust@sha256:6ae102bdbf528294bc79ad6e1fae682f6f7c2a6e6621506ba959f9685b308a55",
+    "source_tag": "rust:1.94-bookworm",
+    "digest": "sha256:6ae102bdbf528294bc79ad6e1fae682f6f7c2a6e6621506ba959f9685b308a55",
+    "platform": "linux/arm64",
+    "toolchain": "1.94.0",
+    "note": "The release used the immutable image ID and recorded the mutable source tag separately. Built with --workspace because a subset selection produces a different, and for ecdsa/elliptic-curve broken, feature unification."
+  },
+  "package_lifecycle": {
+    "image": "debian@sha256:6ebd97fa83deb272194a2cf015b3d26a4d538e9ad3a7a79d544c8af5b0a01443",
+    "source_tag": "debian:bookworm",
+    "digest": "sha256:6ebd97fa83deb272194a2cf015b3d26a4d538e9ad3a7a79d544c8af5b0a01443",
+    "platform": "linux/arm64",
+    "runs": 3,
+    "note": "Each run installed revision 3, upgraded to revision 4, and exercised removal, purge, identity preservation, rollback snapshots, and adversarial filesystem cases."
+  },
+  "development_harnesses": {
+    "oh_my_pi": {
+      "version": "18.1.12",
+      "source": "https://github.com/can1357/oh-my-pi/releases/tag/v18.1.12",
+      "sha256": {
+        "arm64": "128c79498e5b9d3285d57b7b43d46139aad5473a698767314ffbe60c7c5de314",
+        "x64": "f5431008f71d2f3971617205cfce9cb227c1d135665930088244c76d86b2fb42"
+      }
+    },
+    "codex": {
+      "package": "@openai/codex",
+      "version": "0.153.4",
+      "manifest": "runtime/crates/sparkd/src/project_api/harness-locks/codex/package.json",
+      "lock": "runtime/crates/sparkd/src/project_api/harness-locks/codex/package-lock.json",
+      "lock_sha256": "f8eb51b96e1ae21962da765ef3b45e18e836a310b949dab37ee7e6a06898b65c"
+    },
+    "claude_code": {
+      "package": "@anthropic-ai/claude-code",
+      "version": "2.1.261",
+      "manifest": "runtime/crates/sparkd/src/project_api/harness-locks/claude_code/package.json",
+      "lock": "runtime/crates/sparkd/src/project_api/harness-locks/claude_code/package-lock.json",
+      "lock_sha256": "8c258233f85062520cb95c5266bc93483ffa3f04b8016e4c6a46dc567d44aacd"
+    },
+    "pi": {
+      "package": "@mariozechner/pi-coding-agent",
+      "version": "0.73.1",
+      "manifest": "runtime/crates/sparkd/src/project_api/harness-locks/pi/package.json",
+      "lock": "runtime/crates/sparkd/src/project_api/harness-locks/pi/package-lock.json",
+      "lock_sha256": "83a3c98bd0a5920a6b2df2a1fa50699c1a68c2a493647d2106e2c743e8e2929d"
+    },
+    "open_code": {
+      "package": "opencode-ai",
+      "version": "1.18.29",
+      "manifest": "runtime/crates/sparkd/src/project_api/harness-locks/open_code/package.json",
+      "lock": "runtime/crates/sparkd/src/project_api/harness-locks/open_code/package-lock.json",
+      "lock_sha256": "86696d81006ad91bc8131ff47b90459556ba7f0da78dedea53f0acd864fe371a"
+    }
+  }
+}

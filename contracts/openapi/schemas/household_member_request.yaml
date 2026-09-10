@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "device_id",
+    "joined"
+  ],
+  "properties": {
+    "device_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "joined": {
+      "type": "boolean"
+    }
+  }
+}

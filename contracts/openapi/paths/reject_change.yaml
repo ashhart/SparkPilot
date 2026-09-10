@@ -1,0 +1,44 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/ProjectId
+- $ref: ../../openapi.yaml#/components/parameters/ChangeId
+post:
+  tags:
+  - Projects
+  operationId: rejectChange
+  deprecated: true
+  summary: Legacy alias for requesting changes while preserving the audit
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          additionalProperties: false
+          required:
+          - review_digest
+          - comment
+          properties:
+            review_digest:
+              type: string
+              pattern: ^[0-9a-f]{64}$
+            comment:
+              type: string
+              minLength: 1
+              maxLength: 4000
+  responses:
+    '200':
+      description: Rejected
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ProjectChangeDecision
+    '409':
+      description: Change is not in review
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ErrorEnvelope
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

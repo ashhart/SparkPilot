@@ -1,0 +1,7 @@
+type: string
+enum:
+- inference_engine
+- optional_service
+- project_container
+- cluster_runtime
+- unknown

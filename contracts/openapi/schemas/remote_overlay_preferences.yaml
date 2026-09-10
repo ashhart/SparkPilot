@@ -1,0 +1,16 @@
+type: object
+additionalProperties: false
+required:
+- provider
+- enabled
+- accept_dns
+properties:
+  provider:
+    type: string
+    enum: [tailscale]
+  enabled:
+    type: boolean
+    description: The Spark's saved VPN preference; this does not prove this Apple device can reach it.
+  accept_dns:
+    type: boolean
+    description: Whether the Spark accepts DNS configuration from its tailnet.

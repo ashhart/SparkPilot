@@ -1,0 +1,21 @@
+# Development unit for sparkd: the debug build against a per-user data directory, so no root is needed.
+
+# Install it as a user unit so %h is your own home, not root's: install -Dm0644 packaging/systemd/sparkd.dev.service ~/.config/systemd/user/sparkd.dev.service && systemctl --user daemon-reload && systemctl --user start sparkd.dev
+
+# ExecStart assumes the checkout at ~/Documents/Projects/Personal/Apple-Foundation/SparkPilot; systemd cannot expand a variable in the executable path, so relocate it with a drop-in via `systemctl --user edit sparkd.dev`.
+
+[Unit]
+Description=Spark Runtime Control Service (development)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/Documents/Projects/Personal/Apple-Foundation/SparkPilot/runtime/target/debug/sparkd --listen 127.0.0.1:7443 --data-dir %h/.spark-runtime --node-name dev-spark
+Restart=on-failure
+RestartSec=3s
+Environment=RUST_LOG=info
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=default.target

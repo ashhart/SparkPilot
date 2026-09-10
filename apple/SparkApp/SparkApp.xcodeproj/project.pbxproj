@@ -1,0 +1,614 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 60;
+	objects = {
+		B50000000000000000000013 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/SparkShareImport.swift; sourceTree = SOURCE_ROOT; };
+		B50000000000000000000005 = { isa = PBXBuildFile; fileRef = B50000000000000000000013; };
+		B60000000000000000000005 = { isa = PBXBuildFile; fileRef = B50000000000000000000013; };
+/* Share extensions */
+		B50000000000000000000011 = { isa = "PBXFileReference"; lastKnownFileType = "sourcecode.swift"; path = "ShareExtension/ShareViewController.swift"; sourceTree = "SOURCE_ROOT"; };
+		B50000000000000000000012 = { isa = "PBXFileReference"; lastKnownFileType = "sourcecode.swift"; path = "Shared/SparkChatInbox.swift"; sourceTree = "SOURCE_ROOT"; };
+		B50000000000000000000010 = { isa = "PBXFileReference"; explicitFileType = "wrapper.app-extension"; includeInIndex = "0"; path = "SparkShare.appex"; sourceTree = "BUILT_PRODUCTS_DIR"; };
+		B50000000000000000000001 = { isa = "PBXBuildFile"; fileRef = "B50000000000000000000011"; };
+		B50000000000000000000002 = { isa = "PBXBuildFile"; fileRef = "B50000000000000000000012"; };
+		B50000000000000000000003 = { isa = "PBXBuildFile"; fileRef = "A10000000000000000000015"; };
+		B50000000000000000000004 = { isa = "PBXBuildFile"; fileRef = "B50000000000000000000010"; settings = { ATTRIBUTES = ("RemoveHeadersOnCopy",); }; };
+		B50000000000000000000021 = { isa = "PBXSourcesBuildPhase"; buildActionMask = "2147483647"; files = ("B50000000000000000000001","B50000000000000000000002","B50000000000000000000005",); runOnlyForDeploymentPostprocessing = "0"; };
+		B50000000000000000000022 = { isa = "PBXResourcesBuildPhase"; buildActionMask = "2147483647"; files = ("B50000000000000000000003",); runOnlyForDeploymentPostprocessing = "0"; };
+		B50000000000000000000023 = { isa = "PBXCopyFilesBuildPhase"; buildActionMask = "2147483647"; dstPath = ""; dstSubfolderSpec = "13"; files = ("B50000000000000000000004",); name = "Embed App Extensions"; runOnlyForDeploymentPostprocessing = "0"; };
+		B50000000000000000000024 = { isa = "PBXContainerItemProxy"; containerPortal = "A10000000000000000000060"; proxyType = "1"; remoteGlobalIDString = "B50000000000000000000050"; remoteInfo = "SparkShare"; };
+		B50000000000000000000025 = { isa = "PBXTargetDependency"; target = "B50000000000000000000050"; targetProxy = "B50000000000000000000024"; };
+		B50000000000000000000082 = { isa = "XCBuildConfiguration"; buildSettings = { CURRENT_PROJECT_VERSION = 33; SDKROOT = "iphoneos"; SWIFT_EMIT_LOC_STRINGS = "YES"; SWIFT_STRICT_CONCURRENCY = "complete"; MARKETING_VERSION = "1.0"; INFOPLIST_FILE = "ShareExtension/iOS-Info.plist"; SWIFT_VERSION = "6.0"; TARGETED_DEVICE_FAMILY = "$(SPARK_IOS_DEVICE_FAMILY)"; GENERATE_INFOPLIST_FILE = "NO"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; CODE_SIGN_ENTITLEMENTS = "ShareExtension/iOS.entitlements"; CODE_SIGN_STYLE = "Automatic"; PRODUCT_NAME = "SparkShare"; IPHONEOS_DEPLOYMENT_TARGET = "26.0"; PRODUCT_BUNDLE_IDENTIFIER = "com.sparkfabric.Spark.share"; APPLICATION_EXTENSION_API_ONLY = "YES"; SKIP_INSTALL = "YES"; }; name = "Debug"; };
+		B50000000000000000000083 = { isa = "XCBuildConfiguration"; buildSettings = { PRODUCT_NAME = "SparkShare"; SWIFT_EMIT_LOC_STRINGS = "YES"; SWIFT_STRICT_CONCURRENCY = "complete"; SWIFT_VERSION = "6.0"; MARKETING_VERSION = "1.0"; INFOPLIST_FILE = "ShareExtension/iOS-Info.plist"; TARGETED_DEVICE_FAMILY = "$(SPARK_IOS_DEVICE_FAMILY)"; VALIDATE_PRODUCT = "YES"; GENERATE_INFOPLIST_FILE = "NO"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; CODE_SIGN_ENTITLEMENTS = "ShareExtension/iOS.entitlements"; CODE_SIGN_STYLE = "Automatic"; SDKROOT = "iphoneos"; IPHONEOS_DEPLOYMENT_TARGET = "26.0"; PRODUCT_BUNDLE_IDENTIFIER = "com.sparkfabric.Spark.share"; CURRENT_PROJECT_VERSION = 33; APPLICATION_EXTENSION_API_ONLY = "YES"; SKIP_INSTALL = "YES"; }; name = "Release"; };
+		B50000000000000000000071 = { isa = "XCConfigurationList"; buildConfigurations = ("B50000000000000000000082","B50000000000000000000083",); defaultConfigurationIsVisible = "0"; defaultConfigurationName = "Release"; };
+		B50000000000000000000050 = { isa = "PBXNativeTarget"; buildConfigurationList = "B50000000000000000000071"; buildPhases = ("B50000000000000000000021","B50000000000000000000022",); buildRules = (); dependencies = (); name = "SparkShare"; productName = "SparkShare"; productReference = "B50000000000000000000010"; productType = "com.apple.product-type.app-extension"; };
+		B60000000000000000000010 = { isa = "PBXFileReference"; explicitFileType = "wrapper.app-extension"; includeInIndex = "0"; path = "SparkMacShare.appex"; sourceTree = "BUILT_PRODUCTS_DIR"; };
+		B60000000000000000000001 = { isa = "PBXBuildFile"; fileRef = "B50000000000000000000011"; };
+		B60000000000000000000002 = { isa = "PBXBuildFile"; fileRef = "B50000000000000000000012"; };
+		B60000000000000000000003 = { isa = "PBXBuildFile"; fileRef = "A10000000000000000000015"; };
+		B60000000000000000000004 = { isa = "PBXBuildFile"; fileRef = "B60000000000000000000010"; settings = { ATTRIBUTES = ("RemoveHeadersOnCopy",); }; };
+		B60000000000000000000021 = { isa = "PBXSourcesBuildPhase"; buildActionMask = "2147483647"; files = ("B60000000000000000000001","B60000000000000000000002","B60000000000000000000005",); runOnlyForDeploymentPostprocessing = "0"; };
+		B60000000000000000000022 = { isa = "PBXResourcesBuildPhase"; buildActionMask = "2147483647"; files = ("B60000000000000000000003",); runOnlyForDeploymentPostprocessing = "0"; };
+		B60000000000000000000023 = { isa = "PBXCopyFilesBuildPhase"; buildActionMask = "2147483647"; dstPath = ""; dstSubfolderSpec = "13"; files = ("B60000000000000000000004",); name = "Embed App Extensions"; runOnlyForDeploymentPostprocessing = "0"; };
+		B60000000000000000000024 = { isa = "PBXContainerItemProxy"; containerPortal = "A10000000000000000000060"; proxyType = "1"; remoteGlobalIDString = "B60000000000000000000050"; remoteInfo = "SparkMacShare"; };
+		B60000000000000000000025 = { isa = "PBXTargetDependency"; target = "B60000000000000000000050"; targetProxy = "B60000000000000000000024"; };
+		B60000000000000000000082 = { isa = "XCBuildConfiguration"; buildSettings = { SDKROOT = "macosx"; SWIFT_EMIT_LOC_STRINGS = "YES"; SWIFT_STRICT_CONCURRENCY = "complete"; SWIFT_VERSION = "6.0"; MARKETING_VERSION = "1.0"; INFOPLIST_FILE = "ShareExtension/macOS-Info.plist"; MACOSX_DEPLOYMENT_TARGET = "26.0"; GENERATE_INFOPLIST_FILE = "NO"; SUPPORTED_PLATFORMS = "macosx"; CODE_SIGN_ENTITLEMENTS = "ShareExtension/macOS.entitlements"; PRODUCT_NAME = "SparkMacShare"; CODE_SIGN_STYLE = "Automatic"; ENABLE_HARDENED_RUNTIME = "YES"; CURRENT_PROJECT_VERSION = 33; PRODUCT_BUNDLE_IDENTIFIER = "com.sparkfabric.Spark.share"; APPLICATION_EXTENSION_API_ONLY = "YES"; SKIP_INSTALL = "YES"; }; name = "Debug"; };
+		B60000000000000000000083 = { isa = "XCBuildConfiguration"; buildSettings = { PRODUCT_NAME = "SparkMacShare"; SWIFT_EMIT_LOC_STRINGS = "YES"; SWIFT_STRICT_CONCURRENCY = "complete"; SWIFT_VERSION = "6.0"; MARKETING_VERSION = "1.0"; INFOPLIST_FILE = "ShareExtension/macOS-Info.plist"; VALIDATE_PRODUCT = "YES"; MACOSX_DEPLOYMENT_TARGET = "26.0"; GENERATE_INFOPLIST_FILE = "NO"; SUPPORTED_PLATFORMS = "macosx"; CODE_SIGN_ENTITLEMENTS = "ShareExtension/macOS.entitlements"; SDKROOT = "macosx"; CODE_SIGN_STYLE = "Automatic"; ENABLE_HARDENED_RUNTIME = "YES"; PRODUCT_BUNDLE_IDENTIFIER = "com.sparkfabric.Spark.share"; CURRENT_PROJECT_VERSION = 33; APPLICATION_EXTENSION_API_ONLY = "YES"; SKIP_INSTALL = "YES"; }; name = "Release"; };
+		B60000000000000000000071 = { isa = "XCConfigurationList"; buildConfigurations = ("B60000000000000000000082","B60000000000000000000083",); defaultConfigurationIsVisible = "0"; defaultConfigurationName = "Release"; };
+		B60000000000000000000050 = { isa = "PBXNativeTarget"; buildConfigurationList = "B60000000000000000000071"; buildPhases = ("B60000000000000000000021","B60000000000000000000022",); buildRules = (); dependencies = (); name = "SparkMacShare"; productName = "SparkMacShare"; productReference = "B60000000000000000000010"; productType = "com.apple.product-type.app-extension"; };
+
+
+/* Begin PBXTargetDependency section */
+		A50000000000000000000025 = {isa = PBXTargetDependency; target = A50000000000000000000050; targetProxy = A50000000000000000000024; };
+		A60000000000000000000025 = {isa = PBXTargetDependency; target = A60000000000000000000050; targetProxy = A60000000000000000000024; };
+C80000000000000000000034 = {isa = PBXTargetDependency; target = C80000000000000000000032; targetProxy = C80000000000000000000033; };
+/* End PBXTargetDependency section */
+
+/* Begin PBXContainerItemProxy section */
+		A50000000000000000000024 = {isa = PBXContainerItemProxy; containerPortal = A10000000000000000000060; proxyType = 1; remoteGlobalIDString = A50000000000000000000050; remoteInfo = SparkWidgets; };
+		A60000000000000000000024 = {isa = PBXContainerItemProxy; containerPortal = A10000000000000000000060; proxyType = 1; remoteGlobalIDString = A60000000000000000000050; remoteInfo = SparkMacWidgets; };
+C80000000000000000000033 = {isa = PBXContainerItemProxy; containerPortal = A10000000000000000000060; proxyType = 1; remoteGlobalIDString = C80000000000000000000032; remoteInfo = SparkWatch; };
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A50000000000000000000023 = {isa = PBXCopyFilesBuildPhase; buildActionMask = 2147483647; dstPath = ""; dstSubfolderSpec = 13; files = (A50000000000000000000004, ); name = "Embed Widgets"; runOnlyForDeploymentPostprocessing = 0; };
+		A60000000000000000000023 = {isa = PBXCopyFilesBuildPhase; buildActionMask = 2147483647; dstPath = ""; dstSubfolderSpec = 13; files = (A60000000000000000000004, ); name = "Embed Widgets"; runOnlyForDeploymentPostprocessing = 0; };
+C8000000000000000000002B = {isa = PBXCopyFilesBuildPhase; buildActionMask = 2147483647; dstPath = "$(CONTENTS_FOLDER_PATH)/Watch"; dstSubfolderSpec = 16; files = (C8000000000000000000007A, ); name = "Embed Watch Content"; runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXCopyFilesBuildPhase section */
+
+
+/* Native UI regression tests use their own simulator destination and the real application. */
+        B70000000000000000000006 = {isa = PBXBuildFile; fileRef = B70000000000000000000016; };
+        B70000000000000000000016 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests/SparkReleaseQAUITests.swift; sourceTree = SOURCE_ROOT; };
+        B70000000000000000000005 = {isa = PBXBuildFile; fileRef = B70000000000000000000015; };
+        B70000000000000000000015 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests/SparkVoiceUITests.swift; sourceTree = SOURCE_ROOT; };
+        B70000000000000000000004 = {isa = PBXBuildFile; fileRef = B70000000000000000000014; };
+        B70000000000000000000014 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests/SparkDevelopmentUITests.swift; sourceTree = SOURCE_ROOT; };
+        B70000000000000000000001 = {isa = PBXBuildFile; fileRef = B70000000000000000000011; };
+        B70000000000000000000002 = {isa = PBXBuildFile; fileRef = B70000000000000000000012; };
+        B70000000000000000000003 = {isa = PBXBuildFile; fileRef = B70000000000000000000013; };
+        B70000000000000000000013 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests/SparkTailscaleUITests.swift; sourceTree = SOURCE_ROOT; };
+        B70000000000000000000012 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests/SparkDashboardUITests.swift; sourceTree = SOURCE_ROOT; };
+        B70000000000000000000010 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SparkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+        B70000000000000000000011 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests/SparkUITests.swift; sourceTree = SOURCE_ROOT; };
+        B70000000000000000000020 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+        B70000000000000000000021 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (B70000000000000000000006,B70000000000000000000005,B70000000000000000000004,B70000000000000000000001,B70000000000000000000002,B70000000000000000000003,); runOnlyForDeploymentPostprocessing = 0; };
+        B70000000000000000000022 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+        B70000000000000000000031 = {isa = PBXContainerItemProxy; containerPortal = A10000000000000000000060; proxyType = 1; remoteGlobalIDString = A10000000000000000000050; remoteInfo = Spark; };
+        B70000000000000000000032 = {isa = PBXTargetDependency; target = A10000000000000000000050; targetProxy = B70000000000000000000031; };
+        B70000000000000000000050 = {isa = PBXNativeTarget; buildConfigurationList = B70000000000000000000071; buildPhases = (B70000000000000000000021, B70000000000000000000020, B70000000000000000000022,); buildRules = (); dependencies = (B70000000000000000000032,); name = SparkUITests; productName = SparkUITests; productReference = B70000000000000000000010; productType = "com.apple.product-type.bundle.ui-testing"; };
+        B70000000000000000000071 = {isa = XCConfigurationList; buildConfigurations = (B70000000000000000000082, B70000000000000000000083,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+        B70000000000000000000082 = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 26.0; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; TARGETED_DEVICE_FAMILY = "$(SPARK_IOS_DEVICE_FAMILY)"; PRODUCT_BUNDLE_IDENTIFIER = com.sparkfabric.Spark.UITests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 6.0; SWIFT_STRICT_CONCURRENCY = complete; TEST_TARGET_NAME = Spark; }; name = Debug; };
+        B70000000000000000000083 = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 26.0; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; TARGETED_DEVICE_FAMILY = "$(SPARK_IOS_DEVICE_FAMILY)"; PRODUCT_BUNDLE_IDENTIFIER = com.sparkfabric.Spark.UITests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 6.0; SWIFT_STRICT_CONCURRENCY = complete; TEST_TARGET_NAME = Spark; }; name = Release; };
+
+/* Begin PBXBuildFile section */
+		A10000000000000000000001 /* SparkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000011 /* SparkApp.swift */; };
+		A10000000000000000000002 /* SparkAppComposition in Frameworks */ = {isa = PBXBuildFile; productRef = A10000000000000000000031 /* SparkAppComposition */; };
+		A10000000000000000000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000014 /* Assets.xcassets */; };
+		A10000000000000000000006 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000015 /* Localizable.xcstrings */; };
+		A10000000000000000000007 /* AppShortcuts.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000016 /* AppShortcuts.xcstrings */; };
+		A10000000000000000000004 /* SparkIntents in Frameworks */ = {isa = PBXBuildFile; productRef = A10000000000000000000032 /* SparkIntents */; };
+		A10000000000000000000005 /* SparkPilotShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30000000000000000000011 /* SparkPilotShortcuts.swift */; };
+		A20000000000000000000001 /* SparkMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000011 /* SparkMacApp.swift */; };
+		A20000000000000000000002 /* SparkAppComposition in Frameworks */ = {isa = PBXBuildFile; productRef = A20000000000000000000031 /* SparkAppComposition */; };
+		A20000000000000000000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000014 /* Assets.xcassets */; };
+		A20000000000000000000006 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000015 /* Localizable.xcstrings */; };
+		A20000000000000000000007 /* AppShortcuts.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000016 /* AppShortcuts.xcstrings */; };
+		A20000000000000000000004 /* SparkIntents in Frameworks */ = {isa = PBXBuildFile; productRef = A20000000000000000000032 /* SparkIntents */; };
+		A20000000000000000000005 /* SparkPilotShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30000000000000000000011 /* SparkPilotShortcuts.swift */; };
+		A50000000000000000000001 = {isa = PBXBuildFile; fileRef = A50000000000000000000011;};
+		A50000000000000000000002 = {isa = PBXBuildFile; productRef = A50000000000000000000031;};
+		A50000000000000000000003 = {isa = PBXBuildFile; fileRef = A10000000000000000000015;};
+		A50000000000000000000004 = {isa = PBXBuildFile; fileRef = A50000000000000000000010; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); };};
+		A60000000000000000000001 = {isa = PBXBuildFile; fileRef = A50000000000000000000011;};
+		A60000000000000000000002 = {isa = PBXBuildFile; productRef = A60000000000000000000031;};
+		A60000000000000000000003 = {isa = PBXBuildFile; fileRef = A10000000000000000000015;};
+		A60000000000000000000004 = {isa = PBXBuildFile; fileRef = A60000000000000000000010; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); };};
+C80000000000000000000065 = {isa = PBXBuildFile; fileRef = C80000000000000000000001; };
+C80000000000000000000066 = {isa = PBXBuildFile; fileRef = C80000000000000000000002; };
+C80000000000000000000067 = {isa = PBXBuildFile; fileRef = C80000000000000000000003; };
+C80000000000000000000068 = {isa = PBXBuildFile; fileRef = C80000000000000000000004; };
+C80000000000000000000069 = {isa = PBXBuildFile; fileRef = C80000000000000000000005; };
+C8000000000000000000006A = {isa = PBXBuildFile; fileRef = C80000000000000000000006; };
+C8000000000000000000006B = {isa = PBXBuildFile; fileRef = C80000000000000000000007; };
+C80000000000000000000078 = {isa = PBXBuildFile; productRef = C80000000000000000000079; };
+C8000000000000000000007A = {isa = PBXBuildFile; fileRef = C80000000000000000000014; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+C8000000000000000000006E = {isa = PBXBuildFile; fileRef = C80000000000000000000009; };
+C8000000000000000000006F = {isa = PBXBuildFile; fileRef = C8000000000000000000000A; };
+C80000000000000000000070 = {isa = PBXBuildFile; fileRef = C8000000000000000000000B; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A10000000000000000000010 /* Spark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10000000000000000000011 /* SparkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkApp.swift; sourceTree = "<group>"; };
+		A10000000000000000000012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A10000000000000000000013 /* SparkApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SparkApp.entitlements; sourceTree = "<group>"; };
+		A10000000000000000000017 /* SparkApp.CarPlay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SparkApp.CarPlay.entitlements; sourceTree = "<group>"; };
+		A10000000000000000000014 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A10000000000000000000015 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		A10000000000000000000016 /* AppShortcuts.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppShortcuts.xcstrings; sourceTree = "<group>"; };
+		A20000000000000000000010 /* SparkPilot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SparkPilot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A20000000000000000000011 /* SparkMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkMacApp.swift; sourceTree = "<group>"; };
+		A20000000000000000000012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A20000000000000000000013 /* SparkMacApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SparkMacApp.entitlements; sourceTree = "<group>"; };
+		A30000000000000000000011 /* SparkPilotShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkPilotShortcuts.swift; sourceTree = "<group>"; };
+		A50000000000000000000010 = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SparkWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A60000000000000000000010 = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SparkMacWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A50000000000000000000011 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets/SparkPilotWidgets.swift; sourceTree = SOURCE_ROOT; };
+C80000000000000000000001 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkWatchApp.swift; sourceTree = "<group>"; };
+C80000000000000000000002 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkWatchConnection.swift; sourceTree = "<group>"; };
+C80000000000000000000003 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkWatchStore.swift; sourceTree = "<group>"; };
+C80000000000000000000004 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkWatchHome.swift; sourceTree = "<group>"; };
+C80000000000000000000005 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkWatchTelemetryView.swift; sourceTree = "<group>"; };
+C80000000000000000000006 = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+C80000000000000000000007 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+C80000000000000000000008 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+C80000000000000000000014 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SparkWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+C80000000000000000000009 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkWatchDesign.swift; sourceTree = "<group>"; };
+C8000000000000000000000A = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkWatchChat.swift; sourceTree = "<group>"; };
+C8000000000000000000000B = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkWatchModels.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A10000000000000000000020 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000002 /* SparkAppComposition in Frameworks */,
+				A10000000000000000000004 /* SparkIntents in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A20000000000000000000020 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A20000000000000000000002 /* SparkAppComposition in Frameworks */,
+				A20000000000000000000004 /* SparkIntents in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A50000000000000000000020 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (A50000000000000000000002, ); runOnlyForDeploymentPostprocessing = 0; };
+		A60000000000000000000020 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (A60000000000000000000002, ); runOnlyForDeploymentPostprocessing = 0; };
+C8000000000000000000002A = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (C80000000000000000000078, ); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A10000000000000000000040 = {
+			isa = PBXGroup;
+			children = (
+C8000000000000000000001E,
+                B70000000000000000000014,
+                B70000000000000000000015,
+                B70000000000000000000016,
+                B70000000000000000000011,
+				A50000000000000000000011 /* SparkPilotWidgets.swift */,
+				B50000000000000000000011,
+				B50000000000000000000012,
+				B50000000000000000000013,
+				A10000000000000000000041 /* iPhone */,
+				A20000000000000000000041 /* macOS */,
+				A30000000000000000000041 /* ExecutableShared */,
+				A10000000000000000000042 /* Shared */,
+				A40000000000000000000041 /* Resources */,
+				A10000000000000000000043 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A20000000000000000000041 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000011 /* SparkMacApp.swift */,
+				A20000000000000000000012 /* Info.plist */,
+				A20000000000000000000013 /* SparkMacApp.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000041 /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				A10000000000000000000011 /* SparkApp.swift */,
+			);
+			path = iPhone;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000042 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A10000000000000000000014 /* Assets.xcassets */,
+				A10000000000000000000012 /* Info.plist */,
+				A10000000000000000000013 /* SparkApp.entitlements */,
+				A10000000000000000000017 /* SparkApp.CarPlay.entitlements */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		A10000000000000000000043 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+C80000000000000000000014,
+				B60000000000000000000010,
+				B50000000000000000000010,
+				A10000000000000000000010 /* Spark.app */,
+				A20000000000000000000010 /* SparkPilot.app */,
+				A60000000000000000000010,
+				A50000000000000000000010,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000041 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A10000000000000000000015 /* Localizable.xcstrings */,
+				A10000000000000000000016 /* AppShortcuts.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A30000000000000000000041 /* ExecutableShared */ = {
+			isa = PBXGroup;
+			children = (
+				A30000000000000000000011 /* SparkPilotShortcuts.swift */,
+			);
+			path = ExecutableShared;
+			sourceTree = "<group>";
+		};
+C8000000000000000000001E = {isa = PBXGroup; children = (C8000000000000000000000B, C8000000000000000000000A, C80000000000000000000009, C80000000000000000000001, C80000000000000000000002, C80000000000000000000003, C80000000000000000000004, C80000000000000000000005, C80000000000000000000006, C80000000000000000000007, C80000000000000000000008, ); path = WatchApp; sourceTree = "<group>"; };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A10000000000000000000050 /* Spark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A10000000000000000000071 /* Build configuration list for PBXNativeTarget "Spark" */;
+			buildPhases = (
+				C8000000000000000000002B,
+				A50000000000000000000023 /* Embed Widgets */,
+				B50000000000000000000023,
+				A10000000000000000000021 /* Sources */,
+				A10000000000000000000020 /* Frameworks */,
+				A10000000000000000000022 /* Resources */,
+			);
+			buildRules = ();
+			dependencies = (A50000000000000000000025, B50000000000000000000025, C80000000000000000000034, );
+			name = Spark;
+			packageProductDependencies = (
+				A10000000000000000000031 /* SparkAppComposition */,
+				A10000000000000000000032 /* SparkIntents */,
+			);
+			productName = Spark;
+			productReference = A10000000000000000000010 /* Spark.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A20000000000000000000050 /* SparkMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A20000000000000000000071 /* Build configuration list for PBXNativeTarget "SparkMac" */;
+			buildPhases = (
+				A60000000000000000000023 /* Embed Widgets */,
+				B60000000000000000000023,
+				A20000000000000000000021 /* Sources */,
+				A20000000000000000000020 /* Frameworks */,
+				A20000000000000000000022 /* Resources */,
+			);
+			buildRules = ();
+			dependencies = (A60000000000000000000025, B60000000000000000000025, );
+			name = SparkMac;
+			packageProductDependencies = (
+				A20000000000000000000031 /* SparkAppComposition */,
+				A20000000000000000000032 /* SparkIntents */,
+			);
+			productName = SparkPilot;
+			productReference = A20000000000000000000010 /* SparkPilot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A50000000000000000000050 = {isa = PBXNativeTarget; buildConfigurationList = A50000000000000000000071; buildPhases = (A50000000000000000000021, A50000000000000000000020, A50000000000000000000022, ); buildRules = (); dependencies = (); name = SparkWidgets; packageProductDependencies = (A50000000000000000000031, ); productName = SparkWidgets; productReference = A50000000000000000000010; productType = "com.apple.product-type.app-extension"; };
+		A60000000000000000000050 = {isa = PBXNativeTarget; buildConfigurationList = A60000000000000000000071; buildPhases = (A60000000000000000000021, A60000000000000000000020, A60000000000000000000022, ); buildRules = (); dependencies = (); name = SparkMacWidgets; packageProductDependencies = (A60000000000000000000031, ); productName = SparkMacWidgets; productReference = A60000000000000000000010; productType = "com.apple.product-type.app-extension"; };
+C80000000000000000000032 = {isa = PBXNativeTarget; buildConfigurationList = C80000000000000000000046; buildPhases = (C80000000000000000000028, C8000000000000000000002A, C80000000000000000000029, ); buildRules = (); dependencies = (); name = SparkWatch; packageProductDependencies = (C80000000000000000000079, ); productName = SparkWatch; productReference = C80000000000000000000014; productType = "com.apple.product-type.application"; };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A10000000000000000000060 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2660;
+				LastUpgradeCheck = 2660;
+				TargetAttributes = {
+					A10000000000000000000050 = {
+						CreatedOnToolsVersion = 26.6;
+					};
+					A20000000000000000000050 = {
+						CreatedOnToolsVersion = 26.6;
+					};
+				};
+			};
+			buildConfigurationList = A10000000000000000000070 /* Build configuration list for PBXProject "SparkApp" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A10000000000000000000040;
+			packageReferences = (
+				A10000000000000000000030 /* XCLocalSwiftPackageReference "." */,
+				A10000000000000000000033 /* XCLocalSwiftPackageReference "../Packages/SparkIntents" */,
+			);
+			productRefGroup = A10000000000000000000043 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+C80000000000000000000032,
+				B70000000000000000000050,
+				B60000000000000000000050,
+				B50000000000000000000050,
+				A10000000000000000000050 /* Spark */,
+				A20000000000000000000050 /* SparkMac */,
+				A60000000000000000000050,
+				A50000000000000000000050,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A10000000000000000000022 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000003 /* Assets.xcassets in Resources */,
+				A10000000000000000000006 /* Localizable.xcstrings in Resources */,
+				A10000000000000000000007 /* AppShortcuts.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A20000000000000000000022 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A20000000000000000000003 /* Assets.xcassets in Resources */,
+				A20000000000000000000006 /* Localizable.xcstrings in Resources */,
+				A20000000000000000000007 /* AppShortcuts.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A50000000000000000000022 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (A50000000000000000000003, ); runOnlyForDeploymentPostprocessing = 0; };
+		A60000000000000000000022 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (A60000000000000000000003, ); runOnlyForDeploymentPostprocessing = 0; };
+C80000000000000000000029 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (C8000000000000000000006A, C8000000000000000000006B, ); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A10000000000000000000021 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000001 /* SparkApp.swift in Sources */,
+				A10000000000000000000005 /* SparkPilotShortcuts.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A20000000000000000000021 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A20000000000000000000001 /* SparkMacApp.swift in Sources */,
+				A20000000000000000000005 /* SparkPilotShortcuts.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A50000000000000000000021 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A50000000000000000000001, ); runOnlyForDeploymentPostprocessing = 0; };
+		A60000000000000000000021 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A60000000000000000000001, ); runOnlyForDeploymentPostprocessing = 0; };
+C80000000000000000000028 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (C80000000000000000000070, C8000000000000000000006F, C8000000000000000000006E, C80000000000000000000065, C80000000000000000000066, C80000000000000000000067, C80000000000000000000068, C80000000000000000000069, ); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A10000000000000000000080 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+                SPARK_IOS_DEVICE_FAMILY = "1,2";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A10000000000000000000081 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+                SPARK_IOS_DEVICE_FAMILY = "1,2";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		A10000000000000000000082 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Shared/SparkApp.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]" = Shared/SparkApp.CarPlay.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 33;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Shared/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sparkfabric.Spark;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "$(SPARK_IOS_DEVICE_FAMILY)";
+			};
+			name = Debug;
+		};
+		A10000000000000000000083 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Shared/SparkApp.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]" = Shared/SparkApp.CarPlay.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 33;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Shared/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sparkfabric.Spark;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "$(SPARK_IOS_DEVICE_FAMILY)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A20000000000000000000082 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = macOS/SparkMacApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 33;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = macOS/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sparkfabric.Spark;
+				PRODUCT_NAME = SparkPilot;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		A20000000000000000000083 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = macOS/SparkMacApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 33;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = macOS/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sparkfabric.Spark;
+				PRODUCT_NAME = SparkPilot;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A50000000000000000000082 = {isa = XCBuildConfiguration; buildSettings = {APPLICATION_EXTENSION_API_ONLY = YES; CODE_SIGN_ENTITLEMENTS = Widgets/iOS.entitlements; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 33; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = Widgets/Info.plist; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.sparkfabric.Spark.widgets; PRODUCT_NAME = "$(TARGET_NAME)"; SKIP_INSTALL = YES; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_STRICT_CONCURRENCY = complete; SWIFT_VERSION = 6.0; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks @executable_path/../../../../Frameworks"; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; IPHONEOS_DEPLOYMENT_TARGET = 26.0; TARGETED_DEVICE_FAMILY = "$(SPARK_IOS_DEVICE_FAMILY)";}; name = Debug; };
+		A50000000000000000000083 = {isa = XCBuildConfiguration; buildSettings = {APPLICATION_EXTENSION_API_ONLY = YES; CODE_SIGN_ENTITLEMENTS = Widgets/iOS.entitlements; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 33; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = Widgets/Info.plist; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.sparkfabric.Spark.widgets; PRODUCT_NAME = "$(TARGET_NAME)"; SKIP_INSTALL = YES; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_STRICT_CONCURRENCY = complete; SWIFT_VERSION = 6.0; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks @executable_path/../../../../Frameworks"; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; IPHONEOS_DEPLOYMENT_TARGET = 26.0; TARGETED_DEVICE_FAMILY = "$(SPARK_IOS_DEVICE_FAMILY)";}; name = Release; };
+		A60000000000000000000082 = {isa = XCBuildConfiguration; buildSettings = {APPLICATION_EXTENSION_API_ONLY = YES; CODE_SIGN_ENTITLEMENTS = Widgets/macOS.entitlements; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 33; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = Widgets/Info.plist; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.sparkfabric.Spark.widgets; PRODUCT_NAME = "$(TARGET_NAME)"; SKIP_INSTALL = YES; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_STRICT_CONCURRENCY = complete; SWIFT_VERSION = 6.0; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks @executable_path/../../../../Frameworks"; SDKROOT = macosx; SUPPORTED_PLATFORMS = macosx; MACOSX_DEPLOYMENT_TARGET = 26.0; ENABLE_HARDENED_RUNTIME = YES;}; name = Debug; };
+		A60000000000000000000083 = {isa = XCBuildConfiguration; buildSettings = {APPLICATION_EXTENSION_API_ONLY = YES; CODE_SIGN_ENTITLEMENTS = Widgets/macOS.entitlements; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 33; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = Widgets/Info.plist; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.sparkfabric.Spark.widgets; PRODUCT_NAME = "$(TARGET_NAME)"; SKIP_INSTALL = YES; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_STRICT_CONCURRENCY = complete; SWIFT_VERSION = 6.0; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks @executable_path/../../../../Frameworks"; SDKROOT = macosx; SUPPORTED_PLATFORMS = macosx; MACOSX_DEPLOYMENT_TARGET = 26.0; ENABLE_HARDENED_RUNTIME = YES;}; name = Release; };
+C80000000000000000000047 = {isa = XCBuildConfiguration; buildSettings = {ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 33; MARKETING_VERSION = "1.0"; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = WatchApp/Info.plist; PRODUCT_BUNDLE_IDENTIFIER = com.sparkfabric.Spark.watchkitapp; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = watchos; SUPPORTED_PLATFORMS = "watchos watchsimulator"; WATCHOS_DEPLOYMENT_TARGET = "26.0"; TARGETED_DEVICE_FAMILY = 4; SWIFT_VERSION = "6.0"; SWIFT_STRICT_CONCURRENCY = complete; SWIFT_EMIT_LOC_STRINGS = YES; SKIP_INSTALL = YES; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks"; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; DEBUG_INFORMATION_FORMAT = dwarf;}; name = Debug; };
+C80000000000000000000048 = {isa = XCBuildConfiguration; buildSettings = {ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 33; MARKETING_VERSION = "1.0"; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = WatchApp/Info.plist; PRODUCT_BUNDLE_IDENTIFIER = com.sparkfabric.Spark.watchkitapp; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = watchos; SUPPORTED_PLATFORMS = "watchos watchsimulator"; WATCHOS_DEPLOYMENT_TARGET = "26.0"; TARGETED_DEVICE_FAMILY = 4; SWIFT_VERSION = "6.0"; SWIFT_STRICT_CONCURRENCY = complete; SWIFT_EMIT_LOC_STRINGS = YES; SKIP_INSTALL = YES; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks"; SWIFT_COMPILATION_MODE = wholemodule; DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; VALIDATE_PRODUCT = YES;}; name = Release; };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A10000000000000000000070 /* Build configuration list for PBXProject "SparkApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A10000000000000000000080 /* Debug */,
+				A10000000000000000000081 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A10000000000000000000071 /* Build configuration list for PBXNativeTarget "Spark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A10000000000000000000082 /* Debug */,
+				A10000000000000000000083 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A20000000000000000000071 /* Build configuration list for PBXNativeTarget "SparkMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A20000000000000000000082 /* Debug */,
+				A20000000000000000000083 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A50000000000000000000071 = {isa = XCConfigurationList; buildConfigurations = (A50000000000000000000082, A50000000000000000000083, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		A60000000000000000000071 = {isa = XCConfigurationList; buildConfigurations = (A60000000000000000000082, A60000000000000000000083, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+C80000000000000000000046 = {isa = XCConfigurationList; buildConfigurations = (C80000000000000000000047, C80000000000000000000048, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A10000000000000000000030 /* XCLocalSwiftPackageReference "." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = .;
+		};
+		A10000000000000000000033 /* XCLocalSwiftPackageReference "../Packages/SparkIntents" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../Packages/SparkIntents;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A10000000000000000000031 /* SparkAppComposition */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A10000000000000000000030 /* XCLocalSwiftPackageReference "." */;
+			productName = SparkAppComposition;
+		};
+		A20000000000000000000031 /* SparkAppComposition */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A10000000000000000000030 /* XCLocalSwiftPackageReference "." */;
+			productName = SparkAppComposition;
+		};
+		A10000000000000000000032 /* SparkIntents */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A10000000000000000000033 /* XCLocalSwiftPackageReference "../Packages/SparkIntents" */;
+			productName = SparkIntents;
+		};
+		A20000000000000000000032 /* SparkIntents */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A10000000000000000000033 /* XCLocalSwiftPackageReference "../Packages/SparkIntents" */;
+			productName = SparkIntents;
+		};
+		A50000000000000000000031 = {isa = XCSwiftPackageProductDependency; package = A10000000000000000000030; productName = SparkWidgetSupport; };
+		A60000000000000000000031 = {isa = XCSwiftPackageProductDependency; package = A10000000000000000000030; productName = SparkWidgetSupport; };
+C80000000000000000000079 = {isa = XCSwiftPackageProductDependency; package = A10000000000000000000030; productName = SparkWatchSupport; };
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A10000000000000000000060 /* Project object */;
+}

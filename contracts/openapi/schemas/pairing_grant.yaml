@@ -1,0 +1,21 @@
+type: object
+required:
+- device
+- authority_certificate
+- issued_at
+properties:
+  device:
+    $ref: ../../openapi.yaml#/components/schemas/Device
+  authority_certificate:
+    type: string
+    contentEncoding: base64
+  issued_at:
+    type: string
+    format: date-time
+  presence_key_fingerprint:
+    type:
+    - string
+    - 'null'
+    pattern: ^[a-f0-9]{64}$
+    description: SHA-256 of the canonical uncompressed SEC1 P-256 presence public key accepted by the
+      runtime. A client that requested registration must require this value to match its local key.

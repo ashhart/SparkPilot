@@ -1,0 +1,50 @@
+type: object
+additionalProperties: false
+required:
+- version
+- transaction_id
+- cluster_id
+- proposal_digest
+- member_node_id
+- owner_device_id
+- role
+- device_key_fingerprint
+- issued_at
+- expires_at
+- authority_signature
+properties:
+  version:
+    type: integer
+    const: 1
+  transaction_id:
+    type: string
+    format: uuid
+  cluster_id:
+    type: string
+    format: uuid
+  proposal_digest:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  member_node_id:
+    type: string
+    format: uuid
+  owner_device_id:
+    type: string
+    format: uuid
+  role:
+    type: string
+    enum:
+    - owner
+    - administrator
+  device_key_fingerprint:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  issued_at:
+    type: string
+    format: date-time
+  expires_at:
+    type: string
+    format: date-time
+  authority_signature:
+    type: string
+    pattern: ^[A-Za-z0-9_-]{86}$

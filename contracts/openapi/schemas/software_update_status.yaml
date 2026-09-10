@@ -1,0 +1,28 @@
+type: object
+additionalProperties: false
+required:
+- checked_at
+- system_packages_available
+- firmware_updates_available
+- runtime_release_id
+- reboot_required
+properties:
+  checked_at:
+    type: string
+    format: date-time
+  system_packages_available:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  firmware_updates_available:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  runtime_release_id:
+    type:
+    - string
+    - 'null'
+  reboot_required:
+    type: boolean

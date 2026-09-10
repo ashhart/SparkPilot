@@ -1,0 +1,24 @@
+type: object
+description: One part of the support bundle, described before it is produced.
+required:
+- id
+- title
+- description
+- sensitivity
+- included_by_default
+properties:
+  id:
+    type: string
+  title:
+    type: string
+  description:
+    type: string
+  sensitivity:
+    type: string
+    enum:
+    - operational
+    - identifying
+    description: '`operational` names no person, address or secret. `identifying` describes this owner''s
+      installation and is only ever produced when the owner asks for it.'
+  included_by_default:
+    type: boolean

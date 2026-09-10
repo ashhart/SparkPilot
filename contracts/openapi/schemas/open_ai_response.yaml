@@ -1,0 +1,25 @@
+type: object
+required:
+- id
+- object
+- status
+- model
+- output
+properties:
+  id:
+    type: string
+  object:
+    type: string
+    const: response
+  status:
+    type: string
+  model:
+    type: string
+  output:
+    type: array
+    items:
+      type: object
+      additionalProperties: true
+  usage:
+    type: object
+    additionalProperties: true

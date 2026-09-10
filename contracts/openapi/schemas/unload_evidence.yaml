@@ -1,0 +1,22 @@
+type: object
+description: What the most recent engine stop found about unified memory. memory_recovered false means the engine stopped but memory did not return to its pre-load baseline within the recovery timeout.
+required:
+- model_id
+- memory_recovered
+- baseline_bytes
+- available_bytes
+- finished_at
+properties:
+  model_id:
+    type: string
+  memory_recovered:
+    type: boolean
+  baseline_bytes:
+    type: integer
+    minimum: 0
+  available_bytes:
+    type: integer
+    minimum: 0
+  finished_at:
+    type: string
+    format: date-time

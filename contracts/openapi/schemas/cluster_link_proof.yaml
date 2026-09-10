@@ -1,0 +1,65 @@
+type: object
+additionalProperties: false
+required:
+- version
+- transaction_id
+- cluster_id
+- proposal_digest
+- member_node_id
+- peer_node_id
+- local_address
+- peer_address
+- interface
+- local_mac
+- neighbour_mac
+- speed_mbps
+- mtu
+- observed_at
+- authority_signature
+properties:
+  version:
+    type: integer
+    const: 1
+  transaction_id:
+    type: string
+    format: uuid
+  cluster_id:
+    type: string
+    format: uuid
+  proposal_digest:
+    type: string
+    pattern: ^[a-f0-9]{64}$
+  member_node_id:
+    type: string
+    format: uuid
+  peer_node_id:
+    type: string
+    format: uuid
+  local_address:
+    type: string
+    format: ipv4
+  peer_address:
+    type: string
+    format: ipv4
+  interface:
+    type: string
+    minLength: 1
+    maxLength: 15
+  local_mac:
+    type: string
+    pattern: ^[A-Fa-f0-9]{2}(:[A-Fa-f0-9]{2}){5}$
+  neighbour_mac:
+    type: string
+    pattern: ^[A-Fa-f0-9]{2}(:[A-Fa-f0-9]{2}){5}$
+  speed_mbps:
+    type: integer
+    minimum: 200000
+  mtu:
+    type: integer
+    const: 9000
+  observed_at:
+    type: string
+    format: date-time
+  authority_signature:
+    type: string
+    pattern: ^[A-Za-z0-9_-]{86}$

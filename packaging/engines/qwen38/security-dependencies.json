@@ -1,0 +1,109 @@
+{
+  "source": "Ubuntu noble signed archive metadata, authenticated by apt and resolved 2026-09-09",
+  "packages": [
+    {
+      "filename": "libssl3t64_3.0.13-0ubuntu3.15_arm64.deb",
+      "url": "https://ports.ubuntu.com/ubuntu-ports/pool/main/o/openssl/libssl3t64_3.0.13-0ubuntu3.15_arm64.deb",
+      "sha256": "bf0b51fb18187c4e1b03900e1049dc219047080ff511aa3bf691dbe24e14d24a",
+      "bytes": 1836826,
+      "package": "libssl3t64",
+      "version": "3.0.13-0ubuntu3.15"
+    },
+    {
+      "filename": "dirmngr_2.4.4-2ubuntu17.6_arm64.deb",
+      "url": "https://ports.ubuntu.com/ubuntu-ports/pool/main/g/gnupg2/dirmngr_2.4.4-2ubuntu17.6_arm64.deb",
+      "sha256": "722648c368457942ecd0cf2f2138102773a9a935c77e49bc4363e9f9adaf3d85",
+      "bytes": 316344,
+      "package": "dirmngr",
+      "version": "2.4.4-2ubuntu17.6"
+    },
+    {
+      "filename": "gpgsm_2.4.4-2ubuntu17.6_arm64.deb",
+      "url": "https://ports.ubuntu.com/ubuntu-ports/pool/main/g/gnupg2/gpgsm_2.4.4-2ubuntu17.6_arm64.deb",
+      "sha256": "240530daee555b274f3f4fc0e0eaeacc514dc18c61077f28d0dd64531cc27903",
+      "bytes": 224818,
+      "package": "gpgsm",
+      "version": "2.4.4-2ubuntu17.6"
+    },
+    {
+      "filename": "gnupg-utils_2.4.4-2ubuntu17.6_arm64.deb",
+      "url": "https://ports.ubuntu.com/ubuntu-ports/pool/main/g/gnupg2/gnupg-utils_2.4.4-2ubuntu17.6_arm64.deb",
+      "sha256": "eef4d2b0493daef953398af09ffb1761b1385d06aff9180cb9e0b99920f74b3a",
+      "bytes": 106610,
+      "package": "gnupg-utils",
+      "version": "2.4.4-2ubuntu17.6"
+    },
+    {
+      "filename": "gpg-agent_2.4.4-2ubuntu17.6_arm64.deb",
+      "url": "https://ports.ubuntu.com/ubuntu-ports/pool/main/g/gnupg2/gpg-agent_2.4.4-2ubuntu17.6_arm64.deb",
+      "sha256": "bd63797c0f64d838c3e9feb47fd6ea41addbe333a2f6172c364035be0bff857a",
+      "bytes": 221426,
+      "package": "gpg-agent",
+      "version": "2.4.4-2ubuntu17.6"
+    },
+    {
+      "filename": "gpg_2.4.4-2ubuntu17.6_arm64.deb",
+      "url": "https://ports.ubuntu.com/ubuntu-ports/pool/main/g/gnupg2/gpg_2.4.4-2ubuntu17.6_arm64.deb",
+      "sha256": "59dc23fb52d0cdc67786a7865031f021b5e056c2547f2c1a858a6cbba8b2ec25",
+      "bytes": 548874,
+      "package": "gpg",
+      "version": "2.4.4-2ubuntu17.6"
+    },
+    {
+      "filename": "gpgconf_2.4.4-2ubuntu17.6_arm64.deb",
+      "url": "https://ports.ubuntu.com/ubuntu-ports/pool/main/g/gnupg2/gpgconf_2.4.4-2ubuntu17.6_arm64.deb",
+      "sha256": "b7b1bd7b81bc226444a60eb2175eb4801620d79ee1f33cebbef94b897c5b5a70",
+      "bytes": 103292,
+      "package": "gpgconf",
+      "version": "2.4.4-2ubuntu17.6"
+    },
+    {
+      "filename": "gnupg_2.4.4-2ubuntu17.6_all.deb",
+      "url": "https://ports.ubuntu.com/ubuntu-ports/pool/main/g/gnupg2/gnupg_2.4.4-2ubuntu17.6_all.deb",
+      "sha256": "d278c81e407d51dae2b7df30adc08ecd6a0acde5884fc5ba2d1ef107f0e8ab0b",
+      "bytes": 358890,
+      "package": "gnupg",
+      "version": "2.4.4-2ubuntu17.6"
+    },
+    {
+      "filename": "keyboxd_2.4.4-2ubuntu17.6_arm64.deb",
+      "url": "https://ports.ubuntu.com/ubuntu-ports/pool/main/g/gnupg2/keyboxd_2.4.4-2ubuntu17.6_arm64.deb",
+      "sha256": "33bfd8018afa1fb499723c598ec2507b15eeaa076db1024c9ee7e1fb5bd8fb24",
+      "bytes": 75936,
+      "package": "keyboxd",
+      "version": "2.4.4-2ubuntu17.6"
+    },
+    {
+      "filename": "gpgv_2.4.4-2ubuntu17.6_arm64.deb",
+      "url": "https://ports.ubuntu.com/ubuntu-ports/pool/main/g/gnupg2/gpgv_2.4.4-2ubuntu17.6_arm64.deb",
+      "sha256": "38b5965d0eba9d75ea1c946127f3df8ef66cf0b26801df766ef1c9c481b2bb15",
+      "bytes": 151008,
+      "package": "gpgv",
+      "version": "2.4.4-2ubuntu17.6"
+    },
+    {
+      "filename": "openssl_3.0.13-0ubuntu3.15_arm64.deb",
+      "url": "https://ports.ubuntu.com/ubuntu-ports/pool/main/o/openssl/openssl_3.0.13-0ubuntu3.15_arm64.deb",
+      "sha256": "818b4ab7092eb3365358ce41896ad08206b30cdb67445d7ec0503262893a0d95",
+      "bytes": 984680,
+      "package": "openssl",
+      "version": "3.0.13-0ubuntu3.15"
+    },
+    {
+      "filename": "gpg-wks-client_2.4.4-2ubuntu17.6_arm64.deb",
+      "url": "https://ports.ubuntu.com/ubuntu-ports/pool/main/g/gnupg2/gpg-wks-client_2.4.4-2ubuntu17.6_arm64.deb",
+      "sha256": "7fe591ed72701719c8bae0038a98990df9ab8a023f3e73a16f0b5d1e8399c231",
+      "bytes": 69694,
+      "package": "gpg-wks-client",
+      "version": "2.4.4-2ubuntu17.6"
+    },
+    {
+      "filename": "gnupg2_2.4.4-2ubuntu17.6_all.deb",
+      "url": "https://ports.ubuntu.com/ubuntu-ports/pool/universe/g/gnupg2/gnupg2_2.4.4-2ubuntu17.6_all.deb",
+      "sha256": "b11dfe8230bc121146f5d917ed38b654291348626174826a93214dd18498e647",
+      "bytes": 4748,
+      "package": "gnupg2",
+      "version": "2.4.4-2ubuntu17.6"
+    }
+  ]
+}

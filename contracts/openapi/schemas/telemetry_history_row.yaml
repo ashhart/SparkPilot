@@ -1,0 +1,85 @@
+type: object
+additionalProperties: false
+required:
+- observed_at
+- resolution
+- sample_count
+properties:
+  observed_at:
+    type: string
+    format: date-time
+  resolution:
+    type: string
+    enum:
+    - raw
+    - minute
+  sample_count:
+    type: integer
+    minimum: 1
+    description: How many ten-second samples this row represents.
+  cpu_utilisation:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+    maximum: 1
+  load_average_1m:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+  memory_total_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  memory_available_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  memory_pressure:
+    type:
+    - string
+    - 'null'
+    description: One of normal, warning, critical or emergency, or absent.
+  temperature_celsius:
+    type:
+    - number
+    - 'null'
+  accelerator_utilisation:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+    maximum: 1
+  accelerator_memory_used_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  accelerator_memory_total_bytes:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  active_requests:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+  queue_depth:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+  tokens_per_second:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+  time_to_first_token_ms:
+    type:
+    - number
+    - 'null'
+    minimum: 0

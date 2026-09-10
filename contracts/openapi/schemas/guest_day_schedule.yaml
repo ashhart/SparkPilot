@@ -1,0 +1,16 @@
+type: object
+additionalProperties: false
+required:
+- weekday
+- windows
+description: One weekday's allowed blocks, in the owner's time zone. Monday is 0.
+properties:
+  weekday:
+    type: integer
+    minimum: 0
+    maximum: 6
+  windows:
+    type: array
+    maxItems: 4
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/GuestHourWindow

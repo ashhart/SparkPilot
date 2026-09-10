@@ -1,0 +1,14 @@
+{
+  "architectures": [
+    "arm64"
+  ],
+  "max_concurrent_jobs": 1,
+  "platform": "macOS",
+  "sdk_versions": [
+    "macOS 26.6"
+  ],
+  "signing_available": false,
+  "simulators": [],
+  "worker_id": "33333333-3333-4333-8333-333333333333",
+  "xcode_version": "26.6"
+}

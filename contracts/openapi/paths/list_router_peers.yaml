@@ -1,0 +1,17 @@
+get:
+  tags:
+  - Inference
+  operationId: listRouterPeers
+  summary: Review current router peers and unconfirmed recipient key retirements
+  description: Owner-only inventory retains prior principal generations. Local rotation stops this source
+    using its old key but cannot revoke a copied key at another node; each destination requires an explicit
+    owner-authorized revocation or reenrollment. No remote retirement is represented as confirmed here.
+  responses:
+    '200':
+      description: Current and retained prior-generation peer records
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/RouterPeerInventory
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

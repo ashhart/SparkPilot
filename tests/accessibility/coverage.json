@@ -1,0 +1,113 @@
+{
+  "matrix": "PLAN §51.1 Accessibility",
+  "note": "Each clause is mapped to a test that exists in the repository or declared with the physical evidence it needs. Presentation seams are asserted rather than view source: a grep for .accessibilityLabel proves a modifier exists and nothing about what it says. Where a seam could be bypassed by a view that stops calling it, the clause also names the wiring: the file and the exact application, read from source the way tests/contract reads the router. A seam nothing calls is not coverage.",
+  "cases": {
+    "Every status colour has symbol/text equivalent.": {
+      "tests": [
+        "everyStatusHasASymbolAndTextEquivalent",
+        "aStatusThatNeedsAttentionSaysSoInItsToneNotOnlyItsWords"
+      ],
+      "wiring": {
+        "file": "apple/SparkApp/Shared/SparkDashboardCards.swift",
+        "requires": [
+          ".foregroundStyle(value.tone == .attention ? Color.orange : Color.primary)"
+        ],
+        "forbids": [
+          "String(localized: \"Needs attention\")\n                )"
+        ]
+      }
+    },
+    "Charts have accessible summaries.": {
+      "tests": [
+        "aSparklineSummarisesWhatItsShapeShows"
+      ],
+      "wiring": {
+        "file": "apple/SparkApp/Shared/SparkInferenceExperiencePanel.swift",
+        "requires": [
+          ".accessibilityValue(Text(SparkTrendAccessibility.summary(values)))"
+        ]
+      }
+    },
+    "Progress exposes percentage and stage.": {
+      "tests": [
+        "progressExposesPercentageAndStage"
+      ],
+      "wiring": {
+        "file": "apple/Packages/SparkDesignSystem/Sources/SparkDesignSystem/ActivityView.swift",
+        "requires": [
+          ".accessibilityLabel(\n                    Text(OperationPresentation.progressAccessibilityLabel(state))\n                )"
+        ]
+      }
+    },
+    "Animated connection lines have static semantic descriptions.": {
+      "tests": [
+        "theConnectionPulseCarriesNoMeaningOfItsOwn"
+      ],
+      "wiring": {
+        "file": "apple/SparkApp/Shared/FleetCardView.swift",
+        "requires": [
+          ".accessibilityLabel(Text(.connectionStatic(card.connection.label)))"
+        ]
+      }
+    },
+    "Terminal provides an alternate log/text experience where screen-reader support is limited.": {
+      "tests": [
+        "terminalOffersSelectableScreenReaderTextAndClosesTheSession"
+      ],
+      "wiring": {
+        "file": "apple/Packages/SparkProjects/Sources/SparkProjects/ProjectTerminalView.swift",
+        "requires": [
+          "model.terminalDisplayMode == .accessibleText",
+          ".textSelection(.enabled)",
+          ".accessibilityHint(ProjectAccessibility.terminalTextAlternative)"
+        ]
+      }
+    },
+    "Diff viewer announces file, hunk, additions, and removals.": {
+      "tests": [
+        "aDiffAnnouncesItsFileHunksAndChanges",
+        "diffAccessibilityNamesTheFileHunksAdditionsAndRemovals"
+      ],
+      "wiring": {
+        "file": "apple/Packages/SparkProjects/Sources/SparkProjects/ProjectChangeViews.swift",
+        "requires": [
+          ".accessibilityLabel(ProjectAccessibility.diffLine(line))",
+          ".accessibilityLabel(ProjectAccessibility.diffSummary(file))"
+        ]
+      }
+    },
+    "Focus order follows visual order.": {
+      "note": "The declared order is asserted against the card's visual order. Whether VoiceOver honours it on a real screen is the physical run below.",
+      "tests": [
+        "focusOrderMatchesTheOrderTheCardIsDrawnIn"
+      ]
+    },
+    "Confirmation buttons name the resource and action.": {
+      "tests": [
+        "everyConsequentialConfirmationNamesItsResourceAndAction"
+      ]
+    }
+  },
+  "physical": {
+    "VoiceOver rotor and reading order": {
+      "reason": "VoiceOver is a system service and cannot be driven from a unit test.",
+      "evidence_command": "On iPhone, iPad and Mac, turn VoiceOver on and traverse Add Spark, Fleet, Models, Chat and the support-bundle sheet with the rotor.",
+      "expected_evidence": "Every control is reachable and announced with its resource and action, the reading order matches the visual order, and no element announces only its type."
+    },
+    "Dynamic Type at the largest accessibility size": {
+      "reason": "Layout under a real text size needs a real screen.",
+      "evidence_command": "Set Larger Accessibility Sizes to maximum and open every primary screen on iPhone and iPad.",
+      "expected_evidence": "No copy truncates, no control becomes unreachable, and headers stack rather than compress."
+    },
+    "Contrast": {
+      "reason": "Needs the system Increase Contrast setting and a measured ratio.",
+      "evidence_command": "Enable Increase Contrast and measure the foreground/background ratio of every status colour and its text.",
+      "expected_evidence": "Every pairing meets WCAG AA, and every state remains distinguishable with colour filters on."
+    },
+    "Keyboard-only navigation": {
+      "reason": "Needs a hardware keyboard on iPad and Mac.",
+      "evidence_command": "With a hardware keyboard only, complete Add Spark, start a model, and export a support bundle.",
+      "expected_evidence": "Every step is reachable by Tab and arrow keys, focus is always visible, and no action requires a pointer."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+type: object
+additionalProperties: false
+required:
+- evidence
+- worker_signature
+properties:
+  evidence:
+    $ref: ../../openapi.yaml#/components/schemas/BuildResultEvidence
+  worker_signature:
+    type: string
+    minLength: 86
+    maxLength: 86

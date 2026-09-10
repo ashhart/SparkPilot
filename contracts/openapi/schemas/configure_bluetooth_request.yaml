@@ -1,0 +1,19 @@
+type: object
+additionalProperties: false
+required:
+- action
+properties:
+  action:
+    type: string
+    enum:
+    - power_on
+    - power_off
+    - start_discovery
+    - stop_discovery
+    - pair
+    - remove
+  device_address:
+    type:
+    - string
+    - 'null'
+    pattern: ^([A-Fa-f0-9]{2}:){5}[A-Fa-f0-9]{2}$

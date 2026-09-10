@@ -1,0 +1,23 @@
+post:
+  tags:
+  - Inference
+  operationId: createOpenAIResponse
+  summary: Allowlisted OpenAI-compatible Responses endpoint
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/OpenAIResponseRequest
+  responses:
+    '200':
+      description: Response or SSE events depending on stream
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/OpenAIResponse
+        text/event-stream:
+          schema:
+            type: string
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

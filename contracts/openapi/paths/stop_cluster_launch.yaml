@@ -1,0 +1,23 @@
+post:
+  tags:
+  - Cluster
+  operationId: stopClusterLaunch
+  summary: Stop this member's half of an existing distributed launch
+  parameters:
+  - name: launch_id
+    in: path
+    required: true
+    schema:
+      type: string
+      format: uuid
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  responses:
+    '200':
+      description: Durable stopped launch state
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ClusterLaunchStatus
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

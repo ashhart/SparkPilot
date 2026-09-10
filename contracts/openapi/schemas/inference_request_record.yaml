@@ -1,0 +1,79 @@
+type: object
+additionalProperties: false
+required:
+- attempt_id
+- request_id
+- caller_device_id
+- node_id
+- model_id
+- profile_id
+- started_at
+- finished_at
+- outcome
+- failure_code
+- admission_ms
+- first_frame_ms
+- elapsed_ms
+- prompt_tokens
+- completion_tokens
+- provenance
+properties:
+  attempt_id:
+    type: string
+    format: uuid
+  request_id:
+    type: string
+    format: uuid
+  caller_device_id:
+    type: string
+    format: uuid
+  node_id:
+    type: string
+    format: uuid
+  model_id:
+    type: string
+  profile_id:
+    type:
+    - string
+    - 'null'
+  started_at:
+    type: integer
+    format: int64
+  finished_at:
+    type:
+    - integer
+    - 'null'
+    format: int64
+  outcome:
+    $ref: ../../openapi.yaml#/components/schemas/InferenceRequestOutcome
+  failure_code:
+    type:
+    - string
+    - 'null'
+  admission_ms:
+    type: number
+    minimum: 0
+  first_frame_ms:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+  elapsed_ms:
+    type:
+    - number
+    - 'null'
+    minimum: 0
+  prompt_tokens:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  completion_tokens:
+    type:
+    - integer
+    - 'null'
+    minimum: 0
+  provenance:
+    oneOf:
+    - $ref: ../../openapi.yaml#/components/schemas/InferenceRequestProvenance
+    - type: 'null'

@@ -1,0 +1,7 @@
+{
+  "note": "Files that format a number outside the reader's locale on purpose. A canonical timestamp and a diagnostic value must be invariant: a wire format that changed with the device's region would not round-trip, and a log line with a comma decimal separator is harder to read, not easier. Declared per file with what it formats and why, so the general rule stays a rule.",
+  "files": {
+    "apple/Packages/SparkCore/Sources/SparkCore/RFC3339.swift": "Writes the canonical RFC 3339 timestamp the runtime parses and key validity windows are compared against. The format is the protocol's, not the reader's. Moved here from SparkBootstrap so the API layer can read operation timestamps with it.",
+    "apple/Packages/SparkLanguageModel/Sources/SparkLanguageModel/SparkFoundationEventMapper.swift": "Builds the §39.8 diagnostic dictionary. Feature code reads typed accessors; these strings exist for logs and diagnostics and are never shown to an owner."
+  }
+}

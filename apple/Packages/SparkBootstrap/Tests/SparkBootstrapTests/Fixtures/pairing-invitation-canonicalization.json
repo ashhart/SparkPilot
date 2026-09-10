@@ -1,0 +1,164 @@
+{
+  "$comment": "Shared canonicalisation fixture for the Spark pairing invitation. The runtime signs this form (runtime/crates/sparkd/src/pairing.rs, InvitationPayload::canonical_without_signature) and the Apple app must rebuild it exactly (SparkBootstrap/FirstOwnerPairing.swift, PairingInvitationPayload.canonicalBytes) or it cannot verify an invitation it was genuinely issued. This form is deliberately NOT the one the release manifest uses: see the algorithm note below.",
+  "algorithm": [
+    "drop nothing: the signature member is present with a null value",
+    "keep the struct's declaration order; do NOT sort members by key",
+    "omit an absent optional member entirely (cluster_id, local_endpoint, remote_endpoint)",
+    "serialise compactly with comma and colon separators and no whitespace",
+    "escape only the quote, the backslash, and control characters below U+0020",
+    "never escape the solidus; emit non-ASCII as raw UTF-8"
+  ],
+  "$why_this_differs_from_the_manifest": "The manifest is signed over sorted keys with nulls dropped; this is signed over declaration order with signature:null present. Two canonical forms in one system is not a good state of affairs, and unifying them is a contract change that would invalidate every invitation already in flight. It is recorded as an open item in ADR-019. What matters is that both sides reproduce the form the runtime actually signs, rather than the one that would be tidier.",
+  "cases": [
+    {
+      "name": "minimal_owner_invitation",
+      "why": "The shape the runtime actually mints for a first owner. `signature` is present and null: the Rust struct does not mark it skip_serializing_if, so an implementation that omits the member signs different bytes and every genuine invitation is rejected.",
+      "invitation": {
+        "version": 1,
+        "node_id": "ca890ed7-7c8c-4b2c-9218-b77ef24f569a",
+        "authority_fingerprint": "1b2c3d4e5f60718293a4b5c6d7e8f90011223344556677889900112233445566",
+        "invitation_id": "d0483950-f543-443e-819b-78d06b620186",
+        "nonce": "_gauBKJ2S7qD4YEg3YXkJLJ9pVCy4rc-PV4yJSGP3_Q",
+        "role": "owner",
+        "expires_at": "2026-08-27T10:05:00Z",
+        "signature": null
+      },
+      "canonical": "{\"version\":1,\"node_id\":\"ca890ed7-7c8c-4b2c-9218-b77ef24f569a\",\"authority_fingerprint\":\"1b2c3d4e5f60718293a4b5c6d7e8f90011223344556677889900112233445566\",\"invitation_id\":\"d0483950-f543-443e-819b-78d06b620186\",\"nonce\":\"_gauBKJ2S7qD4YEg3YXkJLJ9pVCy4rc-PV4yJSGP3_Q\",\"role\":\"owner\",\"expires_at\":\"2026-08-27T10:05:00Z\",\"signature\":null}",
+      "canonical_sha256": "fa4c5fd8e5a910d6da7a0c5d8f3fd46325148ed91f9af259443880f99c565b22"
+    },
+    {
+      "name": "every_optional_present",
+      "why": "cluster_id, local_endpoint and remote_endpoint are skip_serializing_if optionals, so when they are present they appear in declaration order between node_id and authority_fingerprint — not sorted, and not at the end.",
+      "invitation": {
+        "version": 1,
+        "node_id": "ca890ed7-7c8c-4b2c-9218-b77ef24f569a",
+        "cluster_id": "7f1e2d3c-4b5a-4968-8776-655443322110",
+        "local_endpoint": "https://spark-a1b2.local:7443",
+        "remote_endpoint": "https://spark.example.invalid/path?a=1&b=2",
+        "authority_fingerprint": "1b2c3d4e5f60718293a4b5c6d7e8f90011223344556677889900112233445566",
+        "invitation_id": "d0483950-f543-443e-819b-78d06b620186",
+        "nonce": "_gauBKJ2S7qD4YEg3YXkJLJ9pVCy4rc-PV4yJSGP3_Q",
+        "role": "owner",
+        "expires_at": "2026-08-27T10:05:00Z",
+        "signature": null
+      },
+      "canonical": "{\"version\":1,\"node_id\":\"ca890ed7-7c8c-4b2c-9218-b77ef24f569a\",\"cluster_id\":\"7f1e2d3c-4b5a-4968-8776-655443322110\",\"local_endpoint\":\"https://spark-a1b2.local:7443\",\"remote_endpoint\":\"https://spark.example.invalid/path?a=1&b=2\",\"authority_fingerprint\":\"1b2c3d4e5f60718293a4b5c6d7e8f90011223344556677889900112233445566\",\"invitation_id\":\"d0483950-f543-443e-819b-78d06b620186\",\"nonce\":\"_gauBKJ2S7qD4YEg3YXkJLJ9pVCy4rc-PV4yJSGP3_Q\",\"role\":\"owner\",\"expires_at\":\"2026-08-27T10:05:00Z\",\"signature\":null}",
+      "canonical_sha256": "b07b3ec6022cc94c943e1cf94b0de9acae8aaf28b0d7ee2fc7c5ab2fb559224b"
+    },
+    {
+      "name": "escaping_in_an_endpoint",
+      "why": "An endpoint is a free string. The quote and the backslash are escaped; the solidus never is, and a tab is \\t rather than \\u0009. An implementation that escapes the solidus produces bytes the node did not sign.",
+      "invitation": {
+        "version": 1,
+        "node_id": "ca890ed7-7c8c-4b2c-9218-b77ef24f569a",
+        "local_endpoint": "https://spark.local/\"quoted\"\\and\\backslash\tand\ttabs",
+        "authority_fingerprint": "1b2c3d4e5f60718293a4b5c6d7e8f90011223344556677889900112233445566",
+        "invitation_id": "d0483950-f543-443e-819b-78d06b620186",
+        "nonce": "_gauBKJ2S7qD4YEg3YXkJLJ9pVCy4rc-PV4yJSGP3_Q",
+        "role": "owner",
+        "expires_at": "2026-08-27T10:05:00Z",
+        "signature": null
+      },
+      "canonical": "{\"version\":1,\"node_id\":\"ca890ed7-7c8c-4b2c-9218-b77ef24f569a\",\"local_endpoint\":\"https://spark.local/\\\"quoted\\\"\\\\and\\\\backslash\\tand\\ttabs\",\"authority_fingerprint\":\"1b2c3d4e5f60718293a4b5c6d7e8f90011223344556677889900112233445566\",\"invitation_id\":\"d0483950-f543-443e-819b-78d06b620186\",\"nonce\":\"_gauBKJ2S7qD4YEg3YXkJLJ9pVCy4rc-PV4yJSGP3_Q\",\"role\":\"owner\",\"expires_at\":\"2026-08-27T10:05:00Z\",\"signature\":null}",
+      "canonical_sha256": "eff3badfbcbadb0fbf97266264fea6d81bbcb5893cc86840e713578caf28ff62"
+    },
+    {
+      "name": "shared_access_invitation_with_routes_and_limits",
+      "why": "A version 2 shared-access invitation. The routes, the TLS pin, the node name and the guest limits all sit inside the signature, before the null signature member, so a version 1 payload still signs exactly the bytes it always did and neither side can be handed altered connection details.",
+      "invitation": {
+        "version": 2,
+        "node_id": "ca890ed7-7c8c-4b2c-9218-b77ef24f569a",
+        "local_endpoint": "https://alex-s-Spark-8cd8b1ab.local:7443",
+        "remote_endpoint": "https://spark-example.tail1234.ts.net:7443",
+        "authority_fingerprint": "1b2c3d4e5f60718293a4b5c6d7e8f90011223344556677889900112233445566",
+        "invitation_id": "f2d1c0b9-a897-4655-8443-2211ffeeddcc",
+        "nonce": "_gauBKJ2S7qD4YEg3YXkJLJ9pVCy4rc-PV4yJSGP3_Q",
+        "issued_by_device_id": "3f5a6c7d-8e9f-4a0b-9c1d-2e3f4a5b6c7d",
+        "role": "guest",
+        "expires_at": "2026-09-12T18:00:00Z",
+        "node_name": "Alex's Spark",
+        "tls_fingerprint": "aabbccddeeff00112233445566778899aabbccddeeff00112233445566778899",
+        "remote_hostname": "spark-example.tail1234.ts.net",
+        "shared_access": {
+          "display_name": "Sam",
+          "allowed_models": [
+            "qwen3-8b",
+            "gemma3-12b"
+          ],
+          "allowed_hours": [
+            {
+              "weekday": 0,
+              "windows": [
+                {
+                  "start_minute": 1080,
+                  "end_minute": 1320
+                }
+              ]
+            },
+            {
+              "weekday": 1,
+              "windows": [
+                {
+                  "start_minute": 1080,
+                  "end_minute": 1320
+                }
+              ]
+            },
+            {
+              "weekday": 2,
+              "windows": [
+                {
+                  "start_minute": 1080,
+                  "end_minute": 1320
+                }
+              ]
+            },
+            {
+              "weekday": 3,
+              "windows": [
+                {
+                  "start_minute": 1080,
+                  "end_minute": 1320
+                }
+              ]
+            },
+            {
+              "weekday": 4,
+              "windows": [
+                {
+                  "start_minute": 1080,
+                  "end_minute": 1320
+                }
+              ]
+            },
+            {
+              "weekday": 5,
+              "windows": [
+                {
+                  "start_minute": 600,
+                  "end_minute": 1320
+                }
+              ]
+            },
+            {
+              "weekday": 6,
+              "windows": [
+                {
+                  "start_minute": 600,
+                  "end_minute": 1320
+                }
+              ]
+            }
+          ],
+          "time_zone": "Europe/London",
+          "max_concurrent_requests": 1,
+          "daily_token_budget": 20000,
+          "expires_at": 1790000000
+        },
+        "signature": null
+      },
+      "canonical": "{\"version\":2,\"node_id\":\"ca890ed7-7c8c-4b2c-9218-b77ef24f569a\",\"local_endpoint\":\"https://alex-s-Spark-8cd8b1ab.local:7443\",\"remote_endpoint\":\"https://spark-example.tail1234.ts.net:7443\",\"authority_fingerprint\":\"1b2c3d4e5f60718293a4b5c6d7e8f90011223344556677889900112233445566\",\"invitation_id\":\"f2d1c0b9-a897-4655-8443-2211ffeeddcc\",\"nonce\":\"_gauBKJ2S7qD4YEg3YXkJLJ9pVCy4rc-PV4yJSGP3_Q\",\"issued_by_device_id\":\"3f5a6c7d-8e9f-4a0b-9c1d-2e3f4a5b6c7d\",\"role\":\"guest\",\"expires_at\":\"2026-09-12T18:00:00Z\",\"node_name\":\"Alex's Spark\",\"tls_fingerprint\":\"aabbccddeeff00112233445566778899aabbccddeeff00112233445566778899\",\"remote_hostname\":\"spark-example.tail1234.ts.net\",\"shared_access\":{\"display_name\":\"Sam\",\"allowed_models\":[\"qwen3-8b\",\"gemma3-12b\"],\"allowed_hours\":[{\"weekday\":0,\"windows\":[{\"start_minute\":1080,\"end_minute\":1320}]},{\"weekday\":1,\"windows\":[{\"start_minute\":1080,\"end_minute\":1320}]},{\"weekday\":2,\"windows\":[{\"start_minute\":1080,\"end_minute\":1320}]},{\"weekday\":3,\"windows\":[{\"start_minute\":1080,\"end_minute\":1320}]},{\"weekday\":4,\"windows\":[{\"start_minute\":1080,\"end_minute\":1320}]},{\"weekday\":5,\"windows\":[{\"start_minute\":600,\"end_minute\":1320}]},{\"weekday\":6,\"windows\":[{\"start_minute\":600,\"end_minute\":1320}]}],\"time_zone\":\"Europe/London\",\"max_concurrent_requests\":1,\"daily_token_budget\":20000,\"expires_at\":1790000000},\"signature\":null}",
+      "canonical_sha256": "c12611958d75b2f9e226f76d74adccc9cf2818c88ddd90cdaf40f02dced3e06c"
+    }
+  ]
+}

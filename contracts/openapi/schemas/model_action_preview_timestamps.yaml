@@ -1,0 +1,26 @@
+type: object
+additionalProperties: false
+required:
+- system_observed_at
+- active_inference_observed_at
+- recipe_authority_observed_at
+- cluster_membership_observed_at
+properties:
+  system_observed_at:
+    type: string
+    format: date-time
+  active_inference_observed_at:
+    type:
+    - string
+    - 'null'
+    format: date-time
+  recipe_authority_observed_at:
+    type:
+    - string
+    - 'null'
+    format: date-time
+  cluster_membership_observed_at:
+    type:
+    - string
+    - 'null'
+    format: date-time

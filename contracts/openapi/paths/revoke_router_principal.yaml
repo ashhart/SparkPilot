@@ -1,0 +1,24 @@
+parameters:
+- name: principal_id
+  in: path
+  required: true
+  schema:
+    type: string
+    format: uuid
+post:
+  tags:
+  - Inference
+  operationId: revokeRouterPrincipal
+  summary: Revoke a router and drain its already accepted work
+  responses:
+    '200':
+      description: Revoke a router and drain its already accepted work
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/RevokeRouterPrincipalResult
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence

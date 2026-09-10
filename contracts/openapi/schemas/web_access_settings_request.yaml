@@ -1,0 +1,44 @@
+type: object
+additionalProperties: false
+required:
+- policy
+- search_backend
+properties:
+  policy:
+    type: string
+    enum:
+    - 'off'
+    - automations
+    - automations_and_chats
+  harness_access:
+    type: boolean
+    default: false
+  allow_domains:
+    type: array
+    maxItems: 64
+    items:
+      type: string
+      maxLength: 253
+  deny_domains:
+    type: array
+    maxItems: 64
+    items:
+      type: string
+      maxLength: 253
+  search_backend:
+    type: string
+    enum:
+    - duckduckgo
+    - searxng
+    - brave
+    - disabled
+  searxng_url:
+    type:
+    - string
+    - 'null'
+    maxLength: 300
+  brave_credential_id:
+    type:
+    - string
+    - 'null'
+    format: uuid

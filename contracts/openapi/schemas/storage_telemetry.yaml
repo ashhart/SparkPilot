@@ -1,0 +1,16 @@
+type: object
+additionalProperties: false
+required:
+- total_bytes
+- free_bytes
+- used_bytes
+properties:
+  total_bytes:
+    type: integer
+    minimum: 0
+  free_bytes:
+    type: integer
+    minimum: 0
+  used_bytes:
+    type: integer
+    minimum: 0

@@ -1,0 +1,52 @@
+type: object
+additionalProperties: false
+required:
+- observed_at
+- available
+- configuration_owner
+- automatic_topology_available
+- takeover_available
+- address_evidence_available
+- route_evidence_available
+- netplan_evidence_available
+- netplan_sources
+- ports
+properties:
+  observed_at:
+    type: string
+    format: date-time
+  available:
+    type: boolean
+  unavailable_reason:
+    type:
+    - string
+    - 'null'
+    maxLength: 240
+  configuration_owner:
+    type: string
+    enum:
+    - unconfigured
+    - externally_configured
+    - spark_runtime_managed
+  automatic_topology_available:
+    type: boolean
+  takeover_available:
+    type: boolean
+  address_evidence_available:
+    type: boolean
+  route_evidence_available:
+    type: boolean
+  netplan_evidence_available:
+    type: boolean
+  netplan_sources:
+    type: array
+    maxItems: 64
+    items:
+      type: string
+      minLength: 1
+      maxLength: 255
+  ports:
+    type: array
+    maxItems: 16
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/FabricPortStatus

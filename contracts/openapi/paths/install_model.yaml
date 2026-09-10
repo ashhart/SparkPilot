@@ -1,0 +1,23 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/ModelId
+post:
+  tags:
+  - Models
+  operationId: installModel
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/InstallModelRequest
+  responses:
+    '202':
+      description: Installation operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,14 @@
+get:
+  tags:
+  - Network
+  operationId: getNetworkInterfaces
+  summary: Return NetworkManager interface state and bounded reachability checks
+  responses:
+    '200':
+      description: Current network interfaces and their per-interface reachability
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/NetworkInterfacesSnapshot
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

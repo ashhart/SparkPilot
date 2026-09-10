@@ -1,0 +1,26 @@
+type: object
+additionalProperties: false
+required:
+- max_tool_calls
+- max_fetch_bytes
+- max_run_bytes
+- max_run_seconds
+- max_request_seconds
+properties:
+  max_tool_calls:
+    type: integer
+    const: 8
+  max_fetch_bytes:
+    type: integer
+    format: int64
+    const: 2097152
+  max_run_bytes:
+    type: integer
+    format: int64
+    const: 8388608
+  max_run_seconds:
+    type: integer
+    const: 120
+  max_request_seconds:
+    type: integer
+    const: 20

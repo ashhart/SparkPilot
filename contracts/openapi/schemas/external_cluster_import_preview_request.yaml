@@ -1,0 +1,18 @@
+type: object
+additionalProperties: false
+required:
+- name
+- member_node_ids
+properties:
+  name:
+    type: string
+    minLength: 1
+    maxLength: 120
+  member_node_ids:
+    type: array
+    minItems: 2
+    maxItems: 64
+    uniqueItems: true
+    items:
+      type: string
+      format: uuid

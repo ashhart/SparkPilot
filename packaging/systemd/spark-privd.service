@@ -1,0 +1,71 @@
+[Unit]
+Description=Spark Runtime Privileged Helper
+Documentation=https://example.invalid/spark-runtime
+After=local-fs.target docker.service
+Before=sparkd.service
+
+[Service]
+Type=notify
+User=root
+# The helper runs as root but takes the service account's group, so the
+# runtime directory and socket are root:sparkd. Without this the socket is
+# root:root 0660 and sparkd cannot open it at all — the peer-credential check
+# would never even run. Ownership stays with root; group membership only
+# grants the chance to connect.
+Group=sparkd
+ExecStart=/usr/lib/spark-runtime/spark-privd \
+    --socket /run/spark-runtime/spark-privd.sock \
+    --allowed-user sparkd \
+    --socket-group sparkd
+Restart=on-failure
+RestartSec=3s
+WatchdogSec=30s
+
+# This unit is the sole owner of /run/spark-runtime. sparkd deliberately does
+# not declare the same RuntimeDirectory: two units declaring one directory
+# under different accounts means whichever starts last silently re-chowns it,
+# and whichever stops last removes the socket from under the other.
+RuntimeDirectory=spark-runtime
+RuntimeDirectoryMode=0750
+RuntimeDirectoryPreserve=restart
+
+# The rollback journal cannot live below sparkd's service-owned StateDirectory.
+# This parent is created for the root helper alone and stays inaccessible to
+# the unprivileged daemon that requests typed network changes.
+StateDirectory=spark-privd
+StateDirectoryMode=0700
+
+# CAP_NET_RAW is reserved for the typed ARP duplicate-address probe and
+# CAP_NET_ADMIN for the transaction-owned CX-7 member firewall only.
+NoNewPrivileges=yes
+CapabilityBoundingSet=CAP_NET_RAW CAP_NET_ADMIN
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+# ProtectHome leaves /root as an empty 0000 directory, so every docker CLI
+# child would prefix its output with a config-file permission warning. Keep
+# the CLI's config home inside the helper's own state directory instead.
+Environment=DOCKER_CONFIG=/var/lib/spark-privd/docker
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+RestrictSUIDSGID=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+RestrictRealtime=yes
+RemoveIPC=yes
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK AF_PACKET
+ReadWritePaths=/run/spark-runtime /var/lib/spark-runtime /var/lib/spark-privd /etc/spark-runtime
+# The typed CPU cooling operation may lower only per-policy frequency ceilings.
+ReadWritePaths=-/sys/devices/system/cpu/cpufreq
+ReadWritePaths=-/proc/sys/vm/min_free_kbytes -/proc/sys/vm/watermark_scale_factor
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

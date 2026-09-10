@@ -1,0 +1,21 @@
+get:
+  tags:
+  - Cluster
+  operationId: getClusterLaunch
+  summary: Read one durable distributed launch state
+  parameters:
+  - name: launch_id
+    in: path
+    required: true
+    schema:
+      type: string
+      format: uuid
+  responses:
+    '200':
+      description: Durable local launch state
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ClusterLaunchStatus
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

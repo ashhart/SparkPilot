@@ -1,0 +1,31 @@
+type: object
+additionalProperties: false
+required:
+- proposal
+- grants
+- proofs
+- collectives
+properties:
+  proposal:
+    $ref: ../../openapi.yaml#/components/schemas/ClusterProposal
+  grants:
+    type: array
+    minItems: 2
+    maxItems: 8
+    uniqueItems: true
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ClusterDeviceGrant
+  proofs:
+    type: array
+    minItems: 2
+    maxItems: 8
+    uniqueItems: true
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ClusterLinkProof
+  collectives:
+    type: array
+    minItems: 2
+    maxItems: 8
+    uniqueItems: true
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ClusterCollectiveProof

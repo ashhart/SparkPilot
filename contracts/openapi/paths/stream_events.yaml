@@ -1,0 +1,20 @@
+get:
+  tags:
+  - Operations
+  operationId: streamEvents
+  summary: Server-Sent Events stream
+  parameters:
+  - name: Last-Event-ID
+    in: header
+    required: false
+    schema:
+      type: string
+  responses:
+    '200':
+      description: SSE stream
+      content:
+        text/event-stream:
+          schema:
+            type: string
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

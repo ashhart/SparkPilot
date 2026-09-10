@@ -1,0 +1,14 @@
+get:
+  tags:
+  - Cluster
+  operationId: getClusterDescriptor
+  summary: Return this Spark's own trusted cluster compatibility facts
+  responses:
+    '200':
+      description: Local member descriptor over the signed pinned route
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ClusterMemberDescriptor
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

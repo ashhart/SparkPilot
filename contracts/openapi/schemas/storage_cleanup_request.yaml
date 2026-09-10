@@ -1,0 +1,16 @@
+type: object
+additionalProperties: false
+required:
+- partial_downloads
+- unused_blobs
+- stopped_containers
+- unused_images
+properties:
+  partial_downloads:
+    type: boolean
+  unused_blobs:
+    type: boolean
+  stopped_containers:
+    type: boolean
+  unused_images:
+    type: boolean

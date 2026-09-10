@@ -1,0 +1,26 @@
+post:
+  tags:
+  - Diagnostics
+  operationId: exportDiagnosticsBundle
+  summary: Export one redacted support bundle
+  description: Returns the bundle in the response and writes nothing to the node. Requires an owner or
+    administrator device signature and a fresh user-presence proof. Optional sensitive categories are
+    included only when named in the request. The response is not persisted anywhere on the Spark, so this
+    is a read with a body rather than a durable mutation and it carries no idempotency key.
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: false
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/DiagnosticsExportRequest
+  responses:
+    '200':
+      description: The bundle and its manifest
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/DiagnosticsBundle
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,43 @@
+{
+  "post": {
+    "tags": [
+      "Household"
+    ],
+    "operationId": "setHouseholdMember",
+    "summary": "Give or remove household access for a paired device",
+    "responses": {
+      "200": {
+        "description": "Give or remove household access for a paired device",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../openapi.yaml#/components/schemas/HouseholdChange"
+            }
+          }
+        }
+      },
+      "default": {
+        "$ref": "../../openapi.yaml#/components/responses/Error"
+      }
+    },
+    "parameters": [
+      {
+        "$ref": "../../openapi.yaml#/components/parameters/IdempotencyKey"
+      },
+      {
+        "$ref": "../../openapi.yaml#/components/parameters/UserPresence"
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../../openapi.yaml#/components/schemas/HouseholdMemberRequest"
+          }
+        }
+      }
+    },
+    "description": "Owner or administrator with fresh user presence only. Joining grants access to all existing and future household notes. Removing access immediately stops new reads; copies already saved by members cannot be recalled."
+  }
+}

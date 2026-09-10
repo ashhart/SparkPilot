@@ -1,0 +1,41 @@
+type: object
+additionalProperties: false
+required:
+- version
+- transaction_id
+- cluster_id
+- name
+- coordinator_node_id
+- owner_device_id
+- expires_at
+- members
+properties:
+  version:
+    type: integer
+    const: 1
+  transaction_id:
+    type: string
+    format: uuid
+  cluster_id:
+    type: string
+    format: uuid
+  name:
+    type: string
+    minLength: 1
+    maxLength: 120
+  coordinator_node_id:
+    type: string
+    format: uuid
+  owner_device_id:
+    type: string
+    format: uuid
+  expires_at:
+    type: string
+    format: date-time
+  members:
+    type: array
+    minItems: 2
+    maxItems: 2
+    uniqueItems: true
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/ClusterMemberDescriptor

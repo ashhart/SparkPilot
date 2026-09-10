@@ -1,0 +1,61 @@
+type: object
+required:
+- model
+- messages
+properties:
+  thinking_token_budget:
+    type: integer
+    minimum: 0
+    maximum: 8192
+  model:
+    type: string
+  messages:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required:
+      - role
+      - content
+      properties:
+        role:
+          type: string
+          enum:
+          - system
+          - developer
+          - user
+          - assistant
+          - tool
+        content: {}
+        name:
+          type: string
+        tool_call_id:
+          type: string
+  stream:
+    type: boolean
+    default: false
+  temperature:
+    type: number
+    minimum: 0
+    maximum: 2
+  top_p:
+    type: number
+    minimum: 0
+    maximum: 1
+  max_tokens:
+    type: integer
+    minimum: 1
+  tools:
+    type: array
+    items:
+      type: object
+      additionalProperties: true
+  tool_choice: {}
+  response_format:
+    type: object
+    additionalProperties: true
+  user:
+    type: string
+  metadata:
+    type: object
+    additionalProperties: true

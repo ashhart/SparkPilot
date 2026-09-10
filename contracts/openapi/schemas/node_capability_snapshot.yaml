@@ -1,0 +1,50 @@
+type: object
+additionalProperties: false
+required:
+- protocol_version
+- node_id
+- generation
+- observed_at
+- valid_for_milliseconds
+- deployments
+- active_reservations
+- capacity_available
+- exclusion_codes
+properties:
+  protocol_version:
+    type: integer
+    format: int64
+    minimum: 0
+    maximum: 4294967295
+    const: 1
+  node_id:
+    type: string
+    format: uuid
+  generation:
+    type: string
+    format: uuid
+  observed_at:
+    type: integer
+    format: int64
+  valid_for_milliseconds:
+    type: integer
+    format: int64
+    minimum: 0
+    maximum: 4294967295
+    description: Measure freshness with the receiver monotonic clock after receipt; never trust sender
+      wall-clock age.
+  deployments:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/DeploymentIdentity
+  active_reservations:
+    type: integer
+    format: int64
+    minimum: 0
+    maximum: 4294967295
+  capacity_available:
+    type: boolean
+  exclusion_codes:
+    type: array
+    items:
+      type: string

@@ -1,0 +1,25 @@
+parameters:
+- name: attempt_id
+  in: path
+  required: true
+  schema:
+    type: string
+    format: uuid
+post:
+  tags:
+  - Inference
+  operationId: cancelInferenceRequest
+  summary: Ask the live proxy to disconnect this caller's attempt
+  description: Cancellation does not confirm backend termination. Attempts from an earlier runtime process
+    cannot be cancelled through a lost live handle.
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  responses:
+    '200':
+      description: Cancellation request or previously terminal outcome
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/CancelInferenceRequestResult
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

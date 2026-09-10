@@ -1,0 +1,61 @@
+apiVersion: spark.runtime/v1
+kind: ModelRecipe
+metadata:
+  id: example/example-32b-instruct
+  revision: 2026-08-25.1
+  displayName: Example 32B Instruct
+  publisher: Example Publisher
+  description: Replace with an approved model and immutable source revision.
+source:
+  provider: huggingface
+  repository: example/example-32b-instruct
+  revision: 14d7b2f3d8f8f63e000000000000000000000000
+  gated: false
+  trustRemoteCode: false
+  licenceURL: https://example.invalid/licence
+engine:
+  recipe: vllm-dgx-spark-2026-08
+  image: nvcr.io/nvidia/vllm@sha256:deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef  # placeholder digest; an all-zero one is refused by the schema and the runtime
+  servedName: example-32b
+  task: generate
+  tokenizerMode: auto
+capabilities:
+  chat: true
+  reasoning: true
+  toolCalling: true
+  parallelToolCalling: false
+  guidedGeneration: true
+  vision: false
+  embeddings: false
+  audioInput: false
+memory:
+  minimumSystemReserveBytes: 23622320128
+  expectedWeightBytes: 68719476736
+  expectedEngineOverheadBytes: 8589934592
+  measurementConfidence: curated
+profiles:
+  - id: balanced-16k
+    displayName: Balanced 16K
+    maxModelLength: 16384
+    maxSequences: 4
+    maxBatchedTokens: 8192
+    gpuMemoryUtilisation: 0.72
+    expectedPeakBytes: 101000000000
+    idlePolicy: unload_after_30m
+  - id: long-32k
+    displayName: Long Context 32K
+    maxModelLength: 32768
+    maxSequences: 2
+    maxBatchedTokens: 8192
+    gpuMemoryUtilisation: 0.78
+    expectedPeakBytes: 116000000000
+    idlePolicy: unload_after_15m
+security:
+  allowNetworkDuringInference: false
+  allowedMediaRoots: []
+  allowCustomLogitsProcessors: false
+  allowPlugins: []
+signature:
+  keyID: catalogue-development
+  algorithm: ed25519
+  value: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

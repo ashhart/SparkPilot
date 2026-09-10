@@ -1,0 +1,25 @@
+type: object
+additionalProperties: false
+required:
+- host_ip
+- host_port
+- container_port
+- protocol
+properties:
+  host_ip:
+    type: string
+    minLength: 1
+    maxLength: 45
+  host_port:
+    type: integer
+    minimum: 0
+    maximum: 65535
+  container_port:
+    type: integer
+    minimum: 0
+    maximum: 65535
+  protocol:
+    type: string
+    enum:
+    - tcp
+    - udp

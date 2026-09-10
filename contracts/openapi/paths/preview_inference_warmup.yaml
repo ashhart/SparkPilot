@@ -1,0 +1,22 @@
+post:
+  tags:
+  - Inference
+  operationId: previewInferenceWarmup
+  summary: Review a one-shot warm-up without scheduling it
+  responses:
+    '200':
+      description: Review a one-shot warm-up without scheduling it
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/WarmupPreview
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/WarmupRequest

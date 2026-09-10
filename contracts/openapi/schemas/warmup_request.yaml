@@ -1,0 +1,19 @@
+type: object
+additionalProperties: false
+required:
+- model_id
+- profile_id
+- due_at
+properties:
+  model_id:
+    type: string
+  profile_id:
+    type: string
+  due_at:
+    type: integer
+    format: int64
+    description: Absolute Unix seconds on the Spark clock; one minute to seven days ahead at review. The
+      reviewed schedule may be accepted until one second before its due time.
+  accepted_preview_digest:
+    type: string
+    pattern: ^[0-9a-f]{64}$

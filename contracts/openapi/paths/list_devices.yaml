@@ -1,0 +1,20 @@
+get:
+  tags:
+  - Devices
+  operationId: listDevices
+  responses:
+    '200':
+      description: Paired device grants
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - items
+            properties:
+              items:
+                type: array
+                items:
+                  $ref: ../../openapi.yaml#/components/schemas/Device
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

@@ -1,0 +1,18 @@
+[package]
+name = "spark-telemetry"
+description = "System and inference metrics, usage aggregation, pressure state machine."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+libc.workspace = true
+rusqlite.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+spark-core = { path = "../spark-core" }
+time.workspace = true
+
+[dev-dependencies]
+tempfile = "3"

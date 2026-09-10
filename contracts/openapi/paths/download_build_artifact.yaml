@@ -1,0 +1,59 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/BuildId
+- $ref: ../../openapi.yaml#/components/parameters/ArtifactId
+get:
+  tags:
+  - Builds
+  operationId: downloadBuildArtifact
+  summary: Download one project-authorised artifact after its digest is reverified
+  responses:
+    '200':
+      description: Artifact bytes whose stored size and SHA-256 were reverified
+      headers:
+        X-Spark-Artifact-Sha256:
+          required: true
+          schema:
+            type: string
+            pattern: ^[0-9a-f]{64}$
+        Cache-Control:
+          required: true
+          schema:
+            type: string
+            const: private, no-store
+      content:
+        application/octet-stream:
+          schema:
+            type: string
+            format: binary
+            maxLength: 8388608
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+put:
+  tags:
+  - Builds
+  operationId: uploadBuildArtifact
+  summary: Upload one bounded artifact whose digest is declared in headers
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/BuildClaimToken
+  - $ref: ../../openapi.yaml#/components/parameters/BuildArtifactToken
+  - $ref: ../../openapi.yaml#/components/parameters/BuildArtifactSha256
+  - $ref: ../../openapi.yaml#/components/parameters/BuildArtifactKind
+  - $ref: ../../openapi.yaml#/components/parameters/BuildArtifactPath
+  requestBody:
+    required: true
+    content:
+      application/octet-stream:
+        schema:
+          type: string
+          format: binary
+          maxLength: 8388608
+  responses:
+    '201':
+      description: Artifact stored and hash verified
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/BuildArtifactEvidence
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

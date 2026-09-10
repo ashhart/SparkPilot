@@ -1,0 +1,31 @@
+type: object
+additionalProperties: false
+required:
+- ticket_id
+- repository_url
+- commit
+- source_sha256
+- max_bytes
+- expires_at
+properties:
+  ticket_id:
+    type: string
+    format: uuid
+  repository_url:
+    type:
+    - string
+    - 'null'
+    format: uri
+  commit:
+    type: string
+    pattern: ^[0-9a-f]{40}$
+  source_sha256:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  max_bytes:
+    type: integer
+    minimum: 1
+    maximum: 2147483648
+  expires_at:
+    type: string
+    format: date-time

@@ -1,0 +1,23 @@
+parameters:
+- name: id
+  in: path
+  required: true
+  schema:
+    type: string
+    format: uuid
+get:
+  tags:
+  - Automations
+  operationId: listAutomationRuns
+  summary: Read an automation's run history with its results and tool calls
+  responses:
+    '200':
+      description: Read an automation's run history with its results and tool calls
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/AutomationRunList
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+  description: Newest first, bounded to the most recent runs. Each run carries the result text and every search
+    query and fetched URL it produced, so the owner can see exactly what left the house.

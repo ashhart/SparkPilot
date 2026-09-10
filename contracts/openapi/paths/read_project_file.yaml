@@ -1,0 +1,59 @@
+parameters:
+- $ref: ../../openapi.yaml#/components/parameters/ProjectId
+- $ref: ../../openapi.yaml#/components/parameters/FilePath
+- name: workspace
+  in: query
+  required: false
+  description: Choose protected project files or the durable development checkout.
+  schema:
+    type: string
+    enum:
+    - project
+    - development
+    default: project
+get:
+  tags:
+  - Projects
+  operationId: readProjectFile
+  summary: Read a project file together with its content revision
+  responses:
+    '200':
+      description: File content and the revision the editor must use for If-Match
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ProjectFileContents
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+put:
+  tags:
+  - Projects
+  operationId: saveProjectFile
+  summary: Save a project file with an If-Match revision precondition
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - name: If-Match
+    in: header
+    required: true
+    schema:
+      type: string
+      pattern: ^[0-9a-f]{64}$
+  requestBody:
+    required: true
+    content:
+      text/plain: {}
+  responses:
+    '200':
+      description: Saved; returns the new revision
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ProjectFileSave
+    '409':
+      description: Revision precondition failed
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/ProjectFileConflict
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

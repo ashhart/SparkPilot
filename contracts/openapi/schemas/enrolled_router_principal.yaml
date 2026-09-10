@@ -1,0 +1,35 @@
+type: object
+additionalProperties: false
+properties:
+  principal_id:
+    type: string
+    format: uuid
+  kind:
+    type: string
+  router_node_id:
+    type: string
+    format: uuid
+  request_key_fingerprint:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  recipient_node_id:
+    type: string
+    format: uuid
+  display_name:
+    type: string
+    minLength: 1
+    maxLength: 80
+  enrolled_at:
+    type: integer
+    format: int64
+  revoked:
+    type: boolean
+required:
+- principal_id
+- kind
+- router_node_id
+- request_key_fingerprint
+- recipient_node_id
+- display_name
+- enrolled_at
+- revoked

@@ -1,0 +1,16 @@
+type: object
+additionalProperties: false
+required:
+- grant_id
+- revoked
+- accepted_work
+properties:
+  grant_id:
+    type: string
+    format: uuid
+  revoked:
+    type: boolean
+    const: true
+  accepted_work:
+    type: string
+    const: drain

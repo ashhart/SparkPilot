@@ -1,0 +1,25 @@
+parameters:
+- name: id
+  in: path
+  required: true
+  schema:
+    type: string
+    format: uuid
+post:
+  tags:
+  - Automations
+  operationId: runAutomation
+  summary: Run an automation now without moving its schedule
+  responses:
+    '202':
+      description: Run an automation now without moving its schedule
+      content:
+        application/json:
+          schema:
+            $ref: ../../openapi.yaml#/components/schemas/Operation
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error
+  parameters:
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  description: Creates the same durable operation the scheduler would create, through the same worker. The next
+    scheduled run is unchanged. A disabled automation still runs on request.

@@ -1,0 +1,106 @@
+{
+  "$comment": "Shared golden vector for SPARK2 request signing. The runtime builds this form in runtime/crates/sparkd/src/auth.rs (`canonical`) and the Apple app must rebuild it exactly in SparkSecurity's SparkRequestSigner, or no signed request verifies.",
+  "$normative_form": "SPARK2 recipient-bound signatures supersede the seven-line SPARK1 form; old requests fail closed without fallback.",
+  "algorithm": [
+    "join with a single \\n between lines and no trailing newline",
+    "line 1 is the literal scheme name SPARK2",
+    "line 2 is the HTTP method upper-cased",
+    "line 3 is the path with its query string exactly as sent, query included when present",
+    "line 4 is the RFC3339 UTC timestamp as sent",
+    "line 5 is the base64url nonce as sent",
+    "line 6 is the lowercase hex SHA-256 of the exact transmitted body bytes",
+    "line 7 is the device id, which binds the signature to one device",
+    "line 8 is the trusted recipient node UUID, verified against the runtime identity"
+  ],
+  "headers": {
+    "device_id": "X-Spark-Device-Id",
+    "timestamp": "X-Spark-Timestamp",
+    "nonce": "X-Spark-Nonce",
+    "content_sha256": "X-Spark-Content-Sha256",
+    "signature": "X-Spark-Signature",
+    "user_presence": "X-Spark-User-Presence",
+    "node_id": "X-Spark-Node-ID"
+  },
+  "cases": [
+    {
+      "name": "get_no_body",
+      "why": "The commonest shape. An empty body still hashes: the digest of zero bytes is a real value, not an omitted line.",
+      "request": {
+        "method": "GET",
+        "path_and_query": "/api/v1/status",
+        "timestamp": "2026-08-27T10:05:00Z",
+        "nonce": "_gauBKJ2S7qD4YEg3YXkJLJ9pVCy4rc-PV4yJSGP3_Q",
+        "device_id": "ca890ed7-7c8c-4b2c-9218-b77ef24f569a",
+        "body": "",
+        "node_id": "00000000-0000-0000-0000-000000000002"
+      },
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical": "SPARK2\nGET\n/api/v1/status\n2026-08-27T10:05:00Z\n_gauBKJ2S7qD4YEg3YXkJLJ9pVCy4rc-PV4yJSGP3_Q\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\nca890ed7-7c8c-4b2c-9218-b77ef24f569a\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "bc6b53c76b78e13f71398e6004cc7e105713a44f6b7d0358c7bbebb7bf44f88f"
+    },
+    {
+      "name": "post_with_body",
+      "why": "A mutation. The digest covers the exact transmitted bytes, so a re-serialised body with different whitespace does not verify.",
+      "request": {
+        "method": "POST",
+        "path_and_query": "/api/v1/inference/load",
+        "timestamp": "2026-08-27T10:05:01Z",
+        "nonce": "Zm9vYmFyYmF6cXV4MTIzNDU2Nzg5MGFiY2Rl",
+        "device_id": "ca890ed7-7c8c-4b2c-9218-b77ef24f569a",
+        "body": "{\"model_id\":\"example/model\",\"profile_id\":\"context-16k\"}",
+        "node_id": "00000000-0000-0000-0000-000000000002"
+      },
+      "content_sha256": "54d6d38ac1e3856c1767ab935bd4152a92535771d0d17709624d17388023160c",
+      "canonical": "SPARK2\nPOST\n/api/v1/inference/load\n2026-08-27T10:05:01Z\nZm9vYmFyYmF6cXV4MTIzNDU2Nzg5MGFiY2Rl\n54d6d38ac1e3856c1767ab935bd4152a92535771d0d17709624d17388023160c\nca890ed7-7c8c-4b2c-9218-b77ef24f569a\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "4cc2432ceb2bbd4ca817befdde3919c0b03db0a0ccce1991c3592afa940beffe"
+    },
+    {
+      "name": "query_is_part_of_the_path_line",
+      "why": "Path and query are one line. Signing the path alone would let a proxy or a caller change ?limit= without breaking the signature.",
+      "request": {
+        "method": "GET",
+        "path_and_query": "/api/v1/operations?cursor=42&limit=10",
+        "timestamp": "2026-08-27T10:05:02Z",
+        "nonce": "cXVlcnktbm9uY2UtMDAwMDAwMDAwMDAwMDA",
+        "device_id": "ca890ed7-7c8c-4b2c-9218-b77ef24f569a",
+        "body": "",
+        "node_id": "00000000-0000-0000-0000-000000000002"
+      },
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical": "SPARK2\nGET\n/api/v1/operations?cursor=42&limit=10\n2026-08-27T10:05:02Z\ncXVlcnktbm9uY2UtMDAwMDAwMDAwMDAwMDA\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\nca890ed7-7c8c-4b2c-9218-b77ef24f569a\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "7919eae6eb74056bbb78fcc7834e6b672a742befde969298e819fb4526b84696"
+    },
+    {
+      "name": "lowercase_method_is_normalised",
+      "why": "The method is upper-cased before signing, so a client that sends `get` and a server that reads `GET` agree.",
+      "request": {
+        "method": "get",
+        "path_and_query": "/api/v1/identity",
+        "timestamp": "2026-08-27T10:05:03Z",
+        "nonce": "bWV0aG9kLWNhc2Utbm9uY2UtMDAwMDAwMA",
+        "device_id": "ca890ed7-7c8c-4b2c-9218-b77ef24f569a",
+        "body": "",
+        "node_id": "00000000-0000-0000-0000-000000000002"
+      },
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical": "SPARK2\nGET\n/api/v1/identity\n2026-08-27T10:05:03Z\nbWV0aG9kLWNhc2Utbm9uY2UtMDAwMDAwMA\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\nca890ed7-7c8c-4b2c-9218-b77ef24f569a\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "12e1405a234420c6dc64ce8e204f91696e57751e38c952a94891852cf89ff1b0"
+    },
+    {
+      "name": "device_id_is_the_last_line",
+      "why": "The device id is bound into the payload. Without it a signature captured from one device could be replayed under another device's header, and the server would verify it against that device's key.",
+      "request": {
+        "method": "DELETE",
+        "path_and_query": "/api/v1/devices/9f1c1f26-6c1e-4f7a-9a4a-7ac2f0cbb0b4",
+        "timestamp": "2026-08-27T10:05:04Z",
+        "nonce": "ZGV2aWNlLWJvdW5kLW5vbmNlLTAwMDAwMA",
+        "device_id": "3b6e5c2a-1d4f-4a8b-9c0d-2e5f7a8b9c0d",
+        "body": "",
+        "node_id": "00000000-0000-0000-0000-000000000002"
+      },
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical": "SPARK2\nDELETE\n/api/v1/devices/9f1c1f26-6c1e-4f7a-9a4a-7ac2f0cbb0b4\n2026-08-27T10:05:04Z\nZGV2aWNlLWJvdW5kLW5vbmNlLTAwMDAwMA\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n3b6e5c2a-1d4f-4a8b-9c0d-2e5f7a8b9c0d\n00000000-0000-0000-0000-000000000002",
+      "canonical_sha256": "173100ef88572ba9b4c161713af28ca64e4c046a823a6b8710d65ff5daa45266"
+    }
+  ]
+}

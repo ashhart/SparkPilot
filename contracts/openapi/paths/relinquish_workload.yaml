@@ -1,0 +1,44 @@
+post:
+  tags:
+  - Workloads
+  operationId: relinquishWorkload
+  parameters:
+  - name: workload_id
+    in: path
+    required: true
+    schema:
+      type: string
+      minLength: 64
+      maxLength: 64
+      pattern: ^[0-9a-fA-F]+$
+  - $ref: ../../openapi.yaml#/components/parameters/IdempotencyKey
+  - $ref: ../../openapi.yaml#/components/parameters/RequiredUserPresence
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../openapi.yaml#/components/schemas/WorkloadRelinquishRequest
+  responses:
+    '200':
+      description: SparkPilot ownership metadata removed; container left running
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: false
+            required:
+            - workload_id
+            - ownership
+            - container_changed
+            properties:
+              workload_id:
+                type: string
+              ownership:
+                type: string
+                const: external_observed
+              container_changed:
+                type: boolean
+                const: false
+    default:
+      $ref: ../../openapi.yaml#/components/responses/Error

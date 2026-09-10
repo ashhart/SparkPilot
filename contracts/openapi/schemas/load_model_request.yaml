@@ -1,0 +1,31 @@
+type: object
+additionalProperties: false
+required:
+- model_id
+- profile_id
+- accepted_preview_digest
+properties:
+  model_id:
+    type: string
+  profile_id:
+    type: string
+  replace_active:
+    type: boolean
+    default: false
+  accepted_preview_digest:
+    type: string
+    pattern: ^[0-9a-f]{64}$
+  target:
+    type: object
+    additionalProperties: false
+    properties:
+      node_id:
+        type:
+        - string
+        - 'null'
+        format: uuid
+      cluster_id:
+        type:
+        - string
+        - 'null'
+        format: uuid
