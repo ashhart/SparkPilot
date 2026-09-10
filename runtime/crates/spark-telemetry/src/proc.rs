@@ -152,8 +152,8 @@ impl ProcMonitor {
             return StorageSnapshot::default();
         }
         StorageSnapshot {
-            total_bytes: (stats.f_blocks as u64) * (stats.f_frsize as u64),
-            free_bytes: (stats.f_bavail as u64) * (stats.f_frsize as u64),
+            total_bytes: stats.f_blocks * stats.f_frsize,
+            free_bytes: stats.f_bavail * stats.f_frsize,
         }
     }
 

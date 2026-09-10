@@ -179,9 +179,11 @@ pub(super) fn set_ownership(
 pub(super) fn set_mode(fd: &OwnedFd, mode: u32, display: &Path) -> Result<(), StateError> {
     let mut status: libc::stat = unsafe { std::mem::zeroed() };
     // SAFETY: `fd` is live and `status` is a valid out-parameter.
-    if unsafe { libc::fstat(fd.as_raw_fd(), &mut status) } == 0
-        && u32::from(status.st_mode) & 0o777 == mode
-    {
+    let result = unsafe { libc::fstat(fd.as_raw_fd(), &mut status) };
+    // Darwin uses a 16-bit mode_t; Linux uses 32 bits.
+    #[allow(clippy::useless_conversion)]
+    let current_mode = u32::from(status.st_mode);
+    if result == 0 && current_mode & 0o777 == mode {
         return Ok(());
     }
     // SAFETY: `fd` is a live descriptor.

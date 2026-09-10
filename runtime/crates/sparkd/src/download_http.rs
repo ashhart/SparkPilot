@@ -438,7 +438,10 @@ pub fn disk_free_bytes(path: &Path) -> u64 {
         };
         let mut statistics: libc::statvfs = unsafe { std::mem::zeroed() };
         if unsafe { libc::statvfs(encoded.as_ptr(), &mut statistics) } == 0 {
-            return u64::from(statistics.f_bavail).saturating_mul(statistics.f_frsize);
+            // Darwin uses a 32-bit fsblkcnt_t; Linux uses 64 bits.
+            #[allow(clippy::useless_conversion)]
+            let available_blocks = u64::from(statistics.f_bavail);
+            return available_blocks.saturating_mul(statistics.f_frsize);
         }
         candidate = current.parent();
     }

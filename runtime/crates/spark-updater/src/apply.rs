@@ -189,7 +189,10 @@ fn ensure_disk_headroom(package: &Path, staging_root: &Path) -> Result<(), Apply
     for path in [staging_parent, Path::new("/")] {
         let stats = nix::sys::statvfs::statvfs(path)
             .map_err(|error| format!("cannot stat {}: {error}", path.display()))?;
-        let free = u64::from(stats.blocks_free()).saturating_mul(stats.fragment_size());
+        // Darwin uses a 32-bit fsblkcnt_t; Linux uses 64 bits.
+        #[allow(clippy::useless_conversion)]
+        let free_blocks = u64::from(stats.blocks_free());
+        let free = free_blocks.saturating_mul(stats.fragment_size());
         if tightest.is_none_or(|(_, least)| free < least) {
             tightest = Some((path, free));
         }
