@@ -341,6 +341,7 @@ fi
 # The parent is a session leader, so its process group carries the service-account holder and the zombie away with it.
 kill -- "-$ZOMBIE_PARENT" "$ZOMBIE_PARENT" 2>/dev/null || true
 wait "$ZOMBIE_PARENT" 2>/dev/null || true
+ZOMBIE_PARENT=""
 stop_live_daemon
 
 step "8. a backup captures pages that are only in the write-ahead log"
@@ -463,6 +464,7 @@ pass "the refused purge left the service account"
 # An exited, unreaped service process must not block purge.
 kill "$PURGE_BLOCKER" 2>/dev/null || true
 wait "$PURGE_BLOCKER" 2>/dev/null || true
+PURGE_BLOCKER=""
 stop_live_daemon
 
 step "12. a purge will not delete state underneath the privileged helper"
@@ -517,6 +519,7 @@ for _ in $(seq 1 20); do
   sleep 0.25
 done
 rm -f /run/spark-runtime/privd-test.sock
+PRIVD_PID=""
 
 step "13. purge clears state once nothing is running"
 # An unrelated root process must neither block helper quiescence nor be killed.
@@ -543,6 +546,7 @@ kill -0 "$BYSTANDER" 2>/dev/null ||
 pass "the unrelated root process neither blocked the purge nor was killed by it"
 kill "$BYSTANDER" 2>/dev/null || true
 wait "$BYSTANDER" 2>/dev/null || true
+BYSTANDER=""
 
 step "14. a zombie does not block a purge either"
 dpkg -i --force-depends "$DEB" >/dev/null
@@ -575,6 +579,7 @@ else
 fi
 kill -- "-$ZOMBIE_PARENT" "$ZOMBIE_PARENT" 2>/dev/null || true
 wait "$ZOMBIE_PARENT" 2>/dev/null || true
+ZOMBIE_PARENT=""
 [ ! -d "$STATE_DIR" ] || fail "the purge left $STATE_DIR behind"
 [ ! -d "$PRIVD_STATE_DIR" ] || fail "the purge left $PRIVD_STATE_DIR behind"
 pass "purge removed the state directory"

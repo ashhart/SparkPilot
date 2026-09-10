@@ -15,17 +15,14 @@ on:
 jobs:
   # Build a real package so missing artifacts fail this job.
   arm64-package:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - name: Set up QEMU for linux/arm64
-        uses: docker/setup-qemu-action@49b3bc8e6bdd4a60e6116a5414239cba5943d3cf # v3.2.0
-        with:
-          platforms: arm64
-
       - name: Verify target-systemd units and hardening
         run: |
+          # Lifecycle checks require native /proc executable identities.
+          test "$(uname -m)" = aarch64
           docker run --rm --platform linux/arm64 \
             -v "$PWD:/src:ro" \
             -w /src \
@@ -65,6 +62,7 @@ jobs:
               export DEBIAN_FRONTEND=noninteractive
               apt-get update -qq >/dev/null
               apt-get install -y -qq systemd sqlite3 python3 adduser nftables >/dev/null 2>&1
+              bash /tests/tests/test_install_support.sh
               timeout --kill-after=30 1800 bash /tests/test_install.sh \
                 /pkg/spark-runtime_*-1_arm64.deb /pkg/spark-runtime_*-2_arm64.deb
             '

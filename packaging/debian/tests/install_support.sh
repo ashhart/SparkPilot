@@ -7,6 +7,13 @@ step() { printf '\n== %s\n' "$*"; }
 
 LIVE_PID=""
 
+stop_test_child() {
+  local pid="${1:-}"
+  [ -n "$pid" ] || return 0
+  kill -KILL "$pid" 2>/dev/null || true
+  wait "$pid" 2>/dev/null || true
+}
+
 # Choose the newest snapshot by creation time because random suffixes can misorder same-second backups lexically.
 newest_backup() {
   find /var/backups/spark-runtime -maxdepth 1 -name 'upgrade-*' -type d \
@@ -31,31 +38,38 @@ service_account_processes() {
 # Stop and reap the test daemon and sweep service-uid survivors before later install scenarios.
 stop_live_daemon() {
   if [ -n "$LIVE_PID" ]; then
-    kill "$LIVE_PID" 2>/dev/null || true
-    wait "$LIVE_PID" 2>/dev/null || true
+    stop_test_child "$LIVE_PID"
     LIVE_PID=""
   fi
 
   for _ in 1 2 3 4 5 6 7 8 9 10; do
-    # Reap the runuser parent so an exited grandchild does not contaminate the next preflight scenario.
-    wait 2>/dev/null || true
     survivors="$(service_account_processes)"
     [ -z "$survivors" ] && break
     # shellcheck disable=SC2086
     kill $survivors 2>/dev/null || true
     sleep 0.5
   done
+  if [ -n "${survivors:-}" ]; then
+    # shellcheck disable=SC2086
+    kill -KILL $survivors 2>/dev/null || true
+  fi
 
   rm -rf /tmp/live-node
 }
 
 # Clean up service-account test processes on every exit path.
 cleanup() {
-  status=$?
+  local status=$? pid
+  trap - EXIT INT TERM
+  for pid in "${PRIVD_PID:-}" "${PURGE_BLOCKER:-}" "${BYSTANDER:-}" "${ZOMBIE_PARENT:-}"; do
+    stop_test_child "$pid"
+  done
   stop_live_daemon >/dev/null 2>&1 || true
   return $status
 }
-trap cleanup EXIT INT TERM
+trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
 
 require_file() { [ -f "$1" ] || fail "expected file $1"; pass "$1 exists"; }
 require_dir() { [ -d "$1" ] || fail "expected directory $1"; }
@@ -88,4 +102,3 @@ applied_schema() {
   runuser -u sparkd -- "$LIB_DIR/spark-installer" schema --data-dir "$STATE_DIR" \
     | python3 -c 'import json,sys; print(json.load(sys.stdin)["applied"])'
 }
-
