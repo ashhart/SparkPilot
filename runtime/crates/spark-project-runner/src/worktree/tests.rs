@@ -161,16 +161,16 @@ fn the_git_command_runs_with_a_scrubbed_environment() {
 
 #[test]
 fn a_hanging_git_is_killed_at_the_timeout() {
-    // Use an always-running yes child to test the timeout even when the runner prepends Git configuration arguments.
-    let Some(program) = ["/usr/bin/yes", "/bin/yes"]
-        .into_iter()
-        .find(|path| std::path::Path::new(path).exists())
-    else {
-        return;
-    };
-    let git = CommandGit::new(program).with_timeout(std::time::Duration::from_millis(150));
+    use std::os::unix::fs::PermissionsExt;
+    let dir = tempfile::tempdir().unwrap();
+    let program = dir.path().join("hanging-git");
+    // Ignore Git's arguments: GNU yes rejects -c, unlike BSD yes.
+    std::fs::write(&program, "#!/bin/sh\nexec yes\n").unwrap();
+    std::fs::set_permissions(&program, std::fs::Permissions::from_mode(0o700)).unwrap();
+    let git = CommandGit::new(program.to_string_lossy())
+        .with_timeout(std::time::Duration::from_millis(150));
     let started = std::time::Instant::now();
-    let error = git.run(Path::new("/tmp"), &["hang"]).unwrap_err();
+    let error = git.run(dir.path(), &["hang"]).unwrap_err();
     assert!(error.contains("timed out"), "{error}");
     assert!(
         started.elapsed() < std::time::Duration::from_secs(5),
