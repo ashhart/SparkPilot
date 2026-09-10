@@ -142,10 +142,10 @@ mod instance_label_tests {
             instance_label("example-spark", "7a836150"),
             "example-spark-7a836150"
         );
-        // Dots, spaces and punctuation are not label characters.
+        // Preserve letter case while replacing dots, spaces and punctuation.
         assert_eq!(
             instance_label("Alex's Spark.local", "7a836150"),
-            "alex-s-Spark-local-7a836150"
+            "Alex-s-Spark-local-7a836150"
         );
         // A name of nothing usable still advertises something resolvable.
         assert_eq!(instance_label("...", "7a836150"), "spark-7a836150");

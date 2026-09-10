@@ -1,4 +1,5 @@
 use super::*;
+use spark_project_runner::{CommandGit, GitRunner};
 
 /// Constrain typed file, Git and command tools to the agent worktree and command allowlist.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -270,15 +271,8 @@ impl ToolRuntime {
                 message.clone(),
             ]),
         }
-        let output = std::process::Command::new("git")
-            .args(&args)
-            .current_dir(worktree)
-            .output()
-            .map_err(|e| format!("failed: git could not start: {e}"))?;
-        if !output.status.success() {
-            return Err(String::from_utf8_lossy(&output.stderr).trim().to_owned());
-        }
-        let mut text = String::from_utf8_lossy(&output.stdout).into_owned();
+        let args: Vec<&str> = args.iter().map(String::as_str).collect();
+        let mut text = CommandGit::new("git").run(worktree, &args)?;
         if text.len() > TOOL_OUTPUT_CAP {
             text.truncate(TOOL_OUTPUT_CAP);
         }
