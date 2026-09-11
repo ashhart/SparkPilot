@@ -251,7 +251,6 @@ import SwiftUI
                             }
                             .accessibilityIdentifier("spark.sidebar.\(item.id)")
                         }
-                        .tint(Color.primary)
                         .navigationTitle("SparkPilot")
                         .navigationSplitViewColumnWidth(
                             min: dynamicTypeSize.isAccessibilitySize ? 380 : 250,

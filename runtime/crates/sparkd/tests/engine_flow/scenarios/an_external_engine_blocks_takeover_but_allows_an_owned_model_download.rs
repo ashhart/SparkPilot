@@ -150,14 +150,14 @@ async fn a_custom_cluster_image_cannot_be_treated_as_an_idle_spark() {
     ).await;
     assert_eq!(status, reqwest::StatusCode::OK, "{preview}");
     assert!(preview["blockers"].as_array().is_some_and(|items| items.iter()
-        .any(|item| item["code"] == "EXTERNAL_ENGINE_STATE_UNKNOWN")), "{preview}");
+        .any(|item| item["code"] == "EXTERNAL_WORKLOAD_UNRECOGNIZED")), "{preview}");
     request["accepted_preview_digest"] = preview["preview_digest"].clone();
     let (status, response) = signed_json_with_idempotency(
         &client, addr, &key, &device_id, "POST", "/api/v1/inference/load",
         Some(request), Some(&uuid::Uuid::new_v4().to_string()),
     ).await;
     assert_eq!(status, reqwest::StatusCode::CONFLICT, "{response}");
-    assert_eq!(response["error"]["code"], "EXTERNAL_ENGINE_STATE_UNKNOWN");
+    assert_eq!(response["error"]["code"], "EXTERNAL_WORKLOAD_UNRECOGNIZED");
     assert_eq!(h.backend.launches(), 0);
     assert_eq!(h.privileged_operations.as_ref().unwrap().lock().unwrap().as_slice(),
         ["inventory_workloads", "inventory_workloads"]);

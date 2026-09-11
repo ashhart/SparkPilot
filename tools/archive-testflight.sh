@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Create a local iPhone-only archive; this script never exports or uploads a build.
+# Create a local iPhone and iPad archive; this script never exports or uploads a build.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -20,7 +20,8 @@ fi
   "$ROOT/apple/SparkApp/Shared/Resources/model-presets.json"
 
 "$ROOT/tools/check-swift-dependencies.sh"
-mkdir -p "$ROOT/build/testflight"
+ARCHIVE_DIR="${SPARK_ARCHIVE_DIR:-$ROOT/build/testflight}"
+mkdir -p "$ARCHIVE_DIR"
 
 # Preserve resource bytes in every target and verify the completed archive.
 xcodebuild \
@@ -28,17 +29,18 @@ xcodebuild \
   -scheme Spark \
   -configuration Release \
   -destination 'generic/platform=iOS' \
-  -archivePath "$ROOT/build/testflight/SparkPilot-$BUILD_NUMBER.xcarchive" \
+  -derivedDataPath "${SPARK_DERIVED_DATA_DIR:-$ARCHIVE_DIR/DerivedData}" \
+  -archivePath "$ARCHIVE_DIR/SparkPilot-$BUILD_NUMBER.xcarchive" \
   -disableAutomaticPackageResolution \
   -onlyUsePackageVersionsFromResolvedFile \
   DEVELOPMENT_TEAM="$DEVELOPMENT_TEAM" \
   CURRENT_PROJECT_VERSION="$BUILD_NUMBER" \
-  SPARK_IOS_DEVICE_FAMILY=1 \
+  SPARK_IOS_DEVICE_FAMILY=1,2 \
   COPY_PHASE_STRIP=NO \
   archive
 
 "$ARCHIVE_PYTHON" "$ROOT/tools/release/check_bundled_release.py" \
-  "$ROOT/build/testflight/SparkPilot-$BUILD_NUMBER.xcarchive/Products/Applications/Spark.app"
+  "$ARCHIVE_DIR/SparkPilot-$BUILD_NUMBER.xcarchive/Products/Applications/Spark.app"
 
 python3 "$ROOT/tools/release/check_watch_bundle.py" \
-  "$ROOT/build/testflight/SparkPilot-$BUILD_NUMBER.xcarchive/Products/Applications/Spark.app"
+  "$ARCHIVE_DIR/SparkPilot-$BUILD_NUMBER.xcarchive/Products/Applications/Spark.app"

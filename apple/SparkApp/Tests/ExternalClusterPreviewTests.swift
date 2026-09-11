@@ -307,3 +307,53 @@ private func externalClusterFabricPresentation(
         external.fabricRows.allSatisfy { $0.ownershipLabel == "Configured outside SparkPilot" }
     )
 }
+
+// MARK: - Telling identically named Sparks apart
+
+private func clusterSubtitleTestTarget(
+    name: String,
+    hostname: String?
+) -> ExternalClusterTarget {
+    ExternalClusterTarget(
+        libraryEntryID: "\(name):\(hostname ?? "none")",
+        nodeID: SparkNodeID(rawValue: UUID()),
+        displayName: name,
+        route: URL(string: "https://example.invalid:7443")!,
+        hostname: hostname
+    )
+}
+
+@Test func twoSparksSharingOneNameAreStillTellableApartByHost() {
+    let first = clusterSubtitleTestTarget(name: "Spark", hostname: "spark-a8bf")
+    let second = clusterSubtitleTestTarget(name: "Spark", hostname: "spark-c410")
+    #expect(ExternalClusterTargetSubtitle.text(for: first) == "spark-a8bf.local")
+    #expect(ExternalClusterTargetSubtitle.text(for: second) == "spark-c410.local")
+    #expect(
+        ExternalClusterTargetSubtitle.text(for: first)
+            != ExternalClusterTargetSubtitle.text(for: second)
+    )
+}
+
+@Test func anAlreadySuffixedHostIsNotSuffixedTwice() {
+    let target = clusterSubtitleTestTarget(name: "Spark", hostname: "spark-a8bf.local")
+    #expect(ExternalClusterTargetSubtitle.text(for: target) == "spark-a8bf.local")
+}
+
+@Test func aSparkWithNoUsefulHostKeepsTheDescriptiveSubtitle() {
+    for hostname in [nil, "", "   "] as [String?] {
+        let target = clusterSubtitleTestTarget(name: "Spark", hostname: hostname)
+        #expect(ExternalClusterTargetSubtitle.text(for: target) == "Paired standalone Spark")
+    }
+}
+
+@Test func aHostThatOnlyRepeatsTheNameIsNotShownTwice() {
+    let target = clusterSubtitleTestTarget(name: "spark-a8bf", hostname: "SPARK-A8BF")
+    #expect(ExternalClusterTargetSubtitle.text(for: target) == "Paired standalone Spark")
+}
+
+@Test func qualifiedHostsAndIPAddressesAreNotRewrittenAsLocalNames() {
+    for hostname in ["spark.example.ts.net", "192.0.2.10", "2001:db8::1"] {
+        let target = clusterSubtitleTestTarget(name: "Spark", hostname: hostname)
+        #expect(ExternalClusterTargetSubtitle.text(for: target) == hostname)
+    }
+}

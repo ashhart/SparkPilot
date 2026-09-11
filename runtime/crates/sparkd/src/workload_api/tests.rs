@@ -257,7 +257,7 @@ fn an_incomplete_observation_cannot_authorise_an_engine_launch() {
     };
     assert_eq!(
         guard_from_observation(&observed, &ManagedIds::default()),
-        ExternalInferenceGuard::Unknown
+        ExternalInferenceGuard::Unreadable
     );
 }
 
@@ -305,7 +305,7 @@ fn custom_images_remain_unowned_and_block_launch_until_their_state_is_known() {
         let expected = if matches!(state, "exited" | "dead") {
             ExternalInferenceGuard::Clear
         } else {
-            ExternalInferenceGuard::Unknown
+            ExternalInferenceGuard::Unrecognized
         };
         assert_eq!(
             guard_from_observation(&observed, &ManagedIds::default()),
@@ -417,7 +417,7 @@ fn an_external_ray_cluster_does_not_prove_its_gpus_are_idle() {
     };
     assert_eq!(
         guard_from_observation(&observed, &ManagedIds::default()),
-        ExternalInferenceGuard::Unknown
+        ExternalInferenceGuard::Unrecognized
     );
 }
 

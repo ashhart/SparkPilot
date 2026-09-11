@@ -48,6 +48,8 @@ struct SparkNavigationLabel: View {
             Text(title)
                 .fixedSize(horizontal: false, vertical: true)
         }
+        // Carry the row's own label colour so no ancestor control tint has to supply it.
+        .foregroundStyle(Color.primary)
     }
 }
 

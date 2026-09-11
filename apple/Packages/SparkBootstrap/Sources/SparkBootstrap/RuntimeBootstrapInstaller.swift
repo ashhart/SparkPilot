@@ -102,7 +102,8 @@ public struct RuntimeBootstrapInstaller: Sendable {
         administratorPassword: String,
         operationID: UUID = UUID(),
         artifactName: String? = nil,
-        dgxOSVersion: String? = nil
+        dgxOSVersion: String? = nil,
+        fallbackName: String? = nil
     ) async throws -> RuntimeBootstrapResult {
         guard
             let result = try await applyRelease(
@@ -111,7 +112,8 @@ public struct RuntimeBootstrapInstaller: Sendable {
                 operationID: operationID,
                 artifactName: artifactName,
                 dgxOSVersion: dgxOSVersion,
-                bootstrapOwner: true
+                bootstrapOwner: true,
+                fallbackName: fallbackName
             )
         else {
             throw RuntimeBootstrapError.malformedBootstrapReport(
@@ -135,7 +137,8 @@ public struct RuntimeBootstrapInstaller: Sendable {
             operationID: operationID,
             artifactName: artifactName,
             dgxOSVersion: dgxOSVersion,
-            bootstrapOwner: false
+            bootstrapOwner: false,
+            fallbackName: nil
         )
     }
 
@@ -145,7 +148,8 @@ public struct RuntimeBootstrapInstaller: Sendable {
         operationID: UUID,
         artifactName: String?,
         dgxOSVersion: String?,
-        bootstrapOwner: Bool
+        bootstrapOwner: Bool,
+        fallbackName: String?
     ) async throws -> RuntimeBootstrapResult? {
         let release = try await prepareRelease(
             artifactName: artifactName,
@@ -184,7 +188,8 @@ public struct RuntimeBootstrapInstaller: Sendable {
                 trustRoot: trustRoot,
                 keyID: release.keyID,
                 password: password,
-                bootstrapOwner: bootstrapOwner
+                bootstrapOwner: bootstrapOwner,
+                fallbackName: fallbackName
             )
             // Clean temporary bootstrap files after successful installation.
             _ = try? await run(.cleanUp, parameters, over: session, stdin: nil)
@@ -207,7 +212,8 @@ public struct RuntimeBootstrapInstaller: Sendable {
         trustRoot: ReleaseTrustRoot,
         keyID: String,
         password: Data,
-        bootstrapOwner: Bool
+        bootstrapOwner: Bool,
+        fallbackName: String?
     ) async throws -> RuntimeBootstrapResult? {
         // Transfer artifacts into the operation's private staging directory.
         _ = try await run(.prepareWorkDirectory, parameters, over: session, stdin: nil)
@@ -246,7 +252,11 @@ public struct RuntimeBootstrapInstaller: Sendable {
 
         // Step 8 runs only for a fresh, unowned Spark.
         let bootstrap = try await run(.bootstrapOwner, parameters, over: session, stdin: password)
-        return try decodeBootstrapReport(bootstrap.standardOutput, trustRootSource: trustRootSource)
+        return try decodeBootstrapReport(
+            bootstrap.standardOutput,
+            trustRootSource: trustRootSource,
+            fallbackName: fallbackName
+        )
     }
 
     private func run(
@@ -427,9 +437,24 @@ public struct RuntimeBootstrapInstaller: Sendable {
 
     // MARK: - The Spark's answer
 
+    /// Uses the connection host when the Spark does not report a name.
+    static func nodeName(reported: String?, fallback: String?) -> String {
+        if let reported = reported?.trimmingCharacters(in: .whitespacesAndNewlines),
+            !reported.isEmpty
+        {
+            return reported
+        }
+        var host = (fallback ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        if host.lowercased().hasSuffix(".local") {
+            host.removeLast(6)
+        }
+        return host.isEmpty ? String(localized: "Spark") : host
+    }
+
     private func decodeBootstrapReport(
         _ data: Data,
-        trustRootSource: RuntimeBootstrapResult.TrustRootSource
+        trustRootSource: RuntimeBootstrapResult.TrustRootSource,
+        fallbackName: String?
     ) throws -> RuntimeBootstrapResult {
         guard let members = (try? JSONValue.parse(data))?.objectValue else {
             throw RuntimeBootstrapError.malformedBootstrapReport(
@@ -476,7 +501,10 @@ public struct RuntimeBootstrapInstaller: Sendable {
 
         return RuntimeBootstrapResult(
             nodeID: try required("node_id"),
-            nodeName: members["node_name"]?.stringValue ?? String(localized: "Spark"),
+            nodeName: Self.nodeName(
+                reported: members["node_name"]?.stringValue,
+                fallback: fallbackName
+            ),
             authorityFingerprint: authorityFingerprint,
             authorityPublicKey: authorityPublicKey,
             tlsFingerprint: tlsFingerprint,

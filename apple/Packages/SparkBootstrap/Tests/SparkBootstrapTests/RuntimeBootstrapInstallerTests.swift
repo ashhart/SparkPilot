@@ -264,3 +264,34 @@ func runtimeRevisionComparisonFollowsPackageOrdering(
             == nil
     )
 }
+
+// MARK: - Naming an unnamed Spark
+
+@Test func aReportedNodeNameIsPreferredOverTheHostItWasReachedOn() {
+    #expect(
+        RuntimeBootstrapInstaller.nodeName(reported: "Workshop Spark", fallback: "spark-a8bf.local")
+            == "Workshop Spark"
+    )
+}
+
+@Test func anUnnamedSparkIsNamedAfterItsHostRatherThanAGenericLabel() {
+    #expect(
+        RuntimeBootstrapInstaller.nodeName(reported: nil, fallback: "spark-a8bf.local")
+            == "spark-a8bf"
+    )
+    #expect(
+        RuntimeBootstrapInstaller.nodeName(reported: "  ", fallback: "192.168.1.50")
+            == "192.168.1.50"
+    )
+}
+
+@Test func twoUnnamedSparksOnDifferentHostsDoNotShareOneName() {
+    let first = RuntimeBootstrapInstaller.nodeName(reported: nil, fallback: "spark-a8bf.local")
+    let second = RuntimeBootstrapInstaller.nodeName(reported: nil, fallback: "spark-c410.local")
+    #expect(first != second)
+}
+
+@Test func aSparkReachedWithoutAHostStillReceivesAName() {
+    #expect(RuntimeBootstrapInstaller.nodeName(reported: nil, fallback: nil) == "Spark")
+    #expect(RuntimeBootstrapInstaller.nodeName(reported: nil, fallback: ".local") == "Spark")
+}

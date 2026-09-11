@@ -79,12 +79,25 @@ private func machine(_ name: String) -> BootstrapSpark {
     #expect(groups.otherDevices.count == 2)
 }
 
+/// The same host reached twice differs by case, a trailing .local and an SSH suffix.
 @Test func sshSuffixDoesNotDuplicateAnAdvertisedRuntime() {
+    let groups = AddSparkResultGroups.resolve(
+        nodes: [node("spark-a8bf")],
+        bootstrap: [machine("Spark-a8bf.local SSH")]
+    )
+    #expect(groups.runtime.map(\.displayName) == ["spark-a8bf"])
+    #expect(groups.dgx.isEmpty)
+}
+
+/// A machine that only looks Spark-shaped is still offered; it is a different host.
+@Test func anUnrelatedSSHMachineIsStillOfferedAlongsideAnAdvertisedRuntime() {
     let groups = AddSparkResultGroups.resolve(
         nodes: [node("spark-example")],
         bootstrap: [machine("Spark-a8bf.local SSH")]
     )
-    #expect(groups.dgx.isEmpty)
+    #expect(groups.runtime.map(\.displayName) == ["spark-example"])
+    #expect(groups.dgx.map(\.displayName) == ["Spark-a8bf.local SSH"])
+    #expect(groups.possibleSparks.map(\.displayName) == ["Spark-a8bf.local SSH"])
 }
 
 @MainActor

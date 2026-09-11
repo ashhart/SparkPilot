@@ -10,17 +10,21 @@ public struct ExternalClusterTarget: Identifiable, Sendable, Equatable {
     public let nodeID: SparkNodeID
     public let displayName: String
     public let route: URL
+    /// The network name this Spark was last seen on, shown so identically named Sparks stay tellable apart.
+    public let hostname: String?
 
     public init(
         libraryEntryID: String,
         nodeID: SparkNodeID,
         displayName: String,
-        route: URL
+        route: URL,
+        hostname: String? = nil
     ) {
         self.libraryEntryID = libraryEntryID
         self.nodeID = nodeID
         self.displayName = displayName
         self.route = route
+        self.hostname = hostname
     }
 
     public var id: String { libraryEntryID }
@@ -61,6 +65,19 @@ public protocol ExternalClusterPreviewProviding: Sendable {
     ) async throws -> ExternalClusterEvidence
 }
 
+/// Names the Spark's host under its label so two Sparks sharing a label are still distinguishable.
+public enum ExternalClusterTargetSubtitle {
+    public static func text(for target: ExternalClusterTarget) -> String {
+        let hostname = (target.hostname ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !hostname.isEmpty, hostname.caseInsensitiveCompare(target.displayName) != .orderedSame
+        else {
+            return String(localized: "Paired standalone Spark")
+        }
+        return hostname.contains(".") || hostname.contains(":")
+            ? hostname : "\(hostname).local"
+    }
+}
+
 public enum ExternalClusterTargetList {
     public typealias TrustLookup = @Sendable (String) -> NodeTrust?
 
@@ -81,7 +98,8 @@ public enum ExternalClusterTargetList {
                 libraryEntryID: entry.id,
                 nodeID: nodeID,
                 displayName: entry.displayName,
-                route: route
+                route: route,
+                hostname: entry.member(nodeID: nodeID)?.hostname
             )
         }
         .sorted {
@@ -113,7 +131,8 @@ public enum ExternalClusterTargetList {
                 libraryEntryID: "\(entry.id):\(nodeID.rawValue.uuidString.lowercased())",
                 nodeID: nodeID,
                 displayName: member.name,
-                route: route
+                route: route,
+                hostname: member.hostname
             )
         }
     }
@@ -138,7 +157,8 @@ public enum ExternalClusterTargetList {
                     libraryEntryID: "\(entry.id):\(rawNodeID)",
                     nodeID: member.nodeID,
                     displayName: member.name,
-                    route: route
+                    route: route,
+                    hostname: member.hostname
                 )
             }
             guard targets.count == 2 else { return nil }

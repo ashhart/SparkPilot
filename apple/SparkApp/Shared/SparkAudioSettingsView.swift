@@ -110,7 +110,6 @@ struct SparkAudioSettingsForm: View {
             }
         }
         .formStyle(.grouped)
-        .tint(Color.accentColor)
         .onChange(of: output) { _, _ in session.refreshVoicePreference() }
     }
 

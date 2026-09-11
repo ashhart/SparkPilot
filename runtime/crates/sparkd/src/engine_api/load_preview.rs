@@ -265,11 +265,18 @@ pub(crate) fn load_preview_draft(
                 "Keep using the external endpoint. SparkPilot will not replace it until a separate takeover flow is available.",
             ));
         }
-        crate::workload_api::ExternalInferenceGuard::Unknown => {
+        crate::workload_api::ExternalInferenceGuard::Unreadable => {
             blockers.push(PreviewMessage::blocker(
-                "EXTERNAL_ENGINE_STATE_UNKNOWN",
-                "SparkPilot could not prove that starting an engine would leave external workloads untouched.",
-                "Restore the container workload inventory and request a new preview.",
+                "EXTERNAL_WORKLOAD_INVENTORY_UNREADABLE",
+                "SparkPilot could not read what else is running on this Spark, so it cannot tell whether starting an engine would disturb other work.",
+                "Check that the container service is running on the Spark, then request a new preview.",
+            ));
+        }
+        crate::workload_api::ExternalInferenceGuard::Unrecognized => {
+            blockers.push(PreviewMessage::blocker(
+                "EXTERNAL_WORKLOAD_UNRECOGNIZED",
+                "Something SparkPilot does not manage is running on this Spark, and it cannot tell whether starting an engine would disturb it.",
+                "Stop that workload on the Spark, or leave it running and start this model later.",
             ));
         }
         crate::workload_api::ExternalInferenceGuard::NotChecked

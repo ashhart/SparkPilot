@@ -180,7 +180,6 @@ import SparkDesignSystem
                 }
             }
             .navigationTitle("Settings")
-            .tint(Color.primary)
         }
 
     }

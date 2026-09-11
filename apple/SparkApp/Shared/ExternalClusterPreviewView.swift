@@ -120,7 +120,7 @@ public struct ExternalClusterPreviewView: View {
                                 VStack(alignment: .leading, spacing: 3) {
                                     Text(target.displayName)
                                         .foregroundStyle(.primary)
-                                    Text("Paired standalone Spark")
+                                    Text(ExternalClusterTargetSubtitle.text(for: target))
                                         .font(.caption)
                                         .foregroundStyle(.secondary)
                                 }

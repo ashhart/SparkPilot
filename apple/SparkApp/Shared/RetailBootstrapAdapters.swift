@@ -89,7 +89,8 @@ public struct SSHRuntimeBootstrapInstaller: RuntimeBootstrapInstalling {
         )
         return try await installer.install(
             over: session,
-            administratorPassword: administratorPassword
+            administratorPassword: administratorPassword,
+            fallbackName: host
         )
     }
 

@@ -41,7 +41,10 @@ pub(crate) enum ExternalInferenceGuard {
     NotChecked,
     Clear,
     Active,
-    Unknown,
+    /// The inventory could not be read in full, so nothing about other workloads is established.
+    Unreadable,
+    /// The inventory was read and holds a running workload this runtime cannot classify.
+    Unrecognized,
 }
 
 /// Check bounded read-only inventory for recognized unowned inference before launching, without lifecycle commands.
@@ -59,13 +62,13 @@ pub(crate) async fn external_inference_guard(state: &AppState) -> ExternalInfere
     })
     .await;
     let Ok(Ok(response)) = response else {
-        return ExternalInferenceGuard::Unknown;
+        return ExternalInferenceGuard::Unreadable;
     };
     if !response.accepted {
-        return ExternalInferenceGuard::Unknown;
+        return ExternalInferenceGuard::Unreadable;
     }
     let Ok(observed) = serde_json::from_value::<ObservedWorkloads>(response.details) else {
-        return ExternalInferenceGuard::Unknown;
+        return ExternalInferenceGuard::Unreadable;
     };
     let database = state.database.clone();
     let managed = tokio::task::spawn_blocking(move || {
@@ -96,9 +99,11 @@ pub(super) fn guard_from_observation(
     });
     if active_external_engine {
         ExternalInferenceGuard::Active
-    } else if observed.truncated || observed.unreadable_lines > 0 || unclassified_active_workload {
+    } else if observed.truncated || observed.unreadable_lines > 0 {
+        ExternalInferenceGuard::Unreadable
+    } else if unclassified_active_workload {
         // Custom images may run inference without a recognized repository name or published Docker ports.
-        ExternalInferenceGuard::Unknown
+        ExternalInferenceGuard::Unrecognized
     } else {
         ExternalInferenceGuard::Clear
     }
