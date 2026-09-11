@@ -98,89 +98,11 @@
         "algorithm": "ed25519",
         "value": "Y5STcpLrHE_1U9vtsoyFjIMutjACQg-GsgeF3VTMmo_apKu9kCHstYFbSgfd9oLi48bWEGRb9YV7Zv0_1Rd3DA"
       }
-    },
-    {
-      "apiVersion": "spark.runtime/v1",
-      "kind": "ModelRecipe",
-      "metadata": {
-        "id": "mia-ailab/qwen3.8-flash-next-nvfp4",
-        "revision": "2026-09-09.14",
-        "displayName": "Qwen 3.8 Flash Next",
-        "publisher": "Qwen",
-        "description": "Single-Spark NVFP4 candidate with 262,144 combined context tokens and up to four requests sharing a fixed 4 GiB cache. Images are resized to about one megapixel, with up to four images per request. Uses pinned MiaAI-Lab patches and a reusable 27 GiB CPU offload table with a 512 MiB resident-page budget and clean weight-page reclamation before GPU profiling, followed by scratch-cache reclamation before context-cache allocation; speculative decoding, prefix caching, FlashInfer autotuning and CUDA graphs are disabled. First launch prepares the engine and table, then model startup can take about 11 minutes. Security and packaged-lifecycle release gates remain open.",
-        "publisherURL": "https://huggingface.co/Qwen",
-        "recipeSource": {
-          "name": "MiaAI-Lab",
-          "url": "https://github.com/MiaAI-Lab/Qwen3.8-Flash-Next-Single-DGX-Spark",
-          "revision": "78b0675e4469a19befaa9c84a41662b671d4185e",
-          "retrievedAt": "2026-09-08"
-        }
-      },
-      "source": {
-        "provider": "huggingface",
-        "repository": "Mia-AiLab/Qwen3.8-Flash-Next-NVFP4",
-        "revision": "925d7be6c14c6c9442ef83e8f05b5a3c39304f69",
-        "gated": false,
-        "trustRemoteCode": false,
-        "licenceURL": "https://huggingface.co/Mia-AiLab/Qwen3.8-Flash-Next-NVFP4/tree/925d7be6c14c6c9442ef83e8f05b5a3c39304f69"
-      },
-      "engine": {
-        "recipe": "vllm-qwen38-78b0675",
-        "image": "vllm/vllm-openai@sha256:3b0e188ffceb3d07e09c3cb5215433a0020eacf02d7f882ed3a8bfd15454477e",
-        "servedName": "qwen3.8-flash-next",
-        "task": "generate",
-        "tokenizerMode": "auto",
-        "options": {
-          "preparation": "qwen38_78b0675",
-          "kvCacheDtype": "fp8",
-          "reasoningParser": "qwen3",
-          "toolCallParser": "qwen3_coder"
-        }
-      },
-      "capabilities": {
-        "chat": true,
-        "reasoning": true,
-        "toolCalling": true,
-        "parallelToolCalling": true,
-        "guidedGeneration": true,
-        "vision": true,
-        "embeddings": false,
-        "audioInput": false
-      },
-      "memory": {
-        "minimumSystemReserveBytes": 8589934592,
-        "expectedWeightBytes": 77878577725,
-        "expectedEngineOverheadBytes": 5368709120,
-        "measurementConfidence": "measured"
-      },
-      "profiles": [
-        {
-          "id": "spark-256k",
-          "displayName": "256K context · up to 4 requests",
-          "maxModelLength": 262144,
-          "maxSequences": 4,
-          "maxBatchedTokens": 2048,
-          "gpuMemoryUtilisation": 0.69,
-          "expectedPeakBytes": 96636764160,
-          "idlePolicy": "unload_after_30m"
-        }
-      ],
-      "security": {
-        "allowNetworkDuringInference": false,
-        "allowedMediaRoots": [],
-        "allowCustomLogitsProcessors": false,
-        "allowPlugins": []
-      },
-      "signature": {
-        "keyID": "catalogue-2026-b",
-        "algorithm": "ed25519",
-        "value": "GqLzx5yalpcdhAFHVRw_N8HujnAEiakppQzXj7XCd06rXoPpKydOL1QZy18VDaThmKsbKDS9LIy8g65o3mbiBw"
-      }
     }
   ],
   "signature": {
     "keyID": "catalogue-2026-b",
     "algorithm": "ed25519",
-    "value": "P4OnCWnGhNOfQMheegBuUsuhQiVWwtl-tcdX_C3glt6qS_JXM7qXECMYlum4xgP1kJCjHg2u7X1-l4amP7oGDA"
+    "value": "s03TYBCCTBJCIWeh7sTVg9i7xnyr6_R60nLF1iUa3lMe2RIgxT5iOmeCQGKwtKjv7Add4PdWNZzVFObupeBrCg"
   }
 }
