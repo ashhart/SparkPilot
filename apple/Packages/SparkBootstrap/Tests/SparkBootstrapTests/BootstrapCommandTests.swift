@@ -28,9 +28,10 @@ private func parameters(
     for command in allCommands {
         let line = command.line(parameters)
         #expect(!line.isEmpty)
-        // Restrict paths outside the work directory to fixed installed-package locations.
+        // Restrict paths outside the work directory to its staging root and fixed installed-package locations.
         let allowedAbsolutePrefixes = [
-            work, "/usr/lib/spark-runtime", "/usr/share/spark-runtime", "/var/lib/spark-runtime",
+            work, BootstrapCommand.Parameters.stagingRoot, "/usr/lib/spark-runtime",
+            "/usr/share/spark-runtime", "/var/lib/spark-runtime",
         ]
         for token in line.split(separator: " ") where token.hasPrefix("/") {
             #expect(
@@ -50,6 +51,21 @@ private let allCommands: [BootstrapCommand] = [
 @Test func theWorkingDirectoryIsPrivateToTheOperation() throws {
     let line = BootstrapCommand.prepareWorkDirectory.line(try parameters())
     #expect(line.contains("-m 0700"), "the working directory must not be world-readable")
+}
+
+/// Another local user who creates /tmp/spark-bootstrap first owns it and can swap the staged package before dpkg runs.
+@Test func theStagingRootMustBelongToTheLoginAccountBeforeTheOperationDirectoryIsCreated() throws {
+    let parameters = try parameters()
+    let line = BootstrapCommand.prepareWorkDirectory.line(parameters)
+    let root = BootstrapCommand.Parameters.stagingRoot
+    #expect(parameters.workDirectory.hasPrefix(root + "/"))
+
+    let ownership = try #require(line.range(of: "stat -c '%u %F' \(root)"))
+    let creation = try #require(line.range(of: "install -d -m 0700 \(parameters.workDirectory)"))
+    #expect(ownership.lowerBound < creation.lowerBound, "ownership is checked before creation")
+    #expect(line.contains("$(id -u) directory"), "a link or a foreign owner fails the check")
+    #expect(line.contains("mkdir -p -m 0700 \(root)"), "a missing root is created private")
+    #expect(!line.contains("chmod") && !line.contains("chown"), "nothing already there is adjusted")
 }
 
 @Test func elevatedCommandsNeverPutThePasswordInAnArgument() throws {
